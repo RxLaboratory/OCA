@@ -12,7 +12,27 @@ Open Cel Animation format
 
 - *OCA* stores the most common features used by drawing/animation software: layers, groups, blending modes, animation exposure (x-sheet), etc.
 
-## Sepcifications and features
+## Implementation
+
+We're providing a few implementations of *OCA* as add-ons for a few applications. If the application you need is not listed, you can politely ask for it in a feature request and we'll consider it.
+
+Note that the *OCA* format is made to be simple to export/import in any application and it should not be difficult to implement it/write your own script for your application.
+
+| Application | Add-on name | Exporter | Importer | Comments |
+|---|---|---|---|---|
+| [Krita](http://krita.org) | [OCA for Krita](https://github.com/Rainbox-dev/DuKRIF_OCA) | :large_blue_circle: | :large_orange_diamond: | |
+| Adobe Photoshop | OCA for Photoshop | :large_orange_diamond: | :red_circle: | |
+| TVPaint | OCA for TVPaint | :large_orange_diamond: | :red_circle: | |
+| Adobe After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | :red_circle: | :large_blue_circle: | |
+| Blender | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | :red_circle: | :large_orange_diamond: | |
+
+Legend:  
+:heavy_check_mark: | Available
+:large_blue_circle: | In development
+:large_orange_diamond: | Planned
+:red_circle: | Not supported
+
+## Specifications and features
 
 - Layers
 - Layer groups

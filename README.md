@@ -34,6 +34,7 @@ Everything is assembled in a folder which name ends with `.oca`. The *JSON* file
 
 ### Folder Structure
 
+```
 |v Document_name.oca
  |- Document_name.json
  |v Layer_name_1
@@ -49,6 +50,7 @@ Everything is assembled in a folder which name ends with `.oca`. The *JSON* file
   |> Layer_name_4
   |> Layer_name_5
  |> Group_name_6
+ ```
 
 ### JSON Specs
 

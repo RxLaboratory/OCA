@@ -82,6 +82,7 @@ Default values should be used when importing an OCA format if the data can't be 
 - `opacity`: *float*, the opacity of the layer in the range [0.0 - 1.0]. Default `1.0`
 - `visible`: *boolean*, whether the layer is activated/visible. Default `true`
 - `reference`: *boolean*, whether the layer is a guide or reference, and should not be rendered. Default `false`
+- `passThrough`: *boolean*, whether the layer is in pass through mode. Only for grouplayer.
 
 #### Frame object Specs
 

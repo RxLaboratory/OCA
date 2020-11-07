@@ -2,7 +2,7 @@
 
 Open Cel Animation format
 
-*OCA* is an open format to ease the exchange of traditionnal/cel animation between different applications.
+*OCA* is an open format to ease the exchange of traditionnal/frame-by-frame/cel animation between different applications.
 
 ## Principles
 

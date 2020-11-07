@@ -97,7 +97,7 @@ Default values should be used when importing an OCA format if the data can't be 
 - `fileType`: *string*, the type of the files used for the frames. The file extension, without the initial dot.
 - `blendingMode`: *string*, the blending mode of the layer. See the *Blending modes* section below. Default: `normal`
 - `animated`: *boolean*, whether this layer is a single frame or not. Default: `true`
-- `anchorPoint`: *int[]*, the coordinates of the anchor point of the layer, in pixels [X,Y] in the document coordinates. Default: half the document width and half the document height
+- `position`: *int[]*, the coordinates of the center of the layer, in pixels [X,Y] in the document coordinates. Default: half the document width and half the document height
 - `width`: *int*, the width, in pixels. Default: the document width
 - `height`: *int*, the height, in pixels. Default: the document height
 - `label`: *int*, a label for the layer. See the *Layer Label* section below. Default: `-1`

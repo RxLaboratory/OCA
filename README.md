@@ -24,7 +24,7 @@ Note that the *OCA* format is made to be simple to export/import in any applicat
 | Adobe Photoshop | OCA for Photoshop | :large_orange_diamond: | :red_circle: | |
 | TVPaint | OCA for TVPaint | :large_orange_diamond: | :red_circle: | |
 | Adobe After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | :red_circle: | :large_blue_circle: | |
-| Blender | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | :red_circle: | :large_orange_diamond: | |
+| Blender | OCA for Blender | :red_circle: | :large_orange_diamond: | |
 
 Legend:  
 :heavy_check_mark: | Available  

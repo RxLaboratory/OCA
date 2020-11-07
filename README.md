@@ -27,10 +27,10 @@ Note that the *OCA* format is made to be simple to export/import in any applicat
 | Blender | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | :red_circle: | :large_orange_diamond: | |
 
 Legend:  
-:heavy_check_mark: | Available
-:large_blue_circle: | In development
-:large_orange_diamond: | Planned
-:red_circle: | Not supported
+:heavy_check_mark: | Available  
+:large_blue_circle: | In development  
+:large_orange_diamond: | Planned  
+:red_circle: | Not supported  
 
 ## Specifications and features
 

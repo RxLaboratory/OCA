@@ -56,7 +56,7 @@ Everything is assembled in a folder which name ends with `.oca`. The *JSON* file
 
 ```
 |v Document_name.oca
- |- Document_name.json
+ |- Document_name.oca
  |v Layer_name_1
   |- Layer_name_1_00000.png
   |- Layer_name_1_00110.png
@@ -71,6 +71,8 @@ Everything is assembled in a folder which name ends with `.oca`. The *JSON* file
   |> Layer_name_5
  |> Group_name_6
  ```
+
+Note that the `.oca` file at the root could also use the extension `.json`
 
 ### JSON Specs
 

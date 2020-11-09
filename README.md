@@ -87,6 +87,7 @@ Default values should be used when importing an OCA format if the data can't be 
 - `colorDepth`: *string*, the colors used in the frames. See the *Color Depth* section below. Default: `U8`
 - `backgroundColor`: *float[]*, the color of the background, in an [R,G,B,A] array, each value in the range [0.0 - 1.0]. Default: `[0.0, 0.0, 0.0, 0.0]`
 - `layers`: *layerObject[]*, the layers used in the animation. See the *Layer Object Specs* section below
+- `originApp`: *string*, the application name from which the document was exported.
 
 #### Layer Object Specs
 

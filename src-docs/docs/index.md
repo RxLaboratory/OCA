@@ -2,6 +2,8 @@
 
 The *Open Cel Animation* format
 
+[TOC]
+
 *OCA* is an open format to ease the exchange of traditionnal/frame-by-frame/cel animation between different applications.
 
 ## Principles
@@ -50,7 +52,27 @@ Legend:
 - Duration
 - Framerate
 
-For a technical description of the format and some examples, please [refer to the Github Repository](https://github.com/Rainbox-dev/OCA).
+All these properties are stored in a simple *JSON* file, and the images are stored in standard image file formats: *PNG*, *EXR*, *SVG*...
+
+Everything is assembled in a folder which name ends with `.oca`. The *JSON* file is at the root, while the images are stored in subfolders corresponding to layers and groups.
+
+## Speficications
+
+- [Folder Structure](specs/folder-structure.md)
+
+### JSON Objects
+
+- [Root Object Specs](specs/root.md)
+- [Layer Object Specs](specs/layer.md)
+- [Frame Object Specs](specs/frame.md)
+
+### Values
+
+- [Durations](specs/durations.md)
+- [Color Depth](specs/color-depth.md)
+- [Layer Types](specs/layer-types.md)
+- [Blending Modes](specs/blending-modes.md)
+- [Layer Labels](specs/blending-modes.md)
 
 ## License
 

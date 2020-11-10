@@ -1,5 +1,13 @@
 # Blending Modes
 
+[TOC]
+
+Blending modes are named after the ones used in [*Krita*](http://krita.org).
+
+Depending on the application, a blending mode with the same name may have different results. When a blending mode is set in *OCA*, its result should be the same as the blending mode with the same name in *Krita*. This choice was made because *Krita* is a free and open source software, so anyone can have a look at how these blending modes are implemented, to be sure about what they do, and because *Krita* uses one of the biggest list of blending modes.
+
+To know the correspondance of the blending mode names and implementations between *Krita/OCA* and the most common other applciations, we're building correspondance tables (see below).
+
 ## Krita Blending Modes
 
 This table lists the correspondance between OCA Blending Modes and Krita Blending Modes.

@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Nicolas Dufresne and contributors">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>BLending Modes - OCA<br />Documentation<br />v1.0.0</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../style.css" rel="stylesheet">
+  <link href="../video.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "BLending Modes";
+    var mkdocs_page_input_path = "specs\\blending-modes.md";
+    var mkdocs_page_url = "/specs/blending-modes.html";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../index.html" class="icon icon-home"> OCA<br />Documentation<br />v1.0.0</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../index.html">OCA</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Specifications</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="folder-structure.html">Folder Structure</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="root.html">Root JSON Object</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="layer.html">Layer JSON Object</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="frame.html">Frame JSON Object</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="durations.html">Durations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="color-depth.html">Color Depth</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="layer-types.html">Layer Types</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="blending-modes.html">BLending Modes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#blending-modes">Blending Modes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#krita-blending-modes">Krita Blending Modes</a></li>
+        
+            <li><a class="toctree-l4" href="#adobe-after-effects-blending-modes">Adobe After Effects Blending Modes</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="layer-labels.html">Layer Labels</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../changelog.html">Changelog</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">License</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../licenses/gnu-gpl.html">GNU GPLv3</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../licenses/gfdl.html">Documentation license</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://rainboxlab.org/about/contact/">Contact</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="https://rainboxlab.org/about/donate/">Donate</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">OCA<br />Documentation<br />v1.0.0</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Specifications &raquo;</li>
+        
+      
+    
+    <li>BLending Modes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Rainbox-dev/OCA/tree/master/src-docs/docs/specs/blending-modes.md"> Edit on Oca-Docs</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="blending-modes">Blending Modes</h1>
+<div class="toc">
+<ul>
+<li><a href="#blending-modes">Blending Modes</a><ul>
+<li><a href="#krita-blending-modes">Krita Blending Modes</a></li>
+<li><a href="#adobe-after-effects-blending-modes">Adobe After Effects Blending Modes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Blending modes are named after the ones used in <a href="http://krita.org"><em>Krita</em></a>.</p>
+<p>Depending on the application, a blending mode with the same name may have different results. When a blending mode is set in <em>OCA</em>, its result should be the same as the blending mode with the same name in <em>Krita</em>. This choice was made because <em>Krita</em> is a free and open source software, so anyone can have a look at how these blending modes are implemented, to be sure about what they do, and because <em>Krita</em> uses one of the biggest list of blending modes.</p>
+<p>To know the correspondance of the blending mode names and implementations between <em>Krita/OCA</em> and the most common other applciations, we&rsquo;re building correspondance tables (see below).</p>
+<h2 id="krita-blending-modes">Krita Blending Modes</h2>
+<p>This table lists the correspondance between OCA Blending Modes and Krita Blending Modes.</p>
+<p>As OCA Blending modes are based on those of Krita, all of these are exact matches and should be considered the reference implementation of them. See <a href="http://krita.org">Krita.org</a> for more information about them.</p>
+<p>If a blending mode is not listed in this table, that means it is not supported by OCA (yet).</p>
+<table>
+<thead>
+<tr>
+<th>Krita</th>
+<th>OCA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>darken</td>
+<td>darken</td>
+</tr>
+<tr>
+<td>burn</td>
+<td>burn</td>
+</tr>
+<tr>
+<td>color</td>
+<td>color</td>
+</tr>
+<tr>
+<td>dodge</td>
+<td>dodge</td>
+</tr>
+<tr>
+<td>divide</td>
+<td>divide</td>
+</tr>
+<tr>
+<td>overlay</td>
+<td>overlay</td>
+</tr>
+<tr>
+<td>luminize</td>
+<td>luminosity</td>
+</tr>
+<tr>
+<td>soft_light_svg</td>
+<td>soft_light</td>
+</tr>
+<tr>
+<td>multiply</td>
+<td>multiply</td>
+</tr>
+<tr>
+<td>saturation</td>
+<td>saturation</td>
+</tr>
+<tr>
+<td>erase</td>
+<td>erase</td>
+</tr>
+<tr>
+<td>lighten</td>
+<td>lighten</td>
+</tr>
+<tr>
+<td>screen</td>
+<td>screen</td>
+</tr>
+<tr>
+<td>inverse_subtract</td>
+<td>inverse_subtract</td>
+</tr>
+<tr>
+<td>subtract</td>
+<td>subtract</td>
+</tr>
+<tr>
+<td>darker color</td>
+<td>darker_color</td>
+</tr>
+<tr>
+<td>easy burn</td>
+<td>easy_burn</td>
+</tr>
+<tr>
+<td>fog_darken_ifs_illusions</td>
+<td>fog_darken</td>
+</tr>
+<tr>
+<td>gamma_dark</td>
+<td>gamma_dark</td>
+</tr>
+<tr>
+<td>linear_burn</td>
+<td>linear_burn</td>
+</tr>
+<tr>
+<td>shade_ifs_illusions</td>
+<td>shade</td>
+</tr>
+<tr>
+<td>converse</td>
+<td>converse</td>
+</tr>
+<tr>
+<td>and</td>
+<td>and</td>
+</tr>
+<tr>
+<td>implication</td>
+<td>implication</td>
+</tr>
+<tr>
+<td>nand</td>
+<td>nand</td>
+</tr>
+<tr>
+<td>nor</td>
+<td>nor</td>
+</tr>
+<tr>
+<td>not_converse</td>
+<td>not_converse</td>
+</tr>
+<tr>
+<td>not_implication</td>
+<td>not_implication</td>
+</tr>
+<tr>
+<td>or</td>
+<td>or</td>
+</tr>
+<tr>
+<td>xnor</td>
+<td>xnor</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>xor</td>
+</tr>
+<tr>
+<td>dissolve</td>
+<td>dissolve</td>
+</tr>
+<tr>
+<td>inc_luminosity</td>
+<td>increase_luminosity</td>
+</tr>
+<tr>
+<td>inc_saturation</td>
+<td>increase_saturation</td>
+</tr>
+<tr>
+<td>dec_luminosity</td>
+<td>decrease_luminosity</td>
+</tr>
+<tr>
+<td>dec_saturation</td>
+<td>decrease_saturation</td>
+</tr>
+<tr>
+<td>hue</td>
+<td>hue</td>
+</tr>
+<tr>
+<td>divisive_modulo</td>
+<td>divisive_modulo</td>
+</tr>
+<tr>
+<td>allanon</td>
+<td>allanon</td>
+</tr>
+<tr>
+<td>alphadarken</td>
+<td>alpha_darken</td>
+</tr>
+<tr>
+<td>destination-in</td>
+<td>stencil_alpha</td>
+</tr>
+<tr>
+<td>hard overlay</td>
+<td>hard_overlay</td>
+</tr>
+<tr>
+<td>interpolation</td>
+<td>interpolation</td>
+</tr>
+<tr>
+<td>interpolation 2x</td>
+<td>double_interpolation</td>
+</tr>
+<tr>
+<td>hard mix</td>
+<td>hard_mix</td>
+</tr>
+<tr>
+<td>hard_mix_photoshop</td>
+<td>hard_mix_photoshop</td>
+</tr>
+<tr>
+<td>parallel</td>
+<td>parallel</td>
+</tr>
+<tr>
+<td>penumbra a</td>
+<td>penumbra_a</td>
+</tr>
+<tr>
+<td>penumbra a</td>
+<td>penumbra_b</td>
+</tr>
+<tr>
+<td>penumbra a</td>
+<td>penumbra_c</td>
+</tr>
+<tr>
+<td>penumbra a</td>
+<td>penumbra_d</td>
+</tr>
+<tr>
+<td>greater</td>
+<td>greater</td>
+</tr>
+<tr>
+<td>geometric_mean</td>
+<td>geometric_mean</td>
+</tr>
+<tr>
+<td>additive_subtractive</td>
+<td>additive_subtractive</td>
+</tr>
+<tr>
+<td>diff</td>
+<td>difference</td>
+</tr>
+<tr>
+<td>exclusion</td>
+<td>exclusion</td>
+</tr>
+<tr>
+<td>negation</td>
+<td>negation</td>
+</tr>
+<tr>
+<td>arc_tangent</td>
+<td>arc_tangent</td>
+</tr>
+<tr>
+<td>equivalence</td>
+<td>equivalence</td>
+</tr>
+<tr>
+<td>freeze_reflect</td>
+<td>freeze_reflect</td>
+</tr>
+<tr>
+<td>freeze</td>
+<td>freeze</td>
+</tr>
+<tr>
+<td>glow_heat</td>
+<td>glow_heat</td>
+</tr>
+<tr>
+<td>heat</td>
+<td>heat</td>
+</tr>
+<tr>
+<td>heat_glow</td>
+<td>heat_glow</td>
+</tr>
+<tr>
+<td>heat_glow_freeze_reflect_hybrid</td>
+<td>heat_glow_freeze_reflect</td>
+</tr>
+<tr>
+<td>glow</td>
+<td>glow</td>
+</tr>
+<tr>
+<td>reflect_freeze</td>
+<td>reflect_freeze</td>
+</tr>
+<tr>
+<td>reflect</td>
+<td>reflect</td>
+</tr>
+<tr>
+<td>inc_intensity</td>
+<td>increase_intensity</td>
+</tr>
+<tr>
+<td>inc_saturation_hsi</td>
+<td>increase_saturation_hsi</td>
+</tr>
+<tr>
+<td>color_hsi</td>
+<td>color_hsi</td>
+</tr>
+<tr>
+<td>dec_intensity</td>
+<td>decrease_intensity</td>
+</tr>
+<tr>
+<td>dec_saturation_hsi</td>
+<td>decrease_saturation_hsi</td>
+</tr>
+<tr>
+<td>intensity</td>
+<td>intensity</td>
+</tr>
+<tr>
+<td>saturation_hsi</td>
+<td>saturation_hsi</td>
+</tr>
+<tr>
+<td>hue_hsi</td>
+<td>hue_hsi</td>
+</tr>
+<tr>
+<td>inc_lightness</td>
+<td>increase_lightness</td>
+</tr>
+<tr>
+<td>inc_saturation_hsl</td>
+<td>increase_saturation_hsl</td>
+</tr>
+<tr>
+<td>color_hsl</td>
+<td>color_hsl</td>
+</tr>
+<tr>
+<td>dec_lightness</td>
+<td>decrease_lightness</td>
+</tr>
+<tr>
+<td>dec_saturation_hsl</td>
+<td>decrease_saturation_hsl</td>
+</tr>
+<tr>
+<td>lightness</td>
+<td>lightness</td>
+</tr>
+<tr>
+<td>saturation_hsl</td>
+<td>saturation_hsl</td>
+</tr>
+<tr>
+<td>hue_hsl</td>
+<td>hue_hsl</td>
+</tr>
+<tr>
+<td>inc_saturation_hsv</td>
+<td>increase_saturation_hsv</td>
+</tr>
+<tr>
+<td>inc_value</td>
+<td>increase_value</td>
+</tr>
+<tr>
+<td>color_hsv</td>
+<td>color_hsv</td>
+</tr>
+<tr>
+<td>dec_saturation_hsv</td>
+<td>decrease_saturation_hsv</td>
+</tr>
+<tr>
+<td>dec_value</td>
+<td>decrease_value</td>
+</tr>
+<tr>
+<td>saturation_hsv</td>
+<td>saturation_hsv</td>
+</tr>
+<tr>
+<td>value</td>
+<td>value</td>
+</tr>
+<tr>
+<td>lighter color</td>
+<td>lighter_color</td>
+</tr>
+<tr>
+<td>easy dodge</td>
+<td>easy_dodge</td>
+</tr>
+<tr>
+<td>flat_light</td>
+<td>flat_light</td>
+</tr>
+<tr>
+<td>fog_lighten_ifs_illusions</td>
+<td>fog_lighten</td>
+</tr>
+<tr>
+<td>linear light</td>
+<td>linear_light</td>
+</tr>
+<tr>
+<td>gamma_illumination</td>
+<td>gamma_illumination</td>
+</tr>
+<tr>
+<td>luminosity_sai</td>
+<td>luminosity_sai</td>
+</tr>
+<tr>
+<td>gamma_light</td>
+<td>gamma_light</td>
+</tr>
+<tr>
+<td>soft_light</td>
+<td>soft_light</td>
+</tr>
+<tr>
+<td>hard_light</td>
+<td>hard_light</td>
+</tr>
+<tr>
+<td>pin_light</td>
+<td>pin_light</td>
+</tr>
+<tr>
+<td>vivid_light</td>
+<td>vivid_light</td>
+</tr>
+<tr>
+<td>pnorm_a</td>
+<td>pnorm_a</td>
+</tr>
+<tr>
+<td>pnorm_b</td>
+<td>pnorm_b</td>
+</tr>
+<tr>
+<td>soft_light_ifs_illusions</td>
+<td>soft_light_ifs</td>
+</tr>
+<tr>
+<td>soft_light_pegtop_delphi</td>
+<td>soft_light_pegtop_delphi</td>
+</tr>
+<tr>
+<td>super_light</td>
+<td>super_light</td>
+</tr>
+<tr>
+<td>tint_ifs_illusions</td>
+<td>tint</td>
+</tr>
+<tr>
+<td>linear_dodge</td>
+<td>linear_dodge</td>
+</tr>
+</tbody>
+</table>
+<h2 id="adobe-after-effects-blending-modes">Adobe After Effects Blending Modes</h2>
+<p>This table lists the correspondance between OCA Blending Modes and Adobe After Effects Blending Modes.</p>
+<p>If a blending mode is not listed in this table, that means it is not supported by After Effects and there is no approximation close enough.</p>
+<p>Legend:<br />
+✔️: Exact correspondance<br />
+❗: Approximation</p>
+<table>
+<thead>
+<tr>
+<th>OCA</th>
+<th>After Effects</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>normal</td>
+<td>NORMAL</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>darken</td>
+<td>DARKEN</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>burn</td>
+<td>COLOR_BURN</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>color</td>
+<td>COLOR</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>dodge</td>
+<td>CLASSIC_COLOR_DODGE</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>divide</td>
+<td>DIVIDE</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>overlay</td>
+<td>OVERLAY</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>luminosity</td>
+<td>LUMINOSITY</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>soft_light_svg</td>
+<td>SOFT_LIGHT</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>multiply</td>
+<td>MULTIPLY</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>saturation</td>
+<td>SATURATION</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>erase</td>
+<td>SILHOUETE_ALPHA</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>lighten</td>
+<td>LIGHTEN</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>screen</td>
+<td>SCREEN</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>inverse_subtract</td>
+<td>LINEAR_BURN</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>subtract</td>
+<td>SUBTRACT</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>darker_color</td>
+<td>DARKER_COLOR</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>easy_burn</td>
+<td>MULTIPLY</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>fog_darken</td>
+<td>DARKEN</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>gamma_dark</td>
+<td>VIVID_LIGHT</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>linear_burn</td>
+<td>LINEAR_BURN</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>shade</td>
+<td>LINEAR_BURN</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>and</td>
+<td>LINEAR_BURN</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>or</td>
+<td>ADD</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>dissolve</td>
+<td>DISSOLVE</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>increase_luminosity</td>
+<td>ADD</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>increase_saturation</td>
+<td>OVERLAY</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>hue</td>
+<td>HUE</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>alpha_darken</td>
+<td>LUMINESCENT_PREMUL</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>stencil_alpha</td>
+<td>STENCIL_ALPHA</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>hard_overlay</td>
+<td>VIVID_LIGHT</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>hard_mix</td>
+<td>HARD_MIX</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>hard_mix_photoshop</td>
+<td>CLASSIC_COLOR_BURN</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>parallel</td>
+<td>DARKEN</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>geometric_mean</td>
+<td>MULTIPLY</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>additive_subtractive</td>
+<td>DIFFERENCE</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>difference</td>
+<td>DIFFERENCE</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>exclusion</td>
+<td>EXCLUSION</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>equivalence</td>
+<td>DIFFERENCE</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>freeze_reflect</td>
+<td>OVERLAY</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>heat_glow</td>
+<td>HARD_LIGHT</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>color_hsi</td>
+<td>COLOR</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>intensity</td>
+<td>LUMINOSITY</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>saturation_hsi</td>
+<td>SATURATION</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>hue_hsi</td>
+<td>HUE</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>lighter_color</td>
+<td>LIGHTER_COLOR</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>flat_light</td>
+<td>VIVID_LIGHT</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>fog_lighten</td>
+<td>LIGHTEN</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>linear_light</td>
+<td>LINEAR_LIGHT</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>luminosity_sai</td>
+<td>ADD</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>soft_light</td>
+<td>SOFT_LIGHT</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>hard_light</td>
+<td>HARD_LIGHT</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>pin_light</td>
+<td>PIN_LIGHT</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>vivid_light</td>
+<td>COLOR_BURN</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>soft_light_ifs</td>
+<td>SOFT_LIGHT</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>soft_light_pegtop_delphi</td>
+<td>SOFT_LIGHT</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>super_light</td>
+<td>PIN_LIGHT</td>
+<td>❗</td>
+</tr>
+<tr>
+<td>linear_dodge</td>
+<td>LINEAR_DODGE</td>
+<td>✔️</td>
+</tr>
+<tr>
+<td>add</td>
+<td>ADD</td>
+<td>✔️</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="layer-labels.html" class="btn btn-neutral float-right" title="Layer Labels">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="layer-types.html" class="btn btn-neutral" title="Layer Types"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright © 2020 Rainbox Laboratory and Nicolas Dufresne</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="layer-types.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="layer-labels.html" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../video.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -28,6 +28,16 @@ site_dir: ../docs/
 dev_addr: '127.0.0.1:8001'
 nav:
     - OCA: index.md
+    - Specifications:
+        - Folder Structure: specs/folder-structure.md
+        - Root JSON Object: specs/root.md
+        - Layer JSON Object: specs/layer.md
+        - Frame JSON Object: specs/frame.md
+        - Durations: specs/durations.md
+        - Color Depth: specs/color-depth.md
+        - Layer Types: specs/layer-types.md
+        - BLending Modes: specs/blending-modes.md
+        - Layer Labels: specs/layer-labels.md
     - Changelog: changelog.md
     - License:
         - GNU GPLv3: licenses/gnu-gpl.md

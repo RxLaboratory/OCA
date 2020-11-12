@@ -175,6 +175,7 @@
                 <h1 id="root-object">Root Object</h1>
 <p>Default values should be used when importing an OCA format if the data can&rsquo;t be read or is not available.</p>
 <ul>
+<li><code>ocaVersion</code>: <em>string</em>, the version of OCA used in this file. Must be one of the versions listed in the <a href="../changelog.html">changelog</a></li>
 <li><code>name</code>: <em>string</em>, the name of the animation</li>
 <li><code>frameRate</code>: <em>float</em>, the frame rate, in frames/second. Default: <code>24</code></li>
 <li><code>width</code>: <em>int</em>, the width, in pixels. Default: <code>1920</code></li>
@@ -185,6 +186,7 @@
 <li><code>backgroundColor</code>: <em>float[]</em>, the color of the background, in an [R,G,B,A] array, each value in the range [0.0 - 1.0]. Default: <code>[0.0, 0.0, 0.0, 0.0]</code></li>
 <li><code>layers</code>: <em>layerObject[]</em>, the layers used in the animation. See the <em>Layer Object Specs</em> section below</li>
 <li><code>originApp</code>: <em>string</em>, the application name from which the document was exported.</li>
+<li><code>originAppVersion</code>: <em>string</em>, the version of the origin application.</li>
 </ul>
               
             </div>

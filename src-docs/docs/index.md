@@ -43,9 +43,10 @@ Legend:
 - Layer Groups (and pass through mode if any)
 - Layer Labels
 - Layer Visibility
+- Layer Blending Modes
+- Layer Alpha options (inherit alpha)
 - Keyframes and their duration (animation exposure)
 - Opacity Keyframes
-- Blending Modes
 - Layer Sizes and Coordinates
 - Document background color
 - Document color depth

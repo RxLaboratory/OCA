@@ -8,6 +8,7 @@ Default values should be used when importing an OCA format if the data can't be 
 - `type`: *string*, the type of the layer. See the *Layer Types* section below. Default: `paintlayer`
 - `fileType`: *string*, the type of the files used for the frames. The file extension, without the initial dot.
 - `blendingMode`: *string*, the blending mode of the layer. See the *Blending modes* section below. Default: `normal`
+- `inheritAlpha`: *boolean*, when true, the alpha of the layer is multiplied with the alpha of all the layers under in the same group (called *Preserve Transparency* in *Adobe After Effects*, *Inherit Alpha* in *Krita*). Default: `false`
 - `animated`: *boolean*, whether this layer is a single frame or not. Default: `true`
 - `position`: *int[]*, the coordinates of the center of the layer, in pixels [X,Y] in the document coordinates. Default: half the document width and half the document height
 - `width`: *int*, the width, in pixels. Default: the document width

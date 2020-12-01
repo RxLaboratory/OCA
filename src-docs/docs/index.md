@@ -22,7 +22,7 @@ We're providing some implementations of *OCA* as add-ons for a few applications.
 
 | Application | Add-on name | Exporter | Importer | Comments |
 |---|---|---|---|---|
-| [Krita](http://krita.org) | [OCA for Krita](https://github.com/Rainbox-dev/DuKRIF_OCA) | ![icon](img/icons/blue_circle.png) | ![icon](img/icons/orange_diamond.png) | |
+| [Krita](http://krita.org) | [OCA for Krita](https://github.com/Rainbox-dev/DuKRIF_OCA) | ![icon](img/icons/green_tick.png) | ![icon](img/icons/orange_diamond.png) | |
 | Adobe Photoshop | OCA for Photoshop | ![icon](img/icons/orange_diamond.png) | ![icon](img/icons/red_circle.png) | |
 | TVPaint | OCA for TVPaint | ![icon](img/icons/orange_diamond.png) | ![icon](img/icons/red_circle.png) | |
 | Adobe After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | ![icon](img/icons/red_circle.png) | ![icon](img/icons/blue_circle.png) | |

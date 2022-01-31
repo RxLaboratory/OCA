@@ -1,6 +1,6 @@
-# Blending Modes
+![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31)
 
-[TOC]
+# Blending Modes
 
 Blending modes are named after the ones used in [*Krita*](http://krita.org).
 

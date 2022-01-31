@@ -1,3 +1,5 @@
+![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31)
+
 # Layer Object
 
 Default values should be used when importing an OCA format if the data can't be read or is not available.
@@ -18,3 +20,61 @@ Default values should be used when importing an OCA format if the data can't be 
 - `visible`: *boolean*, whether the layer is activated/visible. Default `true`
 - `reference`: *boolean*, whether the layer is a guide or reference, and should not be rendered. Default `false`
 - `passThrough`: *boolean*, whether the layer is in pass through mode. Only for grouplayer.
+
+## Examples
+
+### Generic paintlayer
+
+This is an empty `paintlayer` (without any frame).
+
+```json
+{
+    "name": "Layer_name_1",
+    "frames": [ ],
+    "childLayers": [ ],
+    "type": "paintlayer",
+    "fileType": "png",
+    "blendingMode": "normal",
+    "inheritAlpha": false,
+    "animated": false,
+    "position": [
+        959,
+        539
+    ],
+    "width": 1920,
+    "height": 1080,
+    "label": 0,
+    "opacity": 1.0,
+    "visible": true,
+    "passThrough": false,
+    "reference": false
+}
+```
+
+### Generic grouplayer
+
+This is an empty `grouplayer` (without any child layer).
+
+```json
+{
+    "name": "Group_name_1",
+    "frames": [ ],
+    "childLayers": [ ],
+    "type": "grouplayer",
+    "fileType": "png",
+    "blendingMode": "normal",
+    "inheritAlpha": false,
+    "animated": false,
+    "position": [
+        959,
+        539
+    ],
+    "width": 1920,
+    "height": 1080,
+    "label": 0,
+    "opacity": 1.0,
+    "visible": true,
+    "passThrough": true,
+    "reference": false
+}
+```

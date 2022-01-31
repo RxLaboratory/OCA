@@ -1,3 +1,5 @@
+![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31)
+
 # Folder Structure
 
 ```
@@ -16,6 +18,6 @@
   |> Layer_name_4
   |> Layer_name_5
  |> Group_name_6
- ```
+```
 
 Note that the `.oca` file at the root could also use the extension `.json`

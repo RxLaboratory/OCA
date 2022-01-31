@@ -1,176 +1,378 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta name="author" content="Nicolas Dufresne and contributors">
-  <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Layer JSON Object - OCA<br />Documentation<br />v1.0.0</title>
-  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  <link href="../style.css" rel="stylesheet">
-  <link href="../video.css" rel="stylesheet">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Layer JSON Object";
-    var mkdocs_page_input_path = "specs/layer.md";
-    var mkdocs_page_url = "/specs/layer.html";
-  </script>
-  
-  <script src="../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Open Cel Animation documentation">
+    <meta name="author" content="Nicolas Dufresne and contributors">
+    <link rel="canonical" href="https://oca.rxlab.guide/specs/layer.html">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    
+    <title>Layer JSON Object - OCA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/base.min.css" rel="stylesheet">
+    <link href="../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+        
+    
+    <link href="../style.css" rel="stylesheet">
+    <link href="../video.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
 
-  <div class="wy-grid-for-nav">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="../index.html" class="icon icon-home"> OCA<br />Documentation<br />v1.0.0</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../index.html">OCA</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Specifications</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="folder-structure.html">Folder Structure</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="root.html">Root JSON Object</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="layer.html">Layer JSON Object</a>
-    <ul class="subnav">
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             
-    <li class="toctree-l3"><a href="#layer-object">Layer Object</a></li>
-    
 
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="frame.html">Frame JSON Object</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="durations.html">Durations</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="color-depth.html">Color Depth</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="layer-types.html">Layer Types</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="blending-modes.html">BLending Modes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="layer-labels.html">Layer Labels</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../changelog.html">Changelog</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">License</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../licenses/gnu-gpl.html">GNU GPLv3</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../licenses/gfdl.html">Documentation license</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="https://rainboxlab.org/about/contact/">Contact</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="https://rainboxlab.org/about/donate/">Donate</a>
-	    </li>
-          
-        </ul>
-      </div>
-      &nbsp;
-    </nav>
+            <!-- Main title -->
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+            
+              <a class="navbar-brand" href="../index.html">OCA Documentation</a>
+            
+        </div>
 
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">OCA<br />Documentation<br />v1.0.0</a>
-      </nav>
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../index.html">v1.0.0</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Specifications <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="examples.html">Examples</a>
+</li>
 
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-    
-      
+                        
+                            
+<li >
+    <a href="folder-structure.html">Folder Structure</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Objects</a>
+    <ul class="dropdown-menu">
         
-          <li>Specifications &raquo;</li>
+            
+<li >
+    <a href="root.html">Root JSON Object</a>
+</li>
+
         
-      
-    
-    <li>Layer JSON Object</li>
-    <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/Rainbox-dev/OCA/tree/master/src-docs/docs/specs/layer.md"> Edit on Oca-Docs</a>
-      
-    </li>
-  </ul>
-  <hr/>
+            
+<li class="active">
+    <a href="layer.html">Layer JSON Object</a>
+</li>
+
+        
+            
+<li >
+    <a href="frame.html">Frame JSON Object</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Values</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="durations.html">Durations</a>
+</li>
+
+        
+            
+<li >
+    <a href="color-depth.html">Color Depth</a>
+</li>
+
+        
+            
+<li >
+    <a href="layer-types.html">Layer Types</a>
+</li>
+
+        
+            
+<li >
+    <a href="blending-modes.html">BLending Modes</a>
+</li>
+
+        
+            
+<li >
+    <a href="layer-labels.html">Layer Labels</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../changelog.mds">Changelog</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">License</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../licenses/gnu-gpl.html">GNU GPLv3</a>
+</li>
+
+        
+            
+<li >
+    <a href="../licenses/gfdl.html">Documentation license</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="http://contact.rxlab.info/">Contact</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://donate.rxlab.info/">Donate</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="root.html">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="frame.html">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/RxLaboratory/OCA/edit/master/src-docs/docs/specs/layer.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
 </div>
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="layer-object">Layer Object</h1>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div id="side-menu">
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#layer-object">Layer Object</a></li>
+                <li class="second-level"><a href="#examples">Examples</a></li>
+                    
+                    <li class="third-level"><a href="#generic-paintlayer">Generic paintlayer</a></li>
+                    <li class="third-level"><a href="#generic-grouplayer">Generic grouplayer</a></li>
+        </ul>
+    </div>
+    <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
+        <!-- Main navigation -->
+        <ul class="nav bs-sidenav">
+        
+        
+            <li >
+                <a href="../index.html">v1.0.0</a>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button active-collapse-button">Specifications</button>
+                <ul class="collapsible-content collapsible-content-active">
+                    
+                        
+                        <li class="second-level "><a href="examples.html">Examples</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="folder-structure.html">Folder Structure</a></li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button active-collapse-button">Objects</button>
+                            <ul class="collapsible-content collapsible-content-active">
+                                
+                                    
+                                    <li class="third-level "><a href="root.html">Root JSON Object</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level active"><a href="layer.html">Layer JSON Object</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="frame.html">Frame JSON Object</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">Values</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="durations.html">Durations</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="color-depth.html">Color Depth</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="layer-types.html">Layer Types</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="blending-modes.html">BLending Modes</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="layer-labels.html">Layer Labels</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button ">...</button>
+                <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="../changelog.mds">Changelog</a></li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">License</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="../licenses/gnu-gpl.html">GNU GPLv3</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="../licenses/gfdl.html">Documentation license</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://contact.rxlab.info/">Contact</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://donate.rxlab.info/">Donate</a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        </ul>
+    </div>
+    <div class="footer-meta"></div>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31" /></p>
+<h1 id="layer-object">Layer Object</h1>
 <p>Default values should be used when importing an OCA format if the data can&rsquo;t be read or is not available.</p>
 <ul>
 <li><code>name</code>: <em>string</em>, the name of the layer</li>
@@ -190,55 +392,149 @@
 <li><code>reference</code>: <em>boolean</em>, whether the layer is a guide or reference, and should not be rendered. Default <code>false</code></li>
 <li><code>passThrough</code>: <em>boolean</em>, whether the layer is in pass through mode. Only for grouplayer.</li>
 </ul>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="frame.html" class="btn btn-neutral float-right" title="Frame JSON Object">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="root.html" class="btn btn-neutral" title="Root JSON Object"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+<h2 id="examples">Examples</h2>
+<h3 id="generic-paintlayer">Generic paintlayer</h3>
+<p>This is an empty <code>paintlayer</code> (without any frame).</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;Layer_name_1&quot;,
+    &quot;frames&quot;: [ ],
+    &quot;childLayers&quot;: [ ],
+    &quot;type&quot;: &quot;paintlayer&quot;,
+    &quot;fileType&quot;: &quot;png&quot;,
+    &quot;blendingMode&quot;: &quot;normal&quot;,
+    &quot;inheritAlpha&quot;: false,
+    &quot;animated&quot;: false,
+    &quot;position&quot;: [
+        959,
+        539
+    ],
+    &quot;width&quot;: 1920,
+    &quot;height&quot;: 1080,
+    &quot;label&quot;: 0,
+    &quot;opacity&quot;: 1.0,
+    &quot;visible&quot;: true,
+    &quot;passThrough&quot;: false,
+    &quot;reference&quot;: false
+}
+</code></pre>
+<h3 id="generic-grouplayer">Generic grouplayer</h3>
+<p>This is an empty <code>grouplayer</code> (without any child layer).</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;Group_name_1&quot;,
+    &quot;frames&quot;: [ ],
+    &quot;childLayers&quot;: [ ],
+    &quot;type&quot;: &quot;grouplayer&quot;,
+    &quot;fileType&quot;: &quot;png&quot;,
+    &quot;blendingMode&quot;: &quot;normal&quot;,
+    &quot;inheritAlpha&quot;: false,
+    &quot;animated&quot;: false,
+    &quot;position&quot;: [
+        959,
+        539
+    ],
+    &quot;width&quot;: 1920,
+    &quot;height&quot;: 1080,
+    &quot;label&quot;: 0,
+    &quot;opacity&quot;: 1.0,
+    &quot;visible&quot;: true,
+    &quot;passThrough&quot;: true,
+    &quot;reference&quot;: false
+}
+</code></pre></div>
+        
+        
     </div>
-  
 
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
     
-      <p>Copyright © 2020 Rainbox Laboratory and Nicolas Dufresne</p>
-    
-  </div>
+      <footer class="col-md-12 text-center">
+          
+<div></div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-      
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = ".."</script>
+    
+    <script src="../js/base.js"></script>
+    <script src="../video.js"></script>
+    <script src="../meta.js"></script>
+    <script src="../collapser.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
         </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="root.html" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="frame.html" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-    <script>var base_url = '..';</script>
-    <script src="../js/theme.js" defer></script>
-      <script src="../video.js" defer></script>
-      <script src="../search/main.js" defer></script>
+    </body>
 
-</body>
 </html>

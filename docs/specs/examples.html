@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Open Cel Animation documentation">
+    <meta name="author" content="Nicolas Dufresne and contributors">
+    <link rel="canonical" href="https://oca.rxlab.guide/specs/examples.html">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    
+    <title>Examples - OCA Documentation</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/base.min.css" rel="stylesheet">
+    <link href="../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/zenburn.min.css">
+        
+    
+    <link href="../style.css" rel="stylesheet">
+    <link href="../video.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../index.html">OCA Documentation</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../index.html">v1.0.0</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Specifications <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="examples.html">Examples</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="folder-structure.html">Folder Structure</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Objects</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="root.html">Root JSON Object</a>
+</li>
+
+        
+            
+<li >
+    <a href="layer.html">Layer JSON Object</a>
+</li>
+
+        
+            
+<li >
+    <a href="frame.html">Frame JSON Object</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Values</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="durations.html">Durations</a>
+</li>
+
+        
+            
+<li >
+    <a href="color-depth.html">Color Depth</a>
+</li>
+
+        
+            
+<li >
+    <a href="layer-types.html">Layer Types</a>
+</li>
+
+        
+            
+<li >
+    <a href="blending-modes.html">BLending Modes</a>
+</li>
+
+        
+            
+<li >
+    <a href="layer-labels.html">Layer Labels</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../changelog.mds">Changelog</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">License</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../licenses/gnu-gpl.html">GNU GPLv3</a>
+</li>
+
+        
+            
+<li >
+    <a href="../licenses/gfdl.html">Documentation license</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+<li >
+    <a href="http://contact.rxlab.info/">Contact</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="http://donate.rxlab.info/">Donate</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../index.html">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="folder-structure.html">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/RxLaboratory/OCA/edit/master/src-docs/docs/specs/examples.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div id="side-menu">
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#examples">Examples</a></li>
+                <li class="second-level"><a href="#generic">Generic</a></li>
+                    
+        </ul>
+    </div>
+    <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
+        <!-- Main navigation -->
+        <ul class="nav bs-sidenav">
+        
+        
+            <li >
+                <a href="../index.html">v1.0.0</a>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button active-collapse-button">Specifications</button>
+                <ul class="collapsible-content collapsible-content-active">
+                    
+                        
+                        <li class="second-level active"><a href="examples.html">Examples</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="folder-structure.html">Folder Structure</a></li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">Objects</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="root.html">Root JSON Object</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="layer.html">Layer JSON Object</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="frame.html">Frame JSON Object</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">Values</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="durations.html">Durations</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="color-depth.html">Color Depth</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="layer-types.html">Layer Types</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="blending-modes.html">BLending Modes</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="layer-labels.html">Layer Labels</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        
+            <li class="first-level">
+                <button  type="button" class="collapse-button ">...</button>
+                <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="../changelog.mds">Changelog</a></li>
+                        
+                    
+                        
+                        <li class="second-level">
+                            <button  type="button" class="collapse-button ">License</button>
+                            <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="../licenses/gnu-gpl.html">GNU GPLv3</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="../licenses/gfdl.html">Documentation license</a></li>
+                                    
+                                
+                            </ul>
+                        </li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://contact.rxlab.info/">Contact</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="http://donate.rxlab.info/">Donate</a></li>
+                        
+                    
+                </ul>
+            </li>
+        
+        
+        </ul>
+    </div>
+    <div class="footer-meta"></div>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31" /></p>
+<h1 id="examples">Examples</h1>
+<h2 id="generic">Generic</h2>
+<p>A generic OCA file looks like this:</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;Document_name&quot;,
+    &quot;frameRate&quot;: 24,
+    &quot;width&quot;: 1920,
+    &quot;height&quot;: 1080,
+    &quot;startTime&quot;: 0,
+    &quot;endTime&quot;: 220,
+    &quot;colorDepth&quot;: &quot;U8&quot;,
+    &quot;backgroundColor&quot;: [
+        0.9882352941176471,
+        0.9137254901960784,s
+        0.30980392156862746,
+        1.0
+    ],
+    &quot;ocaVersion&quot;: &quot;1.1.0&quot;,
+    &quot;originApp&quot;: &quot;Krita&quot;,
+    &quot;originAppVersion&quot;: &quot;5.0.0&quot;,
+    &quot;layers&quot;: [
+        {
+            &quot;name&quot;: &quot;Layer_name_1&quot;,
+            &quot;frames&quot;: [
+                {
+                    &quot;name&quot;: &quot;Layer_name_1_00000&quot;,
+                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00000.png&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        959,
+                        539
+                    ],
+                    &quot;width&quot;: 1920,
+                    &quot;height&quot;: 1080,
+                    &quot;duration&quot;: 110
+                },
+                {
+                    &quot;name&quot;: &quot;Layer_name_1_00110&quot;,
+                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00110.png&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        959,
+                        539
+                    ],
+                    &quot;width&quot;: 1920,
+                    &quot;height&quot;: 1080,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Layer_name_1_00112&quot;,
+                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00112.png&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        959,
+                        539
+                    ],
+                    &quot;width&quot;: 1920,
+                    &quot;height&quot;: 1080,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Layer_name_1_00114&quot;,
+                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00114.png&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        959,
+                        539
+                    ],
+                    &quot;width&quot;: 1920,
+                    &quot;height&quot;: 1080,
+                    &quot;duration&quot;: 6
+                },
+                {
+                    &quot;name&quot;: &quot;Layer_name_1_00200&quot;,
+                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00200.png&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        959,
+                        539
+                    ],
+                    &quot;width&quot;: 1920,
+                    &quot;height&quot;: 1080,
+                    &quot;duration&quot;: 20
+                }
+            ],
+            &quot;childLayers&quot;: [],
+            &quot;type&quot;: &quot;paintlayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;normal&quot;,
+            &quot;animated&quot;: false,
+            &quot;position&quot;: [
+                959,
+                539
+            ],
+            &quot;width&quot;: 1920,
+            &quot;height&quot;: 1080,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: false,
+            &quot;reference&quot;: false
+        },
+        {
+            &quot;name&quot;: &quot;Group_name_2&quot;,
+            &quot;frames&quot;: [],
+            &quot;childLayers&quot;: [
+                {
+                    &quot;name&quot;: &quot;Layer_name_3&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Layer_name_3_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document_name.oca/Group_name_2/Layer_name_3/Layer_name_3_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 1.0,
+                            &quot;position&quot;: [
+                                960,
+                                540
+                            ],
+                            &quot;width&quot;: 1920,
+                            &quot;height&quot;: 1080,
+                            &quot;duration&quot;: 3
+                        },
+                        {
+                            &quot;name&quot;: &quot;Layer_name_3_00003&quot;,
+                            &quot;fileName&quot;: &quot;Document_name.oca/Group_name_2/Layer_name_3/Layer_name_3_00003.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 1.0,
+                            &quot;position&quot;: [
+                                960,
+                                540
+                            ],
+                            &quot;width&quot;: 1920,
+                            &quot;height&quot;: 1080,
+                            &quot;duration&quot;: 7
+                        }
+                        {
+                            &quot;name&quot;: &quot;_blank_&quot;,
+                            &quot;fileName&quot;: &quot;&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 1.0,
+                            &quot;position&quot;: [
+                                0,
+                                0
+                            ],
+                            &quot;width&quot;: 0,
+                            &quot;height&quot;: 0,
+                            &quot;duration&quot;: 210
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;normal&quot;,
+                    &quot;animated&quot;: true,
+                    &quot;position&quot;: [
+                        960.0,
+                        540.0
+                    ],
+                    &quot;width&quot;: 1920,
+                    &quot;height&quot;: 1080,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false
+                }
+            ],
+            &quot;type&quot;: &quot;grouplayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;normal&quot;,
+            &quot;animated&quot;: false,
+            &quot;position&quot;: [
+                957,
+                544
+            ],
+            &quot;width&quot;: 1743,
+            &quot;height&quot;: 1051,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: false,
+            &quot;reference&quot;: false
+        }
+    ]
+}
+</code></pre>
+<p>And its corresponding folder structure should look like this:</p>
+<pre><code>|v Document_name.oca
+ |- Document_name.oca
+ |v Layer_name_1
+  |- Layer_name_1_00000.png
+  |- Layer_name_1_00110.png
+  |- Layer_name_1_00112.png
+  |- Layer_name_1_00114.png
+  |- Layer_name_1_00200.png
+ |v Group_name_2
+  |v Layer_name_3
+   |- Layer_name_3_00000.png
+   |- Layer_name_3_00003.png
+  |&gt; Layer_name_4
+  |&gt; Layer_name_5
+ |&gt; Group_name_6
+</code></pre></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+<div></div>
+
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = ".."</script>
+    
+    <script src="../js/base.js"></script>
+    <script src="../video.js"></script>
+    <script src="../meta.js"></script>
+    <script src="../collapser.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

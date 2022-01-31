@@ -1,4 +1,8 @@
+![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31)
+
 # Root Object
+
+## Values
 
 Default values should be used when importing an OCA format if the data can't be read or is not available.
 
@@ -14,3 +18,29 @@ Default values should be used when importing an OCA format if the data can't be 
 - `layers`: *layerObject[]*, the layers used in the animation. See the *Layer Object Specs* section below
 - `originApp`: *string*, the application name from which the document was exported.
 - `originAppVersion`: *string*, the version of the origin application.
+
+## Example
+
+This is an empty document, without any layer.
+
+```json
+{
+    "name": "Document_name",
+    "frameRate": 24,
+    "width": 1920,
+    "height": 1080,
+    "startTime": 0,
+    "endTime": 220,
+    "colorDepth": "U8",
+    "backgroundColor": [
+        0.9882352941176471,
+        0.9137254901960784,
+        0.30980392156862746,
+        1.0
+    ],
+    "layers": [ ],
+    "ocaVersion": "1.1.0",
+    "originApp": "Krita",
+    "originAppVersion": "5.0.0"
+}
+```

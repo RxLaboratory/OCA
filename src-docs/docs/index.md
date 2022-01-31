@@ -1,8 +1,6 @@
-# OCA
+![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31)
 
-The *Open Cel Animation* format
-
-[TOC]
+# OCA, The *Open Cel Animation* format
 
 *OCA* is an open format to ease the exchange of traditionnal/frame-by-frame/cel animation between different applications.
 
@@ -22,17 +20,17 @@ We're providing some implementations of *OCA* as add-ons for a few applications.
 
 | Application | Add-on name | Exporter | Importer | Comments |
 |---|---|---|---|---|
-| [Krita](http://krita.org) | [OCA for Krita](https://github.com/Rainbox-dev/DuKRIF_OCA) | ![icon](img/icons/green_tick.png) | ![icon](img/icons/orange_diamond.png) | |
-| Adobe Photoshop | OCA for Photoshop | ![icon](img/icons/orange_diamond.png) | ![icon](img/icons/red_circle.png) | |
-| TVPaint | OCA for TVPaint | ![icon](img/icons/orange_diamond.png) | ![icon](img/icons/red_circle.png) | |
-| Adobe After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | ![icon](img/icons/red_circle.png) | ![icon](img/icons/blue_circle.png) | |
-| [Blender](http://blender.org) | OCA for Blender | ![icon](img/icons/orange_diamond.png) | ![icon](img/icons/blue_circle.png) | Exporter for Grease Pencil |
+| [Krita](http://krita.org) | [OCA for Krita](https://github.com/Rainbox-dev/DuKRIF_OCA) | ![icon](img/icons/green_tick.png){style="width: 16px;"} | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | |
+| Adobe Photoshop | OCA for Photoshop | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/red_circle.png){style="width: 16px;"} | |
+| TVPaint | OCA for TVPaint | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/red_circle.png){style="width: 16px;"} | |
+| Adobe After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | ![icon](img/icons/red_circle.png){style="width: 16px;"} | ![icon](img/icons/blue_circle.png){style="width: 16px;"} | |
+| [Blender](http://blender.org) | OCA for Blender | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/blue_circle.png){style="width: 16px;"} | Exporter for Grease Pencil |
 
 Legend:  
-![icon](img/icons/green_tick.png) | Available  
-![icon](img/icons/blue_circle.png) | In development  
-![icon](img/icons/orange_diamond.png) | Planned  
-![icon](img/icons/red_circle.png) | Not supported
+![icon](img/icons/green_tick.png){style="width: 16px;"} | Available  
+![icon](img/icons/blue_circle.png){style="width: 16px;"} | In development  
+![icon](img/icons/orange_diamond.png){style="width: 16px;"} | Planned  
+![icon](img/icons/red_circle.png){style="width: 16px;"} | Not supported
 
 !!! tip
     The *OCA* format is made to be simple to export/import in any application and it should not be difficult to implement it/write your own script for your application.
@@ -61,6 +59,7 @@ Everything is assembled in a folder which name ends with `.oca`. The *JSON* file
 
 ## Speficications
 
+- [Examples](specs/examples.md)
 - [Folder Structure](specs/folder-structure.md)
 
 ### JSON Objects
@@ -81,7 +80,7 @@ Everything is assembled in a folder which name ends with `.oca`. The *JSON* file
 
 ### Software
 
-**Copyright (C)  2020 Nicolas Dufresne and Contributors.**  
+**Copyright (C)  2020-2022 Nicolas Dufresne and Contributors.**  
 This program is free software; you can redistribute them and/or modify them under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
@@ -90,7 +89,7 @@ You should have received a copy of the *GNU General Public License* along with *
 
 ### This Documentation
 
-**Copyright (C)  2020 Nicolas Dufresne and Contributors.**  
+**Copyright (C)  2020-2022 Nicolas Dufresne and Contributors.**  
 Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation;  
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 A copy of the license is included in the section entitled "[Documentation License](licenses/gfdl.md)".

@@ -1,46 +1,50 @@
-site_name: OCA<br />Documentation<br />v1.0.0
-extra:
-    version: 1.0.0
-site_url: http://rainboxlab.org
-repo_url: http://oca-docs.rainboxlab.org
-edit_uri: https://github.com/Rainbox-dev/OCA/tree/master/src-docs/docs
+site_name: OCA Documentation
+site_url: https://oca.rxlab.guide
+repo_url: https://github.com/RxLaboratory/OCA/
+edit_uri: edit/master/src-docs/docs
 site_description: The Open Cel Animation documentation
 site_author: Nicolas Dufresne and contributors
-copyright: 'Copyright © 2020 Rainbox Laboratory and Nicolas Dufresne'
+copyright: 'Copyright © 2020-2022 RxLaboratory and Nicolas Dufresne'
 use_directory_urls: false
 theme:
-    name: readthedocs
-    custom_dir: theme/
+    name: null
+    custom_dir: 'cinder'
+    colorscheme: zenburn
 markdown_extensions:
     - smarty
     - footnotes
     - tables
     - admonition
-    - codehilite
     - fenced_code
-    - toc
+    - attr_list
 extra_css:
     - style.css
     - video.css
 extra_javascript:
     - video.js
+    - meta.js
+    - collapser.js
 site_dir: ../docs/
 dev_addr: '127.0.0.1:8001'
 nav:
-    - OCA: index.md
+    - v1.0.0: index.md
     - Specifications:
+        - Examples: specs/examples.md
         - Folder Structure: specs/folder-structure.md
-        - Root JSON Object: specs/root.md
-        - Layer JSON Object: specs/layer.md
-        - Frame JSON Object: specs/frame.md
-        - Durations: specs/durations.md
-        - Color Depth: specs/color-depth.md
-        - Layer Types: specs/layer-types.md
-        - BLending Modes: specs/blending-modes.md
-        - Layer Labels: specs/layer-labels.md
-    - Changelog: changelog.md
-    - License:
-        - GNU GPLv3: licenses/gnu-gpl.md
-        - Documentation license: licenses/gfdl.md
-    - Contact: https://rainboxlab.org/about/contact/
-    - Donate: https://rainboxlab.org/about/donate/
+        - Objects:
+            - Root JSON Object: specs/root.md
+            - Layer JSON Object: specs/layer.md
+            - Frame JSON Object: specs/frame.md
+        - Values:
+            - Durations: specs/durations.md
+            - Color Depth: specs/color-depth.md
+            - Layer Types: specs/layer-types.md
+            - BLending Modes: specs/blending-modes.md
+            - Layer Labels: specs/layer-labels.md
+    - ...:
+        - Changelog: changelog.mds
+        - License:
+            - GNU GPLv3: licenses/gnu-gpl.md
+            - Documentation license: licenses/gfdl.md
+        - Contact: http://contact.rxlab.info/
+        - Donate: http://donate.rxlab.info/

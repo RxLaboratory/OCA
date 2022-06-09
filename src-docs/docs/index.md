@@ -23,8 +23,8 @@ We're providing some implementations of *OCA* as add-ons for a few applications.
 | [Krita](http://krita.org) | [OCA for Krita](https://github.com/Rainbox-dev/DuKRIF_OCA) | ![icon](img/icons/green_tick.png){style="width: 16px;"} | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | |
 | Adobe Photoshop | OCA for Photoshop | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/red_circle.png){style="width: 16px;"} | |
 | TVPaint | OCA for TVPaint | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/red_circle.png){style="width: 16px;"} | |
-| Adobe After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | ![icon](img/icons/red_circle.png){style="width: 16px;"} | ![icon](img/icons/blue_circle.png){style="width: 16px;"} | |
-| [Blender](http://blender.org) | OCA for Blender | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/blue_circle.png){style="width: 16px;"} | Exporter for Grease Pencil |
+| Adobe After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | ![icon](img/icons/red_circle.png){style="width: 16px;"} | ![icon](img/icons/green_tick.png){style="width: 16px;"} | |
+| [Blender](http://blender.org) | Bluik | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/blue_circle.png){style="width: 16px;"} | Exporter for Grease Pencil |
 
 Legend:  
 ![icon](img/icons/green_tick.png){style="width: 16px;"} | Available  

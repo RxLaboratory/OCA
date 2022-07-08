@@ -24,7 +24,8 @@ We're providing some implementations of *OCA* as add-ons for a few applications.
 | Adobe Photoshop | OCA for Photoshop | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/red_circle.png){style="width: 16px;"} | |
 | TVPaint | OCA for TVPaint | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/red_circle.png){style="width: 16px;"} | |
 | Adobe After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | ![icon](img/icons/red_circle.png){style="width: 16px;"} | ![icon](img/icons/green_tick.png){style="width: 16px;"} | |
-| [Blender](http://blender.org) | Bluik | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/blue_circle.png){style="width: 16px;"} | Exporter for Grease Pencil |
+| [Blender](http://blender.org) | Bluik | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/green_tick.png){style="width: 16px;"} | Exporter for Grease Pencil |
+| [Animation Paper](https://animationpaper.com/) | *Native* | ![icon](img/icons/green_tick.png){style="width: 16px;"} | ? |  |
 
 Legend:  
 ![icon](img/icons/green_tick.png){style="width: 16px;"} | Available  

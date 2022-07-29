@@ -1,83 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://oca.rxlab.guide/index.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/examples.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/folder-structure.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/root.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/layer.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/frame.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/durations.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/color-depth.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/layer-types.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/blending-modes.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/specs/layer-labels.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc></loc>
-     
+    </url><url>
+     <loc>https://oca.rxlab.guide/changelog.html</loc>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/licenses/gnu-gpl.html</loc>
-     <lastmod>2022-07-08</lastmod>
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://oca.rxlab.guide/licenses/gfdl.html</loc>
-     <lastmod>2022-07-08</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc></loc>
-     
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc></loc>
-     
+     <lastmod>2022-07-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

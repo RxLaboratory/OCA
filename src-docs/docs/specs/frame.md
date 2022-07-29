@@ -6,7 +6,7 @@ Default values should be used when importing an OCA format if the data can't be 
 
 - `name`: *string*, the name of the frame.  
     It can be `"_blank"` for an empty frame.
-- `fileName`: *string*, the path and name of the file of the frame. It is the absolute path from the root of the *OCA* folder. Default: a file named `layer_name/frame_name.fileType`.  
+- `fileName`: *string*, the path and name of the file of the frame. It is the relative path from the root of the *OCA* folder. Default: a file named `layer_name/frame_name.fileType`.  
     It can be an empty string if there's no actual frame (i.e. a blank/empty frame).
 - `frameNumber`: *int*, the frame in the document at which the frames starts to be visible
 - `opacity`: *float*, the opacity of the keyframe in the range [0.0 - 1.0]. Default `1.0`

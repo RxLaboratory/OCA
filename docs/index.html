@@ -42,7 +42,7 @@
      
 </head>
 
-<body class="homepage" >
+<body>
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -61,7 +61,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="index.html">OCA Documentation</a>
+              <a class="navbar-brand" href=".">OCA Documentation</a>
             
         </div>
 
@@ -170,7 +170,7 @@
                         
                             
 <li >
-    <a href="changelog.mds">Changelog</a>
+    <a href="changelog.html">Changelog</a>
 </li>
 
                         
@@ -343,7 +343,7 @@
                 <ul class="collapsible-content ">
                     
                         
-                        <li class="second-level "><a href="changelog.mds">Changelog</a></li>
+                        <li class="second-level "><a href="changelog.html">Changelog</a></li>
                         
                     
                         
@@ -398,7 +398,7 @@
 </ul>
 <p><img alt="YOUTUBE" src="cjAMmYF8OtE" /></p>
 <h2 id="implementation">Implementation</h2>
-<p>We&rsquo;re providing some implementations of <em>OCA</em> as add-ons for a few applications. If the application you need is not listed, you can politely ask for it in a feature request and we&rsquo;ll consider it.</p>
+<p>We&rsquo;re providing some implementations of <em>OCA</em> as add-ons for a few applications, and third-party developers have added support for it in their applications too. If the application you need is not listed, you can politely ask for it in a feature request and we&rsquo;ll consider it.</p>
 <table>
 <thead>
 <tr>
@@ -411,32 +411,18 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="http://krita.org">Krita</a></td>
-<td><a href="https://github.com/Rainbox-dev/DuKRIF_OCA">OCA for Krita</a></td>
-<td><img alt="icon" src="img/icons/green_tick.png" style="width: 16px;" /></td>
-<td><img alt="icon" src="img/icons/orange_diamond.png" style="width: 16px;" /></td>
-<td></td>
-</tr>
-<tr>
-<td>Adobe Photoshop</td>
-<td>OCA for Photoshop</td>
-<td><img alt="icon" src="img/icons/orange_diamond.png" style="width: 16px;" /></td>
-<td><img alt="icon" src="img/icons/red_circle.png" style="width: 16px;" /></td>
-<td></td>
-</tr>
-<tr>
-<td>TVPaint</td>
-<td>OCA for TVPaint</td>
-<td><img alt="icon" src="img/icons/orange_diamond.png" style="width: 16px;" /></td>
-<td><img alt="icon" src="img/icons/red_circle.png" style="width: 16px;" /></td>
-<td></td>
-</tr>
-<tr>
-<td>Adobe After Effects</td>
+<td>After Effects</td>
 <td><a href="https://github.com/Rainbox-dev/DuAEF_DuIO">DuIO</a></td>
-<td><img alt="icon" src="img/icons/red_circle.png" style="width: 16px;" /></td>
+<td>-</td>
 <td><img alt="icon" src="img/icons/green_tick.png" style="width: 16px;" /></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="https://animationpaper.com/">Animation Paper</a></td>
+<td><em>Native</em></td>
+<td><img alt="icon" src="img/icons/green_tick.png" style="width: 16px;" /></td>
+<td>?</td>
+<td><em>Third-party</em></td>
 </tr>
 <tr>
 <td><a href="http://blender.org">Blender</a></td>
@@ -446,10 +432,38 @@
 <td>Exporter for Grease Pencil</td>
 </tr>
 <tr>
-<td><a href="https://animationpaper.com/">Animation Paper</a></td>
+<td><a href="https://www.blackmagicdesign.com/products/fusion/">Fusion</a></td>
+<td><a href="https://www.steakunderwater.com/">Reactor</a> (using <em>Vonk Ultra</em>)</td>
+<td>-</td>
+<td><img alt="icon" src="img/icons/green_tick.png" style="width: 16px;" /></td>
+<td><em>Third-party</em>.</td>
+</tr>
+<tr>
+<td><a href="http://krita.org">Krita</a></td>
+<td><a href="https://github.com/Rainbox-dev/DuKRIF_OCA">OCA for Krita</a></td>
+<td><img alt="icon" src="img/icons/green_tick.png" style="width: 16px;" /></td>
+<td><img alt="icon" src="img/icons/orange_diamond.png" style="width: 16px;" /></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://opentoonz.github.io/e/">OpenToonz</a></td>
 <td><em>Native</em></td>
 <td><img alt="icon" src="img/icons/green_tick.png" style="width: 16px;" /></td>
-<td>?</td>
+<td>-</td>
+<td><em>Third-party</em>. Available in the latest <a href="https://github.com/opentoonz/opentoonz/releases">nightly build</a> for now, will be in the next release.</td>
+</tr>
+<tr>
+<td>Photoshop</td>
+<td>OCA for Photoshop</td>
+<td><img alt="icon" src="img/icons/orange_diamond.png" style="width: 16px;" /></td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>TVPaint</td>
+<td>OCA for TVPaint</td>
+<td><img alt="icon" src="img/icons/orange_diamond.png" style="width: 16px;" /></td>
+<td>-</td>
 <td></td>
 </tr>
 </tbody>
@@ -458,7 +472,7 @@
 <img alt="icon" src="img/icons/green_tick.png" style="width: 16px;" /> | Available<br />
 <img alt="icon" src="img/icons/blue_circle.png" style="width: 16px;" /> | In development<br />
 <img alt="icon" src="img/icons/orange_diamond.png" style="width: 16px;" /> | Planned<br />
-<img alt="icon" src="img/icons/red_circle.png" style="width: 16px;" /> | Not supported</p>
+- | Not supported</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The <em>OCA</em> format is made to be simple to export/import in any application and it should not be difficult to implement it/write your own script for your application.</p>
@@ -610,8 +624,3 @@ A copy of the license is included in the section entitled &ldquo;<a href="licens
     </body>
 
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2022-07-08 13:31:37
--->

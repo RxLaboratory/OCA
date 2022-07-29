@@ -42,7 +42,7 @@ nav:
             - BLending Modes: specs/blending-modes.md
             - Layer Labels: specs/layer-labels.md
     - ...:
-        - Changelog: changelog.mds
+        - Changelog: changelog.md
         - License:
             - GNU GPLv3: licenses/gnu-gpl.md
             - Documentation license: licenses/gfdl.md

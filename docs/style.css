@@ -176,3 +176,9 @@ ul.nav li p {
 .post-meta ul {
     padding-left:20px;
 }
+
+img.align-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

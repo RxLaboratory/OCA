@@ -4,6 +4,8 @@
 
 *OCA* is an open format to ease the exchange of traditionnal/frame-by-frame/cel animation between different applications.
 
+![](img/icons/oca.png){class="align-center"}
+
 ## Principles
 
 - *OCA* has to be open and simple: it must be easy to implement an exporter or importer in any application providing a scripting API.
@@ -37,6 +39,16 @@ Legend:
 
 !!! tip
     The *OCA* format is made to be simple to export/import in any application and it should not be difficult to implement it/write your own script for your application.
+
+### Icon
+
+You may use these icons when talking about or implementing OCA.
+
+**SVG**: ![SVG icon](img/icons/oca-icon.svg){style="max-width:128px"}
+
+**PNG**: ![PNG icon](img/icons/oca.png){style="max-width:128px"}
+
+*(Right-click on the images to save them)*
 
 ## Features
 

@@ -1,4 +1,4 @@
-![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31)
+![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/08/05)
 
 # OCA, The *Open Cel Animation* format
 

@@ -114,6 +114,7 @@ OCABlendingModes['soft_light_pegtop_delphi'] = 'soft_light_pegtop_delphi'
 OCABlendingModes['super_light'] = 'super_light'
 OCABlendingModes['tint_ifs_illusions'] = 'tint'
 OCABlendingModes['linear_dodge'] = 'linear_dodge'
+OCABlendingModes['add'] = 'add'
 
 # Label Colors
 OCALabels = list()

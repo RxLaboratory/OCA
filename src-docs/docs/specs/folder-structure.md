@@ -1,6 +1,8 @@
-![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31)
-
 # Folder Structure
+
+The OCA JSON data file *must* be at the root of the OCOA folder, and *should* have the same name.
+
+Other files and folders *may* be stored as follow, but as the JSON data contains all (relative) paths to all files, that's not mandatory.
 
 ```
 |v Document_name.oca
@@ -20,4 +22,8 @@
  |> Group_name_6
 ```
 
-Note that the `.oca` file at the root could also use the extension `.json`
+!!! note
+    The `.oca` file at the root could also use the extension `.json`.
+
+!!! tip
+    All layers may be stored in a single subfolder with an arbitrary name instead of directly at the root.

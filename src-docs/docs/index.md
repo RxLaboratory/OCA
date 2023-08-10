@@ -72,7 +72,7 @@ All these properties are stored in a simple *JSON* file, and the images are stor
 
 Everything is assembled in a folder which name ends with `.oca`. The *JSON* file is at the root, while the images are stored in subfolders corresponding to layers and groups.
 
-## Speficications
+## Specifications
 
 - [Examples](specs/examples.md)
 - [Folder Structure](specs/folder-structure.md)

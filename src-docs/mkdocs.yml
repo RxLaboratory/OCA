@@ -4,7 +4,7 @@ repo_url: https://github.com/RxLaboratory/OCA/
 edit_uri: edit/master/src-docs/docs
 site_description: The Open Cel Animation documentation
 site_author: Nicolas Dufresne and contributors
-copyright: 'Copyright © 2020-2022 RxLaboratory and Nicolas Dufresne'
+copyright: 'Copyright © 2020-2023 RxLaboratory and Nicolas Dufresne'
 use_directory_urls: false
 theme:
     name: null
@@ -27,7 +27,7 @@ extra_javascript:
 site_dir: ../docs/
 dev_addr: '127.0.0.1:8001'
 nav:
-    - v1.1.0: index.md
+    - v1.1.1: index.md
     - Specifications:
         - Examples: specs/examples.md
         - Folder Structure: specs/folder-structure.md
@@ -39,9 +39,10 @@ nav:
             - Durations: specs/durations.md
             - Color Depth: specs/color-depth.md
             - Layer Types: specs/layer-types.md
-            - BLending Modes: specs/blending-modes.md
+            - Blending Modes: specs/blending-modes.md
             - Layer Labels: specs/layer-labels.md
     - ...:
+        - Roadmap: roadmap.md
         - Changelog: changelog.md
         - License:
             - GNU GPLv3: licenses/gnu-gpl.md

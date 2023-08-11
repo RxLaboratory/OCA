@@ -1,10 +1,8 @@
-![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/08/05)
-
-# OCA, The *Open Cel Animation* format
+# ![](img/icons/oca.png){style="width:2em;"} OCA, The *Open Cel Animation* format
 
 *OCA* is an open format to ease the exchange of traditionnal/frame-by-frame/cel animation between different applications.
 
-![](img/icons/oca.png){class="align-center"}
+
 
 ## Principles
 
@@ -12,7 +10,13 @@
 
 - As it relies on existing and standard file formats (images and json/text files) stored in a simple folder, the *OCA* format can be imported in any application manually, even if the application does not directly support it.
 
+- Full freely available documentation.
+
+- Extensible, but private undocumented extensions should be excluded, any extension should be added to the spec and documentation of the file format.
+
 - *OCA* stores the most common features used by drawing/animation software: layers, groups, blending modes, animation exposure (x-sheet), etc.
+
+- Applications are not expected to support all features of the file format, but when manipulating the file they should not lose any information they cannot handle
 
 ![YOUTUBE](cjAMmYF8OtE)
 
@@ -72,6 +76,8 @@ All these properties are stored in a simple *JSON* file, and the images are stor
 
 Everything is assembled in a folder which name ends with `.oca`. The *JSON* file is at the root, while the images are stored in subfolders corresponding to layers and groups.
 
+More features may be added later, have a look at the [**Roadmap**](roadmap.md)!
+
 ## Specifications
 
 - [Examples](specs/examples.md)
@@ -86,7 +92,8 @@ Everything is assembled in a folder which name ends with `.oca`. The *JSON* file
 ### Values
 
 - [Durations](specs/durations.md)
-- [Color Depth](specs/color-depth.md)
+- [Coordinates and transform](specs/coordinates.md)
+- [Opacity, Colors and Color Depth](specs/color-depth.md)
 - [Layer Types](specs/layer-types.md)
 - [Blending Modes](specs/blending-modes.md)
 - [Layer Labels](specs/blending-modes.md)

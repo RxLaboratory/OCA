@@ -20,6 +20,65 @@ body {
     font-size: 1.3em;
 }
 
+
+h1 {
+    margin-bottom: 50px;
+}
+
+h2 {
+    margin-bottom: 30px;
+    margin-top: 60px;
+}
+
+h3 {
+    margin-bottom: 25px;
+    margin-top: 40px;
+}
+
+blockquote {
+    border-left-width: 3px;
+    border-color: #6f6f6f;
+    font-style: italic;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+figcaption {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #636363;
+}
+
+blockquote figcaption {
+    font-style: normal;
+    margin-bottom: 0px;
+}
+
+figure {
+    margin-top: 25px;
+}
+
+.admonition {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: -50px;
+    margin-right: 0px;
+    padding-left: 43px;
+    border-left: 7px solid;
+}
+
+.admonition.tip {
+    border-left-color: #4bdf52;
+}
+
+.admonition.wip {
+    border-left-color: #ecc92d;
+}
+
+.admonition.question {
+    border-left-color: #a526c4;
+}
+
 .navbar-default {
     border-bottom: 0;
     background-color: #333;
@@ -64,8 +123,16 @@ body {
     border-right: 7px solid;
 }
 
+li.first-level .collapse-button {
+    padding-left:10px;
+}
+
+li.first-level .second-level .collapse-button {
+    padding-left:0px;
+}
+
 .collapsible-content {
-    padding: 0 30px;
+    padding: 0 20px;
     overflow: hidden;
     background: #f1f1f1;
     list-style-type: none;
@@ -81,7 +148,6 @@ body {
 .collapse-button {
     background: none;
     border: none;
-    padding-left:20px;
     font-weight: bold;
     color:#333;
     width:100%;
@@ -127,10 +193,50 @@ body {
 
 .col-md-9 {
     background-color: #e3e3e3;
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
     padding-bottom: 0;
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 1px 4px 7px #131313;
+}
+
+.nav-footer {
+    width: 78%;
+    float: right;
+}
+
+@media (max-width: 992px) {
+    .nav-footer {
+        width: 100%;
+    }
+}
+
+.nav-footer ul {
+    list-style-type: none;
+}
+
+.nav-footer ul li {
+    background-color: #e3e3e3;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 1px 4px 7px #131313;
+    max-width: 50%;
+    text-align: center;
+    font-weight: 800;
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+}
+
+.nav-footer-prev {
+    float: left;
+}
+
+.nav-footer-next {
+    float: right;
 }
 
 pre {
@@ -154,6 +260,14 @@ ul.nav li p {
     margin-left: 10px;
 }
 
+ul.nav li a {
+    font-weight: normal;
+}
+
+.collapsible ul.nav li a::before {
+    content: "▹ ";
+}
+
 .post-meta {
     font-size: 0.9em;
     background-color: #535353;
@@ -175,10 +289,4 @@ ul.nav li p {
 
 .post-meta ul {
     padding-left:20px;
-}
-
-img.align-center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }

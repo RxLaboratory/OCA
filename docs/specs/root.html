@@ -61,7 +61,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="..">OCA Documentation</a>
+              <a class="navbar-brand" href="../index.html">OCA Documentation</a>
             
         </div>
 
@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.0</a>
+                        <a href="../index.html">v1.1.1</a>
                     </li>
                 
                 
@@ -133,7 +133,13 @@
         
             
 <li >
-    <a href="color-depth.html">Color Depth</a>
+    <a href="coordinates.html">Coordinates and transform</a>
+</li>
+
+        
+            
+<li >
+    <a href="color-depth.html">Opacity, Colors and Color Depth</a>
 </li>
 
         
@@ -145,7 +151,7 @@
         
             
 <li >
-    <a href="blending-modes.html">BLending Modes</a>
+    <a href="blending-modes.html">Blending Modes</a>
 </li>
 
         
@@ -167,6 +173,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../roadmap.html">Roadmap</a>
+</li>
+
                         
                             
 <li >
@@ -256,7 +268,7 @@
         
         
             <li >
-                <a href="../../index.html">v1.1.0</a>
+                <a href="../index.html">v1.1.1</a>
             </li>
         
         
@@ -304,7 +316,11 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="color-depth.html">Color Depth</a></li>
+                                    <li class="third-level "><a href="coordinates.html">Coordinates and transform</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="color-depth.html">Opacity, Colors and Color Depth</a></li>
                                     
                                 
                                     
@@ -312,7 +328,7 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="blending-modes.html">BLending Modes</a></li>
+                                    <li class="third-level "><a href="blending-modes.html">Blending Modes</a></li>
                                     
                                 
                                     
@@ -331,6 +347,10 @@
             <li class="first-level">
                 <button  type="button" class="collapse-button ">...</button>
                 <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="../roadmap.html">Roadmap</a></li>
+                        
                     
                         
                         <li class="second-level "><a href="../changelog.html">Changelog</a></li>
@@ -371,24 +391,99 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31" /></p>
 <h1 id="root-object">Root Object</h1>
 <h2 id="values">Values</h2>
-<p>Default values should be used when importing an OCA format if the data can&rsquo;t be read or is not available.</p>
-<ul>
-<li><code>ocaVersion</code>: <em>string</em>, the version of OCA used in this file. Must be one of the versions listed in the <a href="../changelog.html">changelog</a></li>
-<li><code>name</code>: <em>string</em>, the name of the animation</li>
-<li><code>frameRate</code>: <em>float</em>, the frame rate, in frames/second. Default: <code>24</code></li>
-<li><code>width</code>: <em>int</em>, the width, in pixels. Default: <code>1920</code></li>
-<li><code>height</code>: <em>int</em>, the height, in pixels. Default: <code>1080</code></li>
-<li><code>startTime</code>: <em>int</em>, the first frame number in the animation. Default: <code>0</code></li>
-<li><code>endTime</code>: <em>int</em>, the last frame number in the animation. Default: <code>240</code></li>
-<li><code>colorDepth</code>: <em>string</em>, the colors used in the frames. See the <em>Color Depth</em> section below. Default: <code>U8</code></li>
-<li><code>backgroundColor</code>: <em>float[]</em>, the color of the background, in an [R,G,B,A] array, each value in the range [0.0 - 1.0]. Default: <code>[0.0, 0.0, 0.0, 0.0]</code></li>
-<li><code>layers</code>: <em>layerObject[]</em>, the layers used in the animation. See the <em>Layer Object Specs</em> section below</li>
-<li><code>originApp</code>: <em>string</em>, the application name from which the document was exported.</li>
-<li><code>originAppVersion</code>: <em>string</em>, the version of the origin application.</li>
-</ul>
+<p>Default values should be used when importing an OCA document if the data can&rsquo;t be read or is not available.<br />
+If there is no default value, importing the OCA document should fail.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>ocaVersion</code></strong></td>
+<td><em>string</em></td>
+<td><code>"0.0.0"</code></td>
+<td>The version of OCA used in this file.<br>Must be one of the versions listed in the <a href="../changelog.html">changelog</a>.</td>
+</tr>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><em>string</em></td>
+<td><code>"Untitled"</code></td>
+<td>The name of the animation.</td>
+</tr>
+<tr>
+<td><strong><code>frameRate</code></strong></td>
+<td><em>float</em></td>
+<td><code>24.0</code></td>
+<td>The frame rate, in frames/second.</td>
+</tr>
+<tr>
+<td><strong><code>width</code></strong></td>
+<td><em>int</em></td>
+<td><code>1920</code></td>
+<td>The width, in pixels.</td>
+</tr>
+<tr>
+<td><strong><code>height</code></strong></td>
+<td><em>int</em></td>
+<td><code>1080</code></td>
+<td>The height, in pixels.</td>
+</tr>
+<tr>
+<td><strong><code>startTime</code></strong></td>
+<td><em>int</em></td>
+<td><code>0</code></td>
+<td>The first frame number in the animation.</td>
+</tr>
+<tr>
+<td><strong><code>endTime</code></strong></td>
+<td><em>int</em></td>
+<td><code>240</code></td>
+<td>The last frame number in the animation. The frame with this number is <em>not</em> part of the animation; the exact duration in frames is <code>endTime - startTime</code></td>
+</tr>
+<tr>
+<td><strong><code>colorDepth</code></strong></td>
+<td><em>string</em></td>
+<td><code>U8</code></td>
+<td>The colors used in the frames. See the <a href="color-depth.html"><em>Color Depth</em></a> section.</td>
+</tr>
+<tr>
+<td><strong><code>backgroundColor</code></strong></td>
+<td><em>float[]</em></td>
+<td><code>[0.0, 0.0, 0.0, 0.0]</code></td>
+<td>The color of the background, in an [R,G,B,A] array, each value in the range <code>[0.0 - 1.0]</code>. The values may be higher than <code>1.0</code> if and only if the color depth is <code>F16</code> or <code>F32</code>.</td>
+</tr>
+<tr>
+<td><strong><code>layers</code></strong></td>
+<td><em>LayerObject[]</em></td>
+<td><code>[]</code></td>
+<td>The layers used in the animation. See the <a href="layer.html"><em>Layer Object</em></a> section.<br>Layers are stored from bottom to top, the first layer in the list is the bottom one (the background).</td>
+</tr>
+<tr>
+<td><strong><code>originApp</code></strong></td>
+<td><em>string</em></td>
+<td><code>"Unknown"</code></td>
+<td>The application name from which the document was exported.</td>
+</tr>
+<tr>
+<td><strong><code>originAppVersion</code></strong></td>
+<td><em>string</em></td>
+<td><code>"0.0.0"</code></td>
+<td>The version of the origin application.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the layers don&rsquo;t have the same size as the document (this root object), they may be cropped, but they&rsquo;re never scaled.</p>
+<p>In the same manner, if layer durations are longer than <code>endTime - startTime</code>, or if their first frame is lower than the start time, there may be frames not visible or outside of a timeline.</p>
+</div>
 <h2 id="example">Example</h2>
 <p>This is an empty document, without any layer.</p>
 <pre><code class="language-json">{

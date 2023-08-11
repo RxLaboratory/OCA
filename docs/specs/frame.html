@@ -61,7 +61,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="..">OCA Documentation</a>
+              <a class="navbar-brand" href="../index.html">OCA Documentation</a>
             
         </div>
 
@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.0</a>
+                        <a href="../index.html">v1.1.1</a>
                     </li>
                 
                 
@@ -133,7 +133,13 @@
         
             
 <li >
-    <a href="color-depth.html">Color Depth</a>
+    <a href="coordinates.html">Coordinates and transform</a>
+</li>
+
+        
+            
+<li >
+    <a href="color-depth.html">Opacity, Colors and Color Depth</a>
 </li>
 
         
@@ -145,7 +151,7 @@
         
             
 <li >
-    <a href="blending-modes.html">BLending Modes</a>
+    <a href="blending-modes.html">Blending Modes</a>
 </li>
 
         
@@ -167,6 +173,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../roadmap.html">Roadmap</a>
+</li>
+
                         
                             
 <li >
@@ -256,7 +268,7 @@
         
         
             <li >
-                <a href="../../index.html">v1.1.0</a>
+                <a href="../index.html">v1.1.1</a>
             </li>
         
         
@@ -304,7 +316,11 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="color-depth.html">Color Depth</a></li>
+                                    <li class="third-level "><a href="coordinates.html">Coordinates and transform</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="color-depth.html">Opacity, Colors and Color Depth</a></li>
                                     
                                 
                                     
@@ -312,7 +328,7 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="blending-modes.html">BLending Modes</a></li>
+                                    <li class="third-level "><a href="blending-modes.html">Blending Modes</a></li>
                                     
                                 
                                     
@@ -331,6 +347,10 @@
             <li class="first-level">
                 <button  type="button" class="collapse-button ">...</button>
                 <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="../roadmap.html">Roadmap</a></li>
+                        
                     
                         
                         <li class="second-level "><a href="../changelog.html">Changelog</a></li>
@@ -371,26 +391,79 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31" /></p>
 <h1 id="frame-object">Frame Object</h1>
-<p>Default values should be used when importing an OCA format if the data can&rsquo;t be read or is not available.</p>
-<ul>
-<li><code>name</code>: <em>string</em>, the name of the frame.<br />
-    It can be <code>"_blank"</code> for an empty frame.</li>
-<li><code>fileName</code>: <em>string</em>, the path and name of the file of the frame. It is the relative path from the root of the <em>OCA</em> folder. Default: a file named <code>layer_name/frame_name.fileType</code>.<br />
-    It can be an empty string if there&rsquo;s no actual frame (i.e. a blank/empty frame).</li>
-<li><code>frameNumber</code>: <em>int</em>, the frame in the document at which the frames starts to be visible</li>
-<li><code>opacity</code>: <em>float</em>, the opacity of the keyframe in the range [0.0 - 1.0]. Default <code>1.0</code></li>
-<li><code>position</code>: <em>int[]</em>, the coordinates of the center of the keyframe, in pixels [X,Y] in the document coordinates. Default: half the document width and half the document height</li>
-<li><code>width</code>: <em>int</em>, the width, in pixels. Default: the layer width</li>
-<li><code>height</code>: <em>int</em>, the height, in pixels. Default: the layer height</li>
-<li><code>duration</code>: <em>int</em>, the duration of the frame, in frames. Default: <code>1</code></li>
-</ul>
+<p>Default values should be used when importing an OCA format if the data can&rsquo;t be read or is not available.<br />
+If there is no default value, importing the OCA document should fail.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><em>string</em></td>
+<td><code>"_blank"</code></td>
+<td>The name of the frame. It can be <code>"_blank"</code> for an empty frame.</td>
+</tr>
+<tr>
+<td><strong><code>fileName</code></strong></td>
+<td><em>string</em></td>
+<td><code>""</code></td>
+<td>The path and name of the file of the frame. It is the relative path from the root of the <em>OCA</em> folder.<br>It can be an empty string if and only if it&rsquo;s a blank/empty frame (i.e. the name is <code>"_blank"</code> ).</td>
+</tr>
+<tr>
+<td><strong><code>frameNumber</code></strong></td>
+<td><em>int</em></td>
+<td></td>
+<td>The frame in the document at which the frames starts to be visible.</td>
+</tr>
+<tr>
+<td><strong><code>opacity</code></strong></td>
+<td><em>int</em></td>
+<td><code>1.0</code></td>
+<td>The opacity of the frame in the range <code>[0.0 - 1.0]</code>. It <em>must</em> be multiplied by the containing layer opacity during the rendering process.</td>
+</tr>
+<tr>
+<td><strong><code>position</code></strong></td>
+<td><em>int[]</em></td>
+<td><code>[layer.width / 2, layer.height/2]</code></td>
+<td>The coordinates of the center of the frame, in pixels [X,Y] in the containing (<a href="layer.html"><em>Layer Object</em></a>) coordinates; the origin <code>[0,0]</code> is the top left corner of the containing layer.</td>
+</tr>
+<tr>
+<td><strong><code>width</code></strong></td>
+<td><em>int</em></td>
+<td><code>layer.width</code></td>
+<td>The width, in pixels.</td>
+</tr>
+<tr>
+<td><strong><code>height</code></strong></td>
+<td><em>int</em></td>
+<td><code>layer.height</code></td>
+<td>The height, in pixels.</td>
+</tr>
+<tr>
+<td><strong><code>duration</code></strong></td>
+<td><em>int</em></td>
+<td><code>1</code></td>
+<td>The duration of the frame, in frames.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition wip">
+<p class="admonition-title">Wip</p>
+<p>We&rsquo;re planning to add a new Frame Sequence Object to simplify storing frames when they all have the same size, position and opacity, and allow the use of <code>.ifl</code> files.</p>
+<p>▹ <a href="../roadmap.html">Roadmap</a></p>
+</div>
 <h2 id="examples">Examples</h2>
 <h3 id="generic-frame">Generic frame</h3>
 <pre><code class="language-json">{
     &quot;name&quot;: &quot;Layer_name_3_00000&quot;,
-    &quot;fileName&quot;: &quot;Document_name.oca/Group_name_2/Layer_name_3/Layer_name_3_00000.png&quot;,
+    &quot;fileName&quot;: &quot;Group_name_2/Layer_name_3/Layer_name_3_00000.png&quot;,
     &quot;frameNumber&quot;: 0,
     &quot;opacity&quot;: 1.0,
     &quot;position&quot;: [

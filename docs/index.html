@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="img/favicon.ico">
 
     
-    <title>v1.1.0 - OCA Documentation</title>
+    <title>v1.1.1 - OCA Documentation</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -42,7 +42,7 @@
      
 </head>
 
-<body>
+<body class="homepage" >
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -61,7 +61,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href=".">OCA Documentation</a>
+              <a class="navbar-brand" href="index.html">OCA Documentation</a>
             
         </div>
 
@@ -72,7 +72,7 @@
                 
                 
                     <li class="active">
-                        <a href="index.html">v1.1.0</a>
+                        <a href="index.html">v1.1.1</a>
                     </li>
                 
                 
@@ -133,7 +133,13 @@
         
             
 <li >
-    <a href="specs/color-depth.html">Color Depth</a>
+    <a href="specs/coordinates.html">Coordinates and transform</a>
+</li>
+
+        
+            
+<li >
+    <a href="specs/color-depth.html">Opacity, Colors and Color Depth</a>
 </li>
 
         
@@ -145,7 +151,7 @@
         
             
 <li >
-    <a href="specs/blending-modes.html">BLending Modes</a>
+    <a href="specs/blending-modes.html">Blending Modes</a>
 </li>
 
         
@@ -167,6 +173,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="roadmap.html">Roadmap</a>
+</li>
+
                         
                             
 <li >
@@ -251,7 +263,7 @@
                     <li class="third-level"><a href="#icon">Icon</a></li>
                 <li class="second-level"><a href="#features">Features</a></li>
                     
-                <li class="second-level"><a href="#speficications">Speficications</a></li>
+                <li class="second-level"><a href="#specifications">Specifications</a></li>
                     
                     <li class="third-level"><a href="#json-objects">JSON Objects</a></li>
                     <li class="third-level"><a href="#values">Values</a></li>
@@ -267,7 +279,7 @@
         
         
             <li class="active">
-                <a href="index.html">v1.1.0</a>
+                <a href="index.html">v1.1.1</a>
             </li>
         
         
@@ -315,7 +327,11 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="specs/color-depth.html">Color Depth</a></li>
+                                    <li class="third-level "><a href="specs/coordinates.html">Coordinates and transform</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="specs/color-depth.html">Opacity, Colors and Color Depth</a></li>
                                     
                                 
                                     
@@ -323,7 +339,7 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="specs/blending-modes.html">BLending Modes</a></li>
+                                    <li class="third-level "><a href="specs/blending-modes.html">Blending Modes</a></li>
                                     
                                 
                                     
@@ -342,6 +358,10 @@
             <li class="first-level">
                 <button  type="button" class="collapse-button ">...</button>
                 <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="roadmap.html">Roadmap</a></li>
+                        
                     
                         
                         <li class="second-level "><a href="changelog.html">Changelog</a></li>
@@ -382,10 +402,8 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2022;updated:2022/08/05" /></p>
-<h1 id="oca-the-open-cel-animation-format">OCA, The <em>Open Cel Animation</em> format</h1>
+<h1 id="oca-the-open-cel-animation-format"><img alt="" src="img/icons/oca.png" style="width:2em;" /> OCA, The <em>Open Cel Animation</em> format</h1>
 <p><em>OCA</em> is an open format to ease the exchange of traditionnal/frame-by-frame/cel animation between different applications.</p>
-<p><img alt="" class="align-center" src="img/icons/oca.png" /></p>
 <h2 id="principles">Principles</h2>
 <ul>
 <li>
@@ -395,7 +413,16 @@
 <p>As it relies on existing and standard file formats (images and json/text files) stored in a simple folder, the <em>OCA</em> format can be imported in any application manually, even if the application does not directly support it.</p>
 </li>
 <li>
+<p>Full freely available documentation.</p>
+</li>
+<li>
+<p>Extensible, but private undocumented extensions should be excluded, any extension should be added to the spec and documentation of the file format.</p>
+</li>
+<li>
 <p><em>OCA</em> stores the most common features used by drawing/animation software: layers, groups, blending modes, animation exposure (x-sheet), etc.</p>
+</li>
+<li>
+<p>Applications are not expected to support all features of the file format, but when manipulating the file they should not lose any information they cannot handle</p>
 </li>
 </ul>
 <p><img alt="YOUTUBE" src="cjAMmYF8OtE" /></p>
@@ -503,7 +530,8 @@
 </ul>
 <p>All these properties are stored in a simple <em>JSON</em> file, and the images are stored in standard image file formats: <em>PNG</em>, <em>EXR</em>, <em>SVG</em>&hellip;</p>
 <p>Everything is assembled in a folder which name ends with <code>.oca</code>. The <em>JSON</em> file is at the root, while the images are stored in subfolders corresponding to layers and groups.</p>
-<h2 id="speficications">Speficications</h2>
+<p>More features may be added later, have a look at the <a href="roadmap.html"><strong>Roadmap</strong></a>!</p>
+<h2 id="specifications">Specifications</h2>
 <ul>
 <li><a href="specs/examples.html">Examples</a></li>
 <li><a href="specs/folder-structure.html">Folder Structure</a></li>
@@ -517,7 +545,8 @@
 <h3 id="values">Values</h3>
 <ul>
 <li><a href="specs/durations.html">Durations</a></li>
-<li><a href="specs/color-depth.html">Color Depth</a></li>
+<li><a href="specs/coordinates.html">Coordinates and transform</a></li>
+<li><a href="specs/color-depth.html">Opacity, Colors and Color Depth</a></li>
 <li><a href="specs/layer-types.html">Layer Types</a></li>
 <li><a href="specs/blending-modes.html">Blending Modes</a></li>
 <li><a href="specs/blending-modes.html">Layer Labels</a></li>
@@ -631,3 +660,8 @@ A copy of the license is included in the section entitled &ldquo;<a href="licens
     </body>
 
 </html>
+
+<!--
+MkDocs version : 1.4.2
+Build Date UTC : 2023-08-11 12:22:47.258677+00:00
+-->

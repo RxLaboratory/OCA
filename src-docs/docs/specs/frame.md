@@ -1,19 +1,23 @@
-![META](authors:Nicolas "Duduf" Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31)
-
 # Frame Object
 
-Default values should be used when importing an OCA format if the data can't be read or is not available.
+Default values should be used when importing an OCA format if the data can't be read or is not available.  
+If there is no default value, importing the OCA document should fail.
 
-- `name`: *string*, the name of the frame.  
-    It can be `"_blank"` for an empty frame.
-- `fileName`: *string*, the path and name of the file of the frame. It is the relative path from the root of the *OCA* folder. Default: a file named `layer_name/frame_name.fileType`.  
-    It can be an empty string if there's no actual frame (i.e. a blank/empty frame).
-- `frameNumber`: *int*, the frame in the document at which the frames starts to be visible
-- `opacity`: *float*, the opacity of the keyframe in the range [0.0 - 1.0]. Default `1.0`
-- `position`: *int[]*, the coordinates of the center of the keyframe, in pixels [X,Y] in the document coordinates. Default: half the document width and half the document height
-- `width`: *int*, the width, in pixels. Default: the layer width
-- `height`: *int*, the height, in pixels. Default: the layer height
-- `duration`: *int*, the duration of the frame, in frames. Default: `1`
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| **`name`** | *string* | `"_blank"` | The name of the frame. It can be `"_blank"` for an empty frame. |
+| **`fileName`** | *string* | `""` | The path and name of the file of the frame. It is the relative path from the root of the *OCA* folder.<br>It can be an empty string if and only if it's a blank/empty frame (i.e. the name is `"_blank"` ). |
+| **`frameNumber`** | *int* | | The frame in the document at which the frames starts to be visible. |
+| **`opacity`** | *int* | `1.0` | The opacity of the frame in the range `[0.0 - 1.0]`. It *must* be multiplied by the containing layer opacity during the rendering process. |
+| **`position`** | *int[]* | `[layer.width / 2, layer.height/2]` | The coordinates of the center of the frame, in pixels [X,Y] in the containing ([*Layer Object*](layer.md)) coordinates; the origin `[0,0]` is the top left corner of the containing layer. |
+| **`width`** | *int* | `layer.width` | The width, in pixels. |
+| **`height`** | *int* | `layer.height` | The height, in pixels. |
+| **`duration`** | *int* | `1` | The duration of the frame, in frames. |
+
+!!! WIP
+    We're planning to add a new Frame Sequence Object to simplify storing frames when they all have the same size, position and opacity, and allow the use of `.ifl` files.
+
+    ▹ [Roadmap](../roadmap.md)
 
 ## Examples
 
@@ -22,7 +26,7 @@ Default values should be used when importing an OCA format if the data can't be 
 ```json
 {
     "name": "Layer_name_3_00000",
-    "fileName": "Document_name.oca/Group_name_2/Layer_name_3/Layer_name_3_00000.png",
+    "fileName": "Group_name_2/Layer_name_3/Layer_name_3_00000.png",
     "frameNumber": 0,
     "opacity": 1.0,
     "position": [

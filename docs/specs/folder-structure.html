@@ -61,7 +61,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="..">OCA Documentation</a>
+              <a class="navbar-brand" href="../index.html">OCA Documentation</a>
             
         </div>
 
@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.0</a>
+                        <a href="../index.html">v1.1.1</a>
                     </li>
                 
                 
@@ -133,7 +133,13 @@
         
             
 <li >
-    <a href="color-depth.html">Color Depth</a>
+    <a href="coordinates.html">Coordinates and transform</a>
+</li>
+
+        
+            
+<li >
+    <a href="color-depth.html">Opacity, Colors and Color Depth</a>
 </li>
 
         
@@ -145,7 +151,7 @@
         
             
 <li >
-    <a href="blending-modes.html">BLending Modes</a>
+    <a href="blending-modes.html">Blending Modes</a>
 </li>
 
         
@@ -167,6 +173,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../roadmap.html">Roadmap</a>
+</li>
+
                         
                             
 <li >
@@ -252,7 +264,7 @@
         
         
             <li >
-                <a href="../../index.html">v1.1.0</a>
+                <a href="../index.html">v1.1.1</a>
             </li>
         
         
@@ -300,7 +312,11 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="color-depth.html">Color Depth</a></li>
+                                    <li class="third-level "><a href="coordinates.html">Coordinates and transform</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="color-depth.html">Opacity, Colors and Color Depth</a></li>
                                     
                                 
                                     
@@ -308,7 +324,7 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="blending-modes.html">BLending Modes</a></li>
+                                    <li class="third-level "><a href="blending-modes.html">Blending Modes</a></li>
                                     
                                 
                                     
@@ -327,6 +343,10 @@
             <li class="first-level">
                 <button  type="button" class="collapse-button ">...</button>
                 <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="../roadmap.html">Roadmap</a></li>
+                        
                     
                         
                         <li class="second-level "><a href="../changelog.html">Changelog</a></li>
@@ -367,25 +387,33 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31" /></p>
 <h1 id="folder-structure">Folder Structure</h1>
-<pre><code>|v Document_name.oca
- |- Document_name.oca
- |v Layer_name_1
-  |- Layer_name_1_00000.png
-  |- Layer_name_1_00110.png
-  |- Layer_name_1_00112.png
-  |- Layer_name_1_00114.png
-  |- Layer_name_1_00200.png
- |v Group_name_2
-  |v Layer_name_3
-   |- Layer_name_3_00000.png
-   |- Layer_name_3_00003.png
-  |&gt; Layer_name_4
-  |&gt; Layer_name_5
- |&gt; Group_name_6
+<p>The OCA JSON data file <em>must</em> be at the root of the OCA folder, and <em>should</em> have the same name.</p>
+<p>Other files and folders <em>may</em> be stored as follow, but as the JSON data contains all (relative) paths to all files, that&rsquo;s not mandatory.</p>
+<pre><code>▾ Document_name.oca
+    · Document_name.oca
+    ▾ Layer_name_1
+        · Layer_name_1_00000.png
+        · Layer_name_1_00110.png
+        · Layer_name_1_00112.png
+        · Layer_name_1_00114.png
+        · Layer_name_1_00200.png
+    ▾ Group_name_2
+        ▾ Layer_name_3
+            · Layer_name_3_00000.png
+            · Layer_name_3_00003.png
+        ▸ Layer_name_4
+        ▸ Layer_name_5
+    ▸ Group_name_6
 </code></pre>
-<p>Note that the <code>.oca</code> file at the root could also use the extension <code>.json</code></p></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>.oca</code> file at the root may also use the extension <code>.json</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All layers may be stored in a single subfolder with an arbitrary name (e.g. &ldquo;content&rdquo;, &ldquo;data&rdquo;, &ldquo;layers&rdquo;, &ldquo;Document&rdquo;&hellip;) instead of directly at the root.</p>
+</div></div>
         
         
     </div>

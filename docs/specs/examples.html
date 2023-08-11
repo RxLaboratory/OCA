@@ -61,7 +61,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="..">OCA Documentation</a>
+              <a class="navbar-brand" href="../index.html">OCA Documentation</a>
             
         </div>
 
@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.0</a>
+                        <a href="../index.html">v1.1.1</a>
                     </li>
                 
                 
@@ -133,7 +133,13 @@
         
             
 <li >
-    <a href="color-depth.html">Color Depth</a>
+    <a href="coordinates.html">Coordinates and transform</a>
+</li>
+
+        
+            
+<li >
+    <a href="color-depth.html">Opacity, Colors and Color Depth</a>
 </li>
 
         
@@ -145,7 +151,7 @@
         
             
 <li >
-    <a href="blending-modes.html">BLending Modes</a>
+    <a href="blending-modes.html">Blending Modes</a>
 </li>
 
         
@@ -167,6 +173,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../roadmap.html">Roadmap</a>
+</li>
+
                         
                             
 <li >
@@ -244,8 +256,10 @@
     <div class="bs-sidebar hidden-print affix well" role="complementary">
         <ul class="nav bs-sidenav">
             <li class="first-level active"><a href="#examples">Examples</a></li>
-                <li class="second-level"><a href="#generic">Generic</a></li>
+                <li class="second-level"><a href="#bird">Bird</a></li>
                     
+                    <li class="third-level"><a href="#full-layers">Full Layers</a></li>
+                    <li class="third-level"><a href="#cropped-layers">Cropped Layers</a></li>
         </ul>
     </div>
     <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
@@ -254,7 +268,7 @@
         
         
             <li >
-                <a href="../../index.html">v1.1.0</a>
+                <a href="../index.html">v1.1.1</a>
             </li>
         
         
@@ -302,7 +316,11 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="color-depth.html">Color Depth</a></li>
+                                    <li class="third-level "><a href="coordinates.html">Coordinates and transform</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="color-depth.html">Opacity, Colors and Color Depth</a></li>
                                     
                                 
                                     
@@ -310,7 +328,7 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="blending-modes.html">BLending Modes</a></li>
+                                    <li class="third-level "><a href="blending-modes.html">Blending Modes</a></li>
                                     
                                 
                                     
@@ -329,6 +347,10 @@
             <li class="first-level">
                 <button  type="button" class="collapse-button ">...</button>
                 <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="../roadmap.html">Roadmap</a></li>
+                        
                     
                         
                         <li class="second-level "><a href="../changelog.html">Changelog</a></li>
@@ -371,93 +393,86 @@
 
 <p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31" /></p>
 <h1 id="examples">Examples</h1>
-<h2 id="generic">Generic</h2>
-<p>A generic OCA file looks like this:</p>
+<h2 id="bird">Bird</h2>
+<p><img alt="" src="../img/OCA_Example_Bird.apng" /><br />
+Rendered in the <em>APNG</em> format.</p>
+<p>This is a complete example featuring blending modes, groups, and the <em>passthrough</em> option for groups.</p>
+<p>It was made in <em>Krita 5.1.1</em>.</p>
+<p>There are two different versions, as the reference implementation of an <a href="http://oca-krita.rxlab.guide/index.html" target="_blank">OCA exporter in Krita</a> (<a href="https://codeberg.org/RxLaboratory/OCA-Krita" target="_blank">src</a>) has the option to either export all layers at the same size at the document (cropped if bigger, with empty space if smaller), or retain their original size (which may be bigger or smaller than the document).</p>
+<p>▶ You can <a href="http://oca.rxlab.guide/downloads/OCA_Example_Bird.zip">download this example here</a>, including the source <em>Krita</em> document and two OCA versions.</p>
+<p>For both versions, the folder structure is the same:</p>
+<ul>
+<li><strong>Document</strong><br />
+    Folder containing all the layers and frames  <ul>
+<li><strong>Bird Flying</strong><br />
+Folder containing the frames of a layer  <ul>
+<li><em>Bird Flying_00000.png</em> &hellip; <em>Bird Flying_00022.png</em><br />
+The frames</li>
+</ul>
+</li>
+<li><strong>Cui !</strong><br />
+Folder containing the frames of a layer  <ul>
+<li><em>Cui !_00008.png</em> &hellip; <em>Cui !_00026.png</em><br />
+The frames</li>
+</ul>
+</li>
+<li><strong>Sun</strong><br />
+Folder of a group layer<ul>
+<li><em>Flare_00000.png</em><br />
+    A layer without animation (single frame)</li>
+<li><em>Sun_00000.png</em><br />
+    A layer without animation (single frame)</li>
+</ul>
+</li>
+<li><strong>Trees</strong><br />
+Folder of a group layer<ul>
+<li><em>Tree 1_00000.png</em><br />
+    A layer without animation (single frame)</li>
+<li><em>Tree 2_00000.png</em><br />
+    A layer without animation (single frame)</li>
+<li><em>Tree 3_00000.png</em><br />
+    A layer without animation (single frame)</li>
+</ul>
+</li>
+<li><em>Sky_00000.png</em><br />
+    A layer without animation (single frame)</li>
+</ul>
+</li>
+<li><em>OCA_Example_Bird.oca</em><br />
+    OCA JSON data</li>
+</ul>
+<p>Here&rsquo;s a copy of the two versions of the OCA JSON data.</p>
+<h3 id="full-layers">Full Layers</h3>
 <pre><code class="language-json">{
-    &quot;name&quot;: &quot;Document_name&quot;,
-    &quot;frameRate&quot;: 24,
-    &quot;width&quot;: 1920,
-    &quot;height&quot;: 1080,
+    &quot;name&quot;: &quot;Document&quot;,
+    &quot;frameRate&quot;: 12,
+    &quot;width&quot;: 1280,
+    &quot;height&quot;: 720,
     &quot;startTime&quot;: 0,
-    &quot;endTime&quot;: 220,
+    &quot;endTime&quot;: 33,
     &quot;colorDepth&quot;: &quot;U8&quot;,
     &quot;backgroundColor&quot;: [
-        0.9882352941176471,
-        0.9137254901960784,s
-        0.30980392156862746,
-        1.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
     ],
-    &quot;ocaVersion&quot;: &quot;1.1.0&quot;,
-    &quot;originApp&quot;: &quot;Krita&quot;,
-    &quot;originAppVersion&quot;: &quot;5.0.0&quot;,
     &quot;layers&quot;: [
         {
-            &quot;name&quot;: &quot;Layer_name_1&quot;,
+            &quot;name&quot;: &quot;Sky&quot;,
             &quot;frames&quot;: [
                 {
-                    &quot;name&quot;: &quot;Layer_name_1_00000&quot;,
-                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00000.png&quot;,
+                    &quot;name&quot;: &quot;Sky_00000&quot;,
+                    &quot;fileName&quot;: &quot;Document/Sky_00000.png&quot;,
                     &quot;frameNumber&quot;: 0,
                     &quot;opacity&quot;: 1.0,
                     &quot;position&quot;: [
-                        959,
-                        539
+                        582,
+                        388
                     ],
-                    &quot;width&quot;: 1920,
-                    &quot;height&quot;: 1080,
-                    &quot;duration&quot;: 110
-                },
-                {
-                    &quot;name&quot;: &quot;Layer_name_1_00110&quot;,
-                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00110.png&quot;,
-                    &quot;frameNumber&quot;: 0,
-                    &quot;opacity&quot;: 1.0,
-                    &quot;position&quot;: [
-                        959,
-                        539
-                    ],
-                    &quot;width&quot;: 1920,
-                    &quot;height&quot;: 1080,
-                    &quot;duration&quot;: 2
-                },
-                {
-                    &quot;name&quot;: &quot;Layer_name_1_00112&quot;,
-                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00112.png&quot;,
-                    &quot;frameNumber&quot;: 0,
-                    &quot;opacity&quot;: 1.0,
-                    &quot;position&quot;: [
-                        959,
-                        539
-                    ],
-                    &quot;width&quot;: 1920,
-                    &quot;height&quot;: 1080,
-                    &quot;duration&quot;: 2
-                },
-                {
-                    &quot;name&quot;: &quot;Layer_name_1_00114&quot;,
-                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00114.png&quot;,
-                    &quot;frameNumber&quot;: 0,
-                    &quot;opacity&quot;: 1.0,
-                    &quot;position&quot;: [
-                        959,
-                        539
-                    ],
-                    &quot;width&quot;: 1920,
-                    &quot;height&quot;: 1080,
-                    &quot;duration&quot;: 6
-                },
-                {
-                    &quot;name&quot;: &quot;Layer_name_1_00200&quot;,
-                    &quot;fileName&quot;: &quot;Document_name.oca/Layer_name_1/Layer_name_1_00200.png&quot;,
-                    &quot;frameNumber&quot;: 0,
-                    &quot;opacity&quot;: 1.0,
-                    &quot;position&quot;: [
-                        959,
-                        539
-                    ],
-                    &quot;width&quot;: 1920,
-                    &quot;height&quot;: 1080,
-                    &quot;duration&quot;: 20
+                    &quot;width&quot;: 2543,
+                    &quot;height&quot;: 909,
+                    &quot;duration&quot;: 33
                 }
             ],
             &quot;childLayers&quot;: [],
@@ -466,80 +481,126 @@
             &quot;blendingMode&quot;: &quot;normal&quot;,
             &quot;animated&quot;: false,
             &quot;position&quot;: [
-                959,
-                539
+                582,
+                388
             ],
-            &quot;width&quot;: 1920,
-            &quot;height&quot;: 1080,
+            &quot;width&quot;: 2543,
+            &quot;height&quot;: 909,
             &quot;label&quot;: 0,
             &quot;opacity&quot;: 1.0,
             &quot;visible&quot;: true,
             &quot;passThrough&quot;: false,
-            &quot;reference&quot;: false
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
         },
         {
-            &quot;name&quot;: &quot;Group_name_2&quot;,
+            &quot;name&quot;: &quot;Trees&quot;,
             &quot;frames&quot;: [],
             &quot;childLayers&quot;: [
                 {
-                    &quot;name&quot;: &quot;Layer_name_3&quot;,
+                    &quot;name&quot;: &quot;Tree 3&quot;,
                     &quot;frames&quot;: [
                         {
-                            &quot;name&quot;: &quot;Layer_name_3_00000&quot;,
-                            &quot;fileName&quot;: &quot;Document_name.oca/Group_name_2/Layer_name_3/Layer_name_3_00000.png&quot;,
+                            &quot;name&quot;: &quot;Tree 3_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Trees/Tree 3_00000.png&quot;,
                             &quot;frameNumber&quot;: 0,
-                            &quot;opacity&quot;: 1.0,
+                            &quot;opacity&quot;: 0.45098039215686275,
                             &quot;position&quot;: [
-                                960,
-                                540
+                                720,
+                                677
                             ],
-                            &quot;width&quot;: 1920,
-                            &quot;height&quot;: 1080,
-                            &quot;duration&quot;: 3
-                        },
-                        {
-                            &quot;name&quot;: &quot;Layer_name_3_00003&quot;,
-                            &quot;fileName&quot;: &quot;Document_name.oca/Group_name_2/Layer_name_3/Layer_name_3_00003.png&quot;,
-                            &quot;frameNumber&quot;: 0,
-                            &quot;opacity&quot;: 1.0,
-                            &quot;position&quot;: [
-                                960,
-                                540
-                            ],
-                            &quot;width&quot;: 1920,
-                            &quot;height&quot;: 1080,
-                            &quot;duration&quot;: 7
-                        }
-                        {
-                            &quot;name&quot;: &quot;_blank_&quot;,
-                            &quot;fileName&quot;: &quot;&quot;,
-                            &quot;frameNumber&quot;: 0,
-                            &quot;opacity&quot;: 1.0,
-                            &quot;position&quot;: [
-                                0,
-                                0
-                            ],
-                            &quot;width&quot;: 0,
-                            &quot;height&quot;: 0,
-                            &quot;duration&quot;: 210
+                            &quot;width&quot;: 471,
+                            &quot;height&quot;: 617,
+                            &quot;duration&quot;: 33
                         }
                     ],
                     &quot;childLayers&quot;: [],
                     &quot;type&quot;: &quot;paintlayer&quot;,
                     &quot;fileType&quot;: &quot;png&quot;,
                     &quot;blendingMode&quot;: &quot;normal&quot;,
-                    &quot;animated&quot;: true,
+                    &quot;animated&quot;: false,
                     &quot;position&quot;: [
-                        960.0,
-                        540.0
+                        720,
+                        677
                     ],
-                    &quot;width&quot;: 1920,
-                    &quot;height&quot;: 1080,
+                    &quot;width&quot;: 471,
+                    &quot;height&quot;: 617,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 0.45098039215686275,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                },
+                {
+                    &quot;name&quot;: &quot;Tree  2&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Tree  2_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Trees/Tree  2_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 0.7607843137254902,
+                            &quot;position&quot;: [
+                                275,
+                                599
+                            ],
+                            &quot;width&quot;: 471,
+                            &quot;height&quot;: 617,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;normal&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        275,
+                        599
+                    ],
+                    &quot;width&quot;: 471,
+                    &quot;height&quot;: 617,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 0.7607843137254902,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                },
+                {
+                    &quot;name&quot;: &quot;Tree 1&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Tree 1_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Trees/Tree 1_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 1.0,
+                            &quot;position&quot;: [
+                                928,
+                                510
+                            ],
+                            &quot;width&quot;: 471,
+                            &quot;height&quot;: 617,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;normal&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        928,
+                        510
+                    ],
+                    &quot;width&quot;: 471,
+                    &quot;height&quot;: 617,
                     &quot;label&quot;: 0,
                     &quot;opacity&quot;: 1.0,
                     &quot;visible&quot;: true,
                     &quot;passThrough&quot;: false,
-                    &quot;reference&quot;: false
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
                 }
             ],
             &quot;type&quot;: &quot;grouplayer&quot;,
@@ -547,36 +608,1467 @@
             &quot;blendingMode&quot;: &quot;normal&quot;,
             &quot;animated&quot;: false,
             &quot;position&quot;: [
-                957,
-                544
+                640.0,
+                360.0
             ],
-            &quot;width&quot;: 1743,
-            &quot;height&quot;: 1051,
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
             &quot;label&quot;: 0,
             &quot;opacity&quot;: 1.0,
             &quot;visible&quot;: true,
             &quot;passThrough&quot;: false,
-            &quot;reference&quot;: false
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
+        },
+        {
+            &quot;name&quot;: &quot;Bird Flying&quot;,
+            &quot;frames&quot;: [
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00000&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00000.png&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        99,
+                        488
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 18,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00001&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00001.png&quot;,
+                    &quot;frameNumber&quot;: 1,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        144,
+                        453
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 18,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00002&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00002.png&quot;,
+                    &quot;frameNumber&quot;: 2,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        177,
+                        429
+                    ],
+                    &quot;width&quot;: 145,
+                    &quot;height&quot;: 35,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00003&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00003.png&quot;,
+                    &quot;frameNumber&quot;: 3,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        198,
+                        413
+                    ],
+                    &quot;width&quot;: 151,
+                    &quot;height&quot;: 38,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00004&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00004.png&quot;,
+                    &quot;frameNumber&quot;: 4,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        207,
+                        403
+                    ],
+                    &quot;width&quot;: 149,
+                    &quot;height&quot;: 43,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00005&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00005.png&quot;,
+                    &quot;frameNumber&quot;: 5,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        216,
+                        393
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 20,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00006&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00006.png&quot;,
+                    &quot;frameNumber&quot;: 6,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        247,
+                        370
+                    ],
+                    &quot;width&quot;: 135,
+                    &quot;height&quot;: 35,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00007&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00007.png&quot;,
+                    &quot;frameNumber&quot;: 7,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        287,
+                        333
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 18,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00008&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00008.png&quot;,
+                    &quot;frameNumber&quot;: 8,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        328,
+                        305
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 18,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00009&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00009.png&quot;,
+                    &quot;frameNumber&quot;: 9,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        356,
+                        279
+                    ],
+                    &quot;width&quot;: 145,
+                    &quot;height&quot;: 35,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00010&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00010.png&quot;,
+                    &quot;frameNumber&quot;: 10,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        371,
+                        263
+                    ],
+                    &quot;width&quot;: 151,
+                    &quot;height&quot;: 38,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00011&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00011.png&quot;,
+                    &quot;frameNumber&quot;: 11,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        383,
+                        252
+                    ],
+                    &quot;width&quot;: 149,
+                    &quot;height&quot;: 43,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00012&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00012.png&quot;,
+                    &quot;frameNumber&quot;: 12,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        394,
+                        246
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 20,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00013&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00013.png&quot;,
+                    &quot;frameNumber&quot;: 13,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        435,
+                        220
+                    ],
+                    &quot;width&quot;: 135,
+                    &quot;height&quot;: 35,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00014&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00014.png&quot;,
+                    &quot;frameNumber&quot;: 14,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        480,
+                        180
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 18,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00015&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00015.png&quot;,
+                    &quot;frameNumber&quot;: 15,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        517,
+                        148
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 18,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00016&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00016.png&quot;,
+                    &quot;frameNumber&quot;: 16,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        534,
+                        127
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 18,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00017&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00017.png&quot;,
+                    &quot;frameNumber&quot;: 17,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        560,
+                        103
+                    ],
+                    &quot;width&quot;: 145,
+                    &quot;height&quot;: 35,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00018&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00018.png&quot;,
+                    &quot;frameNumber&quot;: 18,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        579,
+                        86
+                    ],
+                    &quot;width&quot;: 151,
+                    &quot;height&quot;: 38,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00019&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00019.png&quot;,
+                    &quot;frameNumber&quot;: 19,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        595,
+                        69
+                    ],
+                    &quot;width&quot;: 149,
+                    &quot;height&quot;: 43,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00020&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00020.png&quot;,
+                    &quot;frameNumber&quot;: 20,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        629,
+                        54
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 20,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00021&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00021.png&quot;,
+                    &quot;frameNumber&quot;: 21,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        664,
+                        30
+                    ],
+                    &quot;width&quot;: 135,
+                    &quot;height&quot;: 35,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00022&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00022.png&quot;,
+                    &quot;frameNumber&quot;: 22,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        684,
+                        -1
+                    ],
+                    &quot;width&quot;: 148,
+                    &quot;height&quot;: 18,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;_blank&quot;,
+                    &quot;fileName&quot;: &quot;&quot;,
+                    &quot;frameNumber&quot;: 23,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        0,
+                        0
+                    ],
+                    &quot;width&quot;: 0,
+                    &quot;height&quot;: 0,
+                    &quot;duration&quot;: 10
+                }
+            ],
+            &quot;childLayers&quot;: [],
+            &quot;type&quot;: &quot;paintlayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;normal&quot;,
+            &quot;animated&quot;: true,
+            &quot;position&quot;: [
+                640.0,
+                360.0
+            ],
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: false,
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
+        },
+        {
+            &quot;name&quot;: &quot;Cui !&quot;,
+            &quot;frames&quot;: [
+                {
+                    &quot;name&quot;: &quot;_blank&quot;,
+                    &quot;fileName&quot;: &quot;&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        0,
+                        0
+                    ],
+                    &quot;width&quot;: 0,
+                    &quot;height&quot;: 0,
+                    &quot;duration&quot;: 8
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00008&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00008.png&quot;,
+                    &quot;frameNumber&quot;: 8,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        479,
+                        302
+                    ],
+                    &quot;width&quot;: 30,
+                    &quot;height&quot;: 39,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00009&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00009.png&quot;,
+                    &quot;frameNumber&quot;: 9,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        498,
+                        297
+                    ],
+                    &quot;width&quot;: 68,
+                    &quot;height&quot;: 48,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00010&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00010.png&quot;,
+                    &quot;frameNumber&quot;: 10,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        507,
+                        297
+                    ],
+                    &quot;width&quot;: 86,
+                    &quot;height&quot;: 48,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00012&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00012.png&quot;,
+                    &quot;frameNumber&quot;: 12,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        528,
+                        300
+                    ],
+                    &quot;width&quot;: 116,
+                    &quot;height&quot;: 56,
+                    &quot;duration&quot;: 3
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00015&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00015.png&quot;,
+                    &quot;frameNumber&quot;: 15,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        560,
+                        319
+                    ],
+                    &quot;width&quot;: 146,
+                    &quot;height&quot;: 60,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00017&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00017.png&quot;,
+                    &quot;frameNumber&quot;: 17,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        570,
+                        342
+                    ],
+                    &quot;width&quot;: 146,
+                    &quot;height&quot;: 60,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00019&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00019.png&quot;,
+                    &quot;frameNumber&quot;: 19,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        594,
+                        366
+                    ],
+                    &quot;width&quot;: 174,
+                    &quot;height&quot;: 85,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00021&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00021.png&quot;,
+                    &quot;frameNumber&quot;: 21,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        597,
+                        436
+                    ],
+                    &quot;width&quot;: 173,
+                    &quot;height&quot;: 84,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00023&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00023.png&quot;,
+                    &quot;frameNumber&quot;: 23,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        597,
+                        487
+                    ],
+                    &quot;width&quot;: 173,
+                    &quot;height&quot;: 84,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00024&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00024.png&quot;,
+                    &quot;frameNumber&quot;: 24,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        598,
+                        510
+                    ],
+                    &quot;width&quot;: 173,
+                    &quot;height&quot;: 84,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00025&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00025.png&quot;,
+                    &quot;frameNumber&quot;: 25,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        600,
+                        525
+                    ],
+                    &quot;width&quot;: 173,
+                    &quot;height&quot;: 84,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00026&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00026.png&quot;,
+                    &quot;frameNumber&quot;: 26,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        599,
+                        533
+                    ],
+                    &quot;width&quot;: 173,
+                    &quot;height&quot;: 84,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;_blank&quot;,
+                    &quot;fileName&quot;: &quot;&quot;,
+                    &quot;frameNumber&quot;: 27,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        0,
+                        0
+                    ],
+                    &quot;width&quot;: 0,
+                    &quot;height&quot;: 0,
+                    &quot;duration&quot;: 6
+                }
+            ],
+            &quot;childLayers&quot;: [],
+            &quot;type&quot;: &quot;paintlayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;dodge&quot;,
+            &quot;animated&quot;: true,
+            &quot;position&quot;: [
+                640.0,
+                360.0
+            ],
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: false,
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
+        },
+        {
+            &quot;name&quot;: &quot;Sun&quot;,
+            &quot;frames&quot;: [],
+            &quot;childLayers&quot;: [
+                {
+                    &quot;name&quot;: &quot;Sun&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Sun_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Sun/Sun_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 0.611764705882353,
+                            &quot;position&quot;: [
+                                152,
+                                111
+                            ],
+                            &quot;width&quot;: 257,
+                            &quot;height&quot;: 247,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;normal&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        152,
+                        111
+                    ],
+                    &quot;width&quot;: 257,
+                    &quot;height&quot;: 247,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 0.611764705882353,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                },
+                {
+                    &quot;name&quot;: &quot;Flare&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Flare_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Sun/Flare_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 0.7098039215686275,
+                            &quot;position&quot;: [
+                                639,
+                                359
+                            ],
+                            &quot;width&quot;: 1280,
+                            &quot;height&quot;: 720,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;add&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        639,
+                        359
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 0.7098039215686275,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                }
+            ],
+            &quot;type&quot;: &quot;grouplayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;normal&quot;,
+            &quot;animated&quot;: false,
+            &quot;position&quot;: [
+                640.0,
+                360.0
+            ],
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: true,
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
         }
-    ]
+    ],
+    &quot;originApp&quot;: &quot;Krita&quot;,
+    &quot;originAppVersion&quot;: &quot;5.1.1&quot;,
+    &quot;ocaVersion&quot;: &quot;1.1.0&quot;
 }
 </code></pre>
-<p>And its corresponding folder structure should look like this:</p>
-<pre><code>|v Document_name.oca
- |- Document_name.oca
- |v Layer_name_1
-  |- Layer_name_1_00000.png
-  |- Layer_name_1_00110.png
-  |- Layer_name_1_00112.png
-  |- Layer_name_1_00114.png
-  |- Layer_name_1_00200.png
- |v Group_name_2
-  |v Layer_name_3
-   |- Layer_name_3_00000.png
-   |- Layer_name_3_00003.png
-  |&gt; Layer_name_4
-  |&gt; Layer_name_5
- |&gt; Group_name_6
+<h3 id="cropped-layers">Cropped Layers</h3>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;Document&quot;,
+    &quot;frameRate&quot;: 12,
+    &quot;width&quot;: 1280,
+    &quot;height&quot;: 720,
+    &quot;startTime&quot;: 0,
+    &quot;endTime&quot;: 33,
+    &quot;colorDepth&quot;: &quot;U8&quot;,
+    &quot;backgroundColor&quot;: [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    &quot;layers&quot;: [
+        {
+            &quot;name&quot;: &quot;Sky&quot;,
+            &quot;frames&quot;: [
+                {
+                    &quot;name&quot;: &quot;Sky_00000&quot;,
+                    &quot;fileName&quot;: &quot;Document/Sky_00000.png&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 33
+                }
+            ],
+            &quot;childLayers&quot;: [],
+            &quot;type&quot;: &quot;paintlayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;normal&quot;,
+            &quot;animated&quot;: false,
+            &quot;position&quot;: [
+                640.0,
+                360.0
+            ],
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: false,
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
+        },
+        {
+            &quot;name&quot;: &quot;Trees&quot;,
+            &quot;frames&quot;: [],
+            &quot;childLayers&quot;: [
+                {
+                    &quot;name&quot;: &quot;Tree 3&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Tree 3_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Trees/Tree 3_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 0.45098039215686275,
+                            &quot;position&quot;: [
+                                640.0,
+                                360.0
+                            ],
+                            &quot;width&quot;: 1280,
+                            &quot;height&quot;: 720,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;normal&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 0.45098039215686275,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                },
+                {
+                    &quot;name&quot;: &quot;Tree  2&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Tree  2_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Trees/Tree  2_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 0.7607843137254902,
+                            &quot;position&quot;: [
+                                640.0,
+                                360.0
+                            ],
+                            &quot;width&quot;: 1280,
+                            &quot;height&quot;: 720,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;normal&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 0.7607843137254902,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                },
+                {
+                    &quot;name&quot;: &quot;Tree 1&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Tree 1_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Trees/Tree 1_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 1.0,
+                            &quot;position&quot;: [
+                                640.0,
+                                360.0
+                            ],
+                            &quot;width&quot;: 1280,
+                            &quot;height&quot;: 720,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;normal&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                }
+            ],
+            &quot;type&quot;: &quot;grouplayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;normal&quot;,
+            &quot;animated&quot;: false,
+            &quot;position&quot;: [
+                640.0,
+                360.0
+            ],
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: false,
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
+        },
+        {
+            &quot;name&quot;: &quot;Bird Flying&quot;,
+            &quot;frames&quot;: [
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00000&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00000.png&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00001&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00001.png&quot;,
+                    &quot;frameNumber&quot;: 1,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00002&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00002.png&quot;,
+                    &quot;frameNumber&quot;: 2,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00003&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00003.png&quot;,
+                    &quot;frameNumber&quot;: 3,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00004&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00004.png&quot;,
+                    &quot;frameNumber&quot;: 4,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00005&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00005.png&quot;,
+                    &quot;frameNumber&quot;: 5,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00006&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00006.png&quot;,
+                    &quot;frameNumber&quot;: 6,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00007&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00007.png&quot;,
+                    &quot;frameNumber&quot;: 7,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00008&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00008.png&quot;,
+                    &quot;frameNumber&quot;: 8,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00009&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00009.png&quot;,
+                    &quot;frameNumber&quot;: 9,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00010&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00010.png&quot;,
+                    &quot;frameNumber&quot;: 10,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00011&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00011.png&quot;,
+                    &quot;frameNumber&quot;: 11,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00012&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00012.png&quot;,
+                    &quot;frameNumber&quot;: 12,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00013&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00013.png&quot;,
+                    &quot;frameNumber&quot;: 13,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00014&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00014.png&quot;,
+                    &quot;frameNumber&quot;: 14,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00015&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00015.png&quot;,
+                    &quot;frameNumber&quot;: 15,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00016&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00016.png&quot;,
+                    &quot;frameNumber&quot;: 16,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00017&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00017.png&quot;,
+                    &quot;frameNumber&quot;: 17,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00018&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00018.png&quot;,
+                    &quot;frameNumber&quot;: 18,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00019&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00019.png&quot;,
+                    &quot;frameNumber&quot;: 19,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00020&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00020.png&quot;,
+                    &quot;frameNumber&quot;: 20,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00021&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00021.png&quot;,
+                    &quot;frameNumber&quot;: 21,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Bird Flying_00022&quot;,
+                    &quot;fileName&quot;: &quot;Document/Bird Flying/Bird Flying_00022.png&quot;,
+                    &quot;frameNumber&quot;: 22,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;_blank&quot;,
+                    &quot;fileName&quot;: &quot;&quot;,
+                    &quot;frameNumber&quot;: 23,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        0,
+                        0
+                    ],
+                    &quot;width&quot;: 0,
+                    &quot;height&quot;: 0,
+                    &quot;duration&quot;: 10
+                }
+            ],
+            &quot;childLayers&quot;: [],
+            &quot;type&quot;: &quot;paintlayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;normal&quot;,
+            &quot;animated&quot;: true,
+            &quot;position&quot;: [
+                640.0,
+                360.0
+            ],
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: false,
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
+        },
+        {
+            &quot;name&quot;: &quot;Cui !&quot;,
+            &quot;frames&quot;: [
+                {
+                    &quot;name&quot;: &quot;_blank&quot;,
+                    &quot;fileName&quot;: &quot;&quot;,
+                    &quot;frameNumber&quot;: 0,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        0,
+                        0
+                    ],
+                    &quot;width&quot;: 0,
+                    &quot;height&quot;: 0,
+                    &quot;duration&quot;: 8
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00008&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00008.png&quot;,
+                    &quot;frameNumber&quot;: 8,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00009&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00009.png&quot;,
+                    &quot;frameNumber&quot;: 9,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00010&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00010.png&quot;,
+                    &quot;frameNumber&quot;: 10,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00012&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00012.png&quot;,
+                    &quot;frameNumber&quot;: 12,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 3
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00015&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00015.png&quot;,
+                    &quot;frameNumber&quot;: 15,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00017&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00017.png&quot;,
+                    &quot;frameNumber&quot;: 17,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00019&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00019.png&quot;,
+                    &quot;frameNumber&quot;: 19,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00021&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00021.png&quot;,
+                    &quot;frameNumber&quot;: 21,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 2
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00023&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00023.png&quot;,
+                    &quot;frameNumber&quot;: 23,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00024&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00024.png&quot;,
+                    &quot;frameNumber&quot;: 24,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00025&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00025.png&quot;,
+                    &quot;frameNumber&quot;: 25,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;Cui !_00026&quot;,
+                    &quot;fileName&quot;: &quot;Document/Cui !/Cui !_00026.png&quot;,
+                    &quot;frameNumber&quot;: 26,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;duration&quot;: 1
+                },
+                {
+                    &quot;name&quot;: &quot;_blank&quot;,
+                    &quot;fileName&quot;: &quot;&quot;,
+                    &quot;frameNumber&quot;: 27,
+                    &quot;opacity&quot;: 1.0,
+                    &quot;position&quot;: [
+                        0,
+                        0
+                    ],
+                    &quot;width&quot;: 0,
+                    &quot;height&quot;: 0,
+                    &quot;duration&quot;: 6
+                }
+            ],
+            &quot;childLayers&quot;: [],
+            &quot;type&quot;: &quot;paintlayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;dodge&quot;,
+            &quot;animated&quot;: true,
+            &quot;position&quot;: [
+                640.0,
+                360.0
+            ],
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: false,
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
+        },
+        {
+            &quot;name&quot;: &quot;Sun&quot;,
+            &quot;frames&quot;: [],
+            &quot;childLayers&quot;: [
+                {
+                    &quot;name&quot;: &quot;Sun&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Sun_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Sun/Sun_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 0.611764705882353,
+                            &quot;position&quot;: [
+                                640.0,
+                                360.0
+                            ],
+                            &quot;width&quot;: 1280,
+                            &quot;height&quot;: 720,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;normal&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 0.611764705882353,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                },
+                {
+                    &quot;name&quot;: &quot;Flare&quot;,
+                    &quot;frames&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Flare_00000&quot;,
+                            &quot;fileName&quot;: &quot;Document\\Sun/Flare_00000.png&quot;,
+                            &quot;frameNumber&quot;: 0,
+                            &quot;opacity&quot;: 0.7098039215686275,
+                            &quot;position&quot;: [
+                                640.0,
+                                360.0
+                            ],
+                            &quot;width&quot;: 1280,
+                            &quot;height&quot;: 720,
+                            &quot;duration&quot;: 33
+                        }
+                    ],
+                    &quot;childLayers&quot;: [],
+                    &quot;type&quot;: &quot;paintlayer&quot;,
+                    &quot;fileType&quot;: &quot;png&quot;,
+                    &quot;blendingMode&quot;: &quot;add&quot;,
+                    &quot;animated&quot;: false,
+                    &quot;position&quot;: [
+                        640.0,
+                        360.0
+                    ],
+                    &quot;width&quot;: 1280,
+                    &quot;height&quot;: 720,
+                    &quot;label&quot;: 0,
+                    &quot;opacity&quot;: 0.7098039215686275,
+                    &quot;visible&quot;: true,
+                    &quot;passThrough&quot;: false,
+                    &quot;reference&quot;: false,
+                    &quot;inheritAlpha&quot;: false
+                }
+            ],
+            &quot;type&quot;: &quot;grouplayer&quot;,
+            &quot;fileType&quot;: &quot;png&quot;,
+            &quot;blendingMode&quot;: &quot;normal&quot;,
+            &quot;animated&quot;: false,
+            &quot;position&quot;: [
+                640.0,
+                360.0
+            ],
+            &quot;width&quot;: 1280,
+            &quot;height&quot;: 720,
+            &quot;label&quot;: 0,
+            &quot;opacity&quot;: 1.0,
+            &quot;visible&quot;: true,
+            &quot;passThrough&quot;: true,
+            &quot;reference&quot;: false,
+            &quot;inheritAlpha&quot;: false
+        }
+    ],
+    &quot;originApp&quot;: &quot;Krita&quot;,
+    &quot;originAppVersion&quot;: &quot;5.1.1&quot;,
+    &quot;ocaVersion&quot;: &quot;1.1.0&quot;
+}
 </code></pre></div>
         
         

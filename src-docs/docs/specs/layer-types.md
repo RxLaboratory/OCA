@@ -9,3 +9,8 @@
 | paintlayer | A bitmap containing an image |
 | vectorlayer | Vectors forming an image, like an *SVG* file |
 | grouplayer | A layer without frames/images but continaing other layers |
+
+!!! WIP
+    We're planning to add a new `ocalayer` layer type to allow for nested OCA documents.
+
+    ▹ [Roadmap](../roadmap.md)

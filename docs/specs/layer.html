@@ -61,7 +61,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="..">OCA Documentation</a>
+              <a class="navbar-brand" href="../index.html">OCA Documentation</a>
             
         </div>
 
@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.0</a>
+                        <a href="../index.html">v1.1.1</a>
                     </li>
                 
                 
@@ -133,7 +133,13 @@
         
             
 <li >
-    <a href="color-depth.html">Color Depth</a>
+    <a href="coordinates.html">Coordinates and transform</a>
+</li>
+
+        
+            
+<li >
+    <a href="color-depth.html">Opacity, Colors and Color Depth</a>
 </li>
 
         
@@ -145,7 +151,7 @@
         
             
 <li >
-    <a href="blending-modes.html">BLending Modes</a>
+    <a href="blending-modes.html">Blending Modes</a>
 </li>
 
         
@@ -167,6 +173,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../roadmap.html">Roadmap</a>
+</li>
+
                         
                             
 <li >
@@ -256,7 +268,7 @@
         
         
             <li >
-                <a href="../../index.html">v1.1.0</a>
+                <a href="../index.html">v1.1.1</a>
             </li>
         
         
@@ -304,7 +316,11 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="color-depth.html">Color Depth</a></li>
+                                    <li class="third-level "><a href="coordinates.html">Coordinates and transform</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="color-depth.html">Opacity, Colors and Color Depth</a></li>
                                     
                                 
                                     
@@ -312,7 +328,7 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="blending-modes.html">BLending Modes</a></li>
+                                    <li class="third-level "><a href="blending-modes.html">Blending Modes</a></li>
                                     
                                 
                                     
@@ -331,6 +347,10 @@
             <li class="first-level">
                 <button  type="button" class="collapse-button ">...</button>
                 <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="../roadmap.html">Roadmap</a></li>
+                        
                     
                         
                         <li class="second-level "><a href="../changelog.html">Changelog</a></li>
@@ -371,27 +391,141 @@
 </div></div>
         <div class="col-md-9" role="main">
 
-<p><img alt="META" src="authors:Nicolas &quot;Duduf&quot; Dufresne;license:GNU-FDL;copyright:2022;updated:2022/01/31" /></p>
 <h1 id="layer-object">Layer Object</h1>
-<p>Default values should be used when importing an OCA format if the data can&rsquo;t be read or is not available.</p>
-<ul>
-<li><code>name</code>: <em>string</em>, the name of the layer</li>
-<li><code>frames</code>: <em>frameObject[]</em>, the frames of the layer. See the <em>Frame Object Specs</em> section below.</li>
-<li><code>childLayers</code>: <em>layerObject[]</em>, the child layers if this layer is a group.</li>
-<li><code>type</code>: <em>string</em>, the type of the layer. See the <em>Layer Types</em> section below. Default: <code>paintlayer</code></li>
-<li><code>fileType</code>: <em>string</em>, the type of the files used for the frames. The file extension, without the initial dot.</li>
-<li><code>blendingMode</code>: <em>string</em>, the blending mode of the layer. See the <em>Blending modes</em> section below. Default: <code>normal</code></li>
-<li><code>inheritAlpha</code>: <em>boolean</em>, when true, the alpha of the layer is multiplied with the alpha of all the layers under in the same group (called <em>Preserve Transparency</em> in <em>Adobe After Effects</em>, <em>Inherit Alpha</em> in <em>Krita</em>). Default: <code>false</code></li>
-<li><code>animated</code>: <em>boolean</em>, whether this layer is a single frame or not. Default: <code>true</code></li>
-<li><code>position</code>: <em>int[]</em>, the coordinates of the center of the layer, in pixels [X,Y] in the document coordinates. Default: half the document width and half the document height</li>
-<li><code>width</code>: <em>int</em>, the width, in pixels. Default: the document width</li>
-<li><code>height</code>: <em>int</em>, the height, in pixels. Default: the document height</li>
-<li><code>label</code>: <em>int</em>, a label for the layer. See the <em>Layer Label</em> section below. Default: <code>-1</code></li>
-<li><code>opacity</code>: <em>float</em>, the opacity of the layer in the range [0.0 - 1.0]. Default <code>1.0</code></li>
-<li><code>visible</code>: <em>boolean</em>, whether the layer is activated/visible. Default <code>true</code></li>
-<li><code>reference</code>: <em>boolean</em>, whether the layer is a guide or reference, and should not be rendered. Default <code>false</code></li>
-<li><code>passThrough</code>: <em>boolean</em>, whether the layer is in pass through mode. Only for grouplayer.</li>
-</ul>
+<p>Default values should be used when importing an OCA format if the data can&rsquo;t be read or is not available.<br />
+If there is no default value, importing the OCA document should fail.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><em>string</em></td>
+<td></td>
+<td>The name of the layer. It <em>must</em> be unique in the document.</td>
+</tr>
+<tr>
+<td><strong><code>frames</code></strong></td>
+<td><em>FrameObject[]</em></td>
+<td><code>[]</code></td>
+<td>The frames of the layer if it is a <code>paintlayer</code> or a <code>vectorlayer</code>, ignored otherwise. See the <a href="frame.html"><em>Frame Object</em></a> section.</td>
+</tr>
+<tr>
+<td><strong><code>childLayers</code></strong></td>
+<td><em>LayerObject[]</em></td>
+<td><code>[]</code></td>
+<td>The child layers if this layer is a <code>grouplayer</code>.</td>
+</tr>
+<tr>
+<td><strong><code>type</code></strong></td>
+<td><em>string</em></td>
+<td><code>"paintlayer"</code></td>
+<td>The type of the layer. See the <a href="layer-types.html"><em>Layer Types</em></a> section.</td>
+</tr>
+<tr>
+<td><strong><code>fileType</code></strong></td>
+<td><em>string</em></td>
+<td><code>"png"</code></td>
+<td>The type of the files used for the frames. The file extension, without the initial dot.</td>
+</tr>
+<tr>
+<td><strong><code>blendingMode</code></strong></td>
+<td><em>string</em></td>
+<td><code>"normal"</code></td>
+<td>The blending mode of the layer. See the <a href="blending-modes.html"><em>Blending modes</em></a> section.</td>
+</tr>
+<tr>
+<td><strong><code>inheritAlpha</code></strong></td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>When true, the alpha of the layer is multiplied with the alpha of all the layers under it (before it in an OCA list) in the same group (called <em>Preserve Transparency</em> in <em>Adobe After Effects</em>, <em>Inherit Alpha</em> in <em>Krita</em>).</td>
+</tr>
+<tr>
+<td><strong><code>animated</code></strong></td>
+<td><em>boolean</em></td>
+<td><code>true</code></td>
+<td>Whether this layer is a single frame or not.</td>
+</tr>
+<tr>
+<td><strong><code>position</code></strong></td>
+<td><em>int[]</em></td>
+<td><code>[root.width / 2, root.height/2]</code><br>or<br><code>[layer.width / 2, layer.height/2]</code></td>
+<td>The coordinates of the center of the layer, in pixels [X,Y] in the document (<a href="root.html"><em>Root Object</em></a>) or the containing group (<a href="layer.html"><em>Layer Object</em></a>) coordinates; the origin <code>[0,0]</code> is the top left corner of the container.</td>
+</tr>
+<tr>
+<td><strong><code>width</code></strong></td>
+<td><em>int</em></td>
+<td><code>root.width</code></td>
+<td>The width, in pixels.</td>
+</tr>
+<tr>
+<td><strong><code>height</code></strong></td>
+<td><em>int</em></td>
+<td><code>root.height</code></td>
+<td>The height, in pixels.</td>
+</tr>
+<tr>
+<td><strong><code>label</code></strong></td>
+<td><em>int</em></td>
+<td><code>-1</code></td>
+<td>A label for the layer. See the <a href="layer-labels.html"><em>Layer Label</em></a> section.</td>
+</tr>
+<tr>
+<td><strong><code>opacity</code></strong></td>
+<td><em>float</em></td>
+<td><code>1.0</code></td>
+<td>The opacity of the layer in the range [0.0 - 1.0].</td>
+</tr>
+<tr>
+<td><strong><code>visible</code></strong></td>
+<td><em>boolean</em></td>
+<td><code>true</code></td>
+<td>Whether the layer is activated/visible.</td>
+</tr>
+<tr>
+<td><strong><code>reference</code></strong></td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>Whether the layer is a guide or reference, and should not be rendered.</td>
+</tr>
+<tr>
+<td><strong><code>passThrough</code></strong></td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>Only for <code>grouplayer</code>. When this is <code>false</code>, the group content <em>must</em> be merged (using alpha, opacity values, blending modes, etc.) before the rendering process goes to the next node/layer, and cropped if the contained layers are bigger than the group size. When this is <code>true</code>, the group is to be completely by the rendering process, and only used as a way to group the layers in the UI of the application.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the frames don&rsquo;t have the same size as the layer, they may be cropped, but they&rsquo;re never scaled.</p>
+</div>
+<div class="admonition wip">
+<p class="admonition-title">Wip</p>
+<p>We&rsquo;re planning to add a new <code>ocalayer</code> layer type to allow for nested OCA documents.</p>
+<p>▹ <a href="../roadmap.html">Roadmap</a></p>
+</div>
+<div class="admonition wip">
+<p class="admonition-title">Wip</p>
+<p>We&rsquo;re planning to add full layer transform to OCA, with pivot, scale and rotation.</p>
+<p>▹ <a href="../roadmap.html">Roadmap</a></p>
+</div>
+<div class="admonition wip">
+<p class="admonition-title">Wip</p>
+<p>When layer transform’s been added, it would be nice to have the ability to add keyframes to the position, pivot, rotation, scale and opacity values.</p>
+<p>▹ <a href="../roadmap.html">Roadmap</a></p>
+</div>
+<div class="admonition wip">
+<p class="admonition-title">Wip</p>
+<p>It would be nice to be able to extrapolate frames and transform animations, with several modes: <code>no</code>, <code>constant</code>, <code>continue</code>, <code>cycle</code>, <code>offset</code>, <code>pingpong</code>.</p>
+<p>▹ <a href="../roadmap.html">Roadmap</a></p>
+</div>
 <h2 id="examples">Examples</h2>
 <h3 id="generic-paintlayer">Generic paintlayer</h3>
 <p>This is an empty <code>paintlayer</code> (without any frame).</p>

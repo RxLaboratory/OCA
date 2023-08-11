@@ -11,7 +11,7 @@ This is a complete example featuring blending modes, groups, and the *passthroug
 
 It was made in *Krita 5.1.1*.
 
-There are two different versions, as the reference implementation of an OCA exporter in Krita has the option to either export all layers at the same size at the document (cropped if bigger, with empty space if smaller), or retain their original size (which may be bigger or smaller than the document).
+There are two different versions, as the reference implementation of an [OCA exporter in Krita](http://oca-krita.rxlab.guide/index.html){target="_blank"} ([src](https://codeberg.org/RxLaboratory/OCA-Krita){target="_blank"}) has the option to either export all layers at the same size at the document (cropped if bigger, with empty space if smaller), or retain their original size (which may be bigger or smaller than the document).
 
 ▶ You can [download this example here](http://oca.rxlab.guide/downloads/OCA_Example_Bird.zip), including the source *Krita* document and two OCA versions.
 

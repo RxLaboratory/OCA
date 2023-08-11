@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     
-    <title>BLending Modes - OCA Documentation</title>
+    <title>Blending Modes - OCA Documentation</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -61,7 +61,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="..">OCA Documentation</a>
+              <a class="navbar-brand" href="../index.html">OCA Documentation</a>
             
         </div>
 
@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.0</a>
+                        <a href="../index.html">v1.1.1</a>
                     </li>
                 
                 
@@ -133,7 +133,13 @@
         
             
 <li >
-    <a href="color-depth.html">Color Depth</a>
+    <a href="coordinates.html">Coordinates and transform</a>
+</li>
+
+        
+            
+<li >
+    <a href="color-depth.html">Opacity, Colors and Color Depth</a>
 </li>
 
         
@@ -145,7 +151,7 @@
         
             
 <li class="active">
-    <a href="blending-modes.html">BLending Modes</a>
+    <a href="blending-modes.html">Blending Modes</a>
 </li>
 
         
@@ -167,6 +173,12 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">... <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../roadmap.html">Roadmap</a>
+</li>
+
                         
                             
 <li >
@@ -256,7 +268,7 @@
         
         
             <li >
-                <a href="../../index.html">v1.1.0</a>
+                <a href="../index.html">v1.1.1</a>
             </li>
         
         
@@ -304,7 +316,11 @@
                                     
                                 
                                     
-                                    <li class="third-level "><a href="color-depth.html">Color Depth</a></li>
+                                    <li class="third-level "><a href="coordinates.html">Coordinates and transform</a></li>
+                                    
+                                
+                                    
+                                    <li class="third-level "><a href="color-depth.html">Opacity, Colors and Color Depth</a></li>
                                     
                                 
                                     
@@ -312,7 +328,7 @@
                                     
                                 
                                     
-                                    <li class="third-level active"><a href="blending-modes.html">BLending Modes</a></li>
+                                    <li class="third-level active"><a href="blending-modes.html">Blending Modes</a></li>
                                     
                                 
                                     
@@ -331,6 +347,10 @@
             <li class="first-level">
                 <button  type="button" class="collapse-button ">...</button>
                 <ul class="collapsible-content ">
+                    
+                        
+                        <li class="second-level "><a href="../roadmap.html">Roadmap</a></li>
+                        
                     
                         
                         <li class="second-level "><a href="../changelog.html">Changelog</a></li>
@@ -375,10 +395,11 @@
 <h1 id="blending-modes">Blending Modes</h1>
 <p>Blending modes are named after the ones used in <a href="http://krita.org"><em>Krita</em></a>.</p>
 <p>Depending on the application, a blending mode with the same name may have different results. When a blending mode is set in <em>OCA</em>, its result should be the same as the blending mode with the same name in <em>Krita</em>. This choice was made because <em>Krita</em> is a free and open source software, so anyone can have a look at how these blending modes are implemented, to be sure about what they do, and because <em>Krita</em> uses one of the biggest list of blending modes.</p>
-<p>To know the correspondance of the blending mode names and implementations between <em>Krita/OCA</em> and the most common other applciations, we&rsquo;re building correspondance tables (see below).</p>
+<p>The implementation of these blending modes is described in details in the <a href="https://docs.krita.org/en/reference_manual/blending_modes.html" target="_blank">Krita Reference Manual</a>.</p>
+<p>To know the correspondance of the blending mode names and implementations between <em>Krita/OCA</em> and the most common other applications, we&rsquo;re building correspondance tables (see below).</p>
 <h2 id="krita-blending-modes">Krita Blending Modes</h2>
 <p>This table lists the correspondance between OCA Blending Modes and Krita Blending Modes.</p>
-<p>As OCA Blending modes are based on those of Krita, all of these are exact matches and should be considered the reference implementation of them. See <a href="http://krita.org">Krita.org</a> for more information about them.</p>
+<p>As OCA Blending modes are based on those of Krita, all of these are exact matches and should be considered the reference implementation of them. See <a href="http://krita.org" target="_blank">Krita.org</a> and the <a href="https://docs.krita.org/en/reference_manual/blending_modes.html" target="_blank">Krita Reference Manual</a> for more information about them.</p>
 <p>If a blending mode is not listed in this table, that means it is not supported by OCA (yet).</p>
 <table>
 <thead>
@@ -831,6 +852,10 @@
 <tr>
 <td>linear_dodge</td>
 <td>linear_dodge</td>
+</tr>
+<tr>
+<td>add</td>
+<td>add</td>
 </tr>
 </tbody>
 </table>

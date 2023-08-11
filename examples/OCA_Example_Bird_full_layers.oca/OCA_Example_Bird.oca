@@ -59,7 +59,7 @@
                             "name": "Tree 3_00000",
                             "fileName": "Document\\Trees/Tree 3_00000.png",
                             "frameNumber": 0,
-                            "opacity": 0.45098039215686275,
+                            "opacity": 1.0,
                             "position": [
                                 720,
                                 677
@@ -94,7 +94,7 @@
                             "name": "Tree  2_00000",
                             "fileName": "Document\\Trees/Tree  2_00000.png",
                             "frameNumber": 0,
-                            "opacity": 0.7607843137254902,
+                            "opacity": 1.0,
                             "position": [
                                 275,
                                 599
@@ -724,7 +724,7 @@
                             "name": "Sun_00000",
                             "fileName": "Document\\Sun/Sun_00000.png",
                             "frameNumber": 0,
-                            "opacity": 0.611764705882353,
+                            "opacity": 1.0,
                             "position": [
                                 152,
                                 111
@@ -759,7 +759,7 @@
                             "name": "Flare_00000",
                             "fileName": "Document\\Sun/Flare_00000.png",
                             "frameNumber": 0,
-                            "opacity": 0.7098039215686275,
+                            "opacity": 1.0,
                             "position": [
                                 639,
                                 359

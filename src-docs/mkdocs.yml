@@ -37,7 +37,8 @@ nav:
             - Frame JSON Object: specs/frame.md
         - Values:
             - Durations: specs/durations.md
-            - Color Depth: specs/color-depth.md
+            - Coordinates and transform: specs/coordinates.md
+            - Opacity, Colors and Color Depth: specs/color-depth.md
             - Layer Types: specs/layer-types.md
             - Blending Modes: specs/blending-modes.md
             - Layer Labels: specs/layer-labels.md

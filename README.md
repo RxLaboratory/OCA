@@ -2,6 +2,13 @@
 
 Open Cel Animation format
 
-*OCA* is an open format to ease the exchange of traditionnal/frame-by-frame/cel animation between different applications.
+## Relocation notice!
 
-You can [read the documentation here](http://oca-docs.rainboxlab.org) for more information and specifications of the format.
+The canonical repository for OCA is [on
+Codeberg](https://codeberg.org/RxLaboratory/OCA) but we maintain [a
+mirror on GitHub](https://github.com/RxLaboratory/OCA/tree/master) for the
+time being in order to ease the transition. Please update your links
+and git remotes.
+
+The repo on github will be left around for a time as a convenience
+offered to those who haven't yet created a Codeberg account.

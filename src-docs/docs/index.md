@@ -2,8 +2,6 @@
 
 *OCA* is an open format to ease the exchange of traditionnal/frame-by-frame/cel animation between different applications.
 
-
-
 ## Principles
 
 - *OCA* has to be open and simple: it must be easy to implement an exporter or importer in any application providing a scripting API.

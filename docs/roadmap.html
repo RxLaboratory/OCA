@@ -94,6 +94,12 @@
 
                         
                             
+<li >
+    <a href="specs/file.html">File Specifications</a>
+</li>
+
+                        
+                            
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
@@ -258,6 +264,8 @@
             <li class="first-level active"><a href="#roadmap">Roadmap</a></li>
                 <li class="second-level"><a href="#meta-data">Meta Data</a></li>
                     
+                <li class="second-level"><a href="#color-space">Color space</a></li>
+                    
                 <li class="second-level"><a href="#ocaz-zipped-oca-andor-opendocument">OCAZ, Zipped OCA, and/or OpenDocument</a></li>
                     
                 <li class="second-level"><a href="#layer-and-frame-time-values">Layer and Frame Time values</a></li>
@@ -301,6 +309,10 @@
                     
                         
                         <li class="second-level "><a href="specs/folder-structure.html">Folder Structure</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="specs/file.html">File Specifications</a></li>
                         
                     
                         
@@ -418,6 +430,8 @@
 </div>
 <h2 id="meta-data">Meta Data</h2>
 <p>All objects should have a <code>metadata</code> value, storing custom key/value pairs.</p>
+<h2 id="color-space">Color space</h2>
+<p>It would be easy and useful to add some info about the color space. To be used at least for <code>F16</code> and <code>F32</code> color depth with <em>EXR</em> files, but we may also support <em>Rec-2020</em> with PNG files.</p>
 <h2 id="ocaz-zipped-oca-andor-opendocument">OCAZ, Zipped OCA, and/or OpenDocument</h2>
 <p>For now, OCA is just a folder; it could also be a zipped archive (using only the most common compression algorithms, Store and Deflate), with the new <code>.ocaz</code> extension. Encryption, Digital signatures, and segmented/multiple volumes archives would be prohibited, following the OpenDocument format.</p>
 <p>We could also allow for a format completely following the OpenDocument specifications, and use XML files instead of JSON.</p>

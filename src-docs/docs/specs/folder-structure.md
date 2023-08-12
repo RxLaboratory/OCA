@@ -1,6 +1,10 @@
 # Folder Structure
 
-The OCA JSON data file *must* be at the root of the OCA folder, and *should* have the same name.
+The OCA format is a folder, containing an [OCA *JSON* data file](file.md) with all data about the document (except images), and image files, which can be one of these formats: *PNG*, *openEXR*, *SVG*.
+
+The OCA data file *must* be at the root of the OCA folder, and *should* have the same name.
+
+There *must* be a single OCA data file in the folder, and it *must* be at the root.
 
 Other files and folders *may* be stored as follow, but as the JSON data contains all (relative) paths to all files, that's not mandatory.
 

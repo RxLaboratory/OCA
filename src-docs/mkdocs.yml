@@ -31,6 +31,7 @@ nav:
     - Specifications:
         - Examples: specs/examples.md
         - Folder Structure: specs/folder-structure.md
+        - File Specifications: specs/file.md
         - Objects:
             - Root JSON Object: specs/root.md
             - Layer JSON Object: specs/layer.md

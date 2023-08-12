@@ -11,6 +11,10 @@ Features are ordered from closer and more likely to be implemented to further or
 
 All objects should have a `metadata` value, storing custom key/value pairs.
 
+## Color space
+
+It would be easy and useful to add some info about the color space. To be used at least for `F16` and `F32` color depth with *EXR* files, but we may also support *Rec-2020* with PNG files.
+
 ## OCAZ, Zipped OCA, and/or OpenDocument
 
 For now, OCA is just a folder; it could also be a zipped archive (using only the most common compression algorithms, Store and Deflate), with the new `.ocaz` extension. Encryption, Digital signatures, and segmented/multiple volumes archives would be prohibited, following the OpenDocument format.

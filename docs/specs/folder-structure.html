@@ -94,6 +94,12 @@
 
                         
                             
+<li >
+    <a href="file.html">File Specifications</a>
+</li>
+
+                        
+                            
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
@@ -237,7 +243,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="root.html">
+                        <a rel="next" href="file.html">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -279,6 +285,10 @@
                     
                         
                         <li class="second-level active"><a href="folder-structure.html">Folder Structure</a></li>
+                        
+                    
+                        
+                        <li class="second-level "><a href="file.html">File Specifications</a></li>
                         
                     
                         
@@ -388,7 +398,9 @@
         <div class="col-md-9" role="main">
 
 <h1 id="folder-structure">Folder Structure</h1>
-<p>The OCA JSON data file <em>must</em> be at the root of the OCA folder, and <em>should</em> have the same name.</p>
+<p>The OCA format is a folder, containing an <a href="file.html">OCA <em>JSON</em> data file</a> with all data about the document (except images), and image files, which can be one of these formats: <em>PNG</em>, <em>openEXR</em>, <em>SVG</em>.</p>
+<p>The OCA data file <em>must</em> be at the root of the OCA folder, and <em>should</em> have the same name.</p>
+<p>There <em>must</em> be a single OCA data file in the folder, and it <em>must</em> be at the root.</p>
 <p>Other files and folders <em>may</em> be stored as follow, but as the JSON data contains all (relative) paths to all files, that&rsquo;s not mandatory.</p>
 <pre><code>▾ Document_name.oca
     · Document_name.oca

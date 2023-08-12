@@ -22,11 +22,11 @@
                     "frameNumber": 0,
                     "opacity": 1.0,
                     "position": [
-                        582,
-                        388
+                        640.0,
+                        360.0
                     ],
-                    "width": 2543,
-                    "height": 909,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 33
                 }
             ],
@@ -36,11 +36,11 @@
             "blendingMode": "normal",
             "animated": false,
             "position": [
-                582,
-                388
+                640.0,
+                360.0
             ],
-            "width": 2543,
-            "height": 909,
+            "width": 1280,
+            "height": 720,
             "label": 0,
             "opacity": 1.0,
             "visible": true,
@@ -57,15 +57,15 @@
                     "frames": [
                         {
                             "name": "Tree 3_00000",
-                            "fileName": "Document\\Trees/Tree 3_00000.png",
+                            "fileName": "Document/Trees/Tree 3_00000.png",
                             "frameNumber": 0,
-                            "opacity": 1.0,
+                            "opacity": 0.45098039215686275,
                             "position": [
-                                720,
-                                677
+                                640.0,
+                                360.0
                             ],
-                            "width": 471,
-                            "height": 617,
+                            "width": 1280,
+                            "height": 720,
                             "duration": 33
                         }
                     ],
@@ -75,13 +75,13 @@
                     "blendingMode": "normal",
                     "animated": false,
                     "position": [
-                        720,
-                        677
+                        640.0,
+                        360.0
                     ],
-                    "width": 471,
-                    "height": 617,
+                    "width": 1280,
+                    "height": 720,
                     "label": 0,
-                    "opacity": 0.45098039215686275,
+                    "opacity": 1.0,
                     "visible": true,
                     "passThrough": false,
                     "reference": false,
@@ -92,15 +92,15 @@
                     "frames": [
                         {
                             "name": "Tree  2_00000",
-                            "fileName": "Document\\Trees/Tree  2_00000.png",
+                            "fileName": "Document/Trees/Tree  2_00000.png",
                             "frameNumber": 0,
-                            "opacity": 1.0,
+                            "opacity": 0.7607843137254902,
                             "position": [
-                                275,
-                                599
+                                640.0,
+                                360.0
                             ],
-                            "width": 471,
-                            "height": 617,
+                            "width": 1280,
+                            "height": 720,
                             "duration": 33
                         }
                     ],
@@ -110,13 +110,13 @@
                     "blendingMode": "normal",
                     "animated": false,
                     "position": [
-                        275,
-                        599
+                        640.0,
+                        360.0
                     ],
-                    "width": 471,
-                    "height": 617,
+                    "width": 1280,
+                    "height": 720,
                     "label": 0,
-                    "opacity": 0.7607843137254902,
+                    "opacity": 1.0,
                     "visible": true,
                     "passThrough": false,
                     "reference": false,
@@ -127,15 +127,15 @@
                     "frames": [
                         {
                             "name": "Tree 1_00000",
-                            "fileName": "Document\\Trees/Tree 1_00000.png",
+                            "fileName": "Document/Trees/Tree 1_00000.png",
                             "frameNumber": 0,
                             "opacity": 1.0,
                             "position": [
-                                928,
-                                510
+                                640.0,
+                                360.0
                             ],
-                            "width": 471,
-                            "height": 617,
+                            "width": 1280,
+                            "height": 720,
                             "duration": 33
                         }
                     ],
@@ -145,11 +145,11 @@
                     "blendingMode": "normal",
                     "animated": false,
                     "position": [
-                        928,
-                        510
+                        640.0,
+                        360.0
                     ],
-                    "width": 471,
-                    "height": 617,
+                    "width": 1280,
+                    "height": 720,
                     "label": 0,
                     "opacity": 1.0,
                     "visible": true,
@@ -184,11 +184,11 @@
                     "frameNumber": 0,
                     "opacity": 1.0,
                     "position": [
-                        99,
-                        488
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 18,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -197,11 +197,11 @@
                     "frameNumber": 1,
                     "opacity": 1.0,
                     "position": [
-                        144,
-                        453
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 18,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -210,11 +210,11 @@
                     "frameNumber": 2,
                     "opacity": 1.0,
                     "position": [
-                        177,
-                        429
+                        640.0,
+                        360.0
                     ],
-                    "width": 145,
-                    "height": 35,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -223,11 +223,11 @@
                     "frameNumber": 3,
                     "opacity": 1.0,
                     "position": [
-                        198,
-                        413
+                        640.0,
+                        360.0
                     ],
-                    "width": 151,
-                    "height": 38,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -236,11 +236,11 @@
                     "frameNumber": 4,
                     "opacity": 1.0,
                     "position": [
-                        207,
-                        403
+                        640.0,
+                        360.0
                     ],
-                    "width": 149,
-                    "height": 43,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -249,11 +249,11 @@
                     "frameNumber": 5,
                     "opacity": 1.0,
                     "position": [
-                        216,
-                        393
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 20,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -262,11 +262,11 @@
                     "frameNumber": 6,
                     "opacity": 1.0,
                     "position": [
-                        247,
-                        370
+                        640.0,
+                        360.0
                     ],
-                    "width": 135,
-                    "height": 35,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -275,11 +275,11 @@
                     "frameNumber": 7,
                     "opacity": 1.0,
                     "position": [
-                        287,
-                        333
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 18,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -288,11 +288,11 @@
                     "frameNumber": 8,
                     "opacity": 1.0,
                     "position": [
-                        328,
-                        305
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 18,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -301,11 +301,11 @@
                     "frameNumber": 9,
                     "opacity": 1.0,
                     "position": [
-                        356,
-                        279
+                        640.0,
+                        360.0
                     ],
-                    "width": 145,
-                    "height": 35,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -314,11 +314,11 @@
                     "frameNumber": 10,
                     "opacity": 1.0,
                     "position": [
-                        371,
-                        263
+                        640.0,
+                        360.0
                     ],
-                    "width": 151,
-                    "height": 38,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -327,11 +327,11 @@
                     "frameNumber": 11,
                     "opacity": 1.0,
                     "position": [
-                        383,
-                        252
+                        640.0,
+                        360.0
                     ],
-                    "width": 149,
-                    "height": 43,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -340,11 +340,11 @@
                     "frameNumber": 12,
                     "opacity": 1.0,
                     "position": [
-                        394,
-                        246
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 20,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -353,11 +353,11 @@
                     "frameNumber": 13,
                     "opacity": 1.0,
                     "position": [
-                        435,
-                        220
+                        640.0,
+                        360.0
                     ],
-                    "width": 135,
-                    "height": 35,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -366,11 +366,11 @@
                     "frameNumber": 14,
                     "opacity": 1.0,
                     "position": [
-                        480,
-                        180
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 18,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -379,11 +379,11 @@
                     "frameNumber": 15,
                     "opacity": 1.0,
                     "position": [
-                        517,
-                        148
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 18,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -392,11 +392,11 @@
                     "frameNumber": 16,
                     "opacity": 1.0,
                     "position": [
-                        534,
-                        127
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 18,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -405,11 +405,11 @@
                     "frameNumber": 17,
                     "opacity": 1.0,
                     "position": [
-                        560,
-                        103
+                        640.0,
+                        360.0
                     ],
-                    "width": 145,
-                    "height": 35,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -418,11 +418,11 @@
                     "frameNumber": 18,
                     "opacity": 1.0,
                     "position": [
-                        579,
-                        86
+                        640.0,
+                        360.0
                     ],
-                    "width": 151,
-                    "height": 38,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -431,11 +431,11 @@
                     "frameNumber": 19,
                     "opacity": 1.0,
                     "position": [
-                        595,
-                        69
+                        640.0,
+                        360.0
                     ],
-                    "width": 149,
-                    "height": 43,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -444,11 +444,11 @@
                     "frameNumber": 20,
                     "opacity": 1.0,
                     "position": [
-                        629,
-                        54
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 20,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -457,11 +457,11 @@
                     "frameNumber": 21,
                     "opacity": 1.0,
                     "position": [
-                        664,
-                        30
+                        640.0,
+                        360.0
                     ],
-                    "width": 135,
-                    "height": 35,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -470,11 +470,11 @@
                     "frameNumber": 22,
                     "opacity": 1.0,
                     "position": [
-                        684,
-                        -1
+                        640.0,
+                        360.0
                     ],
-                    "width": 148,
-                    "height": 18,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -526,16 +526,16 @@
                     "duration": 8
                 },
                 {
-                    "name": "Cui !_00008",
-                    "fileName": "Document/Cui !/Cui !_00008.png",
+                    "name": "_blank",
+                    "fileName": "",
                     "frameNumber": 8,
                     "opacity": 1.0,
                     "position": [
-                        479,
-                        302
+                        0,
+                        0
                     ],
-                    "width": 30,
-                    "height": 39,
+                    "width": 0,
+                    "height": 0,
                     "duration": 1
                 },
                 {
@@ -544,11 +544,11 @@
                     "frameNumber": 9,
                     "opacity": 1.0,
                     "position": [
-                        498,
-                        297
+                        640.0,
+                        360.0
                     ],
-                    "width": 68,
-                    "height": 48,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -557,11 +557,11 @@
                     "frameNumber": 10,
                     "opacity": 1.0,
                     "position": [
-                        507,
-                        297
+                        640.0,
+                        360.0
                     ],
-                    "width": 86,
-                    "height": 48,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 2
                 },
                 {
@@ -570,11 +570,11 @@
                     "frameNumber": 12,
                     "opacity": 1.0,
                     "position": [
-                        528,
-                        300
+                        640.0,
+                        360.0
                     ],
-                    "width": 116,
-                    "height": 56,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 3
                 },
                 {
@@ -583,11 +583,11 @@
                     "frameNumber": 15,
                     "opacity": 1.0,
                     "position": [
-                        560,
-                        319
+                        640.0,
+                        360.0
                     ],
-                    "width": 146,
-                    "height": 60,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 2
                 },
                 {
@@ -596,11 +596,11 @@
                     "frameNumber": 17,
                     "opacity": 1.0,
                     "position": [
-                        570,
-                        342
+                        640.0,
+                        360.0
                     ],
-                    "width": 146,
-                    "height": 60,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 2
                 },
                 {
@@ -609,76 +609,76 @@
                     "frameNumber": 19,
                     "opacity": 1.0,
                     "position": [
-                        594,
-                        366
+                        640.0,
+                        360.0
                     ],
-                    "width": 174,
-                    "height": 85,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 2
                 },
                 {
                     "name": "Cui !_00021",
                     "fileName": "Document/Cui !/Cui !_00021.png",
                     "frameNumber": 21,
-                    "opacity": 1.0,
+                    "opacity": 0.8549019607843137,
                     "position": [
-                        597,
-                        436
+                        640.0,
+                        360.0
                     ],
-                    "width": 173,
-                    "height": 84,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 2
                 },
                 {
                     "name": "Cui !_00023",
                     "fileName": "Document/Cui !/Cui !_00023.png",
                     "frameNumber": 23,
-                    "opacity": 1.0,
+                    "opacity": 0.5686274509803921,
                     "position": [
-                        597,
-                        487
+                        640.0,
+                        360.0
                     ],
-                    "width": 173,
-                    "height": 84,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
                     "name": "Cui !_00024",
                     "fileName": "Document/Cui !/Cui !_00024.png",
                     "frameNumber": 24,
-                    "opacity": 1.0,
+                    "opacity": 0.4235294117647059,
                     "position": [
-                        598,
-                        510
+                        640.0,
+                        360.0
                     ],
-                    "width": 173,
-                    "height": 84,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
                     "name": "Cui !_00025",
                     "fileName": "Document/Cui !/Cui !_00025.png",
                     "frameNumber": 25,
-                    "opacity": 1.0,
+                    "opacity": 0.2823529411764706,
                     "position": [
-                        600,
-                        525
+                        640.0,
+                        360.0
                     ],
-                    "width": 173,
-                    "height": 84,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
                     "name": "Cui !_00026",
                     "fileName": "Document/Cui !/Cui !_00026.png",
                     "frameNumber": 26,
-                    "opacity": 1.0,
+                    "opacity": 0.1411764705882353,
                     "position": [
-                        599,
-                        533
+                        640.0,
+                        360.0
                     ],
-                    "width": 173,
-                    "height": 84,
+                    "width": 1280,
+                    "height": 720,
                     "duration": 1
                 },
                 {
@@ -722,15 +722,15 @@
                     "frames": [
                         {
                             "name": "Sun_00000",
-                            "fileName": "Document\\Sun/Sun_00000.png",
+                            "fileName": "Document/Sun/Sun_00000.png",
                             "frameNumber": 0,
-                            "opacity": 1.0,
+                            "opacity": 0.611764705882353,
                             "position": [
-                                152,
-                                111
+                                640.0,
+                                360.0
                             ],
-                            "width": 257,
-                            "height": 247,
+                            "width": 1280,
+                            "height": 720,
                             "duration": 33
                         }
                     ],
@@ -740,13 +740,13 @@
                     "blendingMode": "normal",
                     "animated": false,
                     "position": [
-                        152,
-                        111
+                        640.0,
+                        360.0
                     ],
-                    "width": 257,
-                    "height": 247,
+                    "width": 1280,
+                    "height": 720,
                     "label": 0,
-                    "opacity": 0.611764705882353,
+                    "opacity": 1.0,
                     "visible": true,
                     "passThrough": false,
                     "reference": false,
@@ -757,12 +757,12 @@
                     "frames": [
                         {
                             "name": "Flare_00000",
-                            "fileName": "Document\\Sun/Flare_00000.png",
+                            "fileName": "Document/Sun/Flare_00000.png",
                             "frameNumber": 0,
-                            "opacity": 1.0,
+                            "opacity": 0.7098039215686275,
                             "position": [
-                                639,
-                                359
+                                640.0,
+                                360.0
                             ],
                             "width": 1280,
                             "height": 720,
@@ -775,13 +775,13 @@
                     "blendingMode": "add",
                     "animated": false,
                     "position": [
-                        639,
-                        359
+                        640.0,
+                        360.0
                     ],
                     "width": 1280,
                     "height": 720,
                     "label": 0,
-                    "opacity": 0.7098039215686275,
+                    "opacity": 1.0,
                     "visible": true,
                     "passThrough": false,
                     "reference": false,
@@ -808,5 +808,5 @@
     ],
     "originApp": "Krita",
     "originAppVersion": "5.1.1",
-    "ocaVersion": "1.1.0"
+    "ocaVersion": "1.1.1"
 }

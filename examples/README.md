@@ -2,7 +2,7 @@
 
 ## OCA_Example_Bird
 
-![](OCA_example_Bird.apng)
+![](https://codeberg.org/RxLaboratory/OCA/raw/branch/master/examples/OCA_Example_Bird.apng)
 
 This is a complete example featuring blending modes, groups, and the *passthrough* option for groups.
 

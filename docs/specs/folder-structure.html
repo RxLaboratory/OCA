@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.1</a>
+                        <a href="../index.html">v1.2.0</a>
                     </li>
                 
                 
@@ -103,6 +103,12 @@
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="meta.html">Metadata JSON Object</a>
+</li>
+
         
             
 <li >
@@ -259,18 +265,13 @@
         
         
         <div class="col-md-3"><div id="side-menu">
-    <div class="bs-sidebar hidden-print affix well" role="complementary">
-        <ul class="nav bs-sidenav">
-            <li class="first-level active"><a href="#folder-structure">Folder Structure</a></li>
-        </ul>
-    </div>
     <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
         <!-- Main navigation -->
         <ul class="nav bs-sidenav">
         
         
             <li >
-                <a href="../index.html">v1.1.1</a>
+                <a href="../index.html">v1.2.0</a>
             </li>
         
         
@@ -295,6 +296,10 @@
                         <li class="second-level">
                             <button  type="button" class="collapse-button ">Objects</button>
                             <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="meta.html">Metadata JSON Object</a></li>
+                                    
                                 
                                     
                                     <li class="third-level "><a href="root.html">Root JSON Object</a></li>
@@ -393,17 +398,34 @@
         
         </ul>
     </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#folder-structure">Folder Structure</a></li>
+                <li class="second-level"><a href="#data-file">Data file</a></li>
+                    
+                <li class="second-level"><a href="#metadata-file">Metadata file</a></li>
+                    
+                <li class="second-level"><a href="#other-files">Other files</a></li>
+                    
+        </ul>
+    </div>
     <div class="footer-meta"></div>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h1 id="folder-structure">Folder Structure</h1>
 <p>The OCA format is a folder, containing an <a href="file.html">OCA <em>JSON</em> data file</a> with all data about the document (except images), and image files, which can be one of these formats: <em>PNG</em>, <em>openEXR</em>, <em>SVG</em>.</p>
+<h2 id="data-file">Data file</h2>
 <p>The OCA data file <em>must</em> be at the root of the OCA folder, and <em>should</em> have the same name.</p>
 <p>There <em>must</em> be a single OCA data file in the folder, and it <em>must</em> be at the root.</p>
+<h2 id="metadata-file">Metadata file</h2>
+<p>There <em>may</em> or <em>may not</em> be a metadata file at the root of the OCA folder, which is named after the OCA data file, suffixed with  <code>_meta</code> and with the <code>.json</code> extension.</p>
+<p>The metadata is separated from the main OCA data file to make it easy for users to strip (or replace) all metadata from the file.</p>
+<h2 id="other-files">Other files</h2>
 <p>Other files and folders <em>may</em> be stored as follow, but as the JSON data contains all (relative) paths to all files, that&rsquo;s not mandatory.</p>
 <pre><code>▾ Document_name.oca
     · Document_name.oca
+    · Document_name_meta.json
     ▾ Layer_name_1
         · Layer_name_1_00000.png
         · Layer_name_1_00110.png
@@ -427,6 +449,20 @@
 <p>All layers may be stored in a single subfolder with an arbitrary name (e.g. &ldquo;content&rdquo;, &ldquo;data&rdquo;, &ldquo;layers&rdquo;, &ldquo;Document&rdquo;&hellip;) instead of directly at the root.</p>
 </div></div>
         
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="examples.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="file.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
         
     </div>
 
@@ -520,6 +556,21 @@
         </div>
     </div>
 </div>
+
+        <!-- Crowdin widget -->
+        <script
+            type="text/javascript"
+            src="https://crowdin.com/js/crowdjet/crowdjet.js">
+        </script>
+        <div
+            id="crowdjet-container"
+            data-project-id="530368"
+            style="bottom: 90px; right: 20px;">
+        </div>
+        <div
+            id="crowdjet-expand-container"
+            style="bottom: 10px; right: 20px;">
+        </div>
     </body>
 
 </html>

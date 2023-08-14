@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.1</a>
+                        <a href="../index.html">v1.2.0</a>
                     </li>
                 
                 
@@ -103,6 +103,12 @@
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="meta.html">Metadata JSON Object</a>
+</li>
+
         
             
 <li class="active">
@@ -238,7 +244,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="file.html">
+                        <a rel="prev" href="meta.html">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -259,22 +265,13 @@
         
         
         <div class="col-md-3"><div id="side-menu">
-    <div class="bs-sidebar hidden-print affix well" role="complementary">
-        <ul class="nav bs-sidenav">
-            <li class="first-level active"><a href="#root-object">Root Object</a></li>
-                <li class="second-level"><a href="#values">Values</a></li>
-                    
-                <li class="second-level"><a href="#example">Example</a></li>
-                    
-        </ul>
-    </div>
     <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
         <!-- Main navigation -->
         <ul class="nav bs-sidenav">
         
         
             <li >
-                <a href="../index.html">v1.1.1</a>
+                <a href="../index.html">v1.2.0</a>
             </li>
         
         
@@ -299,6 +296,10 @@
                         <li class="second-level">
                             <button  type="button" class="collapse-button active-collapse-button">Objects</button>
                             <ul class="collapsible-content collapsible-content-active">
+                                
+                                    
+                                    <li class="third-level "><a href="meta.html">Metadata JSON Object</a></li>
+                                    
                                 
                                     
                                     <li class="third-level active"><a href="root.html">Root JSON Object</a></li>
@@ -397,6 +398,15 @@
         
         </ul>
     </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#root-object">Root Object</a></li>
+                <li class="second-level"><a href="#values">Values</a></li>
+                    
+                <li class="second-level"><a href="#example">Example</a></li>
+                    
+        </ul>
+    </div>
     <div class="footer-meta"></div>
 </div></div>
         <div class="col-md-9" role="main">
@@ -416,46 +426,10 @@ If there is no default value, importing the OCA document should fail.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong><code>ocaVersion</code></strong></td>
-<td><em>string</em></td>
-<td><code>"0.0.0"</code></td>
-<td>The version of OCA used in this file.<br>Must be one of the versions listed in the <a href="../changelog.html">changelog</a>.</td>
-</tr>
-<tr>
-<td><strong><code>name</code></strong></td>
-<td><em>string</em></td>
-<td><code>"Untitled"</code></td>
-<td>The name of the animation.</td>
-</tr>
-<tr>
-<td><strong><code>frameRate</code></strong></td>
-<td><em>float</em></td>
-<td><code>24.0</code></td>
-<td>The frame rate, in frames/second.</td>
-</tr>
-<tr>
-<td><strong><code>width</code></strong></td>
-<td><em>int</em></td>
-<td><code>1920</code></td>
-<td>The width, in pixels.</td>
-</tr>
-<tr>
-<td><strong><code>height</code></strong></td>
-<td><em>int</em></td>
-<td><code>1080</code></td>
-<td>The height, in pixels.</td>
-</tr>
-<tr>
-<td><strong><code>startTime</code></strong></td>
-<td><em>int</em></td>
-<td><code>0</code></td>
-<td>The first frame number in the animation.</td>
-</tr>
-<tr>
-<td><strong><code>endTime</code></strong></td>
-<td><em>int</em></td>
-<td><code>240</code></td>
-<td>The last frame number in the animation. The frame with this number is <em>not</em> part of the animation; the exact duration in frames is <code>endTime - startTime</code></td>
+<td><strong><code>backgroundColor</code></strong></td>
+<td><em>float[]</em></td>
+<td><code>[0.0, 0.0, 0.0, 0.0]</code></td>
+<td>The color of the background, in an [R,G,B,A] array, each value in the range <code>[0.0 - 1.0]</code>. The values may be higher than <code>1.0</code> if and only if the color depth is <code>F16</code> or <code>F32</code>.</td>
 </tr>
 <tr>
 <td><strong><code>colorDepth</code></strong></td>
@@ -464,10 +438,22 @@ If there is no default value, importing the OCA document should fail.</p>
 <td>The colors used in the frames. See the <a href="color-depth.html"><em>Color Depth</em></a> section.</td>
 </tr>
 <tr>
-<td><strong><code>backgroundColor</code></strong></td>
-<td><em>float[]</em></td>
-<td><code>[0.0, 0.0, 0.0, 0.0]</code></td>
-<td>The color of the background, in an [R,G,B,A] array, each value in the range <code>[0.0 - 1.0]</code>. The values may be higher than <code>1.0</code> if and only if the color depth is <code>F16</code> or <code>F32</code>.</td>
+<td><strong><code>endTime</code></strong></td>
+<td><em>int</em></td>
+<td><code>240</code></td>
+<td>The last frame number in the animation. The frame with this number is <em>not</em> part of the animation; the exact duration in frames is <code>endTime - startTime</code></td>
+</tr>
+<tr>
+<td><strong><code>height</code></strong></td>
+<td><em>int</em></td>
+<td><code>1080</code></td>
+<td>The height, in pixels.</td>
+</tr>
+<tr>
+<td><strong><code>frameRate</code></strong></td>
+<td><em>float</em></td>
+<td><code>24.0</code></td>
+<td>The frame rate, in frames/second.</td>
 </tr>
 <tr>
 <td><strong><code>layers</code></strong></td>
@@ -476,19 +462,45 @@ If there is no default value, importing the OCA document should fail.</p>
 <td>The layers used in the animation. See the <a href="layer.html"><em>Layer Object</em></a> section.<br>Layers are stored from bottom to top, the first layer in the list is the bottom one (the background).</td>
 </tr>
 <tr>
+<td><strong><code>name</code></strong></td>
+<td><em>string</em></td>
+<td><code>"Untitled"</code></td>
+<td>The name of the animation.</td>
+</tr>
+<tr>
+<td><strong><code>ocaVersion</code></strong></td>
+<td><em>string</em></td>
+<td><code>"0.0.0"</code></td>
+<td>The version of OCA used in this file.<br>Must be one of the versions listed in the <a href="../changelog.html">changelog</a>.</td>
+</tr>
+<tr>
 <td><strong><code>originApp</code></strong></td>
 <td><em>string</em></td>
 <td><code>"Unknown"</code></td>
-<td>The application name from which the document was exported.</td>
+<td><strong><em>Deprecated</em></strong> since 1.2.0&nbsp;<sup>*</sup>. The application name from which the document was exported.</td>
 </tr>
 <tr>
 <td><strong><code>originAppVersion</code></strong></td>
 <td><em>string</em></td>
 <td><code>"0.0.0"</code></td>
-<td>The version of the origin application.</td>
+<td><strong><em>Deprecated</em></strong> since 1.2.0&nbsp;<sup>*</sup>. The version of the origin application.</td>
+</tr>
+<tr>
+<td><strong><code>startTime</code></strong></td>
+<td><em>int</em></td>
+<td><code>0</code></td>
+<td>The first frame number in the animation.</td>
+</tr>
+<tr>
+<td><strong><code>width</code></strong></td>
+<td><em>int</em></td>
+<td><code>1920</code></td>
+<td>The width, in pixels.</td>
 </tr>
 </tbody>
 </table>
+<p><sup>*</sup> <em>Deprecated values will be removed in the next major version of OCA.</em><br />
+<em><code>originApp</code> and <code>originAppVersion</code> are now stored in the metadata file, and should be read if and only if there is no metadata file in the OCA folder.</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If the layers don&rsquo;t have the same size as the document (this root object), they may be cropped, but they&rsquo;re never scaled.</p>
@@ -517,6 +529,20 @@ If there is no default value, importing the OCA document should fail.</p>
 }
 </code></pre></div>
         
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="meta.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="layer.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
         
     </div>
 
@@ -610,6 +636,21 @@ If there is no default value, importing the OCA document should fail.</p>
         </div>
     </div>
 </div>
+
+        <!-- Crowdin widget -->
+        <script
+            type="text/javascript"
+            src="https://crowdin.com/js/crowdjet/crowdjet.js">
+        </script>
+        <div
+            id="crowdjet-container"
+            data-project-id="530368"
+            style="bottom: 90px; right: 20px;">
+        </div>
+        <div
+            id="crowdjet-expand-container"
+            style="bottom: 10px; right: 20px;">
+        </div>
     </body>
 
 </html>

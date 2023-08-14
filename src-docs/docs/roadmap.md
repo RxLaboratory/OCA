@@ -7,9 +7,31 @@ Features are ordered from closer and more likely to be implemented to further or
 !!! warning
     Everything which is described here is still subject to change before it makes its way to OCA.
 
-## Meta Data
+## Thumbnails
 
-All objects should have a `metadata` value, storing custom key/value pairs.
+An 8-bit sRGB PNG file could be included in the OCA format as a thumbnail for the document.
+
+A new `thumbnail` attribute would be added to the [*Root Object*](specs/root.md).
+
+It would be a new *Thumbnail Object* with:
+
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| **`fileName`** | *string* | | The relative path to the thumbnail (which should be at the root of the folder and named after the OCA file). |
+| **`width`** | *int* | `256`? `512`? `640`? | The width. |
+| **`height`** | *int* | `256`? `512`? `360`? | The width. |
+
+
+!!! question
+    What should be the aspect ratio and default resolution of the thumbnail?  
+    Proposed default sizes:
+
+    - `256x256` or `512x512`, 1:1
+    - `640x360`, 1.78:1
+
+!!! question
+    How useful would it be to add thumbnails to layers?
 
 ## Color space
 

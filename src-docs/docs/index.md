@@ -80,9 +80,11 @@ More features may be added later, have a look at the [**Roadmap**](roadmap.md)!
 
 - [Examples](specs/examples.md)
 - [Folder Structure](specs/folder-structure.md)
+- [File Specifications](specs/folder-structure.md)
 
 ### JSON Objects
 
+- [Metadata Object Specs](specs/meta.md)
 - [Root Object Specs](specs/root.md)
 - [Layer Object Specs](specs/layer.md)
 - [Frame Object Specs](specs/frame.md)

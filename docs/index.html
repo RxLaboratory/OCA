@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="img/favicon.ico">
 
     
-    <title>v1.1.1 - OCA Documentation</title>
+    <title>v1.2.0 - OCA Documentation</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -72,7 +72,7 @@
                 
                 
                     <li class="active">
-                        <a href="index.html">v1.1.1</a>
+                        <a href="index.html">v1.2.0</a>
                     </li>
                 
                 
@@ -103,6 +103,12 @@
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="specs/meta.html">Metadata JSON Object</a>
+</li>
+
         
             
 <li >
@@ -259,33 +265,13 @@
         
         
         <div class="col-md-3"><div id="side-menu">
-    <div class="bs-sidebar hidden-print affix well" role="complementary">
-        <ul class="nav bs-sidenav">
-            <li class="first-level active"><a href="#oca-the-open-cel-animation-format">OCA, The Open Cel Animation format</a></li>
-                <li class="second-level"><a href="#principles">Principles</a></li>
-                    
-                <li class="second-level"><a href="#implementation">Implementation</a></li>
-                    
-                    <li class="third-level"><a href="#icon">Icon</a></li>
-                <li class="second-level"><a href="#features">Features</a></li>
-                    
-                <li class="second-level"><a href="#specifications">Specifications</a></li>
-                    
-                    <li class="third-level"><a href="#json-objects">JSON Objects</a></li>
-                    <li class="third-level"><a href="#values">Values</a></li>
-                <li class="second-level"><a href="#license">License</a></li>
-                    
-                    <li class="third-level"><a href="#software">Software</a></li>
-                    <li class="third-level"><a href="#this-documentation">This Documentation</a></li>
-        </ul>
-    </div>
     <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
         <!-- Main navigation -->
         <ul class="nav bs-sidenav">
         
         
             <li class="active">
-                <a href="index.html">v1.1.1</a>
+                <a href="index.html">v1.2.0</a>
             </li>
         
         
@@ -310,6 +296,10 @@
                         <li class="second-level">
                             <button  type="button" class="collapse-button ">Objects</button>
                             <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="specs/meta.html">Metadata JSON Object</a></li>
+                                    
                                 
                                     
                                     <li class="third-level "><a href="specs/root.html">Root JSON Object</a></li>
@@ -406,6 +396,26 @@
             </li>
         
         
+        </ul>
+    </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#oca-the-open-cel-animation-format">OCA, The Open Cel Animation format</a></li>
+                <li class="second-level"><a href="#principles">Principles</a></li>
+                    
+                <li class="second-level"><a href="#implementation">Implementation</a></li>
+                    
+                    <li class="third-level"><a href="#icon">Icon</a></li>
+                <li class="second-level"><a href="#features">Features</a></li>
+                    
+                <li class="second-level"><a href="#specifications">Specifications</a></li>
+                    
+                    <li class="third-level"><a href="#json-objects">JSON Objects</a></li>
+                    <li class="third-level"><a href="#values">Values</a></li>
+                <li class="second-level"><a href="#license">License</a></li>
+                    
+                    <li class="third-level"><a href="#software">Software</a></li>
+                    <li class="third-level"><a href="#this-documentation">This Documentation</a></li>
         </ul>
     </div>
     <div class="footer-meta"></div>
@@ -545,9 +555,11 @@
 <ul>
 <li><a href="specs/examples.html">Examples</a></li>
 <li><a href="specs/folder-structure.html">Folder Structure</a></li>
+<li><a href="specs/folder-structure.html">File Specifications</a></li>
 </ul>
 <h3 id="json-objects">JSON Objects</h3>
 <ul>
+<li><a href="specs/meta.html">Metadata Object Specs</a></li>
 <li><a href="specs/root.html">Root Object Specs</a></li>
 <li><a href="specs/layer.html">Layer Object Specs</a></li>
 <li><a href="specs/frame.html">Frame Object Specs</a></li>
@@ -574,6 +586,20 @@ with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 A copy of the license is included in the section entitled &ldquo;<a href="licenses/gfdl.html">Documentation License</a>&rdquo;.</p>
 <p><img alt="GNU" src="img/gnu.png" /> <img alt="GFDL" src="img/gfdl-logo.png" /></p></div>
         
+            <div class="nav-footer">
+            <ul>
+                <li class="disabled nav-footer-prev">
+                    <a rel="prev" >
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="specs/examples.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
         
     </div>
 
@@ -667,11 +693,26 @@ A copy of the license is included in the section entitled &ldquo;<a href="licens
         </div>
     </div>
 </div>
+
+        <!-- Crowdin widget -->
+        <script
+            type="text/javascript"
+            src="https://crowdin.com/js/crowdjet/crowdjet.js">
+        </script>
+        <div
+            id="crowdjet-container"
+            data-project-id="530368"
+            style="bottom: 90px; right: 20px;">
+        </div>
+        <div
+            id="crowdjet-expand-container"
+            style="bottom: 10px; right: 20px;">
+        </div>
     </body>
 
 </html>
 
 <!--
-MkDocs version : 1.2.3
-Build Date UTC : 2023-08-12 17:00:05.114686+00:00
+MkDocs version : 1.4.2
+Build Date UTC : 2023-08-14 08:54:10.729848+00:00
 -->

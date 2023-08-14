@@ -5,14 +5,15 @@ If there is no default value, importing the OCA document should fail.
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| **`name`** | *string* | `"_blank"` | The name of the frame. It can be `"_blank"` for an empty frame. |
+| **`duration`** | *int* | `1` | The duration of the frame, in frames. |
 | **`fileName`** | *string* | `""` | The path and name of the file of the frame. It is the relative path from the root of the *OCA* folder.<br>It can be an empty string if and only if it's a blank/empty frame (i.e. the name is `"_blank"` ). |
 | **`frameNumber`** | *int* | | The frame in the document at which the frames starts to be visible. |
+| **`height`** | *int* | `layer.height` | The height, in pixels. |
+| **`meta`** | *object* | `{}` | Any custom metadata associated to the frame. It *must* be an object, not a value or a list. |
+| **`name`** | *string* | `"_blank"` | The name of the frame. It can be `"_blank"` for an empty frame. |
 | **`opacity`** | *int* | `1.0` | The opacity of the frame in the range `[0.0 - 1.0]`. It *must* be multiplied by the containing layer opacity during the rendering process. |
 | **`position`** | *int[]* | `[layer.width / 2, layer.height/2]` | The coordinates of the center of the frame, in pixels [X,Y] in the containing ([*Layer Object*](layer.md)) coordinates; the origin `[0,0]` is the top left corner of the containing layer. |
 | **`width`** | *int* | `layer.width` | The width, in pixels. |
-| **`height`** | *int* | `layer.height` | The height, in pixels. |
-| **`duration`** | *int* | `1` | The duration of the frame, in frames. |
 
 !!! WIP
     We're planning to add a new Frame Sequence Object to simplify storing frames when they all have the same size, position and opacity, and allow the use of `.ifl` files.

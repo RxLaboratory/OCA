@@ -4,6 +4,7 @@
 
 The OCA data is stored in a standard text file.
 
+- The file extension *must* be **`.oca`**.
 - The text encoding *must* be **`UTF-8`**.
 - The data must be formatted as [***JSON***](https://en.wikipedia.org/wiki/JSON).  
     *We chose* JSON *(over* XML *or* YAML *) because it is both very easy to use with any programming language, and easy to read and edit by humans.*
@@ -13,8 +14,17 @@ The OCA data is stored in a standard text file.
     - There ***must not* be any other data** than what is listed in this document.  
         *This is needed to prevent potential conflicts with future updates.*
 
-!!! WIP
-    We plan to add some metadata fields in the objects to let you add any custom data without interfering with the OCA data.
+## Document Metadata
+
+Any metadata associated to the whole document *must* be stored in the metadata file.
+
+The metadata is separated from the main OCA data file to make it easy for users to strip (or replace) all metadata from the file.
+
+- It must have the same name as the OCA Data file, suffixed with **`_meta`**, and the file extension *must* be **`.json`**.
+- The text encoding *must* be **`UTF-8`**.
+- The data must be formatted as [***JSON***](https://en.wikipedia.org/wiki/JSON).  
+    - The *JSON* string *should* be **pretty printed**, with a 4-space indentation.  
+    - There *must* be a **single [*Metadata Object*](meta.md)** which itself contains all metadata.
 
 ## Image Data
 

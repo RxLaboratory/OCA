@@ -1,0 +1,16 @@
+{
+    "author": "Nicolas \"Duduf\" Dufresne",
+    "copyright": "ⓒ Copyright 2023 RxLaboratory, Nicolas Dufresne",
+    "description": "An example of an OCA document exported from Krita, demonstrating the main features of OCA.",
+    "exportedBy": "OCA for Krita",
+    "exportedByID": "org.rxlaboratory.oca.krita",
+    "exportedByOrg": "RxLaboratory",
+    "exportedByURL": "https://rxlaboratory.org/tools/oca-for-krita",
+    "license": "GNU-FDL",
+    "licenseLong": "GNU Free Documentation License",
+    "licenseURL": "https://www.gnu.org/licenses/fdl-1.3.html#license-text",
+    "meta": {},
+    "originApp": "Krita",
+    "originAppVersion": "5.1.1",
+    "created": "2023-08-13 12:00:00"
+}

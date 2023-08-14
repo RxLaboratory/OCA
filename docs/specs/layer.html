@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.1</a>
+                        <a href="../index.html">v1.2.0</a>
                     </li>
                 
                 
@@ -103,6 +103,12 @@
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="meta.html">Metadata JSON Object</a>
+</li>
+
         
             
 <li >
@@ -259,22 +265,13 @@
         
         
         <div class="col-md-3"><div id="side-menu">
-    <div class="bs-sidebar hidden-print affix well" role="complementary">
-        <ul class="nav bs-sidenav">
-            <li class="first-level active"><a href="#layer-object">Layer Object</a></li>
-                <li class="second-level"><a href="#examples">Examples</a></li>
-                    
-                    <li class="third-level"><a href="#generic-paintlayer">Generic paintlayer</a></li>
-                    <li class="third-level"><a href="#generic-grouplayer">Generic grouplayer</a></li>
-        </ul>
-    </div>
     <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
         <!-- Main navigation -->
         <ul class="nav bs-sidenav">
         
         
             <li >
-                <a href="../index.html">v1.1.1</a>
+                <a href="../index.html">v1.2.0</a>
             </li>
         
         
@@ -299,6 +296,10 @@
                         <li class="second-level">
                             <button  type="button" class="collapse-button active-collapse-button">Objects</button>
                             <ul class="collapsible-content collapsible-content-active">
+                                
+                                    
+                                    <li class="third-level "><a href="meta.html">Metadata JSON Object</a></li>
+                                    
                                 
                                     
                                     <li class="third-level "><a href="root.html">Root JSON Object</a></li>
@@ -397,6 +398,15 @@
         
         </ul>
     </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#layer-object">Layer Object</a></li>
+                <li class="second-level"><a href="#examples">Examples</a></li>
+                    
+                    <li class="third-level"><a href="#generic-paintlayer">Generic paintlayer</a></li>
+                    <li class="third-level"><a href="#generic-grouplayer">Generic grouplayer</a></li>
+        </ul>
+    </div>
     <div class="footer-meta"></div>
 </div></div>
         <div class="col-md-9" role="main">
@@ -415,34 +425,10 @@ If there is no default value, importing the OCA document should fail.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong><code>name</code></strong></td>
-<td><em>string</em></td>
-<td></td>
-<td>The name of the layer. It <em>must</em> be unique in the document.</td>
-</tr>
-<tr>
-<td><strong><code>frames</code></strong></td>
-<td><em>FrameObject[]</em></td>
-<td><code>[]</code></td>
-<td>The frames of the layer if it is a <code>paintlayer</code> or a <code>vectorlayer</code>, ignored otherwise. See the <a href="frame.html"><em>Frame Object</em></a> section.</td>
-</tr>
-<tr>
-<td><strong><code>childLayers</code></strong></td>
-<td><em>LayerObject[]</em></td>
-<td><code>[]</code></td>
-<td>The child layers if this layer is a <code>grouplayer</code>.</td>
-</tr>
-<tr>
-<td><strong><code>type</code></strong></td>
-<td><em>string</em></td>
-<td><code>"paintlayer"</code></td>
-<td>The type of the layer. See the <a href="layer-types.html"><em>Layer Types</em></a> section.</td>
-</tr>
-<tr>
-<td><strong><code>fileType</code></strong></td>
-<td><em>string</em></td>
-<td><code>"png"</code></td>
-<td>The type of the files used for the frames. The file extension, without the initial dot.</td>
+<td><strong><code>animated</code></strong></td>
+<td><em>boolean</em></td>
+<td><code>true</code></td>
+<td>Whether this layer is a single frame or not.</td>
 </tr>
 <tr>
 <td><strong><code>blendingMode</code></strong></td>
@@ -451,28 +437,22 @@ If there is no default value, importing the OCA document should fail.</p>
 <td>The blending mode of the layer. See the <a href="blending-modes.html"><em>Blending modes</em></a> section.</td>
 </tr>
 <tr>
-<td><strong><code>inheritAlpha</code></strong></td>
-<td><em>boolean</em></td>
-<td><code>false</code></td>
-<td>When true, the alpha of the layer is multiplied with the alpha of all the layers under it (before it in an OCA list) in the same group (called <em>Preserve Transparency</em> in <em>Adobe After Effects</em>, <em>Inherit Alpha</em> in <em>Krita</em>).</td>
+<td><strong><code>childLayers</code></strong></td>
+<td><em>LayerObject[]</em></td>
+<td><code>[]</code></td>
+<td>The child layers if this layer is a <code>grouplayer</code>.</td>
 </tr>
 <tr>
-<td><strong><code>animated</code></strong></td>
-<td><em>boolean</em></td>
-<td><code>true</code></td>
-<td>Whether this layer is a single frame or not.</td>
+<td><strong><code>fileType</code></strong></td>
+<td><em>string</em></td>
+<td><code>"png"</code></td>
+<td>The type of the files used for the frames. The file extension, without the initial dot.</td>
 </tr>
 <tr>
-<td><strong><code>position</code></strong></td>
-<td><em>int[]</em></td>
-<td><code>[root.width / 2, root.height/2]</code><br>or<br><code>[layer.width / 2, layer.height/2]</code></td>
-<td>The coordinates of the center of the layer, in pixels [X,Y] in the document (<a href="root.html"><em>Root Object</em></a>) or the containing group (<a href="layer.html"><em>Layer Object</em></a>) coordinates; the origin <code>[0,0]</code> is the top left corner of the container.</td>
-</tr>
-<tr>
-<td><strong><code>width</code></strong></td>
-<td><em>int</em></td>
-<td><code>root.width</code></td>
-<td>The width, in pixels.</td>
+<td><strong><code>frames</code></strong></td>
+<td><em>FrameObject[]</em></td>
+<td><code>[]</code></td>
+<td>The frames of the layer if it is a <code>paintlayer</code> or a <code>vectorlayer</code>, ignored otherwise. See the <a href="frame.html"><em>Frame Object</em></a> section.</td>
 </tr>
 <tr>
 <td><strong><code>height</code></strong></td>
@@ -481,10 +461,28 @@ If there is no default value, importing the OCA document should fail.</p>
 <td>The height, in pixels.</td>
 </tr>
 <tr>
+<td><strong><code>inheritAlpha</code></strong></td>
+<td><em>boolean</em></td>
+<td><code>false</code></td>
+<td>When true, the alpha of the layer is multiplied with the alpha of all the layers under it (before it in an OCA list) in the same group (called <em>Preserve Transparency</em> in <em>Adobe After Effects</em>, <em>Inherit Alpha</em> in <em>Krita</em>).</td>
+</tr>
+<tr>
 <td><strong><code>label</code></strong></td>
 <td><em>int</em></td>
 <td><code>-1</code></td>
 <td>A label for the layer. See the <a href="layer-labels.html"><em>Layer Label</em></a> section.</td>
+</tr>
+<tr>
+<td><strong><code>meta</code></strong></td>
+<td><em>object</em></td>
+<td><code>{}</code></td>
+<td>Any custom metadata associated to the layer. It <em>must</em> be an object, not a value or a list.</td>
+</tr>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><em>string</em></td>
+<td></td>
+<td>The name of the layer. It <em>must</em> be unique in the document.</td>
 </tr>
 <tr>
 <td><strong><code>opacity</code></strong></td>
@@ -493,10 +491,16 @@ If there is no default value, importing the OCA document should fail.</p>
 <td>The opacity of the layer in the range [0.0 - 1.0].</td>
 </tr>
 <tr>
-<td><strong><code>visible</code></strong></td>
+<td><strong><code>passThrough</code></strong></td>
 <td><em>boolean</em></td>
-<td><code>true</code></td>
-<td>Whether the layer is activated/visible.</td>
+<td><code>false</code></td>
+<td>Only for <code>grouplayer</code>. When this is <code>false</code>, the group content <em>must</em> be merged (using alpha, opacity values, blending modes, etc.) before the rendering process goes to the next node/layer, and cropped if the contained layers are bigger than the group size. When this is <code>true</code>, the group is to be completely by the rendering process, and only used as a way to group the layers in the UI of the application.</td>
+</tr>
+<tr>
+<td><strong><code>position</code></strong></td>
+<td><em>int[]</em></td>
+<td><code>[root.width / 2, root.height/2]</code><br>or<br><code>[layer.width / 2, layer.height/2]</code></td>
+<td>The coordinates of the center of the layer, in pixels [X,Y] in the document (<a href="root.html"><em>Root Object</em></a>) or the containing group (<a href="layer.html"><em>Layer Object</em></a>) coordinates; the origin <code>[0,0]</code> is the top left corner of the container.</td>
 </tr>
 <tr>
 <td><strong><code>reference</code></strong></td>
@@ -505,10 +509,22 @@ If there is no default value, importing the OCA document should fail.</p>
 <td>Whether the layer is a guide or reference, and should not be rendered.</td>
 </tr>
 <tr>
-<td><strong><code>passThrough</code></strong></td>
+<td><strong><code>type</code></strong></td>
+<td><em>string</em></td>
+<td><code>"paintlayer"</code></td>
+<td>The type of the layer. See the <a href="layer-types.html"><em>Layer Types</em></a> section.</td>
+</tr>
+<tr>
+<td><strong><code>visible</code></strong></td>
 <td><em>boolean</em></td>
-<td><code>false</code></td>
-<td>Only for <code>grouplayer</code>. When this is <code>false</code>, the group content <em>must</em> be merged (using alpha, opacity values, blending modes, etc.) before the rendering process goes to the next node/layer, and cropped if the contained layers are bigger than the group size. When this is <code>true</code>, the group is to be completely by the rendering process, and only used as a way to group the layers in the UI of the application.</td>
+<td><code>true</code></td>
+<td>Whether the layer is activated/visible.</td>
+</tr>
+<tr>
+<td><strong><code>width</code></strong></td>
+<td><em>int</em></td>
+<td><code>root.width</code></td>
+<td>The width, in pixels.</td>
 </tr>
 </tbody>
 </table>
@@ -586,6 +602,20 @@ If there is no default value, importing the OCA document should fail.</p>
 }
 </code></pre></div>
         
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="root.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="frame.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
         
     </div>
 
@@ -679,6 +709,21 @@ If there is no default value, importing the OCA document should fail.</p>
         </div>
     </div>
 </div>
+
+        <!-- Crowdin widget -->
+        <script
+            type="text/javascript"
+            src="https://crowdin.com/js/crowdjet/crowdjet.js">
+        </script>
+        <div
+            id="crowdjet-container"
+            data-project-id="530368"
+            style="bottom: 90px; right: 20px;">
+        </div>
+        <div
+            id="crowdjet-expand-container"
+            style="bottom: 10px; right: 20px;">
+        </div>
     </body>
 
 </html>

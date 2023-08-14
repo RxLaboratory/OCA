@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="index.html">v1.1.1</a>
+                        <a href="index.html">v1.2.0</a>
                     </li>
                 
                 
@@ -103,6 +103,12 @@
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="specs/meta.html">Metadata JSON Object</a>
+</li>
+
         
             
 <li >
@@ -259,42 +265,13 @@
         
         
         <div class="col-md-3"><div id="side-menu">
-    <div class="bs-sidebar hidden-print affix well" role="complementary">
-        <ul class="nav bs-sidenav">
-            <li class="first-level active"><a href="#roadmap">Roadmap</a></li>
-                <li class="second-level"><a href="#meta-data">Meta Data</a></li>
-                    
-                <li class="second-level"><a href="#color-space">Color space</a></li>
-                    
-                <li class="second-level"><a href="#ocaz-zipped-oca-andor-opendocument">OCAZ, Zipped OCA, and/or OpenDocument</a></li>
-                    
-                <li class="second-level"><a href="#layer-and-frame-time-values">Layer and Frame Time values</a></li>
-                    
-                <li class="second-level"><a href="#new-layer-type-ocalayer">New Layer type: ocalayer</a></li>
-                    
-                    <li class="third-level"><a href="#notes">Notes</a></li>
-                <li class="second-level"><a href="#frame-sequences">Frame sequences</a></li>
-                    
-                    <li class="third-level"><a href="#new-frame-sequence-object">New Frame Sequence Object</a></li>
-                <li class="second-level"><a href="#masks">Masks</a></li>
-                    
-                <li class="second-level"><a href="#adjustmenteffects-layers">Adjustment/Effects Layers</a></li>
-                    
-                <li class="second-level"><a href="#layer-transform">Layer transform</a></li>
-                    
-                <li class="second-level"><a href="#keyframe-animation">Keyframe animation</a></li>
-                    
-                <li class="second-level"><a href="#loops">Loops</a></li>
-                    
-        </ul>
-    </div>
     <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
         <!-- Main navigation -->
         <ul class="nav bs-sidenav">
         
         
             <li >
-                <a href="index.html">v1.1.1</a>
+                <a href="index.html">v1.2.0</a>
             </li>
         
         
@@ -319,6 +296,10 @@
                         <li class="second-level">
                             <button  type="button" class="collapse-button ">Objects</button>
                             <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="specs/meta.html">Metadata JSON Object</a></li>
+                                    
                                 
                                     
                                     <li class="third-level "><a href="specs/root.html">Root JSON Object</a></li>
@@ -417,6 +398,35 @@
         
         </ul>
     </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#roadmap">Roadmap</a></li>
+                <li class="second-level"><a href="#thumbnails">Thumbnails</a></li>
+                    
+                <li class="second-level"><a href="#color-space">Color space</a></li>
+                    
+                <li class="second-level"><a href="#ocaz-zipped-oca-andor-opendocument">OCAZ, Zipped OCA, and/or OpenDocument</a></li>
+                    
+                <li class="second-level"><a href="#layer-and-frame-time-values">Layer and Frame Time values</a></li>
+                    
+                <li class="second-level"><a href="#new-layer-type-ocalayer">New Layer type: ocalayer</a></li>
+                    
+                    <li class="third-level"><a href="#notes">Notes</a></li>
+                <li class="second-level"><a href="#frame-sequences">Frame sequences</a></li>
+                    
+                    <li class="third-level"><a href="#new-frame-sequence-object">New Frame Sequence Object</a></li>
+                <li class="second-level"><a href="#masks">Masks</a></li>
+                    
+                <li class="second-level"><a href="#adjustmenteffects-layers">Adjustment/Effects Layers</a></li>
+                    
+                <li class="second-level"><a href="#layer-transform">Layer transform</a></li>
+                    
+                <li class="second-level"><a href="#keyframe-animation">Keyframe animation</a></li>
+                    
+                <li class="second-level"><a href="#loops">Loops</a></li>
+                    
+        </ul>
+    </div>
     <div class="footer-meta"></div>
 </div></div>
         <div class="col-md-9" role="main">
@@ -428,8 +438,53 @@
 <p class="admonition-title">Warning</p>
 <p>Everything which is described here is still subject to change before it makes its way to OCA.</p>
 </div>
-<h2 id="meta-data">Meta Data</h2>
-<p>All objects should have a <code>metadata</code> value, storing custom key/value pairs.</p>
+<h2 id="thumbnails">Thumbnails</h2>
+<p>An 8-bit sRGB PNG file could be included in the OCA format as a thumbnail for the document.</p>
+<p>A new <code>thumbnail</code> attribute would be added to the <a href="specs/root.html"><em>Root Object</em></a>.</p>
+<p>It would be a new <em>Thumbnail Object</em> with:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>fileName</code></strong></td>
+<td><em>string</em></td>
+<td></td>
+<td>The relative path to the thumbnail (which should be at the root of the folder and named after the OCA file).</td>
+</tr>
+<tr>
+<td><strong><code>width</code></strong></td>
+<td><em>int</em></td>
+<td><code>256</code>? <code>512</code>? <code>640</code>?</td>
+<td>The width.</td>
+</tr>
+<tr>
+<td><strong><code>height</code></strong></td>
+<td><em>int</em></td>
+<td><code>256</code>? <code>512</code>? <code>360</code>?</td>
+<td>The width.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>What should be the aspect ratio and default resolution of the thumbnail?<br />
+Proposed default sizes:</p>
+<ul>
+<li><code>256x256</code> or <code>512x512</code>, 1:1</li>
+<li><code>640x360</code>, 1.78:1</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>How useful would it be to add thumbnails to layers?</p>
+</div>
 <h2 id="color-space">Color space</h2>
 <p>It would be easy and useful to add some info about the color space. To be used at least for <code>F16</code> and <code>F32</code> color depth with <em>EXR</em> files, but we may also support <em>Rec-2020</em> with PNG files.</p>
 <h2 id="ocaz-zipped-oca-andor-opendocument">OCAZ, Zipped OCA, and/or OpenDocument</h2>
@@ -598,6 +653,20 @@ levels, curve, hsv, contrast, exposure, invert, balance, posterize, gaussianblur
 <p>This question is related to the interpolation and keyframes format, and will be handled by the <em>OKA Open Keyframe Animation</em> format we&rsquo;re working on.</p>
 <p>An <code>inExtrapolation</code> and <code>outExtrapoplation</code> values (<em>OKAExtrapolationObject</em>) would be added to the hypothetical Frame Sequence Object.</p></div>
         
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="specs/layer-labels.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="changelog.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
         
     </div>
 
@@ -691,6 +760,21 @@ levels, curve, hsv, contrast, exposure, invert, balance, posterize, gaussianblur
         </div>
     </div>
 </div>
+
+        <!-- Crowdin widget -->
+        <script
+            type="text/javascript"
+            src="https://crowdin.com/js/crowdjet/crowdjet.js">
+        </script>
+        <div
+            id="crowdjet-container"
+            data-project-id="530368"
+            style="bottom: 90px; right: 20px;">
+        </div>
+        <div
+            id="crowdjet-expand-container"
+            style="bottom: 10px; right: 20px;">
+        </div>
     </body>
 
 </html>

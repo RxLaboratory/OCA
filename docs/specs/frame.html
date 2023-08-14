@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.1</a>
+                        <a href="../index.html">v1.2.0</a>
                     </li>
                 
                 
@@ -103,6 +103,12 @@
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="meta.html">Metadata JSON Object</a>
+</li>
+
         
             
 <li >
@@ -259,22 +265,13 @@
         
         
         <div class="col-md-3"><div id="side-menu">
-    <div class="bs-sidebar hidden-print affix well" role="complementary">
-        <ul class="nav bs-sidenav">
-            <li class="first-level active"><a href="#frame-object">Frame Object</a></li>
-                <li class="second-level"><a href="#examples">Examples</a></li>
-                    
-                    <li class="third-level"><a href="#generic-frame">Generic frame</a></li>
-                    <li class="third-level"><a href="#empty-frame">Empty frame</a></li>
-        </ul>
-    </div>
     <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
         <!-- Main navigation -->
         <ul class="nav bs-sidenav">
         
         
             <li >
-                <a href="../index.html">v1.1.1</a>
+                <a href="../index.html">v1.2.0</a>
             </li>
         
         
@@ -299,6 +296,10 @@
                         <li class="second-level">
                             <button  type="button" class="collapse-button active-collapse-button">Objects</button>
                             <ul class="collapsible-content collapsible-content-active">
+                                
+                                    
+                                    <li class="third-level "><a href="meta.html">Metadata JSON Object</a></li>
+                                    
                                 
                                     
                                     <li class="third-level "><a href="root.html">Root JSON Object</a></li>
@@ -397,6 +398,15 @@
         
         </ul>
     </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#frame-object">Frame Object</a></li>
+                <li class="second-level"><a href="#examples">Examples</a></li>
+                    
+                    <li class="third-level"><a href="#generic-frame">Generic frame</a></li>
+                    <li class="third-level"><a href="#empty-frame">Empty frame</a></li>
+        </ul>
+    </div>
     <div class="footer-meta"></div>
 </div></div>
         <div class="col-md-9" role="main">
@@ -415,10 +425,10 @@ If there is no default value, importing the OCA document should fail.</p>
 </thead>
 <tbody>
 <tr>
-<td><strong><code>name</code></strong></td>
-<td><em>string</em></td>
-<td><code>"_blank"</code></td>
-<td>The name of the frame. It can be <code>"_blank"</code> for an empty frame.</td>
+<td><strong><code>duration</code></strong></td>
+<td><em>int</em></td>
+<td><code>1</code></td>
+<td>The duration of the frame, in frames.</td>
 </tr>
 <tr>
 <td><strong><code>fileName</code></strong></td>
@@ -431,6 +441,24 @@ If there is no default value, importing the OCA document should fail.</p>
 <td><em>int</em></td>
 <td></td>
 <td>The frame in the document at which the frames starts to be visible.</td>
+</tr>
+<tr>
+<td><strong><code>height</code></strong></td>
+<td><em>int</em></td>
+<td><code>layer.height</code></td>
+<td>The height, in pixels.</td>
+</tr>
+<tr>
+<td><strong><code>meta</code></strong></td>
+<td><em>object</em></td>
+<td><code>{}</code></td>
+<td>Any custom metadata associated to the frame. It <em>must</em> be an object, not a value or a list.</td>
+</tr>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><em>string</em></td>
+<td><code>"_blank"</code></td>
+<td>The name of the frame. It can be <code>"_blank"</code> for an empty frame.</td>
 </tr>
 <tr>
 <td><strong><code>opacity</code></strong></td>
@@ -449,18 +477,6 @@ If there is no default value, importing the OCA document should fail.</p>
 <td><em>int</em></td>
 <td><code>layer.width</code></td>
 <td>The width, in pixels.</td>
-</tr>
-<tr>
-<td><strong><code>height</code></strong></td>
-<td><em>int</em></td>
-<td><code>layer.height</code></td>
-<td>The height, in pixels.</td>
-</tr>
-<tr>
-<td><strong><code>duration</code></strong></td>
-<td><em>int</em></td>
-<td><code>1</code></td>
-<td>The duration of the frame, in frames.</td>
 </tr>
 </tbody>
 </table>
@@ -502,6 +518,20 @@ If there is no default value, importing the OCA document should fail.</p>
 }
 </code></pre></div>
         
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="layer.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="durations.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
         
     </div>
 
@@ -595,6 +625,21 @@ If there is no default value, importing the OCA document should fail.</p>
         </div>
     </div>
 </div>
+
+        <!-- Crowdin widget -->
+        <script
+            type="text/javascript"
+            src="https://crowdin.com/js/crowdjet/crowdjet.js">
+        </script>
+        <div
+            id="crowdjet-container"
+            data-project-id="530368"
+            style="bottom: 90px; right: 20px;">
+        </div>
+        <div
+            id="crowdjet-expand-container"
+            style="bottom: 10px; right: 20px;">
+        </div>
     </body>
 
 </html>

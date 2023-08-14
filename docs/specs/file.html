@@ -72,7 +72,7 @@
                 
                 
                     <li >
-                        <a href="../index.html">v1.1.1</a>
+                        <a href="../index.html">v1.2.0</a>
                     </li>
                 
                 
@@ -103,6 +103,12 @@
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Objects</a>
     <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="meta.html">Metadata JSON Object</a>
+</li>
+
         
             
 <li >
@@ -243,7 +249,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="root.html">
+                        <a rel="next" href="meta.html">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -259,22 +265,13 @@
         
         
         <div class="col-md-3"><div id="side-menu">
-    <div class="bs-sidebar hidden-print affix well" role="complementary">
-        <ul class="nav bs-sidenav">
-            <li class="first-level active"><a href="#file-specificatons">File Specificatons</a></li>
-                <li class="second-level"><a href="#oca-data">OCA Data</a></li>
-                    
-                <li class="second-level"><a href="#image-data">Image Data</a></li>
-                    
-        </ul>
-    </div>
     <div class="bs-sidebar hidden-print  affix well collapsible" role="complementary">
         <!-- Main navigation -->
         <ul class="nav bs-sidenav">
         
         
             <li >
-                <a href="../index.html">v1.1.1</a>
+                <a href="../index.html">v1.2.0</a>
             </li>
         
         
@@ -299,6 +296,10 @@
                         <li class="second-level">
                             <button  type="button" class="collapse-button ">Objects</button>
                             <ul class="collapsible-content ">
+                                
+                                    
+                                    <li class="third-level "><a href="meta.html">Metadata JSON Object</a></li>
+                                    
                                 
                                     
                                     <li class="third-level "><a href="root.html">Root JSON Object</a></li>
@@ -397,6 +398,17 @@
         
         </ul>
     </div>
+    <div class="bs-sidebar hidden-print affix well" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li class="first-level active"><a href="#file-specificatons">File Specificatons</a></li>
+                <li class="second-level"><a href="#oca-data">OCA Data</a></li>
+                    
+                <li class="second-level"><a href="#document-metadata">Document Metadata</a></li>
+                    
+                <li class="second-level"><a href="#image-data">Image Data</a></li>
+                    
+        </ul>
+    </div>
     <div class="footer-meta"></div>
 </div></div>
         <div class="col-md-9" role="main">
@@ -405,6 +417,7 @@
 <h2 id="oca-data">OCA Data</h2>
 <p>The OCA data is stored in a standard text file.</p>
 <ul>
+<li>The file extension <em>must</em> be <strong><code>.oca</code></strong>.</li>
 <li>The text encoding <em>must</em> be <strong><code>UTF-8</code></strong>.</li>
 <li>The data must be formatted as <a href="https://en.wikipedia.org/wiki/JSON"><strong><em>JSON</em></strong></a>.<br />
 <em>We chose</em> JSON <em>(over</em> XML <em>or</em> YAML <em>) because it is both very easy to use with any programming language, and easy to read and edit by humans.</em><ul>
@@ -416,10 +429,18 @@
 </ul>
 </li>
 </ul>
-<div class="admonition wip">
-<p class="admonition-title">Wip</p>
-<p>We plan to add some metadata fields in the objects to let you add any custom data without interfering with the OCA data.</p>
-</div>
+<h2 id="document-metadata">Document Metadata</h2>
+<p>Any metadata associated to the whole document <em>must</em> be stored in the metadata file.</p>
+<p>The metadata is separated from the main OCA data file to make it easy for users to strip (or replace) all metadata from the file.</p>
+<ul>
+<li>It must have the same name as the OCA Data file, suffixed with <strong><code>_meta</code></strong>, and the file extension <em>must</em> be <strong><code>.json</code></strong>.</li>
+<li>The text encoding <em>must</em> be <strong><code>UTF-8</code></strong>.</li>
+<li>The data must be formatted as <a href="https://en.wikipedia.org/wiki/JSON"><strong><em>JSON</em></strong></a>.  <ul>
+<li>The <em>JSON</em> string <em>should</em> be <strong>pretty printed</strong>, with a 4-space indentation.  </li>
+<li>There <em>must</em> be a <strong>single <a href="meta.html"><em>Metadata Object</em></a></strong> which itself contains all metadata.</li>
+</ul>
+</li>
+</ul>
 <h2 id="image-data">Image Data</h2>
 <p>Image data is stored in standard image files, according to the type sepcified in the OCA data file.</p>
 <ul>
@@ -449,6 +470,20 @@
 <p>We plan to add the ability to use other color spaces, and store the info in the OCA data.</p>
 </div></div>
         
+            <div class="nav-footer">
+            <ul>
+                <li class="nav-footer-prev">
+                    <a rel="prev" href="folder-structure.html">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="nav-footer-next">
+                    <a rel="next" href="meta.html">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+            </div>
         
     </div>
 
@@ -542,6 +577,21 @@
         </div>
     </div>
 </div>
+
+        <!-- Crowdin widget -->
+        <script
+            type="text/javascript"
+            src="https://crowdin.com/js/crowdjet/crowdjet.js">
+        </script>
+        <div
+            id="crowdjet-container"
+            data-project-id="530368"
+            style="bottom: 90px; right: 20px;">
+        </div>
+        <div
+            id="crowdjet-expand-container"
+            style="bottom: 10px; right: 20px;">
+        </div>
     </body>
 
 </html>

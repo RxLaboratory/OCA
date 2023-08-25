@@ -1,0 +1,7 @@
+{
+    "title": "Open Cel Animation",
+    "hosts": [ ],
+    "os": [ ],
+    "userGuide": "http://oca.rxlab.guide",
+    "description": "Open format to ease the exchange of traditional/frame-by-frame/cel animation between different applications."
+}

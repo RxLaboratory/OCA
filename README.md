@@ -6,7 +6,7 @@ Open Cel Animation format
 
 You can [read the documentation here](http://oca.rxlab.guide) for more information and specifications of the format.
 
-## Open
+## Open Format / Free license
 
 The format is completely open, that means everyone can export to or export from OCA very easily, and there's no license or whatever to use the format.
 

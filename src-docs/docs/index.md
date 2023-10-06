@@ -25,16 +25,16 @@ We're providing some implementations of *OCA* as add-ons for a few applications,
 <!-- implementation_list:begin -->
 | App | Add-on | Exports | Imports | Comments | Maintainer |
 |---|---|---|---|---|---|
-| [After Effects](https://www.adobe.com/products/aftereffects.html){target="_blank"} | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO){target="_blank"} | - | **◉** |  | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
-| [Animation Paper](https://animationpaper.com/){target="_blank"} | [](){target="_blank"} | **◉** | *?* |  | [Niels Krogh Mortensen](){target="_blank"} |
-| [Blender](https://blender.org/){target="_blank"} | [Bluik](https://rxlaboratory.org/tools/bluik/){target="_blank"} | **○** | **◉** | Exporter for Grease Pencil planned. | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
-| [Callipeg](https://callipeg.com){target="_blank"} | [](){target="_blank"} | **◉** | - |  | [Enoben](){target="_blank"} |
-| [Fusion](https://www.blackmagicdesign.com/products/fusion/){target="_blank"} | [Reactor (using Vonk Ultra)](https://www.steakunderwater.com/){target="_blank"} | - | **◉** |  | [We Suck Less](https://www.steakunderwater.com/wesuckless/){target="_blank"} |
-| [Krita](http://krita.org/){target="_blank"} | [OCA for Krita](https://rxlaboratory.org/tools/oca-for-krita/){target="_blank"} | **◉** | **○** |  | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
-| [OpenToonz](https://opentoonz.github.io/e/){target="_blank"} | [](){target="_blank"} | **◉** | - | Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483 | [Dwango](https://en.dwango.co.jp/){target="_blank"} |
-| [Photoshop](https://www.adobe.com/products/photoshop.html){target="_blank"} | [OCA](){target="_blank"} | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
-| [TVPaint](https://www.tvpaint.com/){target="_blank"} | [OCA](){target="_blank"} | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
-| [XDTS](){target="_blank"} | [OCA to XDTS converter](https://wolfinabowl.itch.io/oca-to-xdts-converter){target="_blank"} | **◉** | **◉** | XDTS is a format supported by OpenToonz, Tahoma, Clip Studio Paint EX and Toei Animation Digital Exposure Sheet. | [Wolf In A Bow](https://wolfinabowl.itch.io/){target="_blank"} |
+| [After Effects](https://www.adobe.com/products/aftereffects.html) | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | - | **◉** |  | [RxLaboratory / Duduf](https://rxlaboratory.org) |
+| [Animation Paper](https://animationpaper.com/) | *Native* | **◉** | *?* |  | Niels Krogh Mortensen |
+| [Blender](https://blender.org/) | [Bluik](https://rxlaboratory.org/tools/bluik/) | **○** | **◉** | Exporter for Grease Pencil planned. | [RxLaboratory / Duduf](https://rxlaboratory.org) |
+| [Callipeg](https://callipeg.com) | *Native* | **◉** | - |  | Enoben |
+| [Fusion](https://www.blackmagicdesign.com/products/fusion/) | [Reactor (using Vonk Ultra)](https://www.steakunderwater.com/) | - | **◉** |  | [We Suck Less](https://www.steakunderwater.com/wesuckless/) |
+| [Krita](http://krita.org/) | [OCA for Krita](https://rxlaboratory.org/tools/oca-for-krita/) | **◉** | **○** |  | [RxLaboratory / Duduf](https://rxlaboratory.org) |
+| [OpenToonz](https://opentoonz.github.io/e/) | *Native* | **◉** | - | Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483 | [Dwango](https://en.dwango.co.jp/) |
+| [Photoshop](https://www.adobe.com/products/photoshop.html) | OCA | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org) |
+| [TVPaint](https://www.tvpaint.com/) | OCA | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org) |
+| XDTS | [OCA to XDTS converter](https://wolfinabowl.itch.io/oca-to-xdts-converter) | **◉** | **◉** | XDTS is a format supported by OpenToonz, Tahoma, Clip Studio Paint EX and Toei Animation Digital Exposure Sheet. | [Wolf In A Bow](https://wolfinabowl.itch.io/) |
 
 Legend:  
 **◉** | Available  
@@ -43,6 +43,10 @@ Legend:
 - | Not supported
 
 <!-- implementation_list:end -->
+
+
+
+
 
 
 !!! tip

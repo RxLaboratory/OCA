@@ -57,14 +57,25 @@ for impl in implementations:
         i = "?"
 
     app=impl.get("host_name", "")
-    app_url=impl.get("host_url", "#")
-    addon=impl.get("addon_name", "")
-    addon_url=impl.get("addon_url", "#")
-    comment=impl.get("comment", "")
-    dev=impl.get("maintainer_name", "")
-    dev_url=impl.get("maintainer_url", "#")
+    app_url=impl.get("host_url", "")
+    if app_url != "":
+        app = f"[{app}]({app_url})"
 
-    tab = tab + f"\n| [{app}]({app_url}){{target=\"_blank\"}} | [{addon}]({addon_url}){{target=\"_blank\"}} | {o} | {i} | {comment} | [{dev}]({dev_url}){{target=\"_blank\"}} |"
+    addon=impl.get("addon_name", "*Native*")
+    if addon == "" or addon == "native" or addon == "Native":
+        addon = "*Native*"
+    addon_url=impl.get("addon_url", "")
+    if addon_url != "":
+        addon = f"[{addon}]({addon_url})"
+
+    comment=impl.get("comment", "")
+
+    dev=impl.get("maintainer_name", "")
+    dev_url=impl.get("maintainer_url", "")
+    if dev_url != "":
+        dev = f"[{dev}]({dev_url})"
+
+    tab = tab + f"\n| {app} | {addon} | {o} | {i} | {comment} | {dev} |"
 
 status_yes = STATUS["yes"]
 status_no = STATUS["no"]

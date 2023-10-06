@@ -40,9 +40,10 @@ Legend:
 **◉** | Available  
 **◔** | In development  
 **○** | Planned  
-- | Not supported
+\- | Not supported
 
 <!-- implementation_list:end -->
+
 
 
 

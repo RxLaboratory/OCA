@@ -110,7 +110,6 @@ def write(path):
                 if 'implementation_list:end' in line:
                     in_block = False
                     file.write(line)
-                    file.write("\n")
                 continue
 
 for md in markdownFiles:

@@ -36,13 +36,7 @@ Legend:
 
 <!-- implementation_list:end -->
 
-
-
-
-
-
-
-
+### Submit your own
 
 To submit a new app or add-on to be listed here and on all OCA-related sites, edit the [`implementations.json`](implementations.json) file and submit a pull request.
 

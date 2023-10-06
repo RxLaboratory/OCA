@@ -15,7 +15,29 @@ The code provided in the `lib` folder is licensed under the GNU-GPLv3 license (f
 ## Implementations
 
 <!-- implementation_list:begin -->
+| App | Add-on | Exports | Imports | Comments | Maintainer |
+|---|---|---|---|---|---|
+| [After Effects](https://www.adobe.com/products/aftereffects.html){target="_blank"} | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO){target="_blank"} | - | **◉** |  | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
+| [Animation Paper](https://animationpaper.com/){target="_blank"} | [](){target="_blank"} | **◉** | *?* |  | [Niels Krogh Mortensen](){target="_blank"} |
+| [Blender](https://blender.org/){target="_blank"} | [Bluik](https://rxlaboratory.org/tools/bluik/){target="_blank"} | **○** | **◉** | Exporter for Grease Pencil planned. | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
+| [Callipeg](https://callipeg.com){target="_blank"} | [](){target="_blank"} | **◉** | - |  | [Enoben](){target="_blank"} |
+| [Fusion](https://www.blackmagicdesign.com/products/fusion/){target="_blank"} | [Reactor (using Vonk Ultra)](https://www.steakunderwater.com/){target="_blank"} | - | **◉** |  | [We Suck Less](https://www.steakunderwater.com/wesuckless/){target="_blank"} |
+| [Krita](http://krita.org/){target="_blank"} | [OCA for Krita](https://rxlaboratory.org/tools/oca-for-krita/){target="_blank"} | **◉** | **○** |  | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
+| [OpenToonz](https://opentoonz.github.io/e/){target="_blank"} | [](){target="_blank"} | **◉** | - | Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483 | [Dwango](https://en.dwango.co.jp/){target="_blank"} |
+| [Photoshop](https://www.adobe.com/products/photoshop.html){target="_blank"} | [OCA](){target="_blank"} | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
+| [TVPaint](https://www.tvpaint.com/){target="_blank"} | [OCA](){target="_blank"} | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org){target="_blank"} |
+| [XDTS](){target="_blank"} | [OCA to XDTS converter](https://wolfinabowl.itch.io/oca-to-xdts-converter){target="_blank"} | **◉** | **◉** | XDTS is a format supported by OpenToonz, Tahoma, Clip Studio Paint EX and Toei Animation Digital Exposure Sheet. | [Wolf In A Bow](https://wolfinabowl.itch.io/){target="_blank"} |
+
+Legend:  
+**◉** | Available  
+**◔** | In development  
+**○** | Planned  
+- | Not supported
+
 <!-- implementation_list:end -->
+
+
+
 
 To submit a new app or add-on to be listed here and on all OCA-related sites, edit the [`implementations.json`](implementations.json) file and submit a pull request.
 

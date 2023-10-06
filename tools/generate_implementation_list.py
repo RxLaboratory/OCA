@@ -10,7 +10,7 @@ listFile = os.path.join(rootPath, "implementations.json")
 
 markdownFiles = (
     os.path.join(rootPath, "README.md"),
-    os.path.join(rootPath, "src-docs/README.md"),
+    os.path.join(rootPath, "src-docs", "docs", "index.md"),
 )
 
 STATUS = {
@@ -70,7 +70,7 @@ status_yes = STATUS["yes"]
 status_no = STATUS["no"]
 status_p = STATUS["planned"]
 status_d = STATUS["in_dev"]
-tab = tab + f"Legend:  \n{status_yes} | Available  \n{status_d} | In development  \n{status_p} | Planned  \n{status_no} | Not supported"
+tab = tab + f"\n\nLegend:  \n{status_yes} | Available  \n{status_d} | In development  \n{status_p} | Planned  \n{status_no} | Not supported\n\n"
 
 def write(path):
     """Writes the tab in a file"""
@@ -87,17 +87,20 @@ def write(path):
                     in_block = True
                     block_written = False
                 file.write(line)
+
+            if not in_block:
                 continue
+
+            if in_block and not block_written:
+                file.write(tab)
+                block_written = True
 
             if block_written:
                 if 'implementation_list:end' in line:
                     in_block = False
                     file.write(line)
+                    file.write("\n")
                 continue
-
-            if in_block:
-                file.write(tab)
-                block_written = True
 
 for md in markdownFiles:
     write(md)

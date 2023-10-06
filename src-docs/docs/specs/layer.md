@@ -73,7 +73,8 @@ This is an empty `paintlayer` (without any frame).
     "opacity": 1.0,
     "visible": true,
     "passThrough": false,
-    "reference": false
+    "reference": false,
+    "meta": {}
 }
 ```
 
@@ -101,6 +102,7 @@ This is an empty `grouplayer` (without any child layer).
     "opacity": 1.0,
     "visible": true,
     "passThrough": true,
-    "reference": false
+    "reference": false,
+    "meta": {}
 }
 ```

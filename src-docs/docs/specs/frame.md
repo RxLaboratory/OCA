@@ -36,7 +36,8 @@ If there is no default value, importing the OCA document should fail.
     ],
     "width": 1920,
     "height": 1080,
-    "duration": 3
+    "duration": 3,
+    "meta": {}
 }
 ```
 
@@ -56,6 +57,7 @@ You can insert empty, blank frames using `"_blank"` as its name, and an empty fi
     ],
     "width": 0,
     "height": 0,
-    "duration": 10
+    "duration": 10,
+    "meta": {}
 }
 ```

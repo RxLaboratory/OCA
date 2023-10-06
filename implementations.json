@@ -1,0 +1,114 @@
+{
+    "implementations" : [
+        {
+            "host_name": "After Effects",
+            "host_url": "https://www.adobe.com/products/aftereffects.html",
+            "addon_name": "DuIO",
+            "addon_url": "https://github.com/Rainbox-dev/DuAEF_DuIO",
+            "export": "no",
+            "import": "yes",
+            "comment": "",
+            "maintainer_name": "RxLaboratory / Duduf",
+            "maintainer_url": "https://rxlaboratory.org"
+        },
+        {
+            "host_name": "Animation Paper",
+            "host_url": "https://animationpaper.com/",
+            "addon_name": "",
+            "addon_url": "",
+            "export": "yes",
+            "import": "?",
+            "comment": "",
+            "maintainer_name": "Niels Krogh Mortensen",
+            "maintainer_url": ""
+        },
+        {
+            "host_name": "Blender",
+            "host_url": "https://blender.org/",
+            "addon_name": "Bluik",
+            "addon_url": "https://rxlaboratory.org/tools/bluik/",
+            "export": "planned",
+            "import": "yes",
+            "comment": "Exporter for Grease Pencil planned.",
+            "maintainer_name": "RxLaboratory / Duduf",
+            "maintainer_url": "https://rxlaboratory.org"
+        },
+        {
+            "host_name": "Fusion",
+            "host_url": "https://www.blackmagicdesign.com/products/fusion/",
+            "addon_name": "Reactor (using Vonk Ultra)",
+            "addon_url": "https://www.steakunderwater.com/",
+            "export": "no",
+            "import": "yes",
+            "comment": "",
+            "maintainer_name": "We Suck Less",
+            "maintainer_url": "https://www.steakunderwater.com/wesuckless/"
+        },
+        {
+            "host_name": "Krita",
+            "host_url": "http://krita.org/",
+            "addon_name": "OCA for Krita",
+            "addon_url": "https://rxlaboratory.org/tools/oca-for-krita/",
+            "export": "yes",
+            "import": "planned",
+            "comment": "",
+            "maintainer_name": "RxLaboratory / Duduf",
+            "maintainer_url": "https://rxlaboratory.org"
+        },
+        {
+            "host_name": "OpenToonz",
+            "host_url": "https://opentoonz.github.io/e/",
+            "addon_name": "",
+            "addon_url": "",
+            "export": "yes",
+            "import": "no",
+            "comment": "Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483",
+            "maintainer_name": "Dwango",
+            "maintainer_url": "https://en.dwango.co.jp/"
+        },
+        {
+            "host_name": "Photoshop",
+            "host_url": "https://www.adobe.com/products/photoshop.html",
+            "addon_name": "OCA",
+            "addon_url": "",
+            "export": "planned",
+            "import": "no",
+            "comment": "",
+            "maintainer_name": "RxLaboratory / Duduf",
+            "maintainer_url": "https://rxlaboratory.org"
+        },
+        {
+            "host_name": "TVPaint",
+            "host_url": "https://www.tvpaint.com/",
+            "addon_name": "OCA",
+            "addon_url": "",
+            "export": "planned",
+            "import": "no",
+            "comment": "",
+            "maintainer_name": "RxLaboratory / Duduf",
+            "maintainer_url": "https://rxlaboratory.org"
+        },
+        {
+            "host_name": "Callipeg",
+            "host_url": "https://callipeg.com",
+            "addon_name": "",
+            "addon_url": "",
+            "export": "yes",
+            "import": "no",
+            "comment": "",
+            "maintainer_name": "Enoben",
+            "maintainer_url": ""
+        },
+        {
+            "host_name": "XDTS",
+            "host_url": "",
+            "addon_name": "OCA to XDTS converter",
+            "addon_url": "https://wolfinabowl.itch.io/oca-to-xdts-converter",
+            "export": "yes",
+            "import": "yes",
+            "comment": "XDTS is a format supported by OpenToonz, Tahoma, Clip Studio Paint EX and Toei Animation Digital Exposure Sheet.",
+            "maintainer_name": "Wolf In A Bow",
+            "maintainer_url": "https://wolfinabowl.itch.io/"
+        }
+    ]
+}

@@ -22,22 +22,8 @@
 
 We're providing some implementations of *OCA* as add-ons for a few applications, and third-party developers have added support for it in their applications too. If the application you need is not listed, you can politely ask for it in a feature request and we'll consider it.
 
-| Application | Add-on name | Exporter | Importer | Comments |
-|---|---|---|---|---|
-| After Effects | [DuIO](https://github.com/Rainbox-dev/DuAEF_DuIO) | - | ![icon](img/icons/green_tick.png){style="width: 16px;"} | |
-| [Animation Paper](https://animationpaper.com/) | *Native* | ![icon](img/icons/green_tick.png){style="width: 16px;"} | ? | *Third-party* |
-| [Blender](http://blender.org) | Bluik | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | ![icon](img/icons/green_tick.png){style="width: 16px;"} | Exporter for Grease Pencil |
-| [Fusion](https://www.blackmagicdesign.com/products/fusion/) | [Reactor](https://www.steakunderwater.com/) (using *Vonk Ultra*) | - | ![icon](img/icons/green_tick.png){style="width: 16px;"} | *Third-party*. |
-| [Krita](http://krita.org) | [OCA for Krita](https://github.com/Rainbox-dev/DuKRIF_OCA) | ![icon](img/icons/green_tick.png){style="width: 16px;"} | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | |
-| [OpenToonz](https://opentoonz.github.io/e/) | *Native* | ![icon](img/icons/green_tick.png){style="width: 16px;"} | - | *Third-party*. Available in the latest [nightly build](https://github.com/opentoonz/opentoonz/releases) for now, will be in the next release. |
-| Photoshop | OCA for Photoshop | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | - | |
-| TVPaint | OCA for TVPaint | ![icon](img/icons/orange_diamond.png){style="width: 16px;"} | - | |
-
-Legend:  
-![icon](img/icons/green_tick.png){style="width: 16px;"} | Available  
-![icon](img/icons/blue_circle.png){style="width: 16px;"} | In development  
-![icon](img/icons/orange_diamond.png){style="width: 16px;"} | Planned  
-- | Not supported
+<!-- implementation_list:begin -->
+<!-- implementation_list:end -->
 
 !!! tip
     The *OCA* format is made to be simple to export/import in any application and it should not be difficult to implement it/write your own script for your application.

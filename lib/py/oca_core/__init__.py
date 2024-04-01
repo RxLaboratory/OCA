@@ -27,4 +27,3 @@ from . import document
 from . import file
 
 VERSION = "1.1.1"
-

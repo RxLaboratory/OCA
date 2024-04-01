@@ -1,20 +1,41 @@
+"""! @brief Document-related methods
+ @file document.py
+ @section authors Author(s)
+  - Created by Nicolas Dufresne on 4/1/2024 .
+"""
+
 import os
 import krita # pylint: disable=import-error
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QProgressDialog
+from PyQt5.QtCore import Qt # pylint: disable=import-error,no-name-in-module
+from PyQt5.QtWidgets import QProgressDialog # pylint: disable=import-error,no-name-in-module
 
 from . import utils
 from . import tags
 from . import node
 from .blending_modes import BLENDING_MODES
-from .. import oca_core as oca
+from .. import oca_core as oca # pylint: disable=relative-beyond-top-level
 
-def export(document, exportPath, options = {}):
+def export(document, exportPath, options = None):
+    """!
+    @brief Exports the given document
+
+    Parameters : 
+        @param document => The document to export
+        @param {string} exportPath => The destination
+        @param options = None => The export options
+    """
+
+    if options is None:
+        options = dict()
+
     Application.setBatchmode(True) # pylint: disable=undefined-variable
 
     # Let's duplicate the document first
     document = document.clone()
-
+    # For some reason, Krita fails to save the keyframes
+    # If we don't start after the last one...
+    # (probably a cache issue...)
+    utils.setCurrentFrame(document, 10000)
     document.setBatchmode(True)
 
     # Set exportPath
@@ -35,7 +56,7 @@ def export(document, exportPath, options = {}):
     if not options.get('fullClip', True):
         docInfo['startTime'] = document.playBackStartTime()
         docInfo['endTime'] = document.playBackEndTime()
-        
+
     progressdialog = QProgressDialog("Exporting animation...", "Cancel", 0, docInfo['endTime'] - docInfo['startTime'])
     progressdialog.setWindowModality(Qt.WindowModality.WindowModal)
 
@@ -123,7 +144,7 @@ def exportLayers(docInfo, document, parentNode, exportPath, options, progressdia
 
     for i, childNode in enumerate(parentNode.childNodes()):
 
-        if (progressdialog.wasCanceled()):
+        if progressdialog.wasCanceled():
             break
 
         newDir = ''
@@ -167,7 +188,10 @@ def exportLayers(docInfo, document, parentNode, exportPath, options, progressdia
             nodeInfo['position'] = [ document.width() / 2, document.height() / 2 ]
 
         # translate blending mode to OCA
-        nodeInfo['blendingMode'] = BLENDING_MODES.get( nodeInfo['blendingMode'], oca.blending_modes.NORMAL )
+        nodeInfo['blendingMode'] = BLENDING_MODES.get(
+            nodeInfo['blendingMode'],
+            oca.blending_modes.NORMAL
+            )
 
         # if there are children and not merged, export them
         if childNode.childNodes() and not merge:
@@ -178,7 +202,7 @@ def exportLayers(docInfo, document, parentNode, exportPath, options, progressdia
         # if not a group
         else:
             node.export(docInfo, document, nodeInfo, childNode, exportPath, options, progressdialog)
-        
+
         nodes.append(nodeInfo)
 
     return nodes

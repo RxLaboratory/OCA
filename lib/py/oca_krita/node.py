@@ -1,6 +1,12 @@
+"""! @brief Node-related OCA methods
+ @file node.py
+ @section authors Author(s)
+  - Created by Nicolas Dufresne on 4/1/2024 .
+"""
+
 import os
 import krita # pylint: disable=import-error
-from PyQt5.QtCore import QRect # pylint: disable=no-name-in-module # pylint: disable=import-error
+from PyQt5.QtCore import QRect # pylint: disable=no-name-in-module,import-error
 from . import utils
 
 def exportFlattenedFrame(docInfo, document, frameNumber, exportPath, options):
@@ -11,15 +17,15 @@ def exportFlattenedFrame(docInfo, document, frameNumber, exportPath, options):
     imagePath = os.path.join(exportPath, imageName) + "." + options.get('fileFormat', 'png')
 
     succeed = utils.exportDocument(document, imagePath)
-    
+
     if not succeed:
         frameInfo = utils.createKeyframeInfo("Export failed", "", frameNumber)
-    else:       
+    else:
         frameInfo = utils.createKeyframeInfo(imageName, imagePath, frameNumber)
         frameInfo['position'] = [ docInfo['width'] / 2, docInfo['height'] / 2 ]
         frameInfo['width'] = docInfo['width']
         frameInfo['height'] = docInfo['height']
-        
+
     return frameInfo
 
 def exportFrame(document, node, frameNumber, exportPath, options):
@@ -28,7 +34,7 @@ def exportFrame(document, node, frameNumber, exportPath, options):
     if node.bounds().width() == 0:
         frameInfo = utils.createKeyframeInfo("_blank", "", frameNumber)
         return frameInfo
-    
+
     nodeName = node.name().strip()
     fileFormat = options.get('fileFormat', 'png')
     if '[jpeg]' in nodeName:

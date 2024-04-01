@@ -7,6 +7,6 @@ def sanitize(ocaLayer, savePath=''):
         for childLayer in ocaLayer['childLayers']:
             sanitize(childLayer, savePath)
         return
-    
+
     for ocaFrame in ocaLayer['frames']:
         frame.sanitize(ocaFrame, savePath)

@@ -1,8 +1,12 @@
 # Changelog
 
+## 1.2.1
+
+- Added `ocaVersion` in the [metadata](specs/meta.md).
+
 ## 1.2.0
 
-- Added metadata (the [metadata file](specs/file.md) and `meta` attributes in the [Layer](specs/layer.md) and [Frame](specs/frame.md) objects)
+- Added metadata (the [metadata file](specs/file.md) and `meta` attributes in the [Layer](specs/layer.md) and [Frame](specs/frame.md) objects).
 
 ## 1.1.1
 

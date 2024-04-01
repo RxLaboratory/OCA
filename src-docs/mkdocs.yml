@@ -27,7 +27,7 @@ extra_javascript:
 site_dir: ../docs/
 dev_addr: '127.0.0.1:8001'
 nav:
-    - v1.2.0: index.md
+    - v1.2.1: index.md
     - Specifications:
         - Examples: specs/examples.md
         - Folder Structure: specs/folder-structure.md

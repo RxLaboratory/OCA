@@ -25,5 +25,4 @@ from . import frame
 from . import layer
 from . import document
 from . import file
-
-VERSION = "1.1.1"
+from .config import VERSION

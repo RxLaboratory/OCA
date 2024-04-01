@@ -22,4 +22,5 @@
 from .blending_modes import BLENDING_MODES as KRITA_BLENDING_MODES
 from . import document as kritaDocument
 from . import tags as kritaTags
+from . import metadata as kritaMetadata
 from ..oca_core import *

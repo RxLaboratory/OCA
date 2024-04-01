@@ -12,10 +12,11 @@ from PyQt5.QtWidgets import QProgressDialog # pylint: disable=import-error,no-na
 from . import utils
 from . import tags
 from . import node
+from .metadata import updateMetadata
 from .blending_modes import BLENDING_MODES
 from .. import oca_core as oca # pylint: disable=relative-beyond-top-level
 
-def export(document, exportPath, options = None):
+def export(document, exportPath, options = None, metaData = None):
     """!
     @brief Exports the given document
 
@@ -27,6 +28,12 @@ def export(document, exportPath, options = None):
 
     if options is None:
         options = dict()
+
+    if metaData is None:
+        metaData = dict()
+
+    # Add plugin metaData
+    metaData = updateMetadata(metaData)
 
     Application.setBatchmode(True) # pylint: disable=undefined-variable
 
@@ -46,7 +53,7 @@ def export(document, exportPath, options = None):
 
     # Collect doc info
     docInfo = utils.getDocInfo(document)
-    docInfo['ocaVersion'] = oca.VERSION
+    docInfo['meta'] = metaData
     if docInfo['name'] == "":
         docInfo['name'] = "Document"
     documentDirName = docInfo['name']

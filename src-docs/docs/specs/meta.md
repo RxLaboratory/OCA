@@ -20,7 +20,6 @@ Default values should be used when importing an OCA document if the data can't b
 | **`licenseLong`** | *string* | `""` | The complete name of the license, if any (e.g. *"Creative Commons-Attribution-NonCommercial-ShareAlike 4.0"*). |
 | **`licenseURL`** | *string* | `""` | The URL to the full text of the license (e.g. *"https://creativecommons.org/licenses/by-nc-sa/4.0/"*). |
 | **`meta`** | *object* | `{}` | Any custom metadata. It *must* be an object, not a value or a list. |
-| **`ocaVersion`** | *string* | `"1.2.0"` | The OCA version this document uses. |
 | **`originApp`** | *string* | `"Unknown"` | The application name from which the document was exported. |
 | **`originAppVersion`** | *string* | `"0.0.0"` | The version of the origin application. |
 

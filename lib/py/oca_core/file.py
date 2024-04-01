@@ -43,8 +43,10 @@ def save(ocaDoc:dict, filepath:str):
 
     document.sanitize(ocaDoc, filepath)
 
+    # Separate the metadata and set the ocaVersion
     meta = ocaDoc.get('meta', {})
-    meta['ocaVersion'] = VERSION
+    ocaDoc.pop('meta', None)
+    ocaDoc['ocaVersion'] = VERSION
 
     with open(filepath,  "w", encoding='utf-8') as ocaFile:
         ocaFile.write( json.dumps(ocaDoc, indent=4) )

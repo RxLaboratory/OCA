@@ -25,4 +25,5 @@ from . import frame
 from . import layer
 from . import document
 from . import file
+from . import utils
 from .config import VERSION

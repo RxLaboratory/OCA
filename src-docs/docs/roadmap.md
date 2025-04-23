@@ -64,22 +64,6 @@ It may be useful to allow for moving and cutting the [*Layer Object*](specs/laye
 
     They should probably be relative to make it easier to move a whole layer in time. The `duration` of the frames is less ambiguous than `endTime` and makes it easier to offset objects in time.
 
-## New Layer type: ocalayer
-
-We're going to add a new `ocalayer` [layer type](specs/layer-types.md). This is a way to nest a complete OCA document into another one, as a layer. It would be similar to a `grouplayer`.
-
-A new attribute would be added to the [Layer Object](specs/layer.md):
-
-- `ocaSource`: *string*, the path to the other OCA document.
-
-### Notes
-
-Some attributes in the Root Object of the nested OCA document are to be ignored and replaced by the values of the current document:
-
-- `frameRate`, `colorDepth`, `backgroundColor` are completely ignored.
-- `width` and `height` should be the same as of the `ocalayer` representing the nested document. If they're different, they're to be ignored and replaced by those of the `ocalayer`.
-- `startTime` and `endTime` are added the `timeOffset` value of the OCA Source Object.
-
 ## Frame sequences
 
 Instead of storing the list of all the frames, we could add a new Frame Sequence Object to be used when all the frames have the same position, size and opacity, which would describe how the frames are named, or use and `.ifl` file as source.

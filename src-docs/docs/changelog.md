@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+- Add support for nested documents (`ocalayer`) and clone layers (`clonelayer`).
+- Add unique identifiers to layers and frames.
+- API: Use classes
+
 ## 1.2.0
 
 - Added metadata (the [metadata file](specs/file.md) and `meta` attributes in the [Layer](specs/layer.md) and [Frame](specs/frame.md) objects).

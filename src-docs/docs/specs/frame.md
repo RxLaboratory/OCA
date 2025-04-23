@@ -9,6 +9,7 @@ If there is no default value, importing the OCA document should fail.
 | **`fileName`** | *string* | `""` | The path and name of the file of the frame. It is the relative path from the root of the *OCA* folder.<br>It can be an empty string if and only if it's a blank/empty frame (i.e. the name is `"_blank"` ). |
 | **`frameNumber`** | *int* | | The frame in the document at which the frames starts to be visible. |
 | **`height`** | *int* | `layer.height` | The height, in pixels. |
+| **`id`** | *string* | `""` | A unique identifier. It should at least be unique in the current document, but the best is to use actual UUIDs whenever possible. |
 | **`meta`** | *object* | `{}` | Any custom metadata associated to the frame. It *must* be an object, not a value or a list. |
 | **`name`** | *string* | `"_blank"` | The name of the frame. It can be `"_blank"` for an empty frame. |
 | **`opacity`** | *int* | `1.0` | The opacity of the frame in the range `[0.0 - 1.0]`. It *must* be multiplied by the containing layer opacity during the rendering process. |

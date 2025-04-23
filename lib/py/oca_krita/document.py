@@ -46,7 +46,7 @@ def export(document, exportPath, options = None, metaData = None):
     document.setBatchmode(True)
 
     # Set exportPath
-    documentFileName = document.fileName() if document.fileName() else 'Untitled'  # noqa: E501
+    documentFileName = document.fileName() or 'Untitled'
     fileName = os.path.splitext(os.path.basename(documentFileName))[0] + '.oca'
     exportPath = os.path.join(exportPath, fileName)
     utils.mkdir( exportPath )

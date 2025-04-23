@@ -130,7 +130,7 @@ def exportFlattened(docInfo, document, exportPath, options, progressdialog):
             utils.enableNodes( disabledNodes )
             break
         if utils.hasKeyframeAtTime(document.rootNode(), frame):
-            frameInfo = node.exportFlattenedFrame(document, frame, exportPath)
+            frameInfo = node.exportFlattenedFrame(docInfo, document, frame, exportPath, options)
             if prevFrameNumber >= 0:
                 nodeInfo['frames'][-1]['duration'] = frame - prevFrameNumber
             nodeInfo['frames'].append(frameInfo)

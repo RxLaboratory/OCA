@@ -72,111 +72,120 @@ def exportDocument(document, fileName, timeOut=10000):
         if succeed:
             break
         time.sleep(0.5)
-        currentTime = currentTime + 500
+        currentTime += 500
 
     return succeed
 
 def getDocInfo(document):
     """Creates a new document info."""
-    docInfo = {}
-    docInfo['name'] = document.name()
-    docInfo['frameRate'] = document.framesPerSecond()
-    docInfo['width'] = document.width()
-    docInfo['height'] = document.height()
-    docInfo['startTime'] = document.fullClipRangeStartTime()
-    docInfo['endTime'] = document.fullClipRangeEndTime()
-    docInfo['colorDepth'] = document.colorDepth()
     bgColor = document.backgroundColor()
-    docInfo['backgroundColor'] = [ bgColor.redF(), bgColor.greenF(), bgColor.blueF(), bgColor.alphaF() ]
-    docInfo['layers'] = []
-    docInfo['originApp'] = 'Krita'
-    docInfo['originAppVersion'] = krita.Krita.instance().version()
-    return docInfo
+    return {
+        'name':  document.name(),
+        'frameRate': document.framesPerSecond(),
+        'width': document.width(),
+        'height': document.height(),
+        'startTime': document.fullClipRangeStartTime(),
+        'endTime': document.fullClipRangeEndTime(),
+        'colorDepth': document.colorDepth(),
+        'backgroundColor': [
+            bgColor.redF(),
+            bgColor.greenF(),
+            bgColor.blueF(),
+            bgColor.alphaF()
+        ],
+        'layers': [],
+        'originApp': 'Krita',
+        'originAppVersion': krita.Krita.instance().version()
+    }
 
 def createNodeInfo(name, nodeType = 'paintlayer'):
     """Creates a new default node info of a given type with a given name."""
-    nodeInfo = {}
-    nodeInfo['name'] = name
-    nodeInfo['frames'] = []
-    nodeInfo['childLayers'] = []
-    nodeInfo['type'] = nodeType
-    nodeInfo['fileType'] = ""
-    nodeInfo['blendingMode'] = 'normal'
-    nodeInfo['animated'] = False
-    nodeInfo['position'] = [ 0, 0 ]
-    nodeInfo['width'] = 0
-    nodeInfo['height'] = 0
-    nodeInfo['label'] = -1
-    nodeInfo['opacity'] = 1.0
-    nodeInfo['visible'] = True
-    nodeInfo['reference'] = False
-    nodeInfo['passThrough'] = False
-    nodeInfo['inheritAlpha'] = False
-    return nodeInfo
+    return {
+        'name': name,
+        'frames': [],
+        'childLayers': [],
+        'type': nodeType,
+        'fileType': "",
+        'blendingMode': 'normal',
+        'animated': False,
+        'position': [0, 0],
+        'width': 0,
+        'height': 0,
+        'label': -1,
+        'opacity': 1.0,
+        'visible': True,
+        'reference': False,
+        'passThrough': False,
+        'inheritAlpha': False
+    }
 
 def getNodeInfo(document, node, useDocumentSize = False):
     """Constructs a new node info based on a given node"""
-    nodeInfo = {}
-    nodeInfo['name'] = node.name().strip()
-    nodeInfo['frames'] = []
-    nodeInfo['childLayers'] = []
-    nodeInfo['type'] = node.type()
-    nodeInfo['fileType'] = ""
-    nodeInfo['blendingMode'] = node.blendingMode()
-    nodeInfo['animated'] = node.animated()
-    if useDocumentSize or node.animated():
-        nodeInfo['position'] = [ document.width() / 2, document.height() / 2 ]
-        nodeInfo['width'] = document.width()
-        nodeInfo['height'] = document.height()
-    else:
-        nodeInfo['position'] = [ node.bounds().center().x(), node.bounds().center().y() ]
-        nodeInfo['width'] = node.bounds().width()
-        nodeInfo['height'] = node.bounds().height()
-    nodeInfo['label'] = node.colorLabel()
-    nodeInfo['opacity'] = 1.0 # Opacity is set by the frame
-    nodeInfo['visible'] = node.visible()
-    nodeInfo['passThrough'] = False
-    nodeInfo['reference'] = False
-    nodeInfo['inheritAlpha'] = node.inheritAlpha()
-    if node.type() == 'grouplayer':
-        nodeInfo['passThrough'] = node.passThroughMode()
-        nodeInfo['width'] = document.width()
-        nodeInfo['height'] = document.height()
-        nodeInfo['position'] = [ document.width() / 2, document.height() / 2 ]
 
-    return nodeInfo
+    useDocumentSize = useDocumentSize or node.animated() or node.type() == 'grouplayer'
+
+    x, y, w, h = getNodeCoordinates(document, node, useDocumentSize)
+    pT = node.passThroughMode() if node.type() == 'grouplayer' else False
+
+    return {
+        'name': node.name().strip(),
+        'frames': [],
+        'childLayers': [],
+        'type': node.type(),
+        'fileType': "",
+        'blendingMode': node.blendingMode(),
+        'animated': node.animated(),
+        'position': [x, y],
+        'width': w,
+        'height': h,
+        'label': node.colorLabel(),
+        'opacity': 1.0,  # Opacity is set by the frame
+        'visible': node.visible(),
+        'passThrough': pT,
+        'reference': False,
+        'inheritAlpha': node.inheritAlpha()
+    }
 
 def createKeyframeInfo(name, fileName, frameNumber):
     """Creates a new default keyframe info."""
-    frameInfo = {}
-    frameInfo['name'] = name
-    frameInfo['fileName'] = fileName
-    frameInfo['frameNumber'] = frameNumber
-    frameInfo['opacity'] = 1.0
-    frameInfo['position'] = [0,0]
-    frameInfo['width'] = 0
-    frameInfo['height'] = 0
-    frameInfo['duration'] = 1
-
-    return frameInfo
+    return {
+        'name': name,
+        'fileName': fileName,
+        'frameNumber': frameNumber,
+        'opacity': 1.0,
+        'position': [0, 0],
+        'width': 0,
+        'height': 0,
+        'duration': 1
+    }
 
 def getKeyframeInfo(document, node, frameNumber, useDocumentSize = False):
     """Constructs a new keyframe info based on a given node at a given frame"""
     setCurrentFrame(document, frameNumber)
 
-    frameInfo = {}
-    frameInfo['name'] = '{0}_{1}'.format( node.name(), intToStr(frameNumber))
-    frameInfo['fileName'] = ''
-    frameInfo['frameNumber'] = frameNumber
-    frameInfo['opacity'] = node.opacity() / 255.0
-    if useDocumentSize:
-        frameInfo['position'] = [ document.width() / 2, document.height() / 2 ]
-        frameInfo['width'] = document.width()
-        frameInfo['height'] = document.height()
-    else:
-        frameInfo['position'] = [ node.bounds().center().x(), node.bounds().center().y() ]
-        frameInfo['width'] = node.bounds().width()
-        frameInfo['height'] = node.bounds().height()
-    frameInfo['duration'] = 1
+    x, y, w, h = getNodeCoordinates(document, node, useDocumentSize)
 
-    return frameInfo
+    return {
+        'name': f'{node.name()}_{intToStr(frameNumber)}',
+        'fileName': '',
+        'frameNumber': frameNumber,
+        'opacity': node.opacity() / 255.0,
+        'position': [x, y],
+        'width': w,
+        'height': h,
+        'duration': 1
+    }
+
+def getNodeCoordinates( document, node, useDocumentSize = False):
+    """The position, width and height of the exported node"""
+    x, y = 0, 0
+    w, h = 0 ,0
+    if useDocumentSize:
+        x, y = document.width() / 2, document.height() / 2
+        w, h = document.width(), document.height()
+    else:
+        bounds = node.bounds()
+        x, y = bounds.center().x(), bounds.center().y()
+        w, h = bounds.width(), bounds.height()
+    
+    return x, y, w, h

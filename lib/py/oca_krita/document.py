@@ -139,8 +139,8 @@ def exportFlattened(docInfo, document, exportPath, options, progressdialog):
 
     # set the last frame duration
     if len(nodeInfo['frames']) > 0:
-        f = nodeInfo['frames'][-1]
-        f['duration'] = document.fullClipRangeEndTime() - f['frameNumber']
+        lastFrame = nodeInfo['frames'][-1]
+        lastFrame['duration'] = document.fullClipRangeEndTime() - lastFrame['frameNumber']
 
     return nodeInfo
 

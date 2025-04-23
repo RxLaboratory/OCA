@@ -56,14 +56,3 @@ def save(ocaDoc:dict, filepath:str):
         with open(metaPath,  "w", encoding='utf-8') as metaFile:
             metaFile.write( json.dumps(meta, indent=4) )
 
-def getMetaPath(ocaFilePath:str):
-    """!
-    @brief Gets the path to the metadata file associated to this OCA file.
-    Note that the file represented by the returned path may not exist.
-
-    Parameters : 
-        @param ocaFilePath : str => The path to the OCA file
-
-    @returns {string} The path to the metadata file.
-    """
-    return os.path.splitext(ocaFilePath)[0] + "_meta.json"

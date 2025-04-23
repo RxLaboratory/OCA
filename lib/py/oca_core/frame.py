@@ -1,18 +1,34 @@
+"""An OCA Frame"""
+
 import os
 
-def sanitize(ocaFrame, savePath=''):
+class OCAFrame():
+    """An OCA Frame"""
+    # TODO
 
-    if ocaFrame['name'] != '_blank':
+    BLANK_NAME = '_blank'
 
-        # Set paths relative
-        if savePath != '':
-            ocaFrame['fileName'] = os.path.relpath(
-                ocaFrame['fileName'],
-                savePath
-                )
-        
-        # Path must use a / delimiter, no matter the platform
-        ocaFrame['fileName'] = ocaFrame['fileName'].replace("\\","/")
+    def __init__(self, data:dict={} ):
+        """Creates a frame.
+        Provide the data parsed from a JSON OCA file to load an existing frame."""
 
-    else:
-        ocaFrame['fileName'] = ""
+        self.__fileName = data.get('fileName', "")
+        self.__name = data.get('name', OCAFrame.BLANK_NAME)
+
+    def _sanitize(self, savePath=''):
+
+        if self.__name != OCAFrame.BLANK_NAME:
+
+            # Set paths relative
+            if savePath != '':
+                self.__fileName = os.path.relpath(
+                    self.__fileName,
+                    savePath
+                    )
+            
+            # Path must use a / delimiter, no matter the platform
+            self.__fileName = self.__fileName.replace("\\","/")
+
+        else:
+            self.__fileName = ""
+

@@ -143,7 +143,8 @@ def getNodeInfo(document, node, useDocumentSize = False):
         'visible': node.visible(),
         'passThrough': pT,
         'reference': False,
-        'inheritAlpha': node.inheritAlpha()
+        'inheritAlpha': node.inheritAlpha(),
+        'meta': dict()
     }
 
 def createKeyframeInfo(name, fileName, frameNumber):
@@ -156,7 +157,8 @@ def createKeyframeInfo(name, fileName, frameNumber):
         'position': [0, 0],
         'width': 0,
         'height': 0,
-        'duration': 1
+        'duration': 1,
+        'meta': dict()
     }
 
 def getKeyframeInfo(document, node, frameNumber, useDocumentSize = False):
@@ -173,7 +175,8 @@ def getKeyframeInfo(document, node, frameNumber, useDocumentSize = False):
         'position': [x, y],
         'width': w,
         'height': h,
-        'duration': 1
+        'duration': 1,
+        'meta': dict()
     }
 
 def getNodeCoordinates( document, node, useDocumentSize = False):

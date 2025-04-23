@@ -102,7 +102,10 @@ def export(document, exportPath, options = None, metaData = None):
 
     Application.setBatchmode(False) # pylint: disable=undefined-variable
 
-    return documentPath + docInfo['name'] + '.oca'
+    return os.path.join(
+        documentPath,
+        docInfo['name'] + '.oca'
+        )
 
 def exportFlattened(docInfo, document, exportPath, options, progressdialog):
     """ This method exports a flattened image of the document for each keyframe of the animation. """

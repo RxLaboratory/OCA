@@ -29,10 +29,32 @@ class OCAFrame(OCAObject):
         self._opacity = data.get('opacity', 1.0)
         self._position = data.get('position', [])
         self._width = data.get('width', 0)
+        self._document = None
+
+    def document(self):
+        """The document containing this layer."""
+        return self._document
+
+    def documentPath(self) -> str:
+        """The path of the current document."""
+        if not self._document:
+            return ""
+        return self._document.path()
+
+    def documentFileName(self) -> str:
+        """The path to the file of the current document."""
+        if not self._document:
+            return ""
+        return self._document.fileName()
 
     def fileName(self) -> str:
-        """The (relative) path to the file."""
-        return self._fileName
+        """The absolute path to the file."""
+        if os.path.isabs(self._fileName):
+            return self._fileName
+        return os.path.join(
+            self.documentPath(),
+            self._fileName
+        )
 
     def setFileName(self, fileName:str):
         """Sets a new file for the frame."""
@@ -103,6 +125,43 @@ class OCAFrame(OCAObject):
     def setPosition(self, x:float, y:float):
         """Sets the position of the frame, relative to the layer."""
         self._position = (x, y)
+
+    def toDict(self) -> dict:
+        """Exports the frame as a simple python Dict,
+        Which can then be written in a JSON file."""
+
+        super()._sanitize()
+
+        w, h = self.size()
+
+        # Sanitize filename
+        fileName = self._fileName
+        if self.isBlank():
+            fileName = ''
+        elif os.path.isabs(fileName):
+            fileName = os.path.relpath( fileName, self.documentPath() )
+        # Use a / on all platforms
+        fileName = fileName.replace("\\","/")
+
+        self._fileName = fileName
+
+        return {
+            "duration": self.duration(),
+            "fileName": fileName,
+            "frameNumber": self.frameNumber(),
+            "height": h,
+            "width": w,
+            "id": self.id(),
+            "meta": self.metadata(),
+            "name": self.name(),
+            "opacity": self.opacity(),
+            "position": self.position(),
+        }
+
+    # ==== PROTECTED ====
+
+    def _setDocument(self, doc):
+        self._document = doc
 
     # ==== PRIVATE ====
 

@@ -9,14 +9,16 @@ import krita # pylint: disable=import-error
 from PyQt5.QtCore import Qt # pylint: disable=import-error,no-name-in-module
 from PyQt5.QtWidgets import QProgressDialog # pylint: disable=import-error,no-name-in-module
 
+from ..oca_core import ( # pylint: disable=relative-beyond-top-level
+    OCALayer,
+    OCADocument
+)
 from . import utils
 from . import tags
 from . import node
 from .metadata import updateMetadata
-from .blending_modes import BLENDING_MODES
-from .. import oca_core as oca # pylint: disable=relative-beyond-top-level
 
-def export(document, exportPath, options = None, metaData = None):
+def export(kDocument, exportPath, options = None, metaData = None):
     """!
     @brief Exports the given document
 
@@ -27,128 +29,141 @@ def export(document, exportPath, options = None, metaData = None):
     """
 
     if options is None:
-        options = dict()
-
+        options = {}
     if metaData is None:
-        metaData = dict()
-
+        metaData = {}
     # Add plugin metaData
     metaData = updateMetadata(metaData)
 
-    Application.setBatchmode(True) # pylint: disable=undefined-variable
+    # === PREPARE APP ===
 
+    Application.setBatchmode(True) # pylint: disable=undefined-variable
     # Let's duplicate the document first
-    document = document.clone()
+    kDocument = kDocument.clone()
     # For some reason, Krita fails to save the keyframes
     # If we don't start after the last one...
     # (probably a cache issue...)
-    utils.setCurrentFrame(document, 10000)
-    document.setBatchmode(True)
+    utils.setCurrentFrame(kDocument, 10000)
+    kDocument.setBatchmode(True)
 
-    # Set exportPath
-    documentFileName = document.fileName() or 'Untitled'
-    fileName = os.path.splitext(os.path.basename(documentFileName))[0] + '.oca'
+    # ==== GATHER INFO ====
+
+    # Create OCA Document
+    ocaDoc = kDocumentToOCA( kDocument, metaData, options )
+
+    # Set exportPath (the folder containing everytthing)
+    fileName = kDocument.fileName() or 'Untitled'
+    fileName = os.path.basename(fileName)
+    fileName = os.path.splitext(fileName)[0] + '.oca'
     exportPath = os.path.join(exportPath, fileName)
-    utils.mkdir( exportPath )
 
-    # Collect doc info
-    docInfo = utils.getDocInfo(document)
-    docInfo['meta'] = metaData
-    if docInfo['name'] == "":
-        docInfo['name'] = "Document"
-    documentDirName = docInfo['name']
-    documentPath = os.path.join(exportPath, documentDirName)
-    utils.mkdir( documentPath )
-
-    if not options.get('fullClip', True):
-        docInfo['startTime'] = document.playBackStartTime()
-        docInfo['endTime'] = document.playBackEndTime()
-
-    progressdialog = QProgressDialog("Exporting animation...", "Cancel", 0, docInfo['endTime'] - docInfo['startTime'])
-    progressdialog.setWindowModality(Qt.WindowModality.WindowModal)
-
-    if options.get('flattenImage', False):
-        nodeInfo = exportFlattened(
-            docInfo,
-            document,
-            documentPath,
-            options,
-            progressdialog
-        )
-        docInfo['layers'].append(nodeInfo)
-    else:
-        nodes = exportLayers(
-            docInfo,
-            document,
-            document.rootNode(),
-            documentPath,
-            options,
-            progressdialog
-        )
-        docInfo['layers'] = nodes
-
-    # Write doc info
-    oca.file.save(
-        docInfo,
+    ocaDoc.setFileName(
         os.path.join(exportPath, fileName)
     )
 
-    progressdialog.close()
+    # ==== SHOW PROGRESS ====
 
-    document.setBatchmode(False)
+    progressdialog = QProgressDialog(
+        "Exporting animation...",
+        "Cancel",
+        0,
+        ocaDoc.duration()
+        )
+    progressdialog.setWindowModality(Qt.WindowModality.WindowModal)
 
-    # close document
-    document.close()
+    # ==== EXPORT ====
 
-    Application.setBatchmode(False) # pylint: disable=undefined-variable
-
-    return os.path.join(
-        documentPath,
-        docInfo['name'] + '.oca'
+    if options.get('flattenImage', False):
+        exportFlattened(
+            ocaDoc,
+            kDocument,
+            options,
+            progressdialog
+        )
+    else:
+        exportDocLayers(
+            ocaDoc,
+            kDocument,
+            options,
+            progressdialog
         )
 
-def exportFlattened(docInfo, document, exportPath, options, progressdialog):
+    # Save doc
+    ocaDoc.save()
+
+    # ==== CLEAN ====
+
+    progressdialog.close()
+    kDocument.setBatchmode(False)
+    # close document
+    kDocument.close()
+    Application.setBatchmode(False) # pylint: disable=undefined-variable
+
+    return ocaDoc
+
+def exportFlattened(ocaDoc, kDoc, options, progressdialog):
     """ This method exports a flattened image of the document for each keyframe of the animation. """
 
-    nodeInfo = utils.createNodeInfo( docInfo['name'])
-    nodeInfo['fileType'] = options.get('fileFormat', 'png')
-    nodeInfo['animated'] = True
-    nodeInfo['position'] = [ docInfo['width'] / 2, docInfo['height'] / 2 ]
-    nodeInfo['width'] = docInfo['width']
-    nodeInfo['height'] = docInfo['height']
+    # INFO
 
-    frame = docInfo['startTime']
+    ocaLayer = OCALayer()
+
+    ocaLayer.setName( ocaDoc.name() )
+
+    ocaLayer.setFileType(
+        options.get('fileFormat', 'png')
+    )
+
+    ocaLayer.setAnimated(True)
+
+    w,h = ocaDoc.size()
+    ocaLayer.setPosition(w/2, h/2)
+    ocaLayer.setSize(w, h)
+
+    # DO EXPORT
+
+    startTime, endTime = ocaDoc.timeRange()
+    frame = startTime
     prevFrameNumber = -1
 
-    disabledNodes = disableNodes(document.rootNode(), tag = tags.IGNORE)
+    disabledNodes = disableNodes(kDoc.rootNode(), tag = tags.IGNORE)
     if not options.get('exportReference', True):
-        disabledNodes += disableNodes(document.rootNode(), tag = tags.REFERENCE)
+        disabledNodes += disableNodes(kDoc.rootNode(), tag = tags.REFERENCE)
 
-    while frame <= docInfo['endTime']:
+    frames = []
+    while frame <= endTime:
         progressdialog.setValue(frame)
-        if (progressdialog.wasCanceled()):
+        if progressdialog.wasCanceled():
             utils.enableNodes( disabledNodes )
             break
-        if utils.hasKeyframeAtTime(document.rootNode(), frame):
-            frameInfo = node.exportFlattenedFrame(docInfo, document, frame, exportPath, options)
+        if utils.hasKeyframeAtTime(kDoc.rootNode(), frame):
+            ocaFrame = node.exportFlattenedFrame(ocaDoc, kDoc, frame, options)
             if prevFrameNumber >= 0:
-                nodeInfo['frames'][-1]['duration'] = frame - prevFrameNumber
-            nodeInfo['frames'].append(frameInfo)
+                frames[-1].setDuration(frame - prevFrameNumber)
+            frames.append(ocaFrame)
             prevFrameNumber = frame
         frame = frame + 1
 
     # set the last frame duration
-    if len(nodeInfo['frames']) > 0:
-        lastFrame = nodeInfo['frames'][-1]
-        lastFrame['duration'] = document.fullClipRangeEndTime() - lastFrame['frameNumber']
+    if len(frames) > 0:
+        lastFrame = frames[-1]
+        lastFrame.setDuration(
+            kDoc.fullClipRangeEndTime() - lastFrame.frameNumber()
+        )
+        ocaLayer.setFrames(frames)
 
-    return nodeInfo
+    ocaDoc.appendLayer(ocaLayer)
 
-def exportLayers(docInfo, document, parentNode, exportPath, options, progressdialog):
+def exportDocLayers(ocaDoc, kDoc, options, progressdialog):
+    """Exports all the layers of the document"""
+    layers = exportLayers(ocaDoc, kDoc, kDoc.rootNode(), ocaDoc.layersPath(), options, progressdialog)
+    ocaDoc.setLayers(layers)
+
+def exportLayers(ocaDoc, kDoc, parentNode, exportPath, options, progressdialog):
     """ This method get all sub-nodes from the current node and export them in
         the defined format."""
 
-    nodes = []
+    layers = []
 
     print("OCA >> Listing children of: " + parentNode.name())
 
@@ -164,15 +179,15 @@ def exportLayers(docInfo, document, parentNode, exportPath, options, progressdia
 
         # ignore filters
         if (not options.get('exportFilterLayers', False)
-                and 'filter' in childNode.type()):
+            and 'filter' in childNode.type()):
             continue
         # ignore invisible
         if (not options.get('exportInvisibleLayers', False)
-                and not childNode.visible()):
+            and not childNode.visible()):
             continue
         # ignore reference
         if (not options.get('exportReference')
-                and tags.REFERENCE in nodeName):
+            and tags.REFERENCE in nodeName):
             continue
         # ignore _ignore_
         if tags.IGNORE in nodeName:
@@ -183,39 +198,26 @@ def exportLayers(docInfo, document, parentNode, exportPath, options, progressdia
         if merge:
             print("OCA >> Merging node: " + nodeName)
             utils.disableNodes(childNode)
-            childNode = utils.flattenNode(document, childNode, i, parentNode)
+            childNode = utils.flattenNode(kDoc, childNode, i, parentNode)
             nodeName = nodeName.replace(tags.MERGE,"").strip()
             childNode.setName( nodeName )
             print("OCA >> Merged and renamed node: " + childNode.name())
 
-        nodeInfo = utils.getNodeInfo(document, childNode)
-        nodeInfo['fileType'] = options.get('fileFormat', 'png')
-        nodeInfo['reference'] = tags.REFERENCE in nodeName
-        # Update size if not cropped:
-        if not options.get('cropToImageBounds', False):
-            nodeInfo['width'] = document.width()
-            nodeInfo['height'] = document.height()
-            nodeInfo['position'] = [ document.width() / 2, document.height() / 2 ]
-
-        # translate blending mode to OCA
-        nodeInfo['blendingMode'] = BLENDING_MODES.get(
-            nodeInfo['blendingMode'],
-            oca.blending_modes.NORMAL
-            )
+        ocaLayer = node.kNodeToOCA(kDoc, childNode, options)
 
         # if there are children and not merged, export them
         if childNode.childNodes() and not merge:
             newDir = os.path.join(exportPath, nodeName)
             utils.mkdir( newDir )
-            childNodes = exportLayers(docInfo, document, childNode, newDir, options, progressdialog)
-            nodeInfo['childLayers'] = childNodes
+            childLayers = exportLayers(ocaDoc, kDoc, childNode, newDir, options, progressdialog)
+            ocaLayer.setLayers(childLayers)
         # if not a group
         else:
-            node.export(docInfo, document, nodeInfo, childNode, exportPath, options, progressdialog)
+            node.export(ocaDoc, kDoc, ocaLayer, childNode, exportPath, options, progressdialog)
 
-        nodes.append(nodeInfo)
+        layers.append(ocaLayer)
 
-    return nodes
+    return layers
 
 def disableNodes(parentNode, disable=True, tag='_ignore_'):
     """Disables all nodes containing the tag in their name."""
@@ -229,3 +231,50 @@ def disableNodes(parentNode, disable=True, tag='_ignore_'):
             if childNode.type() == 'grouplayer':
                 disabled += disableNodes(childNode, disable, tag)
     return disabled
+
+def kDocumentToOCA( kDocument, metadata, options ):
+    """Creates an OCADocument"""
+
+    ocaDoc = OCADocument()
+
+    ocaDoc.setName(
+        kDocument.name() | options.get("defaultDocumentName", "Document")
+        )
+
+    ocaDoc.setFrameRate(
+        kDocument.framesPreSecond()
+        )
+
+    ocaDoc.setSize(
+        kDocument.width(),
+        kDocument.height()
+    )
+
+    ocaDoc.setColorDepth(
+        kDocument.colorDepth()
+    )
+
+    bgColor = kDocument.backgroundColor()
+    ocaDoc.setBackgroundColor(
+        (
+            bgColor.redF(),
+            bgColor.greenF(),
+            bgColor.blueF(),
+            bgColor.alphaF()
+        )
+    )
+
+    if options.get('fullClip', True):
+        ocaDoc.setTimeRange(
+            kDocument.fullClipRangeStartTime(),
+            kDocument.fullClipRangeEndTime()
+        )
+    else:
+        ocaDoc.setTimeRange(
+            kDocument.playBackStartTime(),
+            kDocument.playBackEndTime()
+        )
+
+    ocaDoc.setMeta(metadata)
+
+    return ocaDoc

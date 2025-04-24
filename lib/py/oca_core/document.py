@@ -5,7 +5,6 @@ import json
 from . import color_depths
 from .object import OCAObject
 from .layer import OCALayer
-from .frame import OCAFrame
 from .config import VERSION
 
 class OCADocument(OCAObject):
@@ -70,6 +69,27 @@ class OCADocument(OCAObject):
             self._fileName
         )
 
+    def path(self) -> str:
+        """The path to the folder containing the document"""
+        return os.path.normpath(
+            os.path.dirname(self._fileName)
+        )
+
+    def layersPath(self) -> str:
+        """The paths where the layer files should be saved."""
+        return os.path.join(
+            self.path(),
+            self.name()
+        )
+
+    def setFileName(self, fileName:str):
+        """Sets a new file name (asbolute path)"""
+        if not fileName.lower().endswith('.oca'):
+            fileName = fileName + '.oca'
+        self._fileName = os.path.normpath(
+            fileName
+        )
+
     def backgroundColor(self) -> tuple[float]:
         """The document background color, visible through layer transparency"""
         return self._backgroundColor
@@ -92,10 +112,14 @@ class OCADocument(OCAObject):
         """The start and end time of the document, in frames."""
         return (self._startTime, self._endTime)
 
-    def setTimeRange(self, timerange:tuple|list):
+    def setTimeRange(self, timerange:tuple):
         """Sets the start and end time of the document, in frames."""
         self._startTime = timerange[0]
         self._endTime = timerange[1]
+
+    def duration(self) -> int:
+        """The document duration in frames."""
+        return self._endTime - self._startTime
 
     def frameRate(self) -> float:
         """The framerate of the document, in frames per second"""
@@ -199,11 +223,67 @@ class OCADocument(OCAObject):
         """
         return os.path.splitext( self._fileName )[0] + "_meta.json"
 
+    def toDict(self) -> dict:
+        """Exports the document as a simple Python Dict,
+        Which can then be written as a JSON file."""
+
+        # Sanitize first
+        self._sanitize()
+
+        sT, eT = self.timeRange()
+
+        w, h = self.size()
+
+        layersData = []
+        for layer in self.layers():
+            layersData.append(layer.toDict())
+
+        return {
+            "backgroundColor": self.backgroundColor(),
+            "colorDepth": self.colorDepth(),
+            "endTime": eT,
+            "height": h,
+            "frameRate": self.frameRate(),
+            "layers": layersData,
+            "name": self.name(),
+            "ocaVersion": VERSION,
+            "startTime": sT,
+            "width": w
+        }
+
+    def save(self, path:str="") -> bool:
+        """Saves the doc to an OCA file.
+        Set the path to 'save as' a new doc."""
+        if path != "":
+            self.setFileName(path)
+
+        # Create dirs
+        path = self.path()
+        self._mkdir(path)
+        layersPath = self.layersPath()
+        self._mkdir(layersPath)
+
+        # Get JSON and save
+        data = self.toDict()
+        with open(self.fileName(),  "w", encoding='utf-8') as ocaFile:
+            ocaFile.write( json.dumps(data, indent=4) )
+
+        # Get Meta JSON and save
+        metadata = self.metadata()
+        with open(self.metadataFileName(), "w", encoding='utf-8') as metaFile:
+            metaFile.write( json.dumps(metadata, indent=4) )
+
+        if self.hasError():
+            return False
+
+        self._status = OCAObject.SAVED
+        return True
+
     # ==== PROTECTED ====
 
     def _takeLayerOwnership(self, layer:OCALayer):
         layer._parentId = "" # pylint: disable=protected-access
-        layer._document = self # pylint: disable=protected-access
+        layer._setDocument(self) # pylint: disable=protected-access
 
     def _releaseLayerOwnership(self, layer:OCALayer):
         layer._parentId = "" # pylint: disable=protected-access
@@ -229,19 +309,14 @@ class OCADocument(OCAObject):
     def _sanitizeLayer(self, layer:OCALayer, docPath:str) -> bool:
         """Sanitizes the data in a layer"""
 
+        layer._sanitize() # pylint: disable=protected-access
+
         # Recursion
         for childLayer in layer.layers():
             ok = self._sanitizeLayer(childLayer, docPath)
             if not ok:
                 layer._status = OCAObject.PARSE_ERROR # pylint: disable=protected-access
                 layer._errors.append("Parse error in layer {}".format(childLayer.name()))  # pylint: disable=protected-access
-
-        # Sanitize frames
-        for frame in layer.frames():
-            ok = self._sanitizeFrame(frame, docPath)
-            if not ok:
-                layer._status = OCAObject.PARSE_ERROR # pylint: disable=protected-access
-                layer._errors.append("Parse error in frame {}".format(frame.name()))  # pylint: disable=protected-access
 
         # Sanitize position and size
         w, h = layer.size()
@@ -261,20 +336,10 @@ class OCADocument(OCAObject):
 
         return not layer.hasError()
 
-    def _sanitizeFrame(self, frame:OCAFrame, docPath) -> bool:
-        """Sanitizes the data in a frame"""
-
-        # Make sure all paths are relative to the document folder.
-        if not frame.isBlank():
-            fName = frame.fileName()
-            if docPath != '':
-                fName = os.path.relpath( fName, docPath )
-            # Path must use a / delimiter, no matter the platform
-            fName = fName.replace("\\","/")
-
-            frame.setFileName(fName)
-        # Blank frames should not have any path
-        else:
-            frame.setFileName("")
-
-        return not frame.hasError()
+    def _mkdir(self, path:str):
+        if os.path.exists(path):
+            return
+        try:
+            os.makedirs(path)
+        except OSError as e:
+            raise e

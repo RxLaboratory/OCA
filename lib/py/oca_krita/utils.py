@@ -1,7 +1,8 @@
+"""Krita utils"""
+
 import time
 import os
 import krita # pylint: disable=import-error
-from . import utils
 
 def mkdir(directory):
     """Creates a directory if it doesn't exist"""
@@ -40,6 +41,7 @@ def hasKeyframeAtTime(parentNode, frameNumber, visibleNodesOnly=True ):
     return False
 
 def flattenNode(document, node, nodeIndex, parentNode):
+    """Flattens a layer"""
     # create a layer right above the node to merge
     mergeNode = document.createNode(node.name(), 'paintlayer')
     parentNode.addChildNode(mergeNode, node)
@@ -58,6 +60,7 @@ def disableNodes(parentNode, disable=True, tag='_ignore_'):
                 disableNodes(node, disable, tag)
 
 def enableNodes(nodes):
+    """Enable the nodes"""
     for node in nodes:
         node.setVisible(True)
 
@@ -75,120 +78,3 @@ def exportDocument(document, fileName, timeOut=10000):
         currentTime += 500
 
     return succeed
-
-def getDocInfo(document):
-    """Creates a new document info."""
-    bgColor = document.backgroundColor()
-    return {
-        'name':  document.name(),
-        'frameRate': document.framesPerSecond(),
-        'width': document.width(),
-        'height': document.height(),
-        'startTime': document.fullClipRangeStartTime(),
-        'endTime': document.fullClipRangeEndTime(),
-        'colorDepth': document.colorDepth(),
-        'backgroundColor': [
-            bgColor.redF(),
-            bgColor.greenF(),
-            bgColor.blueF(),
-            bgColor.alphaF()
-        ],
-        'layers': [],
-        'originApp': 'Krita',
-        'originAppVersion': krita.Krita.instance().version()
-    }
-
-def createNodeInfo(name, nodeType = 'paintlayer'):
-    """Creates a new default node info of a given type with a given name."""
-    return {
-        'name': name,
-        'frames': [],
-        'childLayers': [],
-        'type': nodeType,
-        'fileType': "",
-        'blendingMode': 'normal',
-        'animated': False,
-        'position': [0, 0],
-        'width': 0,
-        'height': 0,
-        'label': -1,
-        'opacity': 1.0,
-        'visible': True,
-        'reference': False,
-        'passThrough': False,
-        'inheritAlpha': False
-    }
-
-def getNodeInfo(document, node, useDocumentSize = False):
-    """Constructs a new node info based on a given node"""
-
-    useDocumentSize = useDocumentSize or node.animated() or node.type() == 'grouplayer'
-
-    x, y, w, h = getNodeCoordinates(document, node, useDocumentSize)
-    pT = node.passThroughMode() if node.type() == 'grouplayer' else False
-
-    return {
-        'name': node.name().strip(),
-        'frames': [],
-        'childLayers': [],
-        'type': node.type(),
-        'fileType': "",
-        'blendingMode': node.blendingMode(),
-        'animated': node.animated(),
-        'position': [x, y],
-        'width': w,
-        'height': h,
-        'label': node.colorLabel(),
-        'opacity': 1.0,  # Opacity is set by the frame
-        'visible': node.visible(),
-        'passThrough': pT,
-        'reference': False,
-        'inheritAlpha': node.inheritAlpha(),
-        'meta': dict()
-    }
-
-def createKeyframeInfo(name, fileName, frameNumber):
-    """Creates a new default keyframe info."""
-    return {
-        'name': name,
-        'fileName': fileName,
-        'frameNumber': frameNumber,
-        'opacity': 1.0,
-        'position': [0, 0],
-        'width': 0,
-        'height': 0,
-        'duration': 1,
-        'meta': dict()
-    }
-
-def getKeyframeInfo(document, node, frameNumber, useDocumentSize = False):
-    """Constructs a new keyframe info based on a given node at a given frame"""
-    setCurrentFrame(document, frameNumber)
-
-    x, y, w, h = getNodeCoordinates(document, node, useDocumentSize)
-
-    return {
-        'name': f'{node.name()}_{intToStr(frameNumber)}',
-        'fileName': '',
-        'frameNumber': frameNumber,
-        'opacity': node.opacity() / 255.0,
-        'position': [x, y],
-        'width': w,
-        'height': h,
-        'duration': 1,
-        'meta': dict()
-    }
-
-def getNodeCoordinates( document, node, useDocumentSize = False):
-    """The position, width and height of the exported node"""
-    x, y = 0, 0
-    w, h = 0 ,0
-    if useDocumentSize:
-        x, y = document.width() / 2, document.height() / 2
-        w, h = document.width(), document.height()
-    else:
-        bounds = node.bounds()
-        x, y = bounds.center().x(), bounds.center().y()
-        w, h = bounds.width(), bounds.height()
-    
-    return x, y, w, h

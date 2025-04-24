@@ -4,21 +4,12 @@
   - Created by Nicolas Dufresne on 4/1/2024 .
 """
 
-from datetime import datetime
-import krita # pylint: disable=import-error
-from ..oca_core import VERSION # pylint: disable=relative-beyond-top-level
 from ..oca_core import utils # pylint: disable=relative-beyond-top-level
 
-# The plugin specific metadata
-PLUGIN_METADATA = dict(
-    originApp="Krita",
-    originAppVersion=Application.version(),
-    exportedBy="OCA for Krita",
-    exportedByID="org.rxlaboratorio.oca.krita",
-    exportedByOrg="RxLaboratory",
-    exportedByURL="http://rxlaboratorio.org",
-    ocaVersion=VERSION,
-)
+# The plugin defaut options
+PLUGIN_DEFAULT_OPTIONS = {
+    "defaultDocumentName": "Document",
+}
 
 def updateMetadata(metadata:dict):
     """!

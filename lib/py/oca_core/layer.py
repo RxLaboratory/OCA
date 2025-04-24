@@ -46,7 +46,7 @@ class OCALayer(OCAObject):
             self.setBlendingMode(
                 data.get('blendingMode', blending_modes.NORMAL)
             )
-        except ValueError:
+        except ValueError as e:
             # Replace invalid values by defaults and log error
             self._type = layer_types.PAINT
             self._blendingMode = blending_modes.NORMAL
@@ -75,9 +75,9 @@ class OCALayer(OCAObject):
 
     def documentPath(self) -> str:
         """The path of the current document."""
-        return os.path.dirname(
-            self.documentFileName()
-        )
+        if not self._document:
+            return ""
+        return self._document.path()
 
     def documentFileName(self) -> str:
         """The path to the file of the current document."""
@@ -88,6 +88,10 @@ class OCALayer(OCAObject):
     def isAnimated(self) -> bool:
         """Does this layer contain an animation?"""
         return self._animated
+
+    def setAnimated(self, animated:bool):
+        """Sets this as an animation or fixed frame."""
+        self._animated = animated
 
     def blendingMode(self) -> str:
         """The layer blending mode"""
@@ -240,16 +244,16 @@ class OCALayer(OCAObject):
             return None
         if source.id() == "":
             return None
-        
+
         if self._type is layer_types.CLONE:
             return self._document.getLayer(source.id())
-        
+
         if self._type is layer_types.OCA:
             sourceDoc = self.sourceDocument()
             if not sourceDoc:
                 return None
             return sourceDoc.getLayer(source.id())
-        
+
         return None
 
     def layerType(self) -> str:
@@ -277,7 +281,14 @@ class OCALayer(OCAObject):
 
     def appendFrame(self, frame:OCAFrame):
         """Adds a frame at the end."""
+        frame._setDocument(self._document) # pylint: disable=protected-access
         self._frames.append(frame)
+
+    def setFrames(self, frames:list[OCAFrame]):
+        """Sets the frames for this layer."""
+        self._frames = []
+        for frame in frames:
+            self.appendFrame(frame)
 
     def layers(self) -> list[OCALayer]:
         """The child layers if this is a group layer type."""
@@ -326,6 +337,12 @@ class OCALayer(OCAObject):
         self._takeLayerOwnership(layer)
         self._childLayers.append(layer)
 
+    def setLayers(self, layers:list[OCALayer]):
+        """Sets the list of layers"""
+        self._childLayers = []
+        for layer in layers:
+            self.appendLayer(layer)
+
     def insertLayer(self, i:int, layer:OCALayer):
         """Inserts a layer in the list at the given index"""
         if layer in self._childLayers:
@@ -342,16 +359,70 @@ class OCALayer(OCAObject):
         """The parent layer id if it has one"""
         return self._parentId
 
+    def toDict(self) -> dict:
+        """Exports the layer as a simple python Dict,
+        Which can then be written in a JSON file."""
+        super()._sanitize()
+
+        # Add data which is common to all layer types
+        data:dict = {
+            "blendingMode": self.blendingMode(),
+            "id": self.id(),
+            "inheritAlpha": self.inheritAlpha(),
+            "label": self.label(),
+            "meta": self.metadata(),
+            "name": self.name(),
+            "opacity": self.opacity(),
+            "passThrough": self.passThrough(),
+            "position": self.position(),
+            "reference": self.isReference(),
+            "type": self.layerType(),
+            "visible": self.isVisible()
+        }
+
+        # Add standard layer data
+        if self._type not in layer_types.INSTANCE_TYPES:
+            w, h = self.size()
+            data["animated"] = self.isAnimated()
+            data["fileType"] = self.fileType()
+            data["height"] = h
+            data["width"] = w
+
+            # Add frames
+            data["frames"] = []
+            for frame in self.frames():
+                data['frames'].append(frame.toDict())
+
+            # Add child layers
+            if self._type is layer_types.GROUP:
+                data["childLayers"] = []
+                for layer in self.layers():
+                    data["childLayers"].append(layer.toDict())
+        # Add source info
+        elif self.source():
+            data["source"] = self.source().toDict()
+
+        return data
+
     # ==== PROTECTED ====
 
     def _takeLayerOwnership(self, layer:OCALayer):
         layer._parentId =  self._id # pylint: disable=protected-access
-        layer._document = self._document # pylint: disable=protected-access
+        layer._setDocument(self._document) # pylint: disable=protected-access
 
     def _releaseLayerOwnership(self, layer:OCALayer):
         layer._parentId = "" # pylint: disable=protected-access
-        layer._document = None # pylint: disable=protected-access
+        layer._setDocument(None) # pylint: disable=protected-access
         layer._sourceDocument = None # pylint: disable=protected-access
+
+    def _setDocument(self, doc):
+        self._document = doc
+        # Recurse
+        for childLayer in self.layers():
+            childLayer._setDocument(doc) # pylint: disable=protected-access
+        # Frames
+        for frame in self.frames():
+            frame._setDocument(doc) # pylint: disable=protected-access
 
     # ==== PRIVATE ====
 

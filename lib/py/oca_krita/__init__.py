@@ -4,7 +4,7 @@
 # Copyright (c) 2020-2023 - Nicolas Dufresne, RxLaboratory and contributors
 # This script is licensed under the GNU General Public License v3
 # https://rxlaboratory.org
-# 
+#
 # This file is part of OCA.
 #   OCA is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by

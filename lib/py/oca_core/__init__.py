@@ -4,7 +4,7 @@
 # Copyright (c) 2020-2025 - Nicolas Dufresne, RxLaboratorio and contributors
 # This script is licensed under the GNU General Public License v3
 # https://rxlaboratorio.org
-# 
+#
 # This file is part of OCA.
 #   OCA is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -20,10 +20,10 @@
 #    along with OCA. If not, see <http://www.gnu.org/licenses/>.
 
 # ENUMS
-from . import blending_modes
-from . import color_depths
-from . import labels
-from . import layer_types
+from . import blending_modes as BLENDING_MODES
+from . import color_depths as COLOR_DEPTH
+from . import labels as LABELS
+from . import layer_types as LAYER_TYPES
 
 # CLASSES
 from .document import OCADocument

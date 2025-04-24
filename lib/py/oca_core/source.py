@@ -13,6 +13,7 @@ class OCASource():
         self._id = data.get('id', "")
         self._absFileName = data.get('absFileName', "")
         self._relFileName = data.get('relFileName', "")
+        self._timeOffset = data.get('timeOffset', 0)
 
     def id(self) -> str:
         """The ID of the instanced source"""
@@ -47,3 +48,34 @@ class OCASource():
     def relFileName(self) -> str:
         """The path relative to the current doc of the instanced OCA document."""
         return self._relFileName
+
+    def timeOffset(self) -> int:
+        """The time offset in frames."""
+        return self._timeOffset
+
+    def toDict(self, docPath:str) -> dict:
+        """Exports the source as a simple python Dict,
+        Which can then be written in a JSON file."""
+
+        absFileName = self.fileName(docPath)
+        relFileName = self.relFileName()
+        if (not os.path.isfile(relFileName)
+            and os.path.isfile(absFileName)):
+            relFileName = os.path.relpath(absFileName, docPath)
+
+        if not os.path.isfile(absFileName):
+            absFileName = ''
+        else:
+            self._absFileName = absFileName
+
+        if not os.path.isfile(relFileName):
+            relFileName = ''
+        else:
+            self._relFileName = relFileName
+
+        return {
+            "absFileName": absFileName,
+            "relFileName": relFileName,
+            "id": self.id(),
+            "timeOffset": self.timeOffset()
+        }

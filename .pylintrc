@@ -52,7 +52,7 @@ persistent=yes
 
 # Minimum Python version to use for version dependent checks. Will default to
 # the version used to run pylint.
-py-version=2.7
+py-version=3.0
 
 # When enabled, pylint would attempt to guess common misconfiguration and emit
 # user-friendly hints instead of false-positive error messages.
@@ -145,7 +145,7 @@ attr-naming-style=camelCase
 
 # Regular expression matching correct attribute names. Overrides attr-naming-
 # style.
-#attr-rgx=
+attr-rgx=_{0,2}[a-z]+[A-Za-z0-9]*
 
 # Bad variable names which should always be refused, separated by a comma.
 bad-names=foo,
@@ -160,7 +160,7 @@ bad-names=foo,
 bad-names-rgxs=
 
 # Naming style matching correct class attribute names.
-class-attribute-naming-style=camelCase
+class-attribute-naming-style=UPPER_CASE
 
 # Regular expression matching correct class attribute names. Overrides class-
 # attribute-naming-style.
@@ -228,7 +228,7 @@ method-naming-style=camelCase
 #method-rgx=
 
 # Naming style matching correct module names.
-module-naming-style=camelCase
+module-naming-style=snake_case
 
 # Regular expression matching correct module names. Overrides module-naming-
 # style.

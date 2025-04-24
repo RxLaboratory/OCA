@@ -2,130 +2,190 @@
 
 import os
 import json
+from . import color_depths
+from .object import OCAObject
 from .layer import OCALayer
+from .frame import OCAFrame
 from .config import VERSION
 
-class OCADocument():
+class OCADocument(OCAObject):
     """An OCA document"""
-
-    # Document Status
-    LOADED_STATUS = 'LOADED'
-    SAVED_STATUS = 'SAVED'
-    WRONG_VERSION_STATUS = 'WRONG_VERSION'
 
     def __init__(self, filepath:str = ''):
         """Creates the document.
         Provide filepath to load an existing document."""
+        super().__init__()
 
-        self.__fileName = ""
-        self.__ocaVersion = VERSION
+        self._fileName = ""
+        self._ocaVersion = VERSION
 
         oca = {}
         if os.path.isfile( filepath ):
-            self.__fileName = filepath
+            self._fileName = filepath
             with open(filepath, 'r', encoding='utf8') as ocaFile:
                 oca = json.loads(ocaFile.read())
-                self.__ocaVersion = oca.get('ocaVersion', "0.0.0")
+                self._ocaVersion = oca.get('ocaVersion', "0.0.0")
 
         # TODO Check ocaVersion against VERSION
         # to make sure everything can be loaded correctly!
-        # If not, we should set a status property
-        self.__status = OCADocument.LOADED_STATUS
-        self.__error = ""
+        # If not, we should set the status to WRONG_VERSION
 
-        # Parse the JSON data
-        self.__backgroundColor = oca.get('backgroundColor', (0.0, 0.0, 0.0, 0.0))
-        self.__colorDepth = oca.get('colorDepth', 'U8')
-        self.__endTime = oca.get('endTime', 240)
-        self.__frameRate = oca.get('frameRate', 24)
-        self.__height = oca.get('height', 1080)
-        self.__name = oca.get('name', "Untitled")
-        self.__startTime = oca.get('startTime', 0)
-        self.__width = oca.get('width', 1920)
+        # Parse the basic JSON data
+        self._backgroundColor = oca.get('backgroundColor', (0.0, 0.0, 0.0, 0.0))
+        self._endTime = oca.get('endTime', 240)
+        self._frameRate = oca.get('frameRate', 24)
+        self._height = oca.get('height', 1080)
+        self._name = oca.get('name', "Untitled")
+        self._startTime = oca.get('startTime', 0)
+        self._width = oca.get('width', 1920)
+
+        # Parse enums JSON data
+        try:
+            self.setColorDepth(
+                oca.get('colorDepth', color_depths.UINT8)
+            )
+        except ValueError as e:
+            # Replace invalid values by defaults and log error
+            self._colorDepth = color_depths.UINT8
+
+            self._status = OCAObject.PARSE_ERROR
+            self._errors.append(e.args[0])
 
         # Load layers
-        self.__layers:list[OCALayer] = []
+        self._layers:list[OCALayer] = []
         for layer in oca.get('layers', ()):
             self.appendLayer( OCALayer(layer) )
 
         # Load metadata
-        self.__meta = dict()
         metaPath = self.metadataFileName()
         if os.path.isfile(metaPath):
             with open(metaPath, 'r', encoding='utf8') as metaFile:
-                self.__meta = json.loads(metaFile.read())
+                self._meta = json.loads(metaFile.read())
 
-        self.__sanitize()
+        self._sanitize()
+
+    def fileName(self) -> str:
+        """The document file."""
+        return os.path.normpath(
+            self._fileName
+        )
 
     def backgroundColor(self) -> tuple[float]:
-        return self.__backgroundColor
+        """The document background color, visible through layer transparency"""
+        return self._backgroundColor
 
-    def setBackgroundColor(self, color:list|tuple ):
-        self.__backgroundColor = color
+    def setBackgroundColor(self, color:tuple ):
+        """Sets the document background color"""
+        self._backgroundColor = color
 
-    def colorDepth(self, depth:str ) -> str:
-        return self.__colorDepth
+    def colorDepth(self ) -> str:
+        """The color depth of the layers (bit depth)"""
+        return self._colorDepth
 
     def setColorDepth(self, depth:str):
-        self.__colorDepth = depth
+        """Sets the color depth of the layers (bit depth)"""
+        if not depth in color_depths.ALL_DEPTHS:
+            raise ValueError("Invalid color depth: \"{}\"".format(depth))
+        self._colorDepth = depth
 
-    def timeRange(self) -> tuple[int]:
-        return (self.__startTime, self.__endTime)
+    def timeRange(self) -> tuple[int,int]:
+        """The start and end time of the document, in frames."""
+        return (self._startTime, self._endTime)
 
     def setTimeRange(self, timerange:tuple|list):
-        self.__startTime = timerange[0]
-        self.__endTime = timernge[1]
+        """Sets the start and end time of the document, in frames."""
+        self._startTime = timerange[0]
+        self._endTime = timerange[1]
 
     def frameRate(self) -> float:
-        return self.__frameRate
+        """The framerate of the document, in frames per second"""
+        return self._frameRate
 
     def setFrameRate(self, frameRate:float):
-        self.__frameRate = frameRate
+        """Sets the framerate of the document, in frames per second"""
+        self._frameRate = frameRate
 
     def name(self) -> str:
-        return self.__name
+        """The name of the document"""
+        return self._name
 
     def setName(self, name:str):
-        self.__name = name
+        """Sets the name of the document"""
+        self._name = name
 
-    def size(self) -> tuple[int]:
-        return (self.__width, self.__height)
+    def size(self) -> tuple[int,int]:
+        """The document size, in pixels"""
+        return (self._width, self._height)
 
     def setSize(self, width:int, height:int):
-        self.__width = width
-        self.__height = height
+        """Sets the size of the document, in pixels"""
+        self._width = width
+        self._height = height
 
     def ocaVersion(self) -> str:
-        return self.__ocaVersion
+        """The version used to save this OCA Document"""
+        return self._ocaVersion
 
     def layers(self) -> list:
-        return self.__layers
+        """The list of layers in this document"""
+        return self._layers
+
+    def moveLayerUp(self, layer:OCALayer):
+        """Moves a layer up in the list"""
+        try:
+            i = self._layers.index(layer)
+        except ValueError:
+            return
+        # Already at the top
+        if i == len(self._layers)-1:
+            return
+        self._layers.insert(i+1, self._layers.pop(i))
+
+    def moveLayerDown(self, layer:OCALayer):
+        """Moves a layer down in the list"""
+        try:
+            i = self._layers.index(layer)
+        except ValueError:
+            return
+        # Already at the bottom
+        if i <= 0:
+            return
+        self._layers.insert(i-1, self._layers.pop(i))
+
+    def getLayer(self, layerId:str):
+        """Gets a layer by its ID, or None if not found"""
+        for layer in self._layers:
+            found = layer.getLayer(layerId)
+            if found:
+                return found
+        return None
+
+    def getFrame(self, frameId:str):
+        """Gets a frame by its ID, or None if not found"""
+        for layer in self._layers:
+            found = layer.getFrame(frameId)
+            if found:
+                return found
+        return None
 
     def appendLayer(self, layer:OCALayer):
-        # Sanitize and append
-        w, h = layer.size()
-        if w == 0:
-            w = self.__width
-        if h == 0:
-            h = self.__height
-        layer.setSize(w, h)
+        """Adds a layer to the document"""
+        if layer in self._layers:
+            raise ValueError("This layer {} is already in the document.".format(layer.name()))
+        self._takeLayerOwnership(layer)
+        self._layers.append(layer)
 
-        p = layer.position()
-        if len(p) != 2:
-            layer.setPosition(
-                self.__width/2,
-                self.__height/2
-            )
+    def insertLayer(self, i:int, layer:OCALayer):
+        """Inserts a layer in the list at the given index"""
+        if layer in self._layers:
+            raise ValueError("This layer {} is already in the document.".format(layer.name()))
+        self._takeLayerOwnership(layer)
+        self._layers.insert(i, layer)
 
-        self.__layers.append(layer)
-
-    def metadata(self, key:str='', defaultValue = None):
-        if key != "":
-            return self.__meta.get(key, defaultValue)
-        return self.__meta
-
-    def setMetadata(self, key:str, value):
-        self.__meta[key] = value
+    def removeLayer(self, layer:OCALayer):
+        """Removes a layer from the list"""
+        self._releaseLayerOwnership(layer)
+        self._layers.remove(layer)
 
     def metadataFileName(self):
         """!
@@ -137,25 +197,84 @@ class OCADocument():
 
         @returns {string} The path to the metadata file.
         """
-        return os.path.splitext( self.__fileName )[0] + "_meta.json"
+        return os.path.splitext( self._fileName )[0] + "_meta.json"
 
-    def status(self) -> str:
-        return self.__status
+    # ==== PROTECTED ====
 
-    def hasError(self) -> bool:
-        return self.__status in (OCADocument.WRONG_VERSION_STATUS,)
+    def _takeLayerOwnership(self, layer:OCALayer):
+        layer._parentId = "" # pylint: disable=protected-access
+        layer._document = self # pylint: disable=protected-access
 
-    def error(self) -> str:
-        return self.__error
+    def _releaseLayerOwnership(self, layer:OCALayer):
+        layer._parentId = "" # pylint: disable=protected-access
+        layer._document = None # pylint: disable=protected-access
 
-    # ==== PRIVATE ====
-
-    def __sanitize(self):
+    def _sanitize(self) -> bool:
         """Sanitizes all the data"""
 
+        super()._sanitize()
+
         docPath = ''
-        if self.__fileName != '':
-            docPath = os.path.dirname(self.__fileName)
-        
-        for childLayer in self.__layers:
-            childLayer._sanitize(docPath) # pylint: disable=protected-access
+        if self._fileName != '':
+            docPath = os.path.dirname(self._fileName)
+
+        for childLayer in self._layers:
+            ok = self._sanitizeLayer(childLayer, docPath)
+            if not ok:
+                self._status = OCAObject.PARSE_ERROR
+                self._errors.append("Parse error in layer {}".format(childLayer.name()))
+
+        return not self.hasError()
+
+    def _sanitizeLayer(self, layer:OCALayer, docPath:str) -> bool:
+        """Sanitizes the data in a layer"""
+
+        # Recursion
+        for childLayer in layer.layers():
+            ok = self._sanitizeLayer(childLayer, docPath)
+            if not ok:
+                layer._status = OCAObject.PARSE_ERROR # pylint: disable=protected-access
+                layer._errors.append("Parse error in layer {}".format(childLayer.name()))  # pylint: disable=protected-access
+
+        # Sanitize frames
+        for frame in layer.frames():
+            ok = self._sanitizeFrame(frame, docPath)
+            if not ok:
+                layer._status = OCAObject.PARSE_ERROR # pylint: disable=protected-access
+                layer._errors.append("Parse error in frame {}".format(frame.name()))  # pylint: disable=protected-access
+
+        # Sanitize position and size
+        w, h = layer.size()
+        # Default size is the document size
+        w = w | self.size()[0]
+        h = h | self.size()[1]
+        layer.setSize(w, h)
+
+        p = layer.position()
+        if len(p) != 2:
+            # Default position is centered on parent
+            parentLayer = self.getLayer(layer.parentLayerId())
+            if not parentLayer:
+                parentLayer = self
+            pw, ph = parentLayer.size()
+            layer.setPosition( pw/2, ph/2 )
+
+        return not layer.hasError()
+
+    def _sanitizeFrame(self, frame:OCAFrame, docPath) -> bool:
+        """Sanitizes the data in a frame"""
+
+        # Make sure all paths are relative to the document folder.
+        if not frame.isBlank():
+            fName = frame.fileName()
+            if docPath != '':
+                fName = os.path.relpath( fName, docPath )
+            # Path must use a / delimiter, no matter the platform
+            fName = fName.replace("\\","/")
+
+            frame.setFileName(fName)
+        # Blank frames should not have any path
+        else:
+            frame.setFileName("")
+
+        return not frame.hasError()

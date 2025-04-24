@@ -12,3 +12,23 @@
 | paintlayer | A bitmap containing an image |
 | vectorlayer | Vectors forming an image, like an *SVG* file |
 
+## Groups
+
+These types may contain other layers:
+
+- `ocalayer`
+- `grouplayer`
+
+With these types, the following attributes may be used. Read the [Layer Object reference](layer.md) for more details.
+
+- `childLayers`
+- `passThrough`
+
+## Instances
+
+These types are instances of other layers:
+
+- `ocalayer`
+- `clonelayer`
+
+With these types, the `source` attribute must be set. Read the [Source Object reference](layer.md#source-object) for more details.

@@ -18,7 +18,7 @@ If there is no default value, importing the OCA document should fail.
 | **`meta`** | *object* | `{}` | Any custom metadata associated to the layer. It *must* be an object, not a value or a list. |
 | **`name`** | *string* | | The name of the layer. It *must* be unique in the document. |
 | **`opacity`** | *float* | `1.0` | The opacity of the layer in the range [0.0 - 1.0]. |
-| **`passThrough`** | *boolean* | `false` | Only for `grouplayer`. When this is `false`, the group content *must* be merged (using alpha, opacity values, blending modes, etc.) before the rendering process goes to the next node/layer, and cropped if the contained layers are bigger than the group size. When this is `true`, the group is to be completely by the rendering process, and only used as a way to group the layers in the UI of the application. |
+| **`passThrough`** | *boolean* | `false` | Only for group layer types. When this is `false`, the group content *must* be merged (using alpha, opacity values, blending modes, etc.) before the rendering process goes to the next node/layer, and cropped if the contained layers are bigger than the group size. When this is `true`, the group is to be completely ignored by the rendering process, and only used as a way to group the layers in the UI of the application. |
 | **`position`** | *int[]* | `[root.width / 2, root.height/2]`<br>or<br>`[layer.width / 2, layer.height/2]` | The coordinates of the center of the layer, in pixels [X,Y] in the document ([*Root Object*](root.md)) or the containing group ([*Layer Object*](layer.md)) coordinates; the origin `[0,0]` is the top left corner of the container. |
 | **`reference`** | *boolean* | `false` | Whether the layer is a guide or reference, and should not be rendered. |
 | **`source`** | *SourceObject* | `{}` | If the type is `ocalayer` or `clonelayer`, this object contains the source info. |
@@ -53,19 +53,18 @@ This object describes the source of `ocalayer` (another OCA document) and `clone
 | **`absFileName`** | *string* | `""` | The *absolute* path and name of the OCA file if the layer is an `ocalayer`. It is the absolute path at time of the export.<br>It is an empty string if the layer is a `clonelayer`. |
 | **`id`** | *string* | `""` | The ID of the referenced layer. It is mandatory for `clonelayer` but may be an empty string for `ocalayer`, it which case the whole document should be used. |
 | **`relFileName`** | *string* | `""` | The *relative* path and name of the OCA file if the layer is an `ocalayer`. It is the relative path from the root of the *OCA* folder.<br>It is an empty string if the layer is a `clonelayer`. |
+| **`timeOffset`** | *int* | `0` | The source layer can be offset in time, using this value. A positive or negative number of frames. |
+
+Some attributes of the layers with a `source` set may be empty and should always be ignored, as they're replaced by the values of the source layer/document: `frames`, `animated`, `childLayers`, `fileType`, `width`, `height`
 
 !!! note
-    For `ocalayer`, both a relative and an absolute path are saved; when loading the document, the absolute path should be preferred, and the relative path should be used if the file is not found. If the source is not found at both paths, a placeholder should be used and the user should be warned, or an interactive prompt should let the user pick the file or cancel the process.
+    For `ocalayer`, both a relative and an absolute path are saved; when loading the document, the relative path should be preferred, and the absolute path should be used only if the file is not found. If the source is not found at both paths, a placeholder should be used and the user should be warned, or an interactive prompt should let the user pick the file or cancel the process.
 
 !!! note
     With `ocalayer`, some attributes in the Root Object of the nested OCA document are to be ignored and replaced by the values of the current document:
 
-    - `frameRate`, `colorDepth`, `backgroundColor` are completely ignored.
-    - `width` and `height` should be the same as of the `ocalayer` representing the nested document. If they're different, they're to be ignored and replaced by those of the `ocalayer`.
+    - `frameRate`, `colorDepth`, `backgroundColor` are completely ignored. If there is a mismatch, it may be useful to warn the user.
     - `startTime` and `endTime` are added the `timeOffset` value of the OCA Source Object.
-
-!!! note
-    With `clonelayer`, some attributes of the cloned layers should be empty, as they're replaced by the values of the source layer: `frames`, `animated`, `childLayers`, `fileType`, `width`, `height`
 
 ## Examples
 

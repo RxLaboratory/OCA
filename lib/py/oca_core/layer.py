@@ -1,35 +1,45 @@
 """The OCALayer class"""
 
+import os
 import uuid
+from .object import OCAObject
 from .frame import OCAFrame
 from .source import OCASource
+from .labels import LABELS
 from . import blending_modes
 from . import layer_types
 
-class OCALayer():
+class OCALayer(OCAObject):
     """An OCA Layer"""
 
-    def __init__(self, data:dict = {}):
+    def __init__(self, data=None):
         """Creates a layer.
         Provide the data parsed from a JSON OCA file to load an existing layer."""
+        super().__init__()
 
-        self.__animated = data.get('animated', True)
-        self.__fileType = data.get('fileType', 'png')
-        self.__height:int = data.get('height', 0)
-        self.__id = data.get('id', str(uuid.uuid4()))
-        self.__inheritAlpha = data.get('inheritAlpha', False)
-        self.__label = data.get('label', -1)
-        self.__meta = data.get('meta', dict())
-        self.__name = data.get('name', '')
-        self.__opacity = data.get('opacity', 1.0)
-        self.__passThrough = data.get('passThrough', False)
-        self.__position = data.get('position', [])
-        self.__reference = data.get('reference', False)
-        self.__source = OCASource( data.get('source', dict()) )
-        self.__visible = data.get('visible', True)
-        self.__width:int = data.get('width', 0)
+        if data is None:
+            data = {}
 
-        try: # Silently replace invalid values by defaults
+        self._parentId = ""
+        self._animated = data.get('animated', True)
+        self._fileType = data.get('fileType', 'png').lower()
+        self._height = data.get('height', 0)
+        self._id = data.get('id', str(uuid.uuid4()))
+        self._inheritAlpha = data.get('inheritAlpha', False)
+        self._label = data.get('label', -1)
+        self._meta = data.get('meta', {})
+        self._name = data.get('name', '')
+        self._opacity = data.get('opacity', 1.0)
+        self._passThrough = data.get('passThrough', False)
+        self._position = data.get('position', [])
+        self._reference = data.get('reference', False)
+        self._source = OCASource( data.get('source', {}) )
+        self._visible = data.get('visible', True)
+        self._width = data.get('width', 0)
+        self._document = None
+
+        # Parse enums JSON data
+        try:
             self.setLayerType(
                 data.get('type', layer_types.PAINT)
             )
@@ -37,159 +47,313 @@ class OCALayer():
                 data.get('blendingMode', blending_modes.NORMAL)
             )
         except ValueError:
-            self.__type = layer_types.PAINT
-            self.__blendingMode = blending_modes.NORMAL
+            # Replace invalid values by defaults and log error
+            self._type = layer_types.PAINT
+            self._blendingMode = blending_modes.NORMAL
+
+            self._status = OCAObject.PARSE_ERROR
+            self._errors.append(e.args[0])
+
+        # Set the source object
 
         # Load frames
-        self.__frames:list[OCAFrame] = []
+        self._frames = []
         for frame in data.get('frames', ()):
             self.appendFrame( OCAFrame(frame) )
 
         # Load child layers
-        self.__childLayers:list[OCALayer] = []
+        self._childLayers = []
         for layer in data.get('childLayers', ()):
             self.appendLayer( OCALayer(layer) )
 
+        # Cache the source doc for ocalayer
+        self._sourceDocument = None
+
+    def document(self):
+        """The document containing this layer."""
+        return self._document
+
+    def documentPath(self) -> str:
+        """The path of the current document."""
+        return os.path.dirname(
+            self.documentFileName()
+        )
+
+    def documentFileName(self) -> str:
+        """The path to the file of the current document."""
+        if not self._document:
+            return ""
+        return self._document.fileName()
+
     def isAnimated(self) -> bool:
-        return self.__animated
+        """Does this layer contain an animation?"""
+        return self._animated
 
     def blendingMode(self) -> str:
-        return self.__blendingMode
+        """The layer blending mode"""
+        return self._blendingMode
 
     def setBlendingMode(self, blendingMode:str):
+        """Sets the layer blending mode"""
         if blendingMode in blending_modes.ALL_MODES:
-            self.__blendingMode  = blendingMode
+            self._blendingMode  = blendingMode
         else:
-            raise ValueError("Invalid blending mode")
+            raise ValueError("Invalid blending mode: \"{}\"".format(blendingMode))
 
     def fileType(self):
-        return self.__fileType
+        """The file type of the frames.
+        i.e. the extension (lower case)"""
+        return self._fileType
 
     def setFileType(self, fileType:str):
-        self.__fileType = fileType
+        """Sets the file type of the frames, i.e. the extension."""
+        self._fileType = fileType.lower()
 
     def size(self) -> tuple[int,int]:
+        """The layer size, in pixels."""
         return (
-            self.__width,
-            self.__height
+            self._width,
+            self._height
         )
 
     def setSize(self, width:int, height:int):
-        self.__width = size[0]
-        self.__height = size[1]
+        """Sets the layer size, in pixels."""
+        self._width = width
+        self._height = height
 
     def id(self) -> str:
-        return self.__id;
+        """The layer unique identifier"""
+        return self._id
 
     def inheritAlpha(self) -> bool:
-        return self.__inheritAlpha
+        """Does the layer inherit alpha?"""
+        return self._inheritAlpha
 
     def setInheritAlpha(self, inherit:bool):
-        self.__inheritAlpha = inherit
+        """Sets alpha inherintance."""
+        self._inheritAlpha = inherit
 
     def label(self) -> int:
-        return self.__label
+        """The layer label"""
+        return self._label
+
+    def labelColor(self) -> tuple[float,float,float,float]:
+        """A proposed color for the label, [r,g,b,a]"""
+        if self._label > 0 and self._label < len(LABELS):
+            return LABELS[self._label]
+        return (0,0,0,1.0) # black by default
 
     def setLabel(self, label:int):
-        self.__label = label
-
-    def metadata(self, key:str='', defaultValue = None):
-        if key != "":
-            return self.__meta.get(key, defaultValue)
-        return self.__meta
-
-    def setMetadata(self, key:str, value):
-        self.__meta[key] = value
+        """Sets the layer label"""
+        self._label = label
 
     def name(self) -> str:
-        return self.__name
+        """The layer name."""
+        return self._name
 
     def setName(self, name:str):
-        self.__name = name
+        """Sets the layer name."""
+        self._name = name
 
     def opacity(self) -> float:
-        return self.__opacity
+        """The layer opacity."""
+        return self._opacity
 
     def setOpacity(self, opacity:float):
+        """Sets the layer opacity"""
         if opacity > 1.0:
             opacity = 1.0
         if opacity < 0.0:
             opacity = 0.0
-        self.__opacity = opacity
+        self._opacity = opacity
 
     def passThrough(self) -> bool:
-        return self.__passThrough
+        """The layer pass through mode, if it's a group or an ocalayer."""
+        if self._type in layer_types.GROUP_TYPES:
+            return self._passThrough
+        else:
+            return False
 
     def setPassThrough(self, passThrough:bool):
-        self.__passThrough = passThrough
+        """Sets the layer pass through mode. The layer must be a group or an ocalayer."""
+        self._passThrough = passThrough
 
     def position(self) -> tuple[float,float]:
-        return self.__position
+        """The (relative to its parent) position of the layer."""
+        return self._position
 
     def setPosition(self, x:float, y:float):
-        self.__position = (x, y)
+        """Sets the relative position of the layer."""
+        self._position = (x, y)
 
     def isReference(self):
-        return self.__reference
+        """Is this a reference which should not be rendered?"""
+        return self._reference
 
     def setReference(self, reference:bool):
-        self.__reference = reference
+        """Sets the layer as a reference."""
+        self._reference = reference
 
-    def source(self) -> OCASource:
-        return self.__source
+    def source(self):
+        """The source of the layer if it's an instance type.
+        None if this layer is not an instance"""
+        if self._type in layer_types.INSTANCE_TYPES:
+            return self._source
+        return None
 
     def setSource(self, source:OCASource):
-        self.__source = source
+        """Sets the source for instance types."""
+        self._source = source
+
+    def sourceDocument(self):
+        """The source document, if this is an ocalayer."""
+        if self._type is not layer_types.OCA:
+            return None
+        if not self._document:
+            raise RuntimeError("Cannot get the source of a layer which is not part of a document.")
+
+        # Load doc if not already cached
+        if not self._sourceDocument:
+            # Load source doc
+            source = self.source()
+            if not source:
+                self._sourceDocument = None
+                return None
+            path = source.fileName( self.documentPath() )
+            if not os.path.isfile(path):
+                self._sourceDocument = None
+                return None
+            from .document import OCADocument # pylint: disable=import-outside-toplevel
+            self._sourceDocument = OCADocument(path)
+
+        return self._sourceDocument
+
+    def sourceLayer(self):
+        """The source layer, if this is an instance layer type."""
+        if self._type not in layer_types.INSTANCE_TYPES:
+            return None
+        if not self._document:
+            raise RuntimeError("Cannot get the source of a layer which is not part of a document.")
+
+        source = self.source()
+        if not source:
+            return None
+        if source.id() == "":
+            return None
+        
+        if self._type is layer_types.CLONE:
+            return self._document.getLayer(source.id())
+        
+        if self._type is layer_types.OCA:
+            sourceDoc = self.sourceDocument()
+            if not sourceDoc:
+                return None
+            return sourceDoc.getLayer(source.id())
+        
+        return None
 
     def layerType(self) -> str:
-        return self.__type
+        """The type of the layer."""
+        return self._type
 
     def setLayerType(self, layerType:str):
+        """Sets the type of layer"""
         if layerType in layer_types.ALL_TYPES:
-            self.__type = layerType
+            self._type = layerType
         else:
-            raise ValueError("Invalid layer type")
+            raise ValueError("Invalid layer type: \"{}\"".format(layerType))
 
     def isVisible(self) -> bool:
-        return self.__visible
+        """Is this layer visible?"""
+        return self._visible
 
     def setVisible(self, visible:bool):
-        self.__visible = visible
+        """Sets the layer visibility."""
+        self._visible = visible
 
     def frames(self) -> list[OCAFrame]:
-        return self.__frames
+        """The frames of the layer."""
+        return self._frames
 
     def appendFrame(self, frame:OCAFrame):
-        self.__frames.append(frame)
+        """Adds a frame at the end."""
+        self._frames.append(frame)
 
     def layers(self) -> list[OCALayer]:
-        return self.__childLayers
+        """The child layers if this is a group layer type."""
+
+        if self._type is layer_types.GROUP:
+            return self._childLayers
+
+        # If we're an instance of a specific layer
+        sourceLayer = self.sourceLayer()
+        if sourceLayer:
+            return sourceLayer.layers()
+
+        # If we're an instance of a document
+        sourceDoc = self.sourceDocument()
+        if not sourceDoc:
+            return []
+        return sourceDoc.layers()
+
+    def getLayer(self, layerId:str):
+        """Gets a layer by its ID, or None if not found"""
+        for layer in self.layers():
+            if layer.id() == layerId:
+                return layer
+            # Recurse
+            found = layer.getLayer(layerId)
+            if found:
+                return found
+        return None
+
+    def getFrame(self, frameId:str):
+        """Gets a frame by its ID, or None if not found"""
+        for layer in self.layers():
+            for frame in layer.frames():
+                if frame.id() == frameId:
+                    return frame
+            # Recurse
+            found = layer.getFrame(frameId)
+            if found:
+                return found
+        return None
 
     def appendLayer(self, layer:OCALayer):
-        # Sanitize and append
-        w, h = layer.size()
-        if w == 0:
-            w = self.__width
-        if h == 0:
-            h = self.__height
-        layer.setSize(w, h)
+        """Adds a child layer on top of the stack"""
+        if layer in self._childLayers:
+            raise ValueError("This layer {} is already a child of this layer.".format(layer.name()))
+        self._takeLayerOwnership(layer)
+        self._childLayers.append(layer)
 
-        p = layer.position()
-        if len(p) != 2:
-            layer.setPosition(
-                self.__width/2,
-                self.__height/2
-            )
+    def insertLayer(self, i:int, layer:OCALayer):
+        """Inserts a layer in the list at the given index"""
+        if layer in self._childLayers:
+            raise ValueError("This layer {} is already a child of this layer.".format(layer.name()))
+        self._takeLayerOwnership(layer)
+        self._childLayers.insert(i, layer)
 
-        self.__childLayers.append(layer)
+    def removeLayer(self, layer:OCALayer):
+        """Removes a layer from the list"""
+        self._releaseLayerOwnership(layer)
+        self._childLayers.remove(layer)
+
+    def parentLayerId(self):
+        """The parent layer id if it has one"""
+        return self._parentId
 
     # ==== PROTECTED ====
 
-    def _sanitize(self, savePath:str ):
+    def _takeLayerOwnership(self, layer:OCALayer):
+        layer._parentId =  self._id # pylint: disable=protected-access
+        layer._document = self._document # pylint: disable=protected-access
 
-        # Recursion
-        for childLayer in self.__childLayers:
-            childLayer._sanitize(savePath) # pylint: disable=protected-access
+    def _releaseLayerOwnership(self, layer:OCALayer):
+        layer._parentId = "" # pylint: disable=protected-access
+        layer._document = None # pylint: disable=protected-access
+        layer._sourceDocument = None # pylint: disable=protected-access
 
-        for frame in self.__frames:
-            frame._sanitize(savePath) # pylint: disable=protected-access
+    # ==== PRIVATE ====
+
+    def __eq__(self, other):
+        return self.id() == other.id()

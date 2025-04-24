@@ -6,18 +6,12 @@
 
 import json
 import os
-from . import document
+import warnings
 from .config import VERSION
 
 def load(filepath:str):
-    """!
-    @brief Loads the OCA file.
-
-    Parameters : 
-        @param filepath => The path to the .oca file
-    
-    @returns {dict} The Data, including any metadata under the "meta" key.
-    """
+    """Deprecated"""
+    warnings.warn("OCA as a simple dict is deprecated. Use the new OCADocument class", DeprecationWarning)
 
     oca = {}
     with open(filepath, 'r', encoding='utf8') as ocaFile:
@@ -32,16 +26,10 @@ def load(filepath:str):
     return oca
 
 def save(ocaDoc:dict, filepath:str):
-    """!
-    @brief Saves the OCA document to an OCA file,
-    And a sidecar metadata file if the 'meta' key exists in the document.
+    """Deprecated"""
+    warnings.warn("OCA as a simple dict is deprecated. Use the new OCADocument class", DeprecationWarning)
 
-    Parameters : 
-        @param ocaDoc : dict => The document to save
-        @param filepath : str => The filename where to save
-    """
-
-    document.sanitize(ocaDoc, filepath)
+    sanitize(ocaDoc, filepath)
 
     # Separate the metadata and set the ocaVersion
     meta = ocaDoc.get('meta', {})
@@ -56,3 +44,40 @@ def save(ocaDoc:dict, filepath:str):
         with open(metaPath,  "w", encoding='utf-8') as metaFile:
             metaFile.write( json.dumps(meta, indent=4) )
 
+def getMetaPath(ocaFilePath:str):
+    """Deprecated"""
+    warnings.warn("OCA as a simple dict is deprecated. Use the new OCADocument class", DeprecationWarning)
+    return os.path.splitext(ocaFilePath)[0] + "_meta.json"
+
+def sanitize(ocaDoc, savePath='') :
+    """Deprecated"""
+    if savePath != '':
+        docPath = os.path.dirname(savePath)
+    else:
+        docPath = ''
+    for childLayer in ocaDoc['layers']:
+        sanitizeLayer(childLayer, docPath)
+
+def sanitizeLayer(ocaLayer, savePath=''):
+    """Deprecated"""
+    # Recursion
+    if ocaLayer['type']  == 'grouplayer':
+        for childLayer in ocaLayer['childLayers']:
+            sanitize(childLayer, savePath)
+        return
+    for ocaFrame in ocaLayer['frames']:
+        sanitizeFrame(ocaFrame, savePath)
+
+def sanitizeFrame(ocaFrame, savePath=''):
+    """Deprecated"""
+    if ocaFrame['name'] != '_blank':
+        # Set paths relative
+        if savePath != '':
+            ocaFrame['fileName'] = os.path.relpath(
+                ocaFrame['fileName'],
+                savePath
+                )
+        # Path must use a / delimiter, no matter the platform
+        ocaFrame['fileName'] = ocaFrame['fileName'].replace("\\","/")
+    else:
+        ocaFrame['fileName'] = ""

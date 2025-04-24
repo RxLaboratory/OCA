@@ -1,9 +1,9 @@
 """Open Cel Animation library"""
 
 # OCA Python Library
-# Copyright (c) 2020-2023 - Nicolas Dufresne, RxLaboratory and contributors
+# Copyright (c) 2020-2025 - Nicolas Dufresne, RxLaboratorio and contributors
 # This script is licensed under the GNU General Public License v3
-# https://rxlaboratory.org
+# https://rxlaboratorio.org
 # 
 # This file is part of OCA.
 #   OCA is free software: you can redistribute it and/or modify
@@ -19,11 +19,23 @@
 #    You should have received a copy of the GNU General Public License
 #    along with OCA. If not, see <http://www.gnu.org/licenses/>.
 
+# ENUMS
 from . import blending_modes
+from . import color_depths
 from . import labels
-from . import frame
-from . import layer
-from . import document
-from . import file
+from . import layer_types
+
+# CLASSES
+from .document import OCADocument
+from .frame import OCAFrame
+from .layer import OCALayer
+from .source import OCASource
+
+# UTILS
 from . import utils
+
+# CONSTANTS
 from .config import VERSION
+
+# DEPRECATED
+from . import file

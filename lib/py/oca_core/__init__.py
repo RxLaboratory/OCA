@@ -19,12 +19,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with OCA. If not, see <http://www.gnu.org/licenses/>.
 
-# ENUMS
-from . import blending_modes as BLENDING_MODES
-from . import color_depths as COLOR_DEPTH
-from . import labels as LABELS
-from . import layer_types as LAYER_TYPES
-
 # CLASSES
 from .document import OCADocument
 from .frame import OCAFrame
@@ -33,6 +27,12 @@ from .source import OCASource
 
 # UTILS
 from . import utils
+
+# ENUMS
+from . import blending_modes as BLENDING_MODES
+from . import color_depths as COLOR_DEPTHS
+from . import labels as LABELS
+from . import layer_types as LAYER_TYPES
 
 # CONSTANTS
 from .config import VERSION

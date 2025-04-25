@@ -39,16 +39,16 @@ class OCAObject():
         """Gets some metadata.
         If the key is empty, the whole metadata dict is returned."""
         if key != "":
-            return self.__meta.get(key, defaultValue)
-        return self.__meta
+            return self._meta.get(key, defaultValue)
+        return self._meta
 
     def setMetadata(self, key:str, value):
         """Sets some metadata"""
-        self.__meta[key] = value
+        self._meta[key] = value
 
     def setMeta(self, data):
         """Sets the whole metadata dict."""
-        self.__meta = data
+        self._meta = data
 
     def _sanitize(self) -> bool:
         """Sanitizes the data.

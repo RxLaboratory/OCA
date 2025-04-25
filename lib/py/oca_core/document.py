@@ -2,7 +2,7 @@
 
 import os
 import json
-from . import color_depths
+from .color_depths import (UINT8, ALL_DEPTHS)
 from .object import OCAObject
 from .layer import OCALayer
 from .config import VERSION
@@ -41,11 +41,11 @@ class OCADocument(OCAObject):
         # Parse enums JSON data
         try:
             self.setColorDepth(
-                oca.get('colorDepth', color_depths.UINT8)
+                oca.get('colorDepth', UINT8)
             )
         except ValueError as e:
             # Replace invalid values by defaults and log error
-            self._colorDepth = color_depths.UINT8
+            self._colorDepth = UINT8
 
             self._status = OCAObject.PARSE_ERROR
             self._errors.append(e.args[0])
@@ -104,7 +104,7 @@ class OCADocument(OCAObject):
 
     def setColorDepth(self, depth:str):
         """Sets the color depth of the layers (bit depth)"""
-        if not depth in color_depths.ALL_DEPTHS:
+        if not depth in ALL_DEPTHS:
             raise ValueError("Invalid color depth: \"{}\"".format(depth))
         self._colorDepth = depth
 
@@ -112,10 +112,10 @@ class OCADocument(OCAObject):
         """The start and end time of the document, in frames."""
         return (self._startTime, self._endTime)
 
-    def setTimeRange(self, timerange:tuple):
+    def setTimeRange(self, start:int, end:int):
         """Sets the start and end time of the document, in frames."""
-        self._startTime = timerange[0]
-        self._endTime = timerange[1]
+        self._startTime = start
+        self._endTime = end
 
     def duration(self) -> int:
         """The document duration in frames."""
@@ -191,6 +191,12 @@ class OCADocument(OCAObject):
             if found:
                 return found
         return None
+
+    def setLayers(self, layers:list):
+        """Sets the list of layers"""
+        self._layers = []
+        for layer in layers:
+            self.appendLayer(layer)
 
     def appendLayer(self, layer:OCALayer):
         """Adds a layer to the document"""

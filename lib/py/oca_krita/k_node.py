@@ -7,22 +7,22 @@
 import os
 import krita # pylint: disable=import-error
 from PyQt5.QtCore import QRect # pylint: disable=no-name-in-module,import-error
-from . import utils
-from . import tags
-from .blending_modes import BLENDING_MODES as KRITA_BLENDING_MODES
-from ..oca_core import BLENDING_MODES as OCA_BLENDING_MODES
-from ..oca_core import ( # pylint: disable=relative-beyond-top-level
+from oca_core import BLENDING_MODES as OCA_BLENDING_MODES # pylint: disable=relative-beyond-top-level
+from oca_core import ( # pylint: disable=relative-beyond-top-level
     OCAFrame,
     OCALayer
 )
+from . import k_utils
+from . import k_tags
+from .k_blending_modes import KRITA_BLENDING_MODES
 
 def exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options):
     """Exports the frame as a flattend image."""
-    utils.setCurrentFrame(kDoc, frameNumber)
+    k_utils.setCurrentFrame(kDoc, frameNumber)
 
     imageName = '{0}_{1}'.format(
         ocaDoc.name(),
-        utils.intToStr(frameNumber)
+        k_utils.intToStr(frameNumber)
         )
     imagePath = os.path.join(
         ocaDoc.layersPath(),
@@ -30,7 +30,7 @@ def exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options):
         )
     imagePath += "." + options.get('fileFormat', 'png')
 
-    succeed = utils.exportDocument(kDoc, imagePath)
+    succeed = k_utils.exportDocument(kDoc, imagePath)
 
     ocaFrame = OCAFrame()
 
@@ -49,7 +49,7 @@ def exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options):
 
 def exportFrame(kDoc, kNode, frameNumber, exportPath, options):
     """Exports a frame"""
-    utils.setCurrentFrame(kDoc, frameNumber)
+    k_utils.setCurrentFrame(kDoc, frameNumber)
 
     if kNode.bounds().width() == 0:
         ocaFrame = OCAFrame()
@@ -68,7 +68,7 @@ def exportFrame(kDoc, kNode, frameNumber, exportPath, options):
 
     imageName = '{0}_{1}'.format(
         kNode.name().strip(),
-        utils.intToStr(frameNumber)
+        k_utils.intToStr(frameNumber)
         )
     imagePath = os.path.join(exportPath, imageName) + '.' + fileFormat
 
@@ -103,13 +103,13 @@ def export(ocaDoc, kDoc, ocaLayer, kNode, exportPath, options, progressdialog):
         nodeDir = os.path.join(exportPath, nodeName)
         prevFrameNumber = -1
         frames = []
-        utils.mkdir( nodeDir )
+        k_utils.mkdir( nodeDir )
         while frame <= endTime:
             progressdialog.setValue(frame)
             if progressdialog.wasCanceled():
                 break
 
-            if utils.hasKeyframeAtTime(kNode, frame):
+            if k_utils.hasKeyframeAtTime(kNode, frame):
                 ocaFrame = exportFrame(kDoc, kNode, frame, nodeDir, options)
                 if prevFrameNumber >= 0:
                     frames[-1].setDuration( frame - prevFrameNumber )
@@ -180,21 +180,21 @@ def kNodeToOCA( kDocument, kNode, options ):
 
     # Set as reference if the tag is set
     ocaLayer.setReference(
-        tags.REFERENCE in kNode.name()
+        k_tags.REFERENCE in kNode.name()
     )
 
     return ocaLayer
 
 def kFrameToOCA( kDocument, kNode, frameNumber, options):
     """Creates an OCAFrame"""
-    utils.setCurrentFrame(kDocument, frameNumber)
+    k_utils.setCurrentFrame(kDocument, frameNumber)
 
     useDocumentSize = options.get('cropToImageBounds', False)
     x, y, w, h = getCoordinates(kDocument, kNode, useDocumentSize)
 
     ocaFrame = OCAFrame()
     ocaFrame.setName(
-        "{}_{}".format(kNode.name(), utils.intToStr(frameNumber))
+        "{}_{}".format(kNode.name(), k_utils.intToStr(frameNumber))
     )
     ocaFrame.setOpacity( kNode.opacity() / 255.0 )
     ocaFrame.setPosition( x, y )

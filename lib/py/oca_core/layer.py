@@ -211,7 +211,7 @@ class OCALayer(OCAObject):
 
     def sourceDocument(self):
         """The source document, if this is an ocalayer."""
-        if self._type is not layer_types.OCA:
+        if self._type != layer_types.OCA:
             return None
         if not self._document:
             raise RuntimeError("Cannot get the source of a layer which is not part of a document.")
@@ -245,10 +245,10 @@ class OCALayer(OCAObject):
         if source.id() == "":
             return None
 
-        if self._type is layer_types.CLONE:
+        if self._type == layer_types.CLONE:
             return self._document.getLayer(source.id())
 
-        if self._type is layer_types.OCA:
+        if self._type == layer_types.OCA:
             sourceDoc = self.sourceDocument()
             if not sourceDoc:
                 return None
@@ -290,10 +290,10 @@ class OCALayer(OCAObject):
         for frame in frames:
             self.appendFrame(frame)
 
-    def layers(self) -> list[OCALayer]:
+    def layers(self) -> list:
         """The child layers if this is a group layer type."""
 
-        if self._type is layer_types.GROUP:
+        if self._type == layer_types.GROUP:
             return self._childLayers
 
         # If we're an instance of a specific layer
@@ -330,27 +330,27 @@ class OCALayer(OCAObject):
                 return found
         return None
 
-    def appendLayer(self, layer:OCALayer):
+    def appendLayer(self, layer):
         """Adds a child layer on top of the stack"""
         if layer in self._childLayers:
             raise ValueError("This layer {} is already a child of this layer.".format(layer.name()))
         self._takeLayerOwnership(layer)
         self._childLayers.append(layer)
 
-    def setLayers(self, layers:list[OCALayer]):
+    def setLayers(self, layers:list):
         """Sets the list of layers"""
         self._childLayers = []
         for layer in layers:
             self.appendLayer(layer)
 
-    def insertLayer(self, i:int, layer:OCALayer):
+    def insertLayer(self, i:int, layer):
         """Inserts a layer in the list at the given index"""
         if layer in self._childLayers:
             raise ValueError("This layer {} is already a child of this layer.".format(layer.name()))
         self._takeLayerOwnership(layer)
         self._childLayers.insert(i, layer)
 
-    def removeLayer(self, layer:OCALayer):
+    def removeLayer(self, layer):
         """Removes a layer from the list"""
         self._releaseLayerOwnership(layer)
         self._childLayers.remove(layer)
@@ -394,10 +394,16 @@ class OCALayer(OCAObject):
                 data['frames'].append(frame.toDict())
 
             # Add child layers
-            if self._type is layer_types.GROUP:
+            print("____________________")
+            print(self._type)
+            if self._type == layer_types.GROUP:
                 data["childLayers"] = []
+                print("Getting children")
                 for layer in self.layers():
+                    print("child " + layer.name())
                     data["childLayers"].append(layer.toDict())
+            print("____________________")
+    
         # Add source info
         elif self.source():
             data["source"] = self.source().toDict()
@@ -406,11 +412,11 @@ class OCALayer(OCAObject):
 
     # ==== PROTECTED ====
 
-    def _takeLayerOwnership(self, layer:OCALayer):
+    def _takeLayerOwnership(self, layer):
         layer._parentId =  self._id # pylint: disable=protected-access
         layer._setDocument(self._document) # pylint: disable=protected-access
 
-    def _releaseLayerOwnership(self, layer:OCALayer):
+    def _releaseLayerOwnership(self, layer):
         layer._parentId = "" # pylint: disable=protected-access
         layer._setDocument(None) # pylint: disable=protected-access
         layer._sourceDocument = None # pylint: disable=protected-access

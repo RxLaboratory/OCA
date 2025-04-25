@@ -19,8 +19,11 @@
 #    You should have received a copy of the GNU General Public License
 #    along with OCA. If not, see <http://www.gnu.org/licenses/>.
 
-from .blending_modes import BLENDING_MODES as KRITA_BLENDING_MODES
-from . import document as kritaDocument
-from . import tags as kritaTags
-from . import metadata as kritaMetadata
-from ..oca_core import *
+# Get everything from OCA
+from oca_core import *
+
+# Add Krita specific stuff
+from .k_blending_modes import KRITA_BLENDING_MODES
+from . import k_document as kDocument
+from . import k_tags as kTags
+from . import k_metadata as kMetadata

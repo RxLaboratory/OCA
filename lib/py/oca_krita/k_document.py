@@ -9,14 +9,14 @@ import krita # pylint: disable=import-error
 from PyQt5.QtCore import Qt # pylint: disable=import-error,no-name-in-module
 from PyQt5.QtWidgets import QProgressDialog # pylint: disable=import-error,no-name-in-module
 
-from ..oca_core import ( # pylint: disable=relative-beyond-top-level
+from oca_core import ( # pylint: disable=relative-beyond-top-level
     OCALayer,
     OCADocument
 )
-from . import utils
-from . import tags
-from . import node
-from .metadata import updateMetadata
+from . import k_utils
+from . import k_tags
+from . import k_node
+from .k_metadata import updateMetadata
 
 def export(kDocument, exportPath, options = None, metaData = None):
     """!
@@ -43,7 +43,7 @@ def export(kDocument, exportPath, options = None, metaData = None):
     # For some reason, Krita fails to save the keyframes
     # If we don't start after the last one...
     # (probably a cache issue...)
-    utils.setCurrentFrame(kDocument, 10000)
+    k_utils.setCurrentFrame(kDocument, 10000)
     kDocument.setBatchmode(True)
 
     # ==== GATHER INFO ====
@@ -126,18 +126,18 @@ def exportFlattened(ocaDoc, kDoc, options, progressdialog):
     frame = startTime
     prevFrameNumber = -1
 
-    disabledNodes = disableNodes(kDoc.rootNode(), tag = tags.IGNORE)
+    disabledNodes = disableNodes(kDoc.rootNode(), tag = k_tags.IGNORE)
     if not options.get('exportReference', True):
-        disabledNodes += disableNodes(kDoc.rootNode(), tag = tags.REFERENCE)
+        disabledNodes += disableNodes(kDoc.rootNode(), tag = k_tags.REFERENCE)
 
     frames = []
     while frame <= endTime:
         progressdialog.setValue(frame)
         if progressdialog.wasCanceled():
-            utils.enableNodes( disabledNodes )
+            k_utils.enableNodes( disabledNodes )
             break
-        if utils.hasKeyframeAtTime(kDoc.rootNode(), frame):
-            ocaFrame = node.exportFlattenedFrame(ocaDoc, kDoc, frame, options)
+        if k_utils.hasKeyframeAtTime(kDoc.rootNode(), frame):
+            ocaFrame = k_node.exportFlattenedFrame(ocaDoc, kDoc, frame, options)
             if prevFrameNumber >= 0:
                 frames[-1].setDuration(frame - prevFrameNumber)
             frames.append(ocaFrame)
@@ -160,7 +160,7 @@ def exportDocLayers(ocaDoc, kDoc, options, progressdialog):
     ocaDoc.setLayers(layers)
 
 def exportLayers(ocaDoc, kDoc, parentNode, exportPath, options, progressdialog):
-    """ This method get all sub-nodes from the current node and export them in
+    """ This method get all sub-nodes from the current k_node and export them in
         the defined format."""
 
     layers = []
@@ -175,7 +175,7 @@ def exportLayers(ocaDoc, kDoc, parentNode, exportPath, options, progressdialog):
         newDir = ''
         nodeName = childNode.name().strip()
 
-        print("OCA >> Loading node: " + nodeName)
+        print("OCA >> Loading k_node: " + nodeName)
 
         # ignore filters
         if (not options.get('exportFilterLayers', False)
@@ -187,33 +187,33 @@ def exportLayers(ocaDoc, kDoc, parentNode, exportPath, options, progressdialog):
             continue
         # ignore reference
         if (not options.get('exportReference')
-            and tags.REFERENCE in nodeName):
+            and k_tags.REFERENCE in nodeName):
             continue
         # ignore _ignore_
-        if tags.IGNORE in nodeName:
+        if k_tags.IGNORE in nodeName:
             continue
 
-        merge = tags.MERGE in nodeName
+        merge = k_tags.MERGE in nodeName
 
         if merge:
-            print("OCA >> Merging node: " + nodeName)
-            utils.disableNodes(childNode)
-            childNode = utils.flattenNode(kDoc, childNode, i, parentNode)
-            nodeName = nodeName.replace(tags.MERGE,"").strip()
+            print("OCA >> Merging k_node: " + nodeName)
+            k_utils.disableNodes(childNode)
+            childNode = k_utils.flattenNode(kDoc, childNode, i, parentNode)
+            nodeName = nodeName.replace(k_tags.MERGE,"").strip()
             childNode.setName( nodeName )
-            print("OCA >> Merged and renamed node: " + childNode.name())
+            print("OCA >> Merged and renamed k_node: " + childNode.name())
 
-        ocaLayer = node.kNodeToOCA(kDoc, childNode, options)
+        ocaLayer = k_node.kNodeToOCA(kDoc, childNode, options)
 
         # if there are children and not merged, export them
         if childNode.childNodes() and not merge:
             newDir = os.path.join(exportPath, nodeName)
-            utils.mkdir( newDir )
+            k_utils.mkdir( newDir )
             childLayers = exportLayers(ocaDoc, kDoc, childNode, newDir, options, progressdialog)
             ocaLayer.setLayers(childLayers)
         # if not a group
         else:
-            node.export(ocaDoc, kDoc, ocaLayer, childNode, exportPath, options, progressdialog)
+            k_node.export(ocaDoc, kDoc, ocaLayer, childNode, exportPath, options, progressdialog)
 
         layers.append(ocaLayer)
 
@@ -237,12 +237,11 @@ def kDocumentToOCA( kDocument, metadata, options ):
 
     ocaDoc = OCADocument()
 
-    ocaDoc.setName(
-        kDocument.name() | options.get("defaultDocumentName", "Document")
-        )
+    docName = kDocument.name() if kDocument.name() != "" else options.get("defaultDocumentName", "Document")
+    ocaDoc.setName( docName )
 
     ocaDoc.setFrameRate(
-        kDocument.framesPreSecond()
+        kDocument.framesPerSecond()
         )
 
     ocaDoc.setSize(

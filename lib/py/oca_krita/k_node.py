@@ -14,6 +14,7 @@ from oca_core import ( # pylint: disable=relative-beyond-top-level
     OCAObject,
     OCASource,
     LAYER_TYPES,
+    FILE_TYPES,
 )
 from . import k_utils
 from . import k_tags
@@ -202,8 +203,24 @@ def kNodeToOCA( kDocument, kNode, options ):
             kSourceNode.uniqueId().toString(QUuid.WithoutBraces)
             )
         ocaLayer.setSource(source)
-    elif t == 'filelayer':
-        """TODO ocalayer"""
+    elif t == 'filelayer' and not options.get('mergeNestedDocuments', False):
+        # If this is a layered file,
+        # It can be nested as an OCA Document
+        sourcePath = kNode.path()
+        print("OCA >> Analyzing File Layer: {}".format(sourcePath))
+        ext = FILE_TYPES.getFileType(sourcePath)
+        if ext in FILE_TYPES.LAYERED_TYPES:
+            print("OCA >> This file may contain layers, it will be exported as an OCA Document.")
+            ocaLayer.setLayerType( LAYER_TYPES.OCA )
+            source = OCASource()
+            source.setFileName(sourcePath)
+            ocaLayer.setSource(source)
+        else:
+            print("OCA >> The file will be exported as a paintlayer.")
+            ocaLayer.setLayerType( LAYER_TYPES.PAINT )
+            ocaLayer.setFileType(
+                options.get('fileFormat', 'png')
+            )
     else:
         ocaLayer.setLayerType( t )
         ocaLayer.setFileType(

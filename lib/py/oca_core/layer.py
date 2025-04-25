@@ -294,9 +294,27 @@ class OCALayer(OCAObject):
         for frame in frames:
             self.appendFrame(frame)
 
-    def layers(self) -> list:
+    def layers(self, recursive:bool=False) -> list:
         """The child layers if this is a group layer type."""
-        return self._childLayers
+        if not recursive:
+            return self._childLayers
+        layers = []
+        for layer in self._childLayers:
+            layers.append(layer)
+            layers = layers + layer.layers(True)
+        return layers
+
+    def updateLayer(self, layer):
+        """Updates the child layer with the new data.
+        The layer is found using the unique ID.
+        Returns true if the layer has been found (and updated)."""
+        for i,l in enumerate(self._childLayers):
+            if l == layer:
+                self._childLayers[i] = layer
+                return True
+            if l.updateLayer(layer):
+                return True
+        return False
 
     def getLayer(self, layerId:str):
         """Gets a layer by its ID, or None if not found"""

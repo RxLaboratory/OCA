@@ -11,7 +11,9 @@ from PyQt5.QtWidgets import QProgressDialog # pylint: disable=import-error,no-na
 
 from oca_core import ( # pylint: disable=relative-beyond-top-level
     OCALayer,
-    OCADocument
+    OCADocument,
+    OCAObject,
+    LAYER_TYPES
 )
 from . import k_utils
 from . import k_tags
@@ -87,6 +89,42 @@ def export(kDocument, exportPath, options = None, metaData = None):
             options,
             progressdialog
         )
+        # Export nested documents
+        if not options.get('mergeNestedDocuments', False):
+            allLayers = ocaDoc.layers(True)
+            for layer in allLayers:
+                if layer.layerType() != LAYER_TYPES.OCA:
+                    continue
+                source = layer.source()
+                sourceDocPath = source.fileName(ocaDoc.path())
+                # Open the document and export it
+                if os.path.isfile(sourceDocPath):
+                    nestedDoc = Application.openDocument(sourceDocPath)
+                    nestedOCA = export(
+                        nestedDoc,
+                        os.path.dirname(sourceDocPath),
+                        options,
+                        metaData
+                    )
+                    # Replace original file with exported OCA Document
+                    source.setFileName(nestedOCA.fileName())
+                    print("OCA >> Nested doc exported as {}".format(
+                        source.fileName(nestedOCA.fileName()))
+                        )
+                    layer.setSource(source)
+                    ocaDoc.updateLayer(layer)
+
+                    if nestedOCA.hasWriteError():
+                        ocaDoc.addError(
+                            "Nested document exported with errors: {}".format(sourceDocPath),
+                            OCAObject.WRITE_ERROR
+                        )
+                else:
+                    ocaDoc.addError(
+                        "Nested document not found: {}".format(sourceDocPath),
+                        OCAObject.WRITE_ERROR
+                        )
+
 
     # Save doc
     if not ocaDoc.save():
@@ -206,8 +244,8 @@ def exportLayers(ocaDoc, kDoc, parentNode, exportPath, options, progressdialog):
 
         ocaLayer = k_node.kNodeToOCA(kDoc, childNode, options)
 
-        # if this is a clone or a doc, nothing to export, skip to the next
-        if ocaLayer.layerType() == 'ocalayer' or ocaLayer.layerType() == 'clonelayer':
+        # if this is a clone, nothing to export, skip to the next
+        if ocaLayer.layerType() == LAYER_TYPES.CLONE or ocaLayer.layerType() == LAYER_TYPES.OCA:
             layers.append(ocaLayer)
             continue
 

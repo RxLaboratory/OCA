@@ -6,6 +6,7 @@ from .color_depths import (UINT8, ALL_DEPTHS)
 from .object import OCAObject
 from .layer import OCALayer
 from .config import VERSION
+from . import layer_types
 
 class OCADocument(OCAObject):
     """An OCA document"""
@@ -150,9 +151,15 @@ class OCADocument(OCAObject):
         """The version used to save this OCA Document"""
         return self._ocaVersion
 
-    def layers(self) -> list:
+    def layers(self, recursive:bool=False) -> list:
         """The list of layers in this document"""
-        return self._layers
+        if not recursive:
+            return self._layers
+        layers = []
+        for layer in self._layers:
+            layers.append(layer)
+            layers = layers + layer.layers(True)
+        return layers
 
     def moveLayerUp(self, layer:OCALayer):
         """Moves a layer up in the list"""
@@ -216,6 +223,16 @@ class OCADocument(OCAObject):
         """Removes a layer from the list"""
         self._releaseLayerOwnership(layer)
         self._layers.remove(layer)
+
+    def updateLayer(self, layer:OCALayer):
+        """Updates the layer with the new data.
+        The layer is found using the unique ID"""
+        for i,l in enumerate(self._layers):
+            if l == layer:
+                self._layers[i] = layer
+                return
+            if l.updateLayer(layer):
+                return
 
     def metadataFileName(self):
         """!

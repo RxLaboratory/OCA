@@ -34,6 +34,7 @@ from . import blending_modes as BLENDING_MODES
 from . import color_depths as COLOR_DEPTHS
 from . import labels as LABELS
 from . import layer_types as LAYER_TYPES
+from . import file_types as FILE_TYPES
 
 # CONSTANTS
 from .config import VERSION

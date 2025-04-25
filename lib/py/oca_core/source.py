@@ -45,6 +45,13 @@ class OCASource():
 
         return path
 
+    def setFileName(self, fileName:str):
+        """Sets a new file."""
+        if os.path.isabs(fileName):
+            self._absFileName = fileName
+        else:
+            self._relFileName = fileName
+
     def asbFileName(self) -> str:
         """The absolute path to the instanced OCA document, at time of saving."""
         return self._absFileName
@@ -61,25 +68,17 @@ class OCASource():
         """Exports the source as a simple python Dict,
         Which can then be written in a JSON file."""
 
-        absFileName = self.fileName(docPath)
-        relFileName = self.relFileName()
-        if (not os.path.isfile(relFileName)
-            and os.path.isfile(absFileName)):
-            relFileName = os.path.relpath(absFileName, docPath)
+        self._absFileName = self.fileName(docPath)
 
-        if not os.path.isfile(absFileName):
-            absFileName = ''
-        else:
-            self._absFileName = absFileName
-
-        if not os.path.isfile(relFileName):
-            relFileName = ''
-        else:
-            self._relFileName = relFileName
+        if self._relFileName == '' or not os.path.isfile(self._relFileName):
+            if os.path.isfile(self._absFileName):
+                self._relFileName = os.path.relpath(
+                    self._absFileName, docPath
+                    )
 
         return {
-            "absFileName": absFileName,
-            "relFileName": relFileName,
+            "absFileName": self._absFileName,
+            "relFileName": self._relFileName,
             "id": self.id(),
             "timeOffset": self.timeOffset()
         }

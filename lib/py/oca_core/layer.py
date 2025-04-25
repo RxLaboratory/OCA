@@ -394,15 +394,10 @@ class OCALayer(OCAObject):
                 data['frames'].append(frame.toDict())
 
             # Add child layers
-            print("____________________")
-            print(self._type)
             if self._type == layer_types.GROUP:
                 data["childLayers"] = []
-                print("Getting children")
                 for layer in self.layers():
-                    print("child " + layer.name())
                     data["childLayers"].append(layer.toDict())
-            print("____________________")
     
         # Add source info
         elif self.source():

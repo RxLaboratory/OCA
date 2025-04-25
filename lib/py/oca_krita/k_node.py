@@ -72,7 +72,7 @@ def exportFrame(kDoc, kNode, frameNumber, exportPath, options):
         )
     imagePath = os.path.join(exportPath, imageName) + '.' + fileFormat
 
-    if options.get('cropToImageBounds'):
+    if options.get('cropToImageBounds', False):
         bounds = QRect()
     else:
         bounds = QRect(0, 0, options.get('width', 1920), options.get('height', 1080))
@@ -147,7 +147,7 @@ def kNodeToOCA( kDocument, kNode, options ):
     """Creates an OCALayer."""
 
     useDocumentSize = (
-        options.get('cropToImageBounds', False)
+        not options.get('cropToImageBounds', False)
         or kNode.animated()
         or kNode.type() == 'grouplayer'
     )
@@ -189,7 +189,7 @@ def kFrameToOCA( kDocument, kNode, frameNumber, options):
     """Creates an OCAFrame"""
     k_utils.setCurrentFrame(kDocument, frameNumber)
 
-    useDocumentSize = options.get('cropToImageBounds', False)
+    useDocumentSize = not options.get('cropToImageBounds', False)
     x, y, w, h = getCoordinates(kDocument, kNode, useDocumentSize)
 
     ocaFrame = OCAFrame()

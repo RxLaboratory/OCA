@@ -2,6 +2,7 @@
 
 import time
 import os
+import threading
 import krita # pylint: disable=import-error
 
 def mkdir(directory):
@@ -23,6 +24,11 @@ def intToStr(i, numDigits = 5):
 def setCurrentFrame(document, frameNumber):
     """Sets the current frame in the document and waits for the image to be cached."""
     document.setCurrentTime(frameNumber)
+
+    # It seems we need to do something befre refreshProjection for it to work
+    tmpNode = document.createNode('--- OCA TEMP ---', 'paintlayer')
+    document.refreshProjection()
+    tmpNode.remove()
     document.refreshProjection()
 
 def hasKeyframeAtTime(parentNode, frameNumber, visibleNodesOnly=True ):

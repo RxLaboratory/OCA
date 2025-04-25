@@ -370,7 +370,6 @@ class OCALayer(OCAObject):
             "id": self.id(),
             "inheritAlpha": self.inheritAlpha(),
             "label": self.label(),
-            "meta": self.metadata(),
             "name": self.name(),
             "opacity": self.opacity(),
             "passThrough": self.passThrough(),
@@ -392,16 +391,23 @@ class OCALayer(OCAObject):
             data["frames"] = []
             for frame in self.frames():
                 data['frames'].append(frame.toDict())
+                if frame.hasWriteError():
+                    self.setStatus(frame.status())
 
             # Add child layers
             if self._type == layer_types.GROUP:
                 data["childLayers"] = []
                 for layer in self.layers():
                     data["childLayers"].append(layer.toDict())
-    
+                    if layer.hasWriteError():
+                        self.setStatus(layer.status())
+
         # Add source info
         elif self.source():
             data["source"] = self.source().toDict()
+
+        # Add metadata in the end, to be sure to collect errors
+        data["meta"] = self.metadata()
 
         return data
 

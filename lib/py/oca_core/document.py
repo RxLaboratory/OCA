@@ -243,6 +243,8 @@ class OCADocument(OCAObject):
         layersData = []
         for layer in self.layers():
             layersData.append(layer.toDict())
+            if layer.hasWriteError():
+                self.setStatus(layer.status())
 
         return {
             "backgroundColor": self.backgroundColor(),

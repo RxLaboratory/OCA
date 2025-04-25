@@ -89,7 +89,8 @@ def export(kDocument, exportPath, options = None, metaData = None):
         )
 
     # Save doc
-    ocaDoc.save()
+    if not ocaDoc.save():
+        print("OCA >> Some errors have occured when exporting {} ({})".format(ocaDoc.name(), ocaDoc.fileName()))
 
     # ==== CLEAN ====
 

@@ -24,6 +24,7 @@ from .document import OCADocument
 from .frame import OCAFrame
 from .layer import OCALayer
 from .source import OCASource
+from .object import OCAObject
 
 # UTILS
 from . import utils

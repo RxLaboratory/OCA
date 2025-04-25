@@ -10,7 +10,8 @@ from PyQt5.QtCore import QRect # pylint: disable=no-name-in-module,import-error
 from oca_core import BLENDING_MODES as OCA_BLENDING_MODES # pylint: disable=relative-beyond-top-level
 from oca_core import ( # pylint: disable=relative-beyond-top-level
     OCAFrame,
-    OCALayer
+    OCALayer,
+    OCAObject
 )
 from . import k_utils
 from . import k_tags
@@ -31,19 +32,26 @@ def exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options):
     imagePath += "." + options.get('fileFormat', 'png')
 
     succeed = k_utils.exportDocument(kDoc, imagePath)
+    # A single PNG Pixel is 89 Bytes
+    if os.path.getsize(imagePath) < 100:
+        succeed = False
 
     ocaFrame = OCAFrame()
 
     if not succeed:
-        ocaFrame.setName("Export failed")
-        ocaFrame.setFrameNumber(frameNumber)
-    else:
-        ocaFrame.setName(imageName)
-        ocaFrame.setFileName(imagePath)
-        ocaFrame.setFrameNumber(frameNumber)
-        w, h = ocaDoc.size()
-        ocaFrame.setPosition( w/2, h/2 )
-        ocaFrame.setSize(w, h)
+        print("OCA >> Error when writing file: {}".format(imagePath))
+        error = "Error when writing file: {}".format(imagePath)
+        ocaFrame.addError(
+            error,
+            OCAObject.WRITE_ERROR
+            )
+
+    ocaFrame.setName(imageName)
+    ocaFrame.setFileName(imagePath)
+    ocaFrame.setFrameNumber(frameNumber)
+    w, h = ocaDoc.size()
+    ocaFrame.setPosition( w/2, h/2 )
+    ocaFrame.setSize(w, h)
 
     return ocaFrame
 
@@ -51,7 +59,8 @@ def exportFrame(kDoc, kNode, frameNumber, exportPath, options):
     """Exports a frame"""
     k_utils.setCurrentFrame(kDoc, frameNumber)
 
-    if kNode.bounds().width() == 0:
+
+    if kNode.bounds().width() < 2:
         ocaFrame = OCAFrame()
         ocaFrame.setName( OCAFrame.BLANK_NAME )
         ocaFrame.setFrameNumber(frameNumber)
@@ -75,18 +84,36 @@ def exportFrame(kDoc, kNode, frameNumber, exportPath, options):
     if options.get('cropToImageBounds', False):
         bounds = QRect()
     else:
-        bounds = QRect(0, 0, options.get('width', 1920), options.get('height', 1080))
+        bounds = QRect(0, 0, kDoc.width(), kDoc.height())
 
     opacity = kNode.opacity()
     kNode.setOpacity(255)
-
     kNode.save(imagePath, options.get('resolution', 1), options.get('resolution', 1), krita.InfoObject(), bounds)
-
     kNode.setOpacity(opacity)
 
-    # TODO check if the file was correctly exported. The Node.save() method always reports False :/
     ocaFrame = kFrameToOCA(kDoc, kNode, frameNumber, options)
     ocaFrame.setFileName(imagePath)
+    # Sometimes, a blank frame may be saved, remove it
+    if ocaFrame.isBlank():
+        os.remove(imagePath)
+        ocaFrame.setFileName("")
+        return ocaFrame
+
+    # Make sure the image has been correctly exported
+    succeed = True
+    if not os.path.isfile(imagePath):
+        succeed = False
+    # A single PNG Pixel is 89 Bytes
+    elif os.path.getsize(imagePath) < 100:
+        succeed = False
+
+    if not succeed:
+        print("OCA >> Error when writing file: {}".format(imagePath))
+        error = "Error when writing file: {}".format(imagePath)
+        ocaFrame.addError(
+            error,
+            OCAObject.WRITE_ERROR
+            )
 
     return ocaFrame
 
@@ -193,11 +220,18 @@ def kFrameToOCA( kDocument, kNode, frameNumber, options):
     x, y, w, h = getCoordinates(kDocument, kNode, useDocumentSize)
 
     ocaFrame = OCAFrame()
+
+    if w == 0 or h == 0:
+        ocaFrame.setName( OCAFrame.BLANK_NAME )
+        ocaFrame.setFrameNumber(frameNumber)
+        return ocaFrame
+
     ocaFrame.setName(
         "{}_{}".format(kNode.name(), k_utils.intToStr(frameNumber))
     )
     ocaFrame.setOpacity( kNode.opacity() / 255.0 )
     ocaFrame.setPosition( x, y )
     ocaFrame.setSize(w, h)
+    ocaFrame.setFrameNumber(frameNumber)
 
     return ocaFrame

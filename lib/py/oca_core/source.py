@@ -19,6 +19,10 @@ class OCASource():
         """The ID of the instanced source"""
         return self._id
 
+    def setId(self, uid:str):
+        """Sets the source uid"""
+        self._id = uid
+
     def fileName(self, documentFolderPath:str ) -> str:
         """Retrieves the absolute path to the file, making sure it exists.
         Returns an empty string if the document can't be found.

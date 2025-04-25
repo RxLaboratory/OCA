@@ -6,12 +6,14 @@
 
 import os
 import krita # pylint: disable=import-error
-from PyQt5.QtCore import QRect # pylint: disable=no-name-in-module,import-error
+from PyQt5.QtCore import QRect, QUuid # pylint: disable=no-name-in-module,import-error
 from oca_core import BLENDING_MODES as OCA_BLENDING_MODES # pylint: disable=relative-beyond-top-level
 from oca_core import ( # pylint: disable=relative-beyond-top-level
     OCAFrame,
     OCALayer,
-    OCAObject
+    OCAObject,
+    OCASource,
+    LAYER_TYPES,
 )
 from . import k_utils
 from . import k_tags
@@ -186,7 +188,28 @@ def kNodeToOCA( kDocument, kNode, options ):
     ocaLayer.setName(
         kNode.name().strip()
     )
-    ocaLayer.setLayerType( kNode.type() )
+    ocaLayer.setId(
+        kNode.uniqueId().toString(QUuid.WithoutBraces)
+    )
+
+    # If this is a clone or a doc, set the source object
+    t = kNode.type()
+    if t == 'clonelayer':
+        ocaLayer.setLayerType( LAYER_TYPES.CLONE )
+        kSourceNode = kNode.sourceNode()
+        source = OCASource()
+        source.setId(
+            kSourceNode.uniqueId().toString(QUuid.WithoutBraces)
+            )
+        ocaLayer.setSource(source)
+    elif t == 'filelayer':
+        """TODO ocalayer"""
+    else:
+        ocaLayer.setLayerType( t )
+        ocaLayer.setFileType(
+            options.get('fileFormat', 'png')
+        )
+
     ocaLayer.setBlendingMode(
         KRITA_BLENDING_MODES.get(
             kNode.blendingMode(),
@@ -200,10 +223,6 @@ def kNodeToOCA( kDocument, kNode, options ):
     ocaLayer.setVisible(kNode.visible())
     ocaLayer.setPassThrough(pT)
     ocaLayer.setInheritAlpha(kNode.inheritAlpha())
-
-    ocaLayer.setFileType(
-            options.get('fileFormat', 'png')
-        )
 
     # Set as reference if the tag is set
     ocaLayer.setReference(

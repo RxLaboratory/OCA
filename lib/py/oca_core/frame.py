@@ -92,6 +92,10 @@ class OCAFrame(OCAObject):
         """The unique identifier of the frame."""
         return self._id
 
+    def setId(self, uid:str):
+        """Overrides the default uid"""
+        self._id = uid
+
     def name(self) -> str:
         """The name of the frame."""
         if self.fileName() == "":

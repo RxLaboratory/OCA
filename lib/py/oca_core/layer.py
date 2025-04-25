@@ -129,6 +129,10 @@ class OCALayer(OCAObject):
         """The layer unique identifier"""
         return self._id
 
+    def setId(self, uid:str):
+        """Overrides the default uid"""
+        self._id = uid
+
     def inheritAlpha(self) -> bool:
         """Does the layer inherit alpha?"""
         return self._inheritAlpha
@@ -292,20 +296,7 @@ class OCALayer(OCAObject):
 
     def layers(self) -> list:
         """The child layers if this is a group layer type."""
-
-        if self._type == layer_types.GROUP:
-            return self._childLayers
-
-        # If we're an instance of a specific layer
-        sourceLayer = self.sourceLayer()
-        if sourceLayer:
-            return sourceLayer.layers()
-
-        # If we're an instance of a document
-        sourceDoc = self.sourceDocument()
-        if not sourceDoc:
-            return []
-        return sourceDoc.layers()
+        return self._childLayers
 
     def getLayer(self, layerId:str):
         """Gets a layer by its ID, or None if not found"""
@@ -404,7 +395,9 @@ class OCALayer(OCAObject):
 
         # Add source info
         elif self.source():
-            data["source"] = self.source().toDict()
+            data["source"] = self.source().toDict(
+                self.documentPath()
+            )
 
         # Add metadata in the end, to be sure to collect errors
         data["meta"] = self.metadata()

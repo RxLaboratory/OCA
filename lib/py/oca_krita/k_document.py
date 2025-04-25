@@ -206,6 +206,11 @@ def exportLayers(ocaDoc, kDoc, parentNode, exportPath, options, progressdialog):
 
         ocaLayer = k_node.kNodeToOCA(kDoc, childNode, options)
 
+        # if this is a clone or a doc, nothing to export, skip to the next
+        if ocaLayer.layerType() == 'ocalayer' or ocaLayer.layerType() == 'clonelayer':
+            layers.append(ocaLayer)
+            continue
+
         # if there are children and not merged, export them
         if childNode.childNodes() and not merge:
             newDir = os.path.join(exportPath, nodeName)

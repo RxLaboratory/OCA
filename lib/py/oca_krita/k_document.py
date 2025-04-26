@@ -99,10 +99,16 @@ def export(kDocument, exportPath, options = None, metaData = None):
                 sourceDocPath = source.fileName(ocaDoc.path())
                 # Open the document and export it
                 if os.path.isfile(sourceDocPath):
-                    nestedDoc = Application.openDocument(sourceDocPath)
+                    nestedDoc = Application.openDocument(sourceDocPath) # pylint: disable=undefined-variable
+                    nestedExportPath = ""
+                    # Check the location
+                    if options.get('nestedDocumentsLocation', 'collect') == 'collect':
+                        nestedExportPath = exportPath
+                    else:
+                        nestedExportPath = os.path.dirname(sourceDocPath)
                     nestedOCA = export(
                         nestedDoc,
-                        os.path.dirname(sourceDocPath),
+                        nestedExportPath,
                         options,
                         metaData
                     )

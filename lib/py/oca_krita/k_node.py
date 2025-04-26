@@ -222,6 +222,8 @@ def kNodeToOCA( kDocument, kNode, options ):
                 options.get('fileFormat', 'png')
             )
     else:
+        if t not in LAYER_TYPES.ALL_TYPES:
+            t = LAYER_TYPES.PAINT
         ocaLayer.setLayerType( t )
         ocaLayer.setFileType(
             options.get('fileFormat', 'png')

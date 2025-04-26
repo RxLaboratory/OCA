@@ -28,6 +28,7 @@ If there is no default value, importing the OCA document should fail.
 ```json
 {
     "name": "Layer_name_3_00000",
+    "id": "123456789",
     "fileName": "Group_name_2/Layer_name_3/Layer_name_3_00000.png",
     "frameNumber": 0,
     "opacity": 1.0,
@@ -49,6 +50,7 @@ You can insert empty, blank frames using `"_blank"` as its name, and an empty fi
 ```json
 {
     "name": "_blank",
+    "id": "123456789",
     "fileName": "",
     "frameNumber": 20,
     "opacity": 1.0,
@@ -62,3 +64,9 @@ You can insert empty, blank frames using `"_blank"` as its name, and an empty fi
     "meta": {}
 }
 ```
+
+## Changelog
+
+### 1.3.0
+
+- Added `id`

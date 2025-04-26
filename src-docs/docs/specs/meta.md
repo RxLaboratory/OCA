@@ -1,6 +1,10 @@
 # Metadata Object
 
+The document metadata **must** be stored in a separate `.json` file next to the document `.oca` file, and must not be stored in the document file.
+
 If the metadata file is not present in the OCA folder, default values should be used.
+
+Developpers are free to add other fields to the Metadata object. It is good practice for example to log errors when exporting an OCA Document in this Metadata object, in an `"errors"` array.
 
 ## Values
 
@@ -22,5 +26,7 @@ Default values should be used when importing an OCA document if the data can't b
 | **`meta`** | *object* | `{}` | Any custom metadata. It *must* be an object, not a value or a list. |
 | **`originApp`** | *string* | `"Unknown"` | The application name from which the document was exported. |
 | **`originAppVersion`** | *string* | `"0.0.0"` | The version of the origin application. |
+
+!!!
 
 [^marx]: 5 May 1818 is the birth date of [Karl Marx](https://en.wikipedia.org/wiki/Karl_Marx){target="_blank}.

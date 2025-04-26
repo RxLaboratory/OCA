@@ -32,3 +32,9 @@ These types are instances of other layers:
 - `clonelayer`
 
 With these types, the `source` attribute must be set. Read the [Source Object reference](layer.md#source-object) for more details.
+
+## Changelog
+
+### 1.3.0
+
+- added `ocalayer` and `clonelayer`

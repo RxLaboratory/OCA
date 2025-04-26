@@ -70,12 +70,11 @@ Some attributes of the layers with a `source` set may be empty and should always
 
 ### Generic paintlayer
 
-This is an empty `paintlayer` (without any frame).
-
 ```json
 {
     "name": "Layer_name_1",
-    "frames": [ ],
+    "id": "123456789",
+    "frames": [ ... ],
     "childLayers": [ ],
     "type": "paintlayer",
     "fileType": "png",
@@ -99,13 +98,12 @@ This is an empty `paintlayer` (without any frame).
 
 ### Generic grouplayer
 
-This is an empty `grouplayer` (without any child layer).
-
 ```json
 {
     "name": "Group_name_1",
+    "id": "123456789",
     "frames": [ ],
-    "childLayers": [ ],
+    "childLayers": [ ... ],
     "type": "grouplayer",
     "fileType": "png",
     "blendingMode": "normal",
@@ -125,3 +123,71 @@ This is an empty `grouplayer` (without any child layer).
     "meta": {}
 }
 ```
+
+### Generic clonelayer
+
+```json
+{
+    "name": "Layer Clone",
+    "id": "987654321",
+    "type": "clonelayer",
+    "blendingMode": "normal",
+    "inheritAlpha": false,
+    "position": [
+        959,
+        539
+    ],
+    "width": 1920,
+    "height": 1080,
+    "label": 0,
+    "opacity": 1.0,
+    "visible": true,
+    "passThrough": true,
+    "reference": false,
+    "meta": {},
+    "source": {
+        "id": "123456789",
+        "absFileName": "",
+        "relFileName": "",
+        "timeOffset": 0
+    }
+}
+```
+
+### Generic ocalayer
+
+```json
+{
+    "name": "Nested document",
+    "id": "987654321",
+    "type": "ocalayer",
+    "blendingMode": "normal",
+    "inheritAlpha": false,
+    "position": [
+        959,
+        539
+    ],
+    "width": 1920,
+    "height": 1080,
+    "label": 0,
+    "opacity": 1.0,
+    "visible": true,
+    "passThrough": true,
+    "reference": false,
+    "meta": {},
+    "source": {
+        "id": "",
+        "absFileName": "/path/to/other_doc.oca",
+        "relFileName": "other_doc.oca",
+        "timeOffset": 0
+    }
+}
+
+```
+
+## Changelog
+
+### 1.3.0
+
+- Added `id` and `source` on the Layer Object.
+- New Source Object.

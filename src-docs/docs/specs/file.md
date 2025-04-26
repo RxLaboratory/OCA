@@ -10,7 +10,7 @@ The OCA data is stored in a standard text file.
     *We chose* JSON *(over* XML *or* YAML *) because it is both very easy to use with any programming language, and easy to read and edit by humans.*
     - The *JSON* string *should* be **pretty printed**, with a 4-space indentation.  
         *This makes it easier to read by humans.*
-    - There *must* be a **single [*Root Object*](root.md)** which itself contains all data.
+    - There *must* be a **single [*Root (Document) Object*](root.md)** which itself contains all data.
     - There ***must not* be any other data** than what is listed in this document.  
         *This is needed to prevent potential conflicts with future updates.*
 
@@ -43,7 +43,7 @@ Image data is stored in standard image files, according to the type sepcified in
         (`F16` for "half" 16-bit float, `F32` for 32-bit float).
     - There can be only a **single color depth used for the whole document**.
     - They *should not* use the *Luma/Chroma* option.
-    - They ***must* contain *at least* four channels called `R, G, B, A`**, and the *may* contain other AOVs.
+    - They ***must* contain *at least* four channels called `R, G, B, A`**, and they *may* contain other AOVs.
     - The **alpha channel *must* be premultiplied with black**.
 - For `vectorlayers`, images must be **SVG** files.
 

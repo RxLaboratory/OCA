@@ -1,0 +1,894 @@
+{
+    "backgroundColor": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "colorDepth": "U8",
+    "endTime": 33,
+    "height": 720,
+    "frameRate": 12,
+    "layers": [
+        {
+            "blendingMode": "normal",
+            "id": "62fc4bda-1225-4d59-9e02-46a6e09e25cc",
+            "inheritAlpha": false,
+            "label": 0,
+            "name": "Sky",
+            "opacity": 1.0,
+            "passThrough": false,
+            "position": [
+                582,
+                388
+            ],
+            "reference": false,
+            "type": "paintlayer",
+            "visible": true,
+            "animated": false,
+            "fileType": "png",
+            "height": 989,
+            "width": 3567,
+            "frames": [
+                {
+                    "duration": 33,
+                    "fileName": "Document/Sky_00000.png",
+                    "frameNumber": 0,
+                    "height": 909,
+                    "width": 2543,
+                    "id": "ae25197f-e880-44c4-8efb-c736a6bcec64",
+                    "meta": {},
+                    "name": "Sky_00000",
+                    "opacity": 1.0,
+                    "position": [
+                        582,
+                        388
+                    ]
+                }
+            ],
+            "meta": {}
+        },
+        {
+            "blendingMode": "normal",
+            "id": "cf5283f5-fb4f-4a03-90b6-ce70efe9d891",
+            "inheritAlpha": false,
+            "label": 0,
+            "name": "Mountains",
+            "opacity": 1.0,
+            "passThrough": false,
+            "position": [
+                639,
+                511
+            ],
+            "reference": false,
+            "type": "ocalayer",
+            "visible": true,
+            "source": {
+                "absFileName": "/mnt/Data/Labora/Programado/src/OCA/OCA/examples/1.3.0/OCA_Example_Moutain.oca/OCA_Example_Moutain.oca",
+                "relFileName": "../OCA_Example_Moutain.oca/OCA_Example_Moutain.oca",
+                "id": "",
+                "timeOffset": 0
+            },
+            "meta": {}
+        },
+        {
+            "blendingMode": "normal",
+            "id": "f9b4b386-2e89-4431-9e40-76076ab178ef",
+            "inheritAlpha": false,
+            "label": 0,
+            "name": "Trees",
+            "opacity": 1.0,
+            "passThrough": false,
+            "position": [
+                640.0,
+                360.0
+            ],
+            "reference": false,
+            "type": "grouplayer",
+            "visible": true,
+            "animated": false,
+            "fileType": "png",
+            "height": 720,
+            "width": 1280,
+            "frames": [],
+            "childLayers": [
+                {
+                    "blendingMode": "normal",
+                    "id": "ef53a690-c86e-480e-95dd-ed4c31ae404a",
+                    "inheritAlpha": false,
+                    "label": 0,
+                    "name": "Tree 3",
+                    "opacity": 1.0,
+                    "passThrough": false,
+                    "position": [
+                        635,
+                        510
+                    ],
+                    "reference": false,
+                    "type": "clonelayer",
+                    "visible": true,
+                    "source": {
+                        "absFileName": "",
+                        "relFileName": "",
+                        "id": "b17f2fbb-0a11-42cf-9af1-390a21cea6da",
+                        "timeOffset": 0
+                    },
+                    "meta": {}
+                },
+                {
+                    "blendingMode": "normal",
+                    "id": "6bbfde95-267e-4b85-b227-138d02c0d93d",
+                    "inheritAlpha": false,
+                    "label": 0,
+                    "name": "Tree 2",
+                    "opacity": 1.0,
+                    "passThrough": false,
+                    "position": [
+                        865,
+                        510
+                    ],
+                    "reference": false,
+                    "type": "clonelayer",
+                    "visible": true,
+                    "source": {
+                        "absFileName": "",
+                        "relFileName": "",
+                        "id": "b17f2fbb-0a11-42cf-9af1-390a21cea6da",
+                        "timeOffset": 0
+                    },
+                    "meta": {}
+                },
+                {
+                    "blendingMode": "normal",
+                    "id": "b17f2fbb-0a11-42cf-9af1-390a21cea6da",
+                    "inheritAlpha": false,
+                    "label": 0,
+                    "name": "Tree 1",
+                    "opacity": 1.0,
+                    "passThrough": false,
+                    "position": [
+                        928,
+                        510
+                    ],
+                    "reference": false,
+                    "type": "paintlayer",
+                    "visible": true,
+                    "animated": false,
+                    "fileType": "png",
+                    "height": 761,
+                    "width": 1495,
+                    "frames": [
+                        {
+                            "duration": 33,
+                            "fileName": "Document/Trees/Tree 1_00000.png",
+                            "frameNumber": 0,
+                            "height": 617,
+                            "width": 471,
+                            "id": "a1f9ed15-e3a1-4cd5-9d03-030f2242f194",
+                            "meta": {},
+                            "name": "Tree 1_00000",
+                            "opacity": 1.0,
+                            "position": [
+                                928,
+                                510
+                            ]
+                        }
+                    ],
+                    "meta": {}
+                }
+            ],
+            "meta": {}
+        },
+        {
+            "blendingMode": "normal",
+            "id": "95850d6f-3ade-478f-95e3-d90ab0531005",
+            "inheritAlpha": false,
+            "label": 0,
+            "name": "Bird Flying",
+            "opacity": 1.0,
+            "passThrough": false,
+            "position": [
+                640.0,
+                360.0
+            ],
+            "reference": false,
+            "type": "paintlayer",
+            "visible": true,
+            "animated": true,
+            "fileType": "png",
+            "height": 720,
+            "width": 1280,
+            "frames": [
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00000.png",
+                    "frameNumber": 0,
+                    "height": 18,
+                    "width": 148,
+                    "id": "e47705c2-3228-400e-b7c5-972864c3af94",
+                    "meta": {},
+                    "name": "Bird Flying_00000",
+                    "opacity": 1.0,
+                    "position": [
+                        99,
+                        488
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00001.png",
+                    "frameNumber": 1,
+                    "height": 18,
+                    "width": 148,
+                    "id": "cdf9e654-04e5-4299-9962-734a44c83855",
+                    "meta": {},
+                    "name": "Bird Flying_00001",
+                    "opacity": 1.0,
+                    "position": [
+                        144,
+                        453
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00002.png",
+                    "frameNumber": 2,
+                    "height": 35,
+                    "width": 145,
+                    "id": "69f2b843-6a2a-43fb-b91c-207ee0fcd8ca",
+                    "meta": {},
+                    "name": "Bird Flying_00002",
+                    "opacity": 1.0,
+                    "position": [
+                        177,
+                        429
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00003.png",
+                    "frameNumber": 3,
+                    "height": 38,
+                    "width": 151,
+                    "id": "1f2ea002-202d-47fb-b80c-ff9808013f8c",
+                    "meta": {},
+                    "name": "Bird Flying_00003",
+                    "opacity": 1.0,
+                    "position": [
+                        198,
+                        413
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00004.png",
+                    "frameNumber": 4,
+                    "height": 43,
+                    "width": 149,
+                    "id": "5ae9efda-9c49-437d-8820-7535e1b19f1f",
+                    "meta": {},
+                    "name": "Bird Flying_00004",
+                    "opacity": 1.0,
+                    "position": [
+                        207,
+                        403
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00005.png",
+                    "frameNumber": 5,
+                    "height": 20,
+                    "width": 148,
+                    "id": "de1d2df8-93a4-4b4d-ba73-bfa8bb28d631",
+                    "meta": {},
+                    "name": "Bird Flying_00005",
+                    "opacity": 1.0,
+                    "position": [
+                        216,
+                        393
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00006.png",
+                    "frameNumber": 6,
+                    "height": 35,
+                    "width": 135,
+                    "id": "0535ae4d-e2b9-4787-8908-35e08f4c5ab1",
+                    "meta": {},
+                    "name": "Bird Flying_00006",
+                    "opacity": 1.0,
+                    "position": [
+                        247,
+                        370
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00007.png",
+                    "frameNumber": 7,
+                    "height": 18,
+                    "width": 148,
+                    "id": "c0077d2f-b690-445a-8ce0-dde10bcede29",
+                    "meta": {},
+                    "name": "Bird Flying_00007",
+                    "opacity": 1.0,
+                    "position": [
+                        287,
+                        333
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00008.png",
+                    "frameNumber": 8,
+                    "height": 18,
+                    "width": 148,
+                    "id": "8e51abf2-ec35-4f22-863f-6555aa1010a6",
+                    "meta": {},
+                    "name": "Bird Flying_00008",
+                    "opacity": 1.0,
+                    "position": [
+                        328,
+                        305
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00009.png",
+                    "frameNumber": 9,
+                    "height": 35,
+                    "width": 145,
+                    "id": "b12c14ad-5500-4b9d-96a4-c3cc1fc055b5",
+                    "meta": {},
+                    "name": "Bird Flying_00009",
+                    "opacity": 1.0,
+                    "position": [
+                        356,
+                        279
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00010.png",
+                    "frameNumber": 10,
+                    "height": 38,
+                    "width": 151,
+                    "id": "808b6832-dca7-41ed-b37f-ccb0a8890fa6",
+                    "meta": {},
+                    "name": "Bird Flying_00010",
+                    "opacity": 1.0,
+                    "position": [
+                        371,
+                        263
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00011.png",
+                    "frameNumber": 11,
+                    "height": 43,
+                    "width": 149,
+                    "id": "87b1da02-a759-4ffd-81d5-e104f0dba8db",
+                    "meta": {},
+                    "name": "Bird Flying_00011",
+                    "opacity": 1.0,
+                    "position": [
+                        383,
+                        252
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00012.png",
+                    "frameNumber": 12,
+                    "height": 20,
+                    "width": 148,
+                    "id": "fcc9c8c4-3d9a-4167-b2cb-81448ed0a3b7",
+                    "meta": {},
+                    "name": "Bird Flying_00012",
+                    "opacity": 1.0,
+                    "position": [
+                        394,
+                        246
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00013.png",
+                    "frameNumber": 13,
+                    "height": 35,
+                    "width": 135,
+                    "id": "ed658dc3-1d3f-45b1-9bd9-35d5360acb8c",
+                    "meta": {},
+                    "name": "Bird Flying_00013",
+                    "opacity": 1.0,
+                    "position": [
+                        435,
+                        220
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00014.png",
+                    "frameNumber": 14,
+                    "height": 18,
+                    "width": 148,
+                    "id": "aa1b0931-1009-47ba-8473-e27e34e5a016",
+                    "meta": {},
+                    "name": "Bird Flying_00014",
+                    "opacity": 1.0,
+                    "position": [
+                        480,
+                        180
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00015.png",
+                    "frameNumber": 15,
+                    "height": 18,
+                    "width": 148,
+                    "id": "7ee0a7ab-b9d4-4094-bd5d-f1229b0b3405",
+                    "meta": {},
+                    "name": "Bird Flying_00015",
+                    "opacity": 1.0,
+                    "position": [
+                        517,
+                        148
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00016.png",
+                    "frameNumber": 16,
+                    "height": 18,
+                    "width": 148,
+                    "id": "54fe1da5-a4d7-4e6c-9a12-81ddd425b0fc",
+                    "meta": {},
+                    "name": "Bird Flying_00016",
+                    "opacity": 1.0,
+                    "position": [
+                        534,
+                        127
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00017.png",
+                    "frameNumber": 17,
+                    "height": 35,
+                    "width": 145,
+                    "id": "290d30f7-0e1e-426a-a69d-edec1cdb62f9",
+                    "meta": {},
+                    "name": "Bird Flying_00017",
+                    "opacity": 1.0,
+                    "position": [
+                        560,
+                        103
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00018.png",
+                    "frameNumber": 18,
+                    "height": 38,
+                    "width": 151,
+                    "id": "de01b8b5-cfbe-46c0-a7c5-3e5b9e39f45e",
+                    "meta": {},
+                    "name": "Bird Flying_00018",
+                    "opacity": 1.0,
+                    "position": [
+                        579,
+                        86
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00019.png",
+                    "frameNumber": 19,
+                    "height": 43,
+                    "width": 149,
+                    "id": "e8b3ede1-bfff-4804-8811-ada27bee6995",
+                    "meta": {},
+                    "name": "Bird Flying_00019",
+                    "opacity": 1.0,
+                    "position": [
+                        595,
+                        69
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00020.png",
+                    "frameNumber": 20,
+                    "height": 20,
+                    "width": 148,
+                    "id": "bfea5411-e4c1-491e-97b5-e85c4c6cc18d",
+                    "meta": {},
+                    "name": "Bird Flying_00020",
+                    "opacity": 1.0,
+                    "position": [
+                        629,
+                        54
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00021.png",
+                    "frameNumber": 21,
+                    "height": 35,
+                    "width": 135,
+                    "id": "76990ce5-5559-4587-9d73-f2e26a5325a5",
+                    "meta": {},
+                    "name": "Bird Flying_00021",
+                    "opacity": 1.0,
+                    "position": [
+                        664,
+                        30
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Bird Flying/Bird Flying_00022.png",
+                    "frameNumber": 22,
+                    "height": 18,
+                    "width": 148,
+                    "id": "0a4fb94c-89fd-4e6a-8c08-9eae64c49be6",
+                    "meta": {},
+                    "name": "Bird Flying_00022",
+                    "opacity": 1.0,
+                    "position": [
+                        684,
+                        -1
+                    ]
+                },
+                {
+                    "duration": 10,
+                    "fileName": "",
+                    "frameNumber": 23,
+                    "height": 0,
+                    "width": 0,
+                    "id": "96511a29-8311-41e7-8f1a-fe65893eb187",
+                    "meta": {},
+                    "name": "_blank",
+                    "opacity": 1.0,
+                    "position": []
+                }
+            ],
+            "meta": {}
+        },
+        {
+            "blendingMode": "dodge",
+            "id": "a1470304-c83c-4943-9350-80c1019dc06f",
+            "inheritAlpha": false,
+            "label": 0,
+            "name": "Cui !",
+            "opacity": 1.0,
+            "passThrough": false,
+            "position": [
+                640.0,
+                360.0
+            ],
+            "reference": false,
+            "type": "paintlayer",
+            "visible": true,
+            "animated": true,
+            "fileType": "png",
+            "height": 720,
+            "width": 1280,
+            "frames": [
+                {
+                    "duration": 8,
+                    "fileName": "",
+                    "frameNumber": 0,
+                    "height": 0,
+                    "width": 0,
+                    "id": "6e5a8a79-5b7d-4cd3-a915-31568b3a2703",
+                    "meta": {},
+                    "name": "_blank",
+                    "opacity": 1.0,
+                    "position": []
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Cui !/Cui !_00008.png",
+                    "frameNumber": 8,
+                    "height": 39,
+                    "width": 30,
+                    "id": "83f5b4ca-e918-40b6-9143-668cb9c329d7",
+                    "meta": {},
+                    "name": "Cui !_00008",
+                    "opacity": 0.7411764705882353,
+                    "position": [
+                        479,
+                        302
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Cui !/Cui !_00009.png",
+                    "frameNumber": 9,
+                    "height": 48,
+                    "width": 68,
+                    "id": "bf387039-5706-424a-97d2-c9ddf2570b8e",
+                    "meta": {},
+                    "name": "Cui !_00009",
+                    "opacity": 0.7607843137254902,
+                    "position": [
+                        498,
+                        297
+                    ]
+                },
+                {
+                    "duration": 2,
+                    "fileName": "Document/Cui !/Cui !_00010.png",
+                    "frameNumber": 10,
+                    "height": 48,
+                    "width": 86,
+                    "id": "771c017e-331e-4335-872a-f96c044f1900",
+                    "meta": {},
+                    "name": "Cui !_00010",
+                    "opacity": 0.7803921568627451,
+                    "position": [
+                        507,
+                        297
+                    ]
+                },
+                {
+                    "duration": 3,
+                    "fileName": "Document/Cui !/Cui !_00012.png",
+                    "frameNumber": 12,
+                    "height": 56,
+                    "width": 116,
+                    "id": "3e879533-2ff9-4325-a8a5-1a1b43c0dd72",
+                    "meta": {},
+                    "name": "Cui !_00012",
+                    "opacity": 0.8235294117647058,
+                    "position": [
+                        528,
+                        300
+                    ]
+                },
+                {
+                    "duration": 2,
+                    "fileName": "Document/Cui !/Cui !_00015.png",
+                    "frameNumber": 15,
+                    "height": 60,
+                    "width": 146,
+                    "id": "cfd586ee-6b94-46b7-94a5-62be9e2ccf16",
+                    "meta": {},
+                    "name": "Cui !_00015",
+                    "opacity": 0.8862745098039215,
+                    "position": [
+                        560,
+                        319
+                    ]
+                },
+                {
+                    "duration": 2,
+                    "fileName": "Document/Cui !/Cui !_00017.png",
+                    "frameNumber": 17,
+                    "height": 60,
+                    "width": 146,
+                    "id": "1febec70-9e10-4fc8-8018-da9dbc288e5c",
+                    "meta": {},
+                    "name": "Cui !_00017",
+                    "opacity": 0.9294117647058824,
+                    "position": [
+                        570,
+                        342
+                    ]
+                },
+                {
+                    "duration": 2,
+                    "fileName": "Document/Cui !/Cui !_00019.png",
+                    "frameNumber": 19,
+                    "height": 85,
+                    "width": 174,
+                    "id": "b74d248d-9e7e-4dac-9b62-f2351feaf1c0",
+                    "meta": {},
+                    "name": "Cui !_00019",
+                    "opacity": 0.9764705882352941,
+                    "position": [
+                        594,
+                        366
+                    ]
+                },
+                {
+                    "duration": 2,
+                    "fileName": "Document/Cui !/Cui !_00021.png",
+                    "frameNumber": 21,
+                    "height": 84,
+                    "width": 173,
+                    "id": "ea22e86d-f88e-4771-998b-2f546a168d6a",
+                    "meta": {},
+                    "name": "Cui !_00021",
+                    "opacity": 1.0,
+                    "position": [
+                        597,
+                        436
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Cui !/Cui !_00023.png",
+                    "frameNumber": 23,
+                    "height": 84,
+                    "width": 173,
+                    "id": "eaa6b8bf-3299-4de4-b745-daf1bf8ba3c2",
+                    "meta": {},
+                    "name": "Cui !_00023",
+                    "opacity": 1.0,
+                    "position": [
+                        597,
+                        487
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Cui !/Cui !_00024.png",
+                    "frameNumber": 24,
+                    "height": 84,
+                    "width": 173,
+                    "id": "f5547e5f-a39c-4a85-a92a-ff4dd1687ab2",
+                    "meta": {},
+                    "name": "Cui !_00024",
+                    "opacity": 0.7490196078431373,
+                    "position": [
+                        598,
+                        510
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Cui !/Cui !_00025.png",
+                    "frameNumber": 25,
+                    "height": 84,
+                    "width": 173,
+                    "id": "94b94c1e-19c0-459d-a5de-57e7d69dd261",
+                    "meta": {},
+                    "name": "Cui !_00025",
+                    "opacity": 0.4980392156862745,
+                    "position": [
+                        600,
+                        525
+                    ]
+                },
+                {
+                    "duration": 1,
+                    "fileName": "Document/Cui !/Cui !_00026.png",
+                    "frameNumber": 26,
+                    "height": 84,
+                    "width": 173,
+                    "id": "9e1ef52b-7209-4175-93ce-ddccdf27f454",
+                    "meta": {},
+                    "name": "Cui !_00026",
+                    "opacity": 0.24705882352941178,
+                    "position": [
+                        599,
+                        533
+                    ]
+                },
+                {
+                    "duration": 6,
+                    "fileName": "",
+                    "frameNumber": 27,
+                    "height": 0,
+                    "width": 0,
+                    "id": "8e5dccca-1ed2-43e4-a5ee-6cc6e19113ec",
+                    "meta": {},
+                    "name": "_blank",
+                    "opacity": 1.0,
+                    "position": []
+                }
+            ],
+            "meta": {}
+        },
+        {
+            "blendingMode": "normal",
+            "id": "db8fd17b-7836-4ab1-90b3-3c0e4ec36d90",
+            "inheritAlpha": false,
+            "label": 0,
+            "name": "Sun",
+            "opacity": 1.0,
+            "passThrough": true,
+            "position": [
+                640.0,
+                360.0
+            ],
+            "reference": false,
+            "type": "grouplayer",
+            "visible": true,
+            "animated": false,
+            "fileType": "png",
+            "height": 720,
+            "width": 1280,
+            "frames": [],
+            "childLayers": [
+                {
+                    "blendingMode": "normal",
+                    "id": "7564076d-df03-4224-b982-bee527c8f6fa",
+                    "inheritAlpha": false,
+                    "label": 0,
+                    "name": "Sun",
+                    "opacity": 1.0,
+                    "passThrough": false,
+                    "position": [
+                        152,
+                        111
+                    ],
+                    "reference": false,
+                    "type": "paintlayer",
+                    "visible": true,
+                    "animated": false,
+                    "fileType": "png",
+                    "height": 759,
+                    "width": 1281,
+                    "frames": [
+                        {
+                            "duration": 33,
+                            "fileName": "Document/Sun/Sun_00000.png",
+                            "frameNumber": 0,
+                            "height": 247,
+                            "width": 257,
+                            "id": "86bab6c3-5328-49ab-aabd-46198e30107b",
+                            "meta": {},
+                            "name": "Sun_00000",
+                            "opacity": 0.611764705882353,
+                            "position": [
+                                152,
+                                111
+                            ]
+                        }
+                    ],
+                    "meta": {}
+                },
+                {
+                    "blendingMode": "add",
+                    "id": "c70bbf06-ab03-4b44-84ff-28474ac3c03b",
+                    "inheritAlpha": false,
+                    "label": 0,
+                    "name": "Flare",
+                    "opacity": 1.0,
+                    "passThrough": false,
+                    "position": [
+                        639,
+                        359
+                    ],
+                    "reference": false,
+                    "type": "paintlayer",
+                    "visible": true,
+                    "animated": false,
+                    "fileType": "png",
+                    "height": 720,
+                    "width": 1280,
+                    "frames": [
+                        {
+                            "duration": 33,
+                            "fileName": "Document/Sun/Flare_00000.png",
+                            "frameNumber": 0,
+                            "height": 720,
+                            "width": 1280,
+                            "id": "108eada2-f76f-4c14-8e74-fa80a110b584",
+                            "meta": {},
+                            "name": "Flare_00000",
+                            "opacity": 0.7098039215686275,
+                            "position": [
+                                639,
+                                359
+                            ]
+                        }
+                    ],
+                    "meta": {}
+                }
+            ],
+            "meta": {}
+        }
+    ],
+    "name": "Document",
+    "ocaVersion": "1.3.0",
+    "startTime": 0,
+    "width": 1280
+}

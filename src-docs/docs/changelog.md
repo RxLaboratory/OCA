@@ -4,7 +4,8 @@
 
 - Add support for nested documents (`ocalayer`) and clone layers (`clonelayer`).
 - Add unique identifiers to layers and frames.
-- API: Use classes
+- Add the Source Object
+- API: Use classes (OOP)
 
 ## 1.2.0
 

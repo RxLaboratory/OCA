@@ -5,6 +5,7 @@
 """
 
 import os
+import threading
 import krita # pylint: disable=import-error
 from PyQt5.QtCore import QRect, QUuid # pylint: disable=no-name-in-module,import-error
 from oca_core import BLENDING_MODES as OCA_BLENDING_MODES # pylint: disable=relative-beyond-top-level
@@ -20,7 +21,7 @@ from . import k_utils
 from . import k_tags
 from .k_blending_modes import KRITA_BLENDING_MODES
 
-def exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options):
+def exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options, isRetry=False):
     """Exports the frame as a flattend image."""
     k_utils.setCurrentFrame(kDoc, frameNumber)
 
@@ -38,6 +39,15 @@ def exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options):
     # A single PNG Pixel is 89 Bytes
     if os.path.getsize(imagePath) < 100:
         succeed = False
+
+    # Retry once
+    if not succeed and not isRetry:
+        print("OCA >> Error when writing file, retrying now!")
+        # Wait a few secs
+        kDoc.refreshProjection()
+        threading.Event().wait(2)
+        kDoc.refreshProjection()
+        return exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options, True)
 
     ocaFrame = OCAFrame()
 
@@ -58,10 +68,9 @@ def exportFlattenedFrame(ocaDoc, kDoc, frameNumber, options):
 
     return ocaFrame
 
-def exportFrame(kDoc, kNode, frameNumber, exportPath, options):
+def exportFrame(kDoc, kNode, frameNumber, exportPath, options, isRetry=False):
     """Exports a frame"""
     k_utils.setCurrentFrame(kDoc, frameNumber)
-
 
     if kNode.bounds().width() < 2:
         ocaFrame = OCAFrame()
@@ -109,6 +118,15 @@ def exportFrame(kDoc, kNode, frameNumber, exportPath, options):
     # A single PNG Pixel is 89 Bytes
     elif os.path.getsize(imagePath) < 100:
         succeed = False
+
+    # Retry once
+    if not succeed and not isRetry:
+        print("OCA >> Error when writing file, retrying now!")
+        # Wait a few secs
+        kDoc.refreshProjection()
+        threading.Event().wait(2)
+        kDoc.refreshProjection()
+        return exportFrame(kDoc, kNode, frameNumber, exportPath, options, True)
 
     if not succeed:
         print("OCA >> Error when writing file: {}".format(imagePath))

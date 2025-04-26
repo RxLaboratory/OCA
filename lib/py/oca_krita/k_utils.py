@@ -25,7 +25,7 @@ def setCurrentFrame(document, frameNumber):
     """Sets the current frame in the document and waits for the image to be cached."""
     document.setCurrentTime(frameNumber)
 
-    # It seems we need to do something befre refreshProjection for it to work
+    # It seems we need to do something before refreshProjection for it to work
     tmpNode = document.createNode('--- OCA TEMP ---', 'paintlayer')
     document.refreshProjection()
     tmpNode.remove()

@@ -37,42 +37,21 @@ def export(kDocument, exportPath, options = None, metaData = None):
     # Add plugin metaData
     metaData = updateMetadata(metaData)
 
-    # === PREPARE APP ===
-
-    Application.setBatchmode(True) # pylint: disable=undefined-variable
-    # Let's duplicate the document first
-    kDocument = kDocument.clone()
-    # For some reason, Krita fails to save the keyframes
-    # If we don't start after the last one...
-    # (probably a cache issue...)
-    k_utils.setCurrentFrame(kDocument, 10000)
-    kDocument.setBatchmode(True)
-
     # ==== GATHER INFO ====
 
     # Create OCA Document
     ocaDoc = kDocumentToOCA( kDocument, metaData, options )
 
     # Set filename
-    fileName = kDocument.fileName() or 'Untitled'
-    fileName = os.path.basename(
-        os.path.splitext(fileName)[0]
-    )
-    ocaDoc.setFileName(
-        os.path.join(exportPath, fileName)
-    )
-
-    # ==== SHOW PROGRESS ====
-
-    progressdialog = QProgressDialog(
-        "Exporting animation...",
-        "Cancel",
-        0,
-        ocaDoc.duration()
-        )
-    progressdialog.setWindowModality(Qt.WindowModality.WindowModal)
+    fileName = getExportFileName(kDocument, exportPath)
+    ocaDoc.setFileName( fileName )
 
     # ==== EXPORT ====
+
+    kDocument, progressdialog = init(
+        kDocument,
+        ocaDoc.duration()
+        )
 
     if options.get('flattenImage', False):
         exportFlattened(
@@ -81,6 +60,8 @@ def export(kDocument, exportPath, options = None, metaData = None):
             options,
             progressdialog
         )
+        cleanUp(kDocument, progressdialog)
+
     else:
         exportDocLayers(
             ocaDoc,
@@ -88,6 +69,8 @@ def export(kDocument, exportPath, options = None, metaData = None):
             options,
             progressdialog
         )
+        cleanUp(kDocument, progressdialog)
+
         # Export nested documents
         if not options.get('mergeNestedDocuments', False):
             allLayers = ocaDoc.layers(True)
@@ -103,8 +86,16 @@ def export(kDocument, exportPath, options = None, metaData = None):
                     # Check the location
                     if options.get('nestedDocumentsLocation', 'collect') == 'collect':
                         nestedExportPath = exportPath
+                        # Set the name if needed
+                        if nestedDoc.name() == "":
+                            nestedDoc.setName( layer.name() )
                     else:
-                        nestedExportPath = os.path.dirname(sourceDocPath)
+                        nestedExportPath = os.path.join(
+                            os.path.dirname(sourceDocPath),
+                            os.path.basename(
+                                os.path.splitext(nestedDoc.fileName())[0]
+                            ) + '.oca'
+                        )
                     nestedOCA = export(
                         nestedDoc,
                         nestedExportPath,
@@ -130,18 +121,9 @@ def export(kDocument, exportPath, options = None, metaData = None):
                         OCAObject.WRITE_ERROR
                         )
 
-
     # Save doc
     if not ocaDoc.save():
         print("OCA >> Some errors have occured when exporting {} ({})".format(ocaDoc.name(), ocaDoc.fileName()))
-
-    # ==== CLEAN ====
-
-    progressdialog.close()
-    kDocument.setBatchmode(False)
-    # close document
-    kDocument.close()
-    Application.setBatchmode(False) # pylint: disable=undefined-variable
 
     return ocaDoc
 
@@ -280,6 +262,48 @@ def disableNodes(parentNode, disable=True, tag='_ignore_'):
             if childNode.type() == 'grouplayer':
                 disabled += disableNodes(childNode, disable, tag)
     return disabled
+
+def getExportFileName( kDoc, exportPath ):
+    """Gets the OCA fileName"""
+    name = kDoc.name()
+    if name == "":
+        fName = kDoc.fileName()
+        fName = os.path.basename(
+            os.path.splitext(fName)[0]
+        )
+        name = fName
+    return os.path.join(
+        exportPath, name
+    )
+
+def init(kDocument, duration):
+    """Prepare export"""
+    Application.setBatchmode(True) # pylint: disable=undefined-variable
+    # Let's duplicate the document first
+    kDocument = kDocument.clone()
+    # For some reason, Krita fails to save the keyframes
+    # If we don't start after the last one...
+    # (probably a cache issue...)
+    k_utils.setCurrentFrame(kDocument, 10000)
+    kDocument.setBatchmode(True)
+
+    progressdialog = QProgressDialog(
+        "Exporting animation...",
+        "Cancel",
+        0,
+        duration
+        )
+    progressdialog.setWindowModality(Qt.WindowModality.WindowModal)
+
+    return kDocument, progressdialog
+
+def cleanUp(kDocument, progressdialog):
+    """Clean stuff after export"""
+    progressdialog.close()
+    kDocument.setBatchmode(False)
+    # close document
+    kDocument.close()
+    Application.setBatchmode(False) # pylint: disable=undefined-variable
 
 def kDocumentToOCA( kDocument, metadata, options ):
     """Creates an OCADocument"""

@@ -53,12 +53,11 @@ def export(kDocument, exportPath, options = None, metaData = None):
     # Create OCA Document
     ocaDoc = kDocumentToOCA( kDocument, metaData, options )
 
-    # Set exportPath (the folder containing everytthing)
+    # Set filename
     fileName = kDocument.fileName() or 'Untitled'
-    fileName = os.path.basename(fileName)
-    fileName = os.path.splitext(fileName)[0] + '.oca'
-    exportPath = os.path.join(exportPath, fileName)
-
+    fileName = os.path.basename(
+        os.path.splitext(fileName)[0]
+    )
     ocaDoc.setFileName(
         os.path.join(exportPath, fileName)
     )

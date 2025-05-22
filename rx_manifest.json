@@ -1,7 +1,31 @@
 {
-    "title": "OCA: Open Cel Animation",
-    "hosts": [ ],
-    "os": [ ],
-    "userGuide": "http://oca.rxlab.guide",
-    "description": "Open format to ease the exchange of traditional/frame-by-frame/cel animation between different applications."
+    "title": "OCA",
+    "description": "Open Cel Animation is an open format to ease the exchange of traditional/frame-by-frame/cel animation between different applications.",
+    "readme": "https://codeberg.org/OCA/OCA/raw/branch/master/HOME.md",
+    "version": "1.2.0",
+    "date": "2022-07-29",
+    "prerelease-version": "",
+    "prerelease-date": "",
+    "changelog": "https://codeberg.org/OCA/OCA/releases",
+    "source": "https://codeberg.org/OCA",
+    "archive": "https://codeberg.org/OCA",
+    "license": {
+        "title": "GNU GPL-v3",
+        "url": "https://rxlaboratory.org/license-gpl/"
+    },
+    "hosts": [],
+    "os": [],
+    "assets": [],
+    "links":[
+        {"title": "User Guide", "url": "http://oca.rxlab.guide/"},
+        {"title": "After Effects script", "url": "https://rxlaboratorio.org/rx-tool/duio"},
+        {"title": "Blender extension", "url": "https://rxlaboratorio.org/rx-tool/bluik"},
+        {"title": "Krita plugin", "url": "https://rxlaboratorio.org/rx-tool/oca-krita"}
+    ],
+    "authors": [
+        {
+            "name": "Duduf",
+            "url": "https://duduf.com"
+        }
+    ]
 }

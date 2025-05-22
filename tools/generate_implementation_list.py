@@ -10,6 +10,7 @@ listFile = os.path.join(rootPath, "implementations.json")
 
 markdownFiles = (
     os.path.join(rootPath, "README.md"),
+    os.path.join(rootPath, "HOME.md"),
     os.path.join(rootPath, "src-docs", "docs", "index.md"),
 )
 

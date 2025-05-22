@@ -4,12 +4,12 @@
             "host_name": "After Effects",
             "host_url": "https://www.adobe.com/products/aftereffects.html",
             "addon_name": "DuIO",
-            "addon_url": "https://github.com/Rainbox-dev/DuAEF_DuIO",
+            "addon_url": "https://github.com/RxLaboratory/DuIO",
             "export": "no",
             "import": "yes",
             "comment": "",
-            "maintainer_name": "RxLaboratory / Duduf",
-            "maintainer_url": "https://rxlaboratory.org"
+            "maintainer_name": "RxLaboratorio / Duduf",
+            "maintainer_url": "https://rxlaboratorio.org"
         },
         {
             "host_name": "Animation Paper",
@@ -30,8 +30,8 @@
             "export": "planned",
             "import": "yes",
             "comment": "Exporter for Grease Pencil planned.",
-            "maintainer_name": "RxLaboratory / Duduf",
-            "maintainer_url": "https://rxlaboratory.org"
+            "maintainer_name": "RxLaboratorio / Duduf",
+            "maintainer_url": "https://rxlaboratorio.org"
         },
         {
             "host_name": "Fusion",
@@ -52,8 +52,8 @@
             "export": "yes",
             "import": "planned",
             "comment": "",
-            "maintainer_name": "RxLaboratory / Duduf",
-            "maintainer_url": "https://rxlaboratory.org"
+            "maintainer_name": "RxLaboratorio / Duduf",
+            "maintainer_url": "https://rxlaboratorio.org"
         },
         {
             "host_name": "OpenToonz",
@@ -85,8 +85,8 @@
             "export": "planned",
             "import": "no",
             "comment": "",
-            "maintainer_name": "RxLaboratory / Duduf",
-            "maintainer_url": "https://rxlaboratory.org"
+            "maintainer_name": "RxLaboratorio / Duduf",
+            "maintainer_url": "https://rxlaboratorio.org"
         },
         {
             "host_name": "Callipeg",

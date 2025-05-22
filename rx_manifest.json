@@ -1,7 +1,7 @@
 {
     "title": "OCA",
     "description": "Open Cel Animation is an open format to ease the exchange of traditional/frame-by-frame/cel animation between different applications.",
-    "readme": "https://codeberg.org/OCA/OCA/raw/branch/master/HOME.md",
+    "readme": "https://codeberg.org/OCA/OCA/raw/branch/classes/HOME.md",
     "version": "1.2.0",
     "date": "2022-07-29",
     "prerelease-version": "",

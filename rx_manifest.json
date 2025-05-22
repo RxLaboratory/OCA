@@ -17,7 +17,7 @@
     "os": [],
     "assets": [],
     "links":[
-        {"title": "User Guide", "url": "http://oca.rxlab.guide/"},
+        {"title": "User Guide and Detailed Specifications", "url": "http://oca.rxlab.guide/"},
         {"title": "After Effects script", "url": "https://rxlaboratorio.org/rx-tool/duio"},
         {"title": "Blender extension", "url": "https://rxlaboratorio.org/rx-tool/bluik"},
         {"title": "Krita plugin", "url": "https://rxlaboratorio.org/rx-tool/oca-krita"}

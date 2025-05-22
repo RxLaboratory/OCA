@@ -14,7 +14,12 @@
         "url": "https://rxlaboratory.org/license-gpl/"
     },
     "hosts": [],
-    "os": [],
+    "os": [
+        {
+            "name": "all",
+            "title": "Open Format"
+        }
+    ],
     "assets": [],
     "links":[
         {"title": "User Guide and Detailed Specifications", "url": "http://oca.rxlab.guide/"},

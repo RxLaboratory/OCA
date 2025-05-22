@@ -6,27 +6,53 @@ You can [read the documentation here](http://oca.rxlab.guide) for more informati
 
 We're providing some implementations of OCA as add-ons for a few applications and other applications already support it natively. If the application you need is not listed, you can politely ask for it in a feature request and we'll consider it.
 
-<!-- implementation_list:begin -->
-| App | Add-on | Exports | Imports | Comments | Maintainer |
-|---|---|---|---|---|---|
-| [After Effects](https://www.adobe.com/products/aftereffects.html) | [DuIO](https://github.com/RxLaboratory/DuIO) | - | **◉** |  | [RxLaboratorio / Duduf](https://rxlaboratorio.org) |
-| [Animation Paper](https://animationpaper.com/) | *Native* | **◉** | *?* |  | Niels Krogh Mortensen |
-| [Blender](https://blender.org/) | [Bluik](https://rxlaboratory.org/tools/bluik/) | **○** | **◉** | Exporter for Grease Pencil planned. | [RxLaboratorio / Duduf](https://rxlaboratorio.org) |
-| [Callipeg](https://callipeg.com) | *Native* | **◉** | - |  | Enoben |
-| [Fusion](https://www.blackmagicdesign.com/products/fusion/) | [Reactor (using Vonk Ultra)](https://www.steakunderwater.com/) | - | **◉** |  | [We Suck Less](https://www.steakunderwater.com/wesuckless/) |
-| [Krita](http://krita.org/) | [OCA for Krita](https://rxlaboratory.org/tools/oca-for-krita/) | **◉** | **○** |  | [RxLaboratorio / Duduf](https://rxlaboratorio.org) |
-| [OpenToonz](https://opentoonz.github.io/e/) | *Native* | **◉** | - | Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483 | [Dwango](https://en.dwango.co.jp/) |
-| [Photoshop](https://www.adobe.com/products/photoshop.html) | OCA | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org) |
-| [TVPaint](https://www.tvpaint.com/) | OCA | **○** | - |  | [RxLaboratorio / Duduf](https://rxlaboratorio.org) |
-| XDTS | [OCA to XDTS converter](https://wolfinabowl.itch.io/oca-to-xdts-converter) | **◉** | **◉** | XDTS is a format supported by OpenToonz, Tahoma, Clip Studio Paint EX and Toei Animation Digital Exposure Sheet. | [Wolf In A Bow](https://wolfinabowl.itch.io/) |
+- **[After Effects](https://www.adobe.com/products/aftereffects.html) / [DuIO](https://github.com/RxLaboratory/DuIO)**
+  - Export: -
+  - Import: **◉**
+  - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
+- **[Animation Paper](https://animationpaper.com/)** / *Native support*
+  - Export: **◉**
+  - Import: *?*
+  - Maintained by: Niels Krogh Mortensen
+- **[Blender](https://blender.org/) / [Bluik](https://rxlaboratory.org/tools/bluik/)**
+  - Export: **○** (Exporter for Grease Pencil planned)
+  - Import: **◉**
+  - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
+- **[Callipeg](https://callipeg.com) / *Native support***
+  - Export: **◉**
+  - Import: -
+  - Maintained by: Enoben
+- **[Fusion](https://www.blackmagicdesign.com/products/fusion/) / [Reactor (using Vonk Ultra)](https://www.steakunderwater.com/)**
+  - Export: -
+  - Import: **◉**
+  - Maintained by: [We Suck Less](https://www.steakunderwater.com/wesuckless/)
+- **[Krita](http://krita.org/) / [OCA for Krita](https://rxlaboratory.org/tools/oca-for-krita/)**
+  - Export: **◉**
+  - Import: **○**
+  - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
+- **[OpenToonz](https://opentoonz.github.io/e/) / *Native support***
+  - Export: **◉** with [some limitations](ttps://github.com/opentoonz/opentoonz/pull/4483)
+  - Import: -
+  - Maintained by: [Dwango](https://en.dwango.co.jp/)
+- **[Photoshop](https://www.adobe.com/products/photoshop.html) / OCA for Photoshop**
+  - Export: **○**
+  - Import: -
+  - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
+- **[TVPaint](https://www.tvpaint.com/) / OCA for TVPaint**
+  - Export: **○**
+  - Import: -
+  - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
+- **XDTS / [OCA to XDTS converter](https://wolfinabowl.itch.io/oca-to-xdts-converter)**
+  - Export: **◉**
+  - Import: **◉**
+  - XDTS is a format supported by OpenToonz, Tahoma, Clip Studio Paint EX and Toei Animation Digital Exposure Sheet.
+  - Maintained by: [Wolf In A Bow](https://wolfinabowl.itch.io/)
 
 Legend:  
 **◉** | Available  
 **◔** | In development  
 **○** | Planned  
 \- | Not supported
-
-<!-- implementation_list:end -->
 
 ## Principles
 

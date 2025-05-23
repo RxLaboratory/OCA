@@ -6,7 +6,7 @@ You can [read the documentation here](http://oca.rxlab.guide) for more informati
 
 We're providing some implementations of OCA as add-ons for a few applications and other applications already support it natively. If the application you need is not listed, you can politely ask for it in a feature request and we'll consider it.
 
-- **[After Effects](https://www.adobe.com/products/aftereffects.html) / [DuIO](https://github.com/RxLaboratory/DuIO)**
+- **After Effects / [DuIO](https://rxlaboratorio.org/rx-tool/duio/)**
   - Export: -
   - Import: **◉**
   - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
@@ -14,7 +14,7 @@ We're providing some implementations of OCA as add-ons for a few applications an
   - Export: **◉**
   - Import: *?*
   - Maintained by: Niels Krogh Mortensen
-- **[Blender](https://blender.org/) / [Bluik](https://rxlaboratory.org/tools/bluik/)**
+- **Blender/ [Bluik](https://rxlaboratorio.org/rx-tool/bluik/)**
   - Export: **○** (Exporter for Grease Pencil planned)
   - Import: **◉**
   - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
@@ -22,11 +22,11 @@ We're providing some implementations of OCA as add-ons for a few applications an
   - Export: **◉**
   - Import: -
   - Maintained by: Enoben
-- **[Fusion](https://www.blackmagicdesign.com/products/fusion/) / [Reactor (using Vonk Ultra)](https://www.steakunderwater.com/)**
+- **Fusion / [Reactor (using Vonk Ultra)](https://www.steakunderwater.com/)**
   - Export: -
   - Import: **◉**
   - Maintained by: [We Suck Less](https://www.steakunderwater.com/wesuckless/)
-- **[Krita](http://krita.org/) / [OCA for Krita](https://rxlaboratory.org/tools/oca-for-krita/)**
+- **Krita / [OCA for Krita](https://rxlaboratorio.org/rx-tool/oca-for-krita/)**
   - Export: **◉**
   - Import: **○**
   - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
@@ -34,11 +34,11 @@ We're providing some implementations of OCA as add-ons for a few applications an
   - Export: **◉** with [some limitations](ttps://github.com/opentoonz/opentoonz/pull/4483)
   - Import: -
   - Maintained by: [Dwango](https://en.dwango.co.jp/)
-- **[Photoshop](https://www.adobe.com/products/photoshop.html) / OCA for Photoshop**
+- **Photoshop / OCA for Photoshop**
   - Export: **○**
   - Import: -
   - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)
-- **[TVPaint](https://www.tvpaint.com/) / OCA for TVPaint**
+- **TVPaint / OCA for TVPaint**
   - Export: **○**
   - Import: -
   - Maintained by: [RxLaboratorio / Duduf](https://rxlaboratorio.org)

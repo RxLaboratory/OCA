@@ -2,7 +2,7 @@
     "title": "OCA",
     "description": "Open format to ease traditional/frame-by-frame/cel animation data interchange.",
     "readme": "https://codeberg.org/OCA/OCA/raw/branch/classes/HOME.md",
-    "tags": ["krita", "after effects", "blender", "io", "animation"],
+    "tags": ["krita", "after effects", "blender", "io", "animation", "format"],
     "version": "1.2.0",
     "date": "2022-07-29",
     "prerelease-version": "",

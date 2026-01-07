@@ -31,7 +31,7 @@ We're providing some implementations of *OCA* as add-ons for a few applications,
 | [Callipeg](https://callipeg.com) | *Native* | **◉** | - |  | Enoben |
 | [Fusion](https://www.blackmagicdesign.com/products/fusion/) | [Reactor (using Vonk Ultra)](https://www.steakunderwater.com/) | - | **◉** |  | [We Suck Less](https://www.steakunderwater.com/wesuckless/) |
 | [Krita](http://krita.org/) | [OCA for Krita](https://rxlaboratory.org/tools/oca-for-krita/) | **◉** | **○** |  | [RxLaboratory / Duduf](https://rxlaboratory.org) |
-| [OpenToonz](https://opentoonz.github.io/e/) | *Native* | **◉** | - | Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483 | [Dwango](https://en.dwango.co.jp/) |
+| [OpenToonz](https://opentoonz.github.io/e/) | *Native* | **◉** | **◉** | Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483 | [Dwango](https://en.dwango.co.jp/) |
 | [Photoshop](https://www.adobe.com/products/photoshop.html) | OCA | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org) |
 | [TVPaint](https://www.tvpaint.com/) | OCA | **○** | - |  | [RxLaboratory / Duduf](https://rxlaboratory.org) |
 | XDTS | [OCA to XDTS converter](https://wolfinabowl.itch.io/oca-to-xdts-converter) | **◉** | **◉** | XDTS is a format supported by OpenToonz, Tahoma, Clip Studio Paint EX and Toei Animation Digital Exposure Sheet. | [Wolf In A Bow](https://wolfinabowl.itch.io/) |

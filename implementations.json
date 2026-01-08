@@ -61,8 +61,8 @@
             "addon_name": "",
             "addon_url": "",
             "export": "yes",
-            "import": "no",
-            "comment": "Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483",
+            "import": "yes",
+            "comment": "Some limitations, see https://github.com/opentoonz/opentoonz/pull/4483 and https://github.com/opentoonz/opentoonz/pull/5315",
             "maintainer_name": "Dwango",
             "maintainer_url": "https://en.dwango.co.jp/"
         },

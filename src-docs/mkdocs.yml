@@ -24,7 +24,7 @@ extra_javascript:
     - video.js
     - meta.js
     - collapser.js
-site_dir: ../docs/
+site_dir: ../pages/
 dev_addr: '127.0.0.1:8001'
 nav:
     - v1.3.0: index.md

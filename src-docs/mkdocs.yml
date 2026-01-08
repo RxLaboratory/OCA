@@ -8,7 +8,7 @@ copyright: 'Copyright © 2020-2023 RxLaboratory and Nicolas Dufresne'
 use_directory_urls: false
 theme:
     name: null
-    custom_dir: 'cinder'
+    custom_dir: 'cinder-duf'
     colorscheme: zenburn
 markdown_extensions:
     - smarty
@@ -44,8 +44,8 @@ nav:
             - Layer Types: specs/layer-types.md
             - Blending Modes: specs/blending-modes.md
             - Layer Labels: specs/layer-labels.md
+    - Roadmap: roadmap.md
     - ...:
-        - Roadmap: roadmap.md
         - Changelog: changelog.md
         - License:
             - GNU GPLv3: licenses/gnu-gpl.md

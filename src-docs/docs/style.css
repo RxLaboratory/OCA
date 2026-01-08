@@ -9,6 +9,10 @@ img {
     max-width: 100%;
 }
 
+p > img {
+  border-radius: 1em;
+}
+
 hr {
     height: 3px;
     border: none;
@@ -41,6 +45,11 @@ blockquote {
     font-style: italic;
     padding-top: 3px;
     padding-bottom: 3px;
+    margin-left: -23px;
+}
+
+blockquote p {
+  font-size: 1.2em;
 }
 
 figcaption {
@@ -65,6 +74,38 @@ figure {
     margin-right: 0px;
     padding-left: 43px;
     border-left: 7px solid;
+}
+
+.admonition.read,
+.admonition.discuss {
+    padding: 0;
+    padding-left: 12px;
+    margin-left: -15px;
+    background-color: transparent;
+    border: none;
+    border-left: 2px dotted #a526c4;
+    border-radius: 0 10px 10px 0;
+}
+
+.admonition.read .admonition-title::before,
+.admonition.discuss .admonition-title::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight:900;
+    display: inline-block;
+    margin-right: 0.3em;
+    content: "\f0da";
+}
+
+.admonition.read .admonition-title,
+.admonition.discuss .admonition-title {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.admonition.read a,
+.admonition.discuss a {
+    font-weight: bold;
+    font-style: italic;
 }
 
 .admonition.tip {
@@ -289,4 +330,13 @@ ul.nav li a {
 
 .post-meta ul {
     padding-left:20px;
+}
+
+table {
+  background-color: #f8f8f8;
+  border-radius: 1em;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #f0f0f0;
 }

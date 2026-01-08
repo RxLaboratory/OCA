@@ -35,6 +35,14 @@ Instead of storing the list of all the frames, we could add a new Frame Sequence
 !!! discuss
     [Join the discussion about this feature here](https://codeberg.org/OCA/OCA/issues/8).
 
+
+## Masks
+
+Masks (and selections) could be stored as grayscale bitmaps, and associated to other layers. They could even be animated too.
+
+!!! discuss
+    [Join the discussion about this feature here](https://codeberg.org/OCA/OCA/issues/9).
+
 ## Color space
 
 It would be easy and useful to add some info about the color space. To be used at least for `F16` and `F32` color depth with *EXR* files, but we may also support *Rec-2020* with PNG files.
@@ -49,12 +57,6 @@ This can be an issue though, as parsing XML in *Adobe* apps is notoriously more 
 
 We could separate the content, styles, metadata, and application settings into four separate files like OpenDocument formats though. For now, only content (and very few metadata) is stored by OCA, but we may add more metadata and application settings too for example.  
 It does make sense to store the metadata associated with specific objects next to them though; separating the metadata would concern only the general metadata, like the existing `originApp` and `originAppVersion` of the [*Root Object*](specs/root.md).
-
-## Masks
-
-Masks (and selections) could be stored as grayscale bitmaps, and associated to other layers. They could even be animated too.
-
-That would be a new layer type, `masklayer`, and the [Layer Object](specs/layer.md) would get two new attributes: `mask` and `selection`, both represented by a masklayer.
 
 ## Adjustment/Effects Layers
 
